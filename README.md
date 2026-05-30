@@ -89,13 +89,6 @@ Series & Movie Tracker/
 
 ---
 
-## 🎥 Video Tutorial
-
-📺 Watch the full guide here:
-👉 [https://youtu.be/8Lp2KZZqtA8](https://youtu.be/8Lp2KZZqtA8)
-
----
-
 ## 🛠️ Built With
 
 * HTML5
