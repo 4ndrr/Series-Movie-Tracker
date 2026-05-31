@@ -234,7 +234,7 @@ body.light-theme .cat-btn.active{color:#111}
   gap:16px;
 }
 .card-grid.list-view{
-  grid-template-columns:1fr;gap:8px;
+  display:flex;flex-direction:column;gap:8px;
 }
 
 /* POSTER CARD */
@@ -505,7 +505,8 @@ body.light-theme .cat-btn.active{color:#111}
   z-index:300;opacity:0;
   transition:opacity .2s,transform .2s;
   white-space:nowrap;
-  display:flex;align-items:center;gap:8px;
+  display:flex;align-items:center;gap:10px;
+  border-left:3px solid var(--toast-accent,#27ae60);
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast-icon{color:var(--completed-color);font-size:1rem}
@@ -852,7 +853,7 @@ body.light-theme .cat-btn.active{color:#111}
 
 <!-- TOAST -->
 <div class="toast" id="toast">
-  <span class="toast-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+  <span id="toastIcon" class="toast-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
   <span id="toastMsg">Added to library</span>
 </div>
 
@@ -1619,7 +1620,7 @@ function loadTrackerData(){
 function saveTrackerData(data){localStorage.setItem(TRACKER_KEY,JSON.stringify(data));}
 function catalogueToTrackerItem(item){
   const today=new Date().toISOString().split('T')[0];const isMovie=item.type==='movie';
-  const d=loadTrackerData();const all=d;
+  const all=loadTrackerData();
   const maxId=all.reduce((m,x)=>Math.max(m,x.id||0),1000);
   return{id:maxId+1,title:item.title,image:item.cover||'',genre:'',status:'want',season:1,episode:1,time:0,
     totalSeasons:item.seasons||1,totalEpisodes:item.episodes||(isMovie?1:0),
@@ -1630,32 +1631,58 @@ function catalogueToTrackerItem(item){
     notes:item.description||'',startedDate:today,completedDate:null,lastWatchedDate:today,actors:[],watchHistory:[]};
 }
 function isInTracker(title){return loadTrackerData().some(x=>x.title===title);}
+function getTrackerStatus(title){
+  const entry=loadTrackerData().find(x=>x.title===title);
+  if(!entry) return null;
+  if(entry.status==='watching') return 'Watching';
+  if(entry.status==='completed') return 'Completed';
+  return 'Want to Watch';
+}
 function removeFromTracker(title){saveTrackerData(loadTrackerData().filter(x=>x.title!==title));}
 function addToTracker(item){if(isInTracker(item.title))return;const d=loadTrackerData();d.push(catalogueToTrackerItem(item));saveTrackerData(d);}
 
 function toggleAdd(id){
   const item=CATALOGUE.find(x=>x.id===id);
   if(!item) return;
+  // Check if already in tracker (from another session/device)
+  const alreadyInTracker=isInTracker(item.title);
   if(addedIds.has(id)){
     addedIds.delete(id);
     removeFromTracker(item.title);
-    showToast(`Removed "${item.title}" from library`,'#e50914');
+    showToast(`Removed "${item.title}" from library`, 'remove');
+  } else if(alreadyInTracker && !addedIds.has(id)){
+    // Already in tracker but not marked in this session — just block
+    const status=getTrackerStatus(item.title);
+    showToast(`"${item.title}" is already in your library (${status})`, 'blocked');
+    addedIds.add(id);
+    localStorage.setItem('mp_added',JSON.stringify([...addedIds]));
+    updateButtons(id);
+    buildCollections();
+    return;
   } else {
     addedIds.add(id);
     addToTracker(item);
-    showToast(`Added "${item.title}" to library`,'#27ae60');
+    showToast(`Added "${item.title}" to your library`, 'success');
   }
   localStorage.setItem('mp_added',JSON.stringify([...addedIds]));
+  updateButtons(id);
+  buildCollections();
+}
+
+function updateButtons(id){
   document.querySelectorAll(`[data-id="${id}"] .card-add-btn`).forEach(btn=>{
-    btn.textContent=addedIds.has(id)?'✓ Added':'＋ Add';
+    btn.innerHTML=addedIds.has(id)
+      ? `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Added`
+      : `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add`;
     btn.classList.toggle('added',addedIds.has(id));
   });
   const modalBtn=document.querySelector('.modal-add-btn');
   if(modalBtn&&parseInt(modalBtn.dataset.id)===id){
-    modalBtn.textContent=addedIds.has(id)?'✓ Added to Library':'＋ Add to Library';
+    modalBtn.innerHTML=addedIds.has(id)
+      ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Added to Library`
+      : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to Library`;
     modalBtn.classList.toggle('added',addedIds.has(id));
   }
-  buildCollections();
 }
 
 // ─────────────────────────────────────────────
@@ -1732,12 +1759,21 @@ function closeModal(){
 // TOAST
 // ─────────────────────────────────────────────
 let toastTimer=null;
-function showToast(msg){
+function showToast(msg, type='success'){
   const t=document.getElementById('toast');
+  const iconEl=document.getElementById('toastIcon');
   document.getElementById('toastMsg').textContent=msg;
+  const configs={
+    success:{color:'#27ae60',icon:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`},
+    remove:{color:'#e50914',icon:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`},
+    blocked:{color:'#f5a623',icon:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`},
+  };
+  const cfg=configs[type]||configs.success;
+  t.style.setProperty('--toast-accent',cfg.color);
+  if(iconEl) iconEl.innerHTML=cfg.icon;
   t.classList.add('show');
   if(toastTimer) clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
 }
 
 // ─────────────────────────────────────────────
