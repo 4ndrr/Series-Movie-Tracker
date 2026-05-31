@@ -1560,6 +1560,10 @@ function renderCard(item){
           ${typeBadge(item.type)}
           <span class="card-year">${item.year}</span>
           <span class="card-rating"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb}</span>
+        </div>
+        <button class="card-add-btn ${added?'added':''}"
+          onclick="event.stopPropagation();toggleAdd(${item.id})">
+          ${added?'✓ Added':'＋ Add'}
         </button>
       </div>
       ${ribbon(item)}
@@ -1583,7 +1587,6 @@ function renderCard(item){
     </div>
   </div>`;
 }
-
 function renderGrid(){
   const items=getFiltered();
   const grid=document.getElementById('cardGrid');
