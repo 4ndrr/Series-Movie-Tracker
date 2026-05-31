@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketplace — Series & Movie Tracker</title>
+<style>
+:root {
+  --primary-color: #141414;
+  --secondary-color: #e50914;
+  --secondary-rgb: 229, 9, 20;
+  --surface: #1c1c1c;
+  --surface2: #242424;
+  --surface3: #2e2e2e;
+  --border: rgba(255,255,255,0.08);
+  --text: #ffffff;
+  --text-muted: #888;
+  --text-dim: #555;
+  --radius: 12px;
+  --watching-color: #e50914;
+  --want-color: #0062ff;
+  --completed-color: #27ae60;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:#141414;
+  color:#fff;
+  font-family:'Helvetica Neue',Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body.light-theme{
+  --primary-color:#f5f5f5;
+  --surface:#fff;
+  --surface2:#f0f0f0;
+  --surface3:#e8e8e8;
+  --border:rgba(0,0,0,0.1);
+  --text:#111;
+  --text-muted:#666;
+  --text-dim:#aaa;
+  background:#f5f5f5;
+  color:#111;
+}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(20,20,20,0.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 clamp(16px,3vw,40px);
+}
+body.light-theme .nav{background:rgba(245,245,245,0.95)}
+
+.nav-inner{
+  max-width:1400px;margin:0 auto;
+  height:60px;display:flex;align-items:center;gap:16px;
+}
+.nav-logo{
+  font-size:1.1rem;font-weight:800;letter-spacing:-0.5px;
+  color:var(--secondary-color);white-space:nowrap;
+  text-decoration:none;display:flex;align-items:center;gap:8px;
+}
+.nav-logo-sub{
+  font-weight:400;font-size:0.8rem;color:var(--text-muted);
+  border-left:1px solid var(--border);padding-left:12px;margin-left:4px;
+}
+.nav-spacer{flex:1}
+.nav-search-wrap{
+  position:relative;flex:1;max-width:340px;
+}
+.nav-search{
+  width:100%;height:38px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;
+  color:var(--text);
+  font-size:0.88rem;
+  padding:0 12px 0 36px;
+  outline:none;
+  transition:border-color .2s;
+  font-family:inherit;
+}
+.nav-search:focus{border-color:var(--secondary-color)}
+.nav-search::placeholder{color:var(--text-muted)}
+.nav-search-icon{
+  position:absolute;left:10px;top:50%;transform:translateY(-50%);
+  color:var(--text-muted);pointer-events:none;
+}
+.nav-theme-btn{
+  height:38px;padding:0 14px;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);
+  color:var(--text);font-size:0.85rem;cursor:pointer;
+  transition:all .2s;font-family:inherit;white-space:nowrap;
+  display:flex;align-items:center;gap:6px;
+}
+.nav-theme-btn:hover{background:var(--surface3)}
+
+/* ── HERO ── */
+.hero{
+  background:linear-gradient(180deg,rgba(229,9,20,0.08) 0%,transparent 100%);
+  border-bottom:1px solid var(--border);
+  padding:40px clamp(16px,3vw,40px) 32px;
+}
+.hero-inner{max-width:1400px;margin:0 auto}
+.hero-eyebrow{
+  font-size:0.7rem;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--secondary-color);
+  margin-bottom:10px;
+  display:flex;align-items:center;gap:6px;
+}
+.hero-title{
+  font-size:clamp(1.8rem,4vw,2.8rem);
+  font-weight:900;letter-spacing:-1px;
+  line-height:1.1;margin-bottom:10px;
+}
+.hero-title-3d{
+  display:inline-block;
+  background:linear-gradient(135deg,#fff 0%,#ccc 40%,#fff 60%,#999 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+  filter:drop-shadow(0 1px 0 rgba(229,9,20,0.8)) drop-shadow(0 2px 0 rgba(180,0,10,0.6)) drop-shadow(0 3px 0 rgba(130,0,5,0.4)) drop-shadow(0 6px 18px rgba(229,9,20,0.25));
+  letter-spacing:-1px;
+}
+body.light-theme .hero-title-3d{
+  background:linear-gradient(135deg,#111 0%,#444 40%,#111 60%,#666 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  filter:drop-shadow(0 1px 0 rgba(229,9,20,0.7)) drop-shadow(0 2px 0 rgba(180,0,10,0.5)) drop-shadow(0 4px 14px rgba(229,9,20,0.2));
+}
+.hero-desc{
+  font-size:0.95rem;color:var(--text-muted);
+  max-width:520px;line-height:1.6;margin-bottom:24px;
+}
+.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
+.hero-stat{display:flex;flex-direction:column;gap:2px}
+.hero-stat-num{
+  font-size:1.5rem;font-weight:800;color:var(--secondary-color);
+}
+.hero-stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:4px}
+
+/* ── LAYOUT ── */
+.page{
+  max-width:1400px;margin:0 auto;
+  padding:32px clamp(16px,3vw,40px);
+  display:grid;grid-template-columns:220px 1fr;gap:28px;
+}
+@media(max-width:860px){.page{grid-template-columns:1fr}}
+
+/* ── SIDEBAR ── */
+.sidebar{}
+.sidebar-section{margin-bottom:28px}
+.sidebar-title{
+  font-size:0.68rem;font-weight:700;
+  letter-spacing:1.8px;text-transform:uppercase;
+  color:var(--secondary-color);margin-bottom:12px;
+}
+.cat-list{display:flex;flex-direction:column;gap:4px}
+.cat-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 12px;border-radius:8px;border:none;
+  background:transparent;color:var(--text-muted);
+  font-size:0.88rem;cursor:pointer;font-family:inherit;
+  transition:all .15s;text-align:left;
+}
+.cat-btn:hover{background:var(--surface2);color:var(--text)}
+.cat-btn.active{
+  background:rgba(var(--secondary-rgb),.12);
+  color:#fff;font-weight:600;
+}
+body.light-theme .cat-btn.active{color:#111}
+.cat-count{
+  font-size:0.72rem;color:var(--text-dim);
+  background:var(--surface2);
+  border-radius:20px;padding:1px 7px;
+}
+.cat-btn.active .cat-count{
+  background:rgba(var(--secondary-rgb),.2);
+  color:var(--secondary-color);
+}
+
+.filter-group{display:flex;flex-direction:column;gap:6px}
+.filter-label{
+  font-size:0.78rem;color:var(--text-muted);margin-bottom:2px;
+}
+.filter-select{
+  width:100%;padding:8px 10px;border-radius:8px;
+  background:var(--surface2);border:1px solid var(--border);
+  color:var(--text);font-size:0.85rem;font-family:inherit;
+  outline:none;cursor:pointer;
+  transition:border-color .2s;
+}
+.filter-select:focus{border-color:var(--secondary-color)}
+
+/* ── MAIN GRID ── */
+.main-area{}
+.toolbar{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:20px;flex-wrap:wrap;
+}
+.toolbar-result-count{
+  font-size:0.82rem;color:var(--text-muted);flex:1;min-width:80px;
+}
+.view-btns{display:flex;gap:4px}
+.view-btn{
+  width:34px;height:34px;border-radius:7px;
+  background:var(--surface2);border:1px solid var(--border);
+  color:var(--text-muted);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .15s;
+}
+.view-btn:hover{color:var(--text);background:var(--surface3)}
+.view-btn.active{
+  background:rgba(var(--secondary-rgb),.15);
+  border-color:var(--secondary-color);
+  color:var(--secondary-color);
+}
+.sort-select{
+  height:34px;padding:0 10px;border-radius:7px;
+  background:var(--surface2);border:1px solid var(--border);
+  color:var(--text);font-size:0.82rem;font-family:inherit;
+  outline:none;cursor:pointer;
+}
+
+/* ── CARD GRID ── */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:16px;
+}
+.card-grid.list-view{
+  grid-template-columns:1fr;gap:8px;
+}
+
+/* POSTER CARD */
+.m-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .2s,box-shadow .2s,border-color .2s;
+  position:relative;
+}
+.m-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 50px rgba(0,0,0,.6);
+  border-color:rgba(var(--secondary-rgb),.35);
+}
+.card-poster{
+  width:100%;aspect-ratio:2/3;
+  object-fit:cover;display:block;
+  background:var(--surface2);
+}
+.card-poster-placeholder{
+  width:100%;aspect-ratio:2/3;
+  background:var(--surface2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--text-dim);font-size:2rem;
+}
+.card-body{padding:10px 10px 12px}
+.card-title{
+  font-size:0.85rem;font-weight:700;
+  line-height:1.3;margin-bottom:4px;
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
+.card-meta{
+  display:flex;align-items:center;gap:6px;
+  flex-wrap:wrap;margin-bottom:8px;
+}
+.card-type-badge{
+  font-size:0.62rem;font-weight:700;
+  text-transform:uppercase;letter-spacing:1px;
+  padding:2px 6px;border-radius:4px;
+}
+.badge-series{background:rgba(0,98,255,.18);color:#5b9fff}
+.badge-movie{background:rgba(255,180,0,.15);color:#ffb400}
+.badge-anime{background:rgba(180,0,255,.15);color:#c87fff}
+.card-year{font-size:0.72rem;color:var(--text-muted)}
+.card-rating{
+  display:flex;align-items:center;gap:4px;
+  font-size:0.75rem;font-weight:600;color:#f5c518;
+}
+.card-add-btn{
+  width:100%;height:32px;border-radius:7px;
+  background:var(--secondary-color);border:none;
+  color:#fff;font-size:0.8rem;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  transition:filter .2s,transform .1s;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+}
+.card-add-btn:hover{filter:brightness(1.1)}
+.card-add-btn:active{transform:scale(.97)}
+.card-add-btn.added{
+  background:var(--completed-color);
+}
+.card-add-btn.added:hover{filter:brightness(1.05)}
+
+/* STATUS RIBBON */
+.card-ribbon{
+  position:absolute;top:8px;right:8px;
+  font-size:0.6rem;font-weight:700;letter-spacing:.8px;
+  text-transform:uppercase;padding:3px 7px;border-radius:4px;
+}
+.ribbon-ongoing{background:rgba(39,174,96,.9);color:#fff}
+.ribbon-ended{background:rgba(80,80,80,.9);color:#ccc}
+.ribbon-new{background:rgba(229,9,20,.9);color:#fff}
+
+/* LIST VIEW CARD */
+.card-grid.list-view .m-card{
+  display:flex;flex-direction:row;align-items:stretch;
+  height:96px;
+}
+.card-grid.list-view .card-poster{
+  width:64px;height:96px;aspect-ratio:unset;flex-shrink:0;
+}
+.card-grid.list-view .card-poster-placeholder{
+  width:64px;height:96px;aspect-ratio:unset;flex-shrink:0;font-size:1.2rem;
+}
+.card-grid.list-view .card-body{
+  flex:1;display:flex;align-items:center;
+  gap:16px;padding:12px 14px;
+}
+.card-grid.list-view .card-title{
+  flex:1;-webkit-line-clamp:1;font-size:0.92rem;margin-bottom:0;
+}
+.card-grid.list-view .card-add-btn{
+  width:90px;flex-shrink:0;height:34px;
+}
+.card-grid.list-view .card-ribbon{top:8px;right:110px}
+.card-grid.list-view .card-meta{margin-bottom:0}
+
+/* ── DETAIL MODAL ── */
+.modal-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.75);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;opacity:0;pointer-events:none;
+  transition:opacity .25s;
+}
+.modal-overlay.open{opacity:1;pointer-events:auto}
+
+.modal-box{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:18px;
+  width:100%;max-width:680px;
+  max-height:88vh;overflow-y:auto;
+  position:relative;
+  transform:scale(.96);
+  transition:transform .25s;
+}
+.modal-overlay.open .modal-box{transform:scale(1)}
+
+.modal-backdrop{
+  width:100%;height:220px;object-fit:cover;
+  display:block;border-radius:18px 18px 0 0;
+  background:var(--surface2);
+  position:relative;
+}
+.modal-backdrop-placeholder{
+  width:100%;height:220px;
+  background:linear-gradient(135deg,var(--surface2) 0%,var(--surface3) 100%);
+  border-radius:18px 18px 0 0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:4rem;color:var(--text-dim);
+}
+.modal-backdrop-gradient{
+  position:absolute;bottom:0;left:0;right:0;height:120px;
+  background:linear-gradient(to bottom,transparent,var(--surface));
+  border-radius:0 0 0 0;
+}
+
+.modal-inner{padding:0 28px 28px}
+
+.modal-top{
+  display:flex;gap:18px;margin-top:-50px;
+  position:relative;margin-bottom:18px;
+  align-items:flex-end;
+}
+.modal-poster{
+  width:100px;height:150px;object-fit:cover;
+  border-radius:10px;border:3px solid var(--surface);
+  flex-shrink:0;background:var(--surface2);
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+}
+.modal-poster-placeholder{
+  width:100px;height:150px;
+  border-radius:10px;border:3px solid var(--surface);
+  flex-shrink:0;background:var(--surface2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;color:var(--text-dim);
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+}
+.modal-header-text{flex:1;padding-bottom:6px}
+.modal-type-badge{margin-bottom:6px;display:inline-block}
+.modal-title{
+  font-size:1.5rem;font-weight:800;letter-spacing:-.5px;
+  line-height:1.2;margin-bottom:4px;
+}
+.modal-original-title{
+  font-size:0.82rem;color:var(--text-muted);margin-bottom:8px;
+}
+.modal-rating-row{
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.modal-imdb{
+  display:flex;align-items:center;gap:5px;
+  font-size:0.82rem;font-weight:600;color:#f5c518;
+}
+.modal-year-status{
+  font-size:0.8rem;color:var(--text-muted);
+}
+
+.modal-desc{
+  font-size:0.88rem;color:var(--text-muted);
+  line-height:1.65;margin-bottom:20px;
+}
+
+.modal-section-title{
+  font-size:0.68rem;font-weight:700;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--secondary-color);margin-bottom:10px;
+}
+
+.modal-meta-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
+  gap:12px;margin-bottom:20px;
+}
+.modal-meta-item{
+  background:var(--surface2);
+  border-radius:10px;padding:12px 14px;
+}
+.modal-meta-label{
+  font-size:0.65rem;color:var(--text-muted);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;
+}
+.modal-meta-val{
+  font-size:0.9rem;font-weight:700;
+}
+
+.modal-providers{
+  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;
+}
+.provider-chip{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:8px;padding:6px 12px;
+  font-size:0.78rem;font-weight:600;
+  color:var(--text-muted);
+}
+
+.modal-covers-row{
+  display:flex;gap:10px;overflow-x:auto;
+  padding-bottom:6px;margin-bottom:20px;
+  scrollbar-width:thin;
+}
+.modal-alt-cover{
+  width:70px;height:105px;object-fit:cover;
+  border-radius:8px;flex-shrink:0;
+  border:2px solid transparent;cursor:pointer;
+  transition:border-color .2s,transform .15s;
+  background:var(--surface2);
+}
+.modal-alt-cover:hover{
+  border-color:var(--secondary-color);
+  transform:scale(1.04);
+}
+
+.modal-add-btn{
+  width:100%;height:46px;border-radius:10px;
+  background:var(--secondary-color);border:none;
+  color:#fff;font-size:0.95rem;font-weight:700;
+  cursor:pointer;font-family:inherit;
+  transition:filter .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.modal-add-btn:hover{filter:brightness(1.1)}
+.modal-add-btn.added{background:var(--completed-color)}
+
+.modal-close{
+  position:absolute;top:14px;right:14px;
+  width:34px;height:34px;border-radius:8px;
+  background:rgba(0,0,0,.5);border:none;
+  color:#fff;font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s;z-index:10;
+}
+.modal-close:hover{background:rgba(0,0,0,.75)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;bottom:28px;left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:12px 20px;
+  font-size:0.88rem;font-weight:600;
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  z-index:300;opacity:0;
+  transition:opacity .2s,transform .2s;
+  white-space:nowrap;
+  display:flex;align-items:center;gap:8px;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast-icon{color:var(--completed-color);font-size:1rem}
+
+/* ── EMPTY STATE ── */
+.empty-state{
+  text-align:center;padding:60px 20px;
+  color:var(--text-muted);
+}
+.empty-state-icon{font-size:3rem;margin-bottom:16px}
+.empty-state-title{font-size:1.1rem;font-weight:700;margin-bottom:6px;color:var(--text)}
+.empty-state-desc{font-size:0.85rem;line-height:1.6}
+
+/* ── RESPONSIVE SIDEBAR ── */
+@media(max-width:860px){
+  .sidebar{display:none}
+  .sidebar.mobile-open{display:block}
+}
+
+/* skeleton */
+.skel{
+  background:linear-gradient(90deg,var(--surface2) 25%,var(--surface3) 50%,var(--surface2) 75%);
+  background-size:200% 100%;
+  animation:skel-anim 1.4s infinite;
+  border-radius:6px;
+}
+@keyframes skel-anim{to{background-position:-200% 0}}
+.skel-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;
+}
+
+/* ── COLLECTIONS ── */
+.collections-section{
+  max-width:1400px;margin:0 auto;
+  padding:32px clamp(16px,3vw,40px) 0;
+}
+.collections-header{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:20px;
+}
+.collections-title{
+  font-size:1.2rem;font-weight:800;letter-spacing:-0.5px;
+}
+.collections-subtitle{
+  font-size:0.82rem;color:var(--text-muted);margin-top:2px;
+}
+.collections-grid{
+  display:flex;
+  flex-direction:row;
+  gap:16px;
+  margin-bottom:8px;
+  overflow-x:auto;
+  scroll-behavior:smooth;
+  padding-bottom:8px;
+  /* hide scrollbar visually but keep it functional */
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+.collections-grid::-webkit-scrollbar{display:none}
+.coll-card{
+  flex:0 0 280px;
+}
+.coll-card{
+  position:relative;overflow:hidden;
+  border-radius:var(--radius);
+  background:var(--surface);
+  border:1px solid var(--border);
+  cursor:pointer;
+  transition:transform .2s, box-shadow .2s;
+  min-height:140px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:20px;
+  flex:0 0 280px;
+}
+.coll-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.coll-card-bg{
+  position:absolute;inset:0;
+  background-size:cover;background-position:center;
+  opacity:0.18;
+  transition:opacity .2s;
+}
+.coll-card:hover .coll-card-bg{opacity:0.28}
+.coll-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.2) 100%);
+}
+.coll-card-body{position:relative;z-index:1}
+.coll-card-icon{font-size:1.6rem;margin-bottom:6px;display:flex;align-items:center}
+.coll-card-name{font-size:1rem;font-weight:800;margin-bottom:3px}
+.coll-card-desc{font-size:0.76rem;color:var(--text-muted);line-height:1.4;margin-bottom:12px}
+.coll-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.coll-card-count{
+  font-size:0.72rem;color:var(--text-muted);
+  background:var(--surface2);border-radius:20px;padding:2px 8px;
+}
+.coll-add-btn{
+  padding:6px 14px;border-radius:7px;border:none;
+  font-size:0.78rem;font-weight:700;cursor:pointer;
+  font-family:inherit;transition:all .15s;
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.2);
+}
+.coll-add-btn:hover{background:rgba(255,255,255,0.22)}
+.coll-add-btn.all-added{
+  background:rgba(39,174,96,0.25);
+  border-color:rgba(39,174,96,0.4);
+  color:#27ae60;
+}
+.coll-progress{
+  height:3px;border-radius:2px;
+  background:var(--surface3);
+  margin-top:10px;overflow:hidden;
+}
+.coll-progress-bar{
+  height:100%;border-radius:2px;
+  transition:width .3s;
+}
+/* Collection modal */
+.coll-modal-backdrop{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,0.75);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+  opacity:0;pointer-events:none;
+  transition:opacity .2s;
+}
+.coll-modal-backdrop.open{opacity:1;pointer-events:all}
+.coll-modal{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  max-width:620px;width:100%;
+  max-height:85vh;overflow-y:auto;
+  padding:28px;
+}
+.coll-modal-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
+.coll-modal-emoji{font-size:2.2rem;line-height:1}
+.coll-modal-info{flex:1}
+.coll-modal-name{font-size:1.3rem;font-weight:900;margin-bottom:4px}
+.coll-modal-desc{font-size:0.87rem;color:var(--text-muted)}
+.coll-modal-add-all{
+  padding:9px 20px;border-radius:9px;border:none;
+  font-size:0.85rem;font-weight:700;cursor:pointer;
+  font-family:inherit;background:var(--secondary-color);
+  color:#fff;transition:all .15s;white-space:nowrap;
+}
+.coll-modal-add-all:hover{filter:brightness(1.1)}
+.coll-modal-add-all.all-added{background:var(--completed-color)}
+.coll-modal-items{display:flex;flex-direction:column;gap:10px}
+.coll-modal-item{
+  display:flex;align-items:center;gap:12px;
+  padding:10px;border-radius:10px;
+  background:var(--surface2);
+  transition:background .15s;cursor:pointer;
+}
+.coll-modal-item:hover{background:var(--surface3)}
+.coll-modal-item-img{
+  width:44px;height:66px;object-fit:cover;
+  border-radius:6px;flex-shrink:0;
+  background:var(--surface3);
+}
+.coll-modal-item-info{flex:1;min-width:0}
+.coll-modal-item-title{font-size:0.9rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.coll-modal-item-meta{font-size:0.76rem;color:var(--text-muted);margin-top:2px}
+.coll-modal-item-btn{
+  width:32px;height:32px;border-radius:8px;border:none;
+  background:var(--surface3);color:var(--text-muted);
+  font-size:1rem;cursor:pointer;flex-shrink:0;
+  transition:all .15s;display:flex;align-items:center;justify-content:center;
+}
+.coll-modal-item-btn.added{background:rgba(39,174,96,0.2);color:#27ae60}
+.coll-modal-close-btn{
+  width:32px;height:32px;border-radius:8px;border:none;
+  background:var(--surface2);color:var(--text-muted);
+  font-size:1rem;cursor:pointer;
+  transition:all .15s;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.collections-divider{
+  max-width:1400px;margin:28px auto 0;
+  padding:0 clamp(16px,3vw,40px);
+  border-bottom:1px solid var(--border);
+}
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+      <span>Tracker</span>
+      <span class="nav-logo-sub">Marketplace</span>
+    </a>
+    <span class="nav-spacer"></span>
+    <div class="nav-search-wrap">
+      <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input class="nav-search" id="mainSearch" type="search" placeholder="Search titles…">
+    </div>
+    <button class="nav-theme-btn" id="themeToggle">
+      <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <span id="themeLabel">Light</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/></svg>
+      Beta — Curated Database
+    </div>
+    <h1 class="hero-title">
+      <span class="hero-title-3d">Marketplace</span>
+    </h1>
+    <p class="hero-desc">Browse pre-configured movies and series. One click to add to your personal library — no setup needed.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num" id="statTotal">0</span>
+        <span class="hero-stat-label">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          Entries
+        </span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num" id="statSeries">0</span>
+        <span class="hero-stat-label">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Series
+        </span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num" id="statMovies">0</span>
+        <span class="hero-stat-label">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+          Movies
+        </span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num" id="statAnime">0</span>
+        <span class="hero-stat-label">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          Anime
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- COLLECTIONS -->
+<section class="collections-section" id="collectionsSection">
+  <div class="collections-header">
+    <div>
+      <div class="collections-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;color:var(--secondary-color)"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Collections
+      </div>
+      <div class="collections-subtitle">Add entire franchises to your library in one click</div>
+    </div>
+  </div>
+  <div class="collections-grid" id="collectionsGrid"></div>
+</section>
+<div class="collections-divider"></div>
+
+<!-- COLLECTION MODAL -->
+<div class="coll-modal-backdrop" id="collModalBackdrop">
+  <div class="coll-modal" id="collModal">
+    <div id="collModalContent"></div>
+  </div>
+</div>
+
+<!-- PAGE -->
+<div class="page">
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Categories</div>
+      <div class="cat-list" id="catList"></div>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Filters</div>
+      <div class="filter-group">
+        <label class="filter-label">Status</label>
+        <select class="filter-select" id="filterStatus">
+          <option value="">All</option>
+          <option value="ongoing">Ongoing</option>
+          <option value="ended">Ended</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <label class="filter-label" style="margin-top:10px">Provider</label>
+        <select class="filter-select" id="filterProvider">
+          <option value="">All</option>
+          <option value="Netflix">Netflix</option>
+          <option value="Disney+">Disney+</option>
+          <option value="Prime Video">Prime Video</option>
+          <option value="Hulu">Hulu</option>
+          <option value="Apple TV+">Apple TV+</option>
+          <option value="HBO Max">HBO Max</option>
+          <option value="Crunchyroll">Crunchyroll</option>
+        </select>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-area">
+    <div class="toolbar">
+      <span class="toolbar-result-count" id="resultCount">Loading…</span>
+      <span class="nav-spacer"></span>
+      <select class="sort-select" id="sortSelect">
+        <option value="popularity">Most Popular</option>
+        <option value="rating">Highest Rated</option>
+        <option value="year_desc">Newest First</option>
+        <option value="year_asc">Oldest First</option>
+        <option value="title_asc">A → Z</option>
+      </select>
+      <div class="view-btns">
+        <button class="view-btn active" id="viewGrid" title="Grid view">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        </button>
+        <button class="view-btn" id="viewList" title="List view">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="card-grid" id="cardGrid"></div>
+  </main>
+</div>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-box" id="modalBox">
+    <button class="modal-close" id="modalClose"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+  <span id="toastMsg">Added to library</span>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// DATA — rich sample catalogue
+// ─────────────────────────────────────────────
+const CATALOGUE = [
+  {
+    id:1,title:"Breaking Bad",originalTitle:"Breaking Bad",
+    type:"series",categories:["Popular","Ongoing"],
+    year:2008,endYear:2013,status:"ended",
+    description:"A chemistry teacher diagnosed with inoperable lung cancer teams with a former student to manufacture and sell methamphetamine to secure his family's future.",
+    cover:"https://image.tmdb.org/t/p/w400/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
+    seasons:5,episodes:62,runtime:47,imdb:9.5,tmdb:8.9,providers:["Netflix","Prime Video"],popularity:99
+  },
+  {
+    id:2,title:"Stranger Things",originalTitle:"Stranger Things",
+    type:"series",categories:["Popular","Trending","Ongoing"],
+    year:2016,endYear:null,status:"ongoing",
+    description:"When a young boy disappears, his mother, a police chief, and his friends must confront terrifying supernatural forces to get him back.",
+    cover:"https://image.tmdb.org/t/p/w400/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
+    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+    seasons:4,episodes:42,runtime:51,imdb:8.7,tmdb:8.6,providers:["Netflix"],popularity:98
+  },
+  {
+    id:3,title:"The Wire",originalTitle:"The Wire",
+    type:"series",categories:["Popular"],
+    year:2002,endYear:2008,status:"ended",
+    description:"The lives of drug dealers and law enforcement officers in Baltimore are explored through their roles in a complex urban ecosystem.",
+    cover:"https://image.tmdb.org/t/p/w400/4lbclFySvugI51fwsyxBTOm4DqK.jpg",
+    altCovers:[],backdrop:null,
+    seasons:5,episodes:60,runtime:58,imdb:9.3,tmdb:8.7,providers:["HBO Max"],popularity:91
+  },
+  {
+    id:4,title:"Inception",originalTitle:"Inception",
+    type:"movie",categories:["Popular","Movies","Nolan"],
+    year:2010,endYear:null,status:null,
+    description:"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea in the mind of a CEO.",
+    cover:"https://image.tmdb.org/t/p/w400/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg",
+    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg",
+    seasons:null,episodes:null,runtime:148,imdb:8.8,tmdb:8.4,providers:["Netflix","Prime Video","HBO Max"],popularity:96
+  },
+  {
+    id:5,title:"Attack on Titan",originalTitle:"Shingeki no Kyojin",
+    type:"anime",categories:["Anime","Popular"],
+    year:2013,endYear:2023,status:"ended",
+    description:"In a world where humanity lives within enormous walled cities to escape the Titans, a young boy vows to kill every Titan after they destroy his hometown.",
+    cover:"https://image.tmdb.org/t/p/w400/hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg",
+    altCovers:[],backdrop:null,
+    seasons:4,episodes:87,runtime:24,imdb:9.0,tmdb:8.8,providers:["Crunchyroll","Prime Video","Netflix"],popularity:95
+  },
+  {
+    id:6,title:"Interstellar",originalTitle:"Interstellar",
+    type:"movie",categories:["Movies","Popular","Nolan"],
+    year:2014,endYear:null,status:null,
+    description:"A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+    cover:"https://image.tmdb.org/t/p/w400/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/pbrkL804c8yAv3zBZR4QPEafpAR.jpg",
+    seasons:null,episodes:null,runtime:169,imdb:8.6,tmdb:8.5,providers:["Prime Video","Apple TV+"],popularity:94
+  },
+  {
+    id:7,title:"Demon Slayer",originalTitle:"Kimetsu no Yaiba",
+    type:"anime",categories:["Anime","Trending","Ongoing"],
+    year:2019,endYear:null,status:"ongoing",
+    description:"A young boy becomes a demon slayer after his family is slaughtered and his sister transformed into a demon.",
+    cover:"https://image.tmdb.org/t/p/w400/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg",
+    altCovers:[],backdrop:null,
+    seasons:4,episodes:55,runtime:23,imdb:8.7,tmdb:8.7,providers:["Crunchyroll","Netflix","Funimation"],popularity:93
+  },
+  {
+    id:8,title:"The Last of Us",originalTitle:"The Last of Us",
+    type:"series",categories:["Trending","Ongoing"],
+    year:2023,endYear:null,status:"ongoing",
+    description:"Twenty years after a fungal outbreak, a hardened survivor is hired to smuggle a 14-year-old girl out of a quarantine zone.",
+    cover:"https://image.tmdb.org/t/p/w400/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
+    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/uDgy6hyPd82kOHh6I95eDDe7dC2.jpg",
+    seasons:2,episodes:19,runtime:55,imdb:8.8,tmdb:8.5,providers:["HBO Max"],popularity:97
+  },
+  {
+    id:9,title:"Parasite",originalTitle:"기생충",
+    type:"movie",categories:["Movies","Popular"],
+    year:2019,endYear:null,status:null,
+    description:"Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+    cover:"https://image.tmdb.org/t/p/w400/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:132,imdb:8.5,tmdb:8.5,providers:["Prime Video","Hulu"],popularity:90
+  },
+  {
+    id:10,title:"Death Note",originalTitle:"デスノート",
+    type:"anime",categories:["Anime","Popular"],
+    year:2006,endYear:2007,status:"ended",
+    description:"A high school student discovers a supernatural notebook that allows him to kill anyone by writing their name in it.",
+    cover:"https://image.tmdb.org/t/p/w400/g4N51oXBNBKFxcs2FRwdHSDkMqq.jpg",
+    altCovers:[],backdrop:null,
+    seasons:1,episodes:37,runtime:23,imdb:9.0,tmdb:8.7,providers:["Netflix","Crunchyroll"],popularity:92
+  },
+  {
+    id:11,title:"The Dark Knight",originalTitle:"The Dark Knight",
+    type:"movie",categories:["Movies","Popular","Nolan","DC"],
+    year:2008,endYear:null,status:null,
+    description:"Batman raises the stakes in his war on crime and must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    cover:"https://image.tmdb.org/t/p/w400/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:152,imdb:9.0,tmdb:8.6,providers:["HBO Max","Prime Video"],popularity:98
+  },
+  {
+    id:12,title:"Succession",originalTitle:"Succession",
+    type:"series",categories:["Popular"],
+    year:2018,endYear:2023,status:"ended",
+    description:"The Roy family controls one of the biggest media and entertainment conglomerates — but a question hangs over them all: Who will succeed Logan Roy?",
+    cover:"https://image.tmdb.org/t/p/w400/e2X8x4J1oUiSPLv5JMbNpeSqpBH.jpg",
+    altCovers:[],backdrop:null,
+    seasons:4,episodes:39,runtime:55,imdb:8.9,tmdb:8.6,providers:["HBO Max"],popularity:94
+  },
+  {
+    id:13,title:"Arcane",originalTitle:"Arcane",
+    type:"anime",categories:["Anime","Popular","Trending"],
+    year:2021,endYear:2024,status:"ended",
+    description:"Set in the universe of League of Legends, it follows the origins of two iconic champions and the power that will tear them apart.",
+    cover:"https://image.tmdb.org/t/p/w400/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
+    altCovers:[],backdrop:null,
+    seasons:2,episodes:18,runtime:40,imdb:9.0,tmdb:8.7,providers:["Netflix"],popularity:93
+  },
+  {
+    id:14,title:"The Shawshank Redemption",originalTitle:"The Shawshank Redemption",
+    type:"movie",categories:["Movies","Popular"],
+    year:1994,endYear:null,status:null,
+    description:"Two imprisoned men bond over years, finding solace and eventual redemption through acts of common decency.",
+    cover:"https://image.tmdb.org/t/p/w400/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:142,imdb:9.3,tmdb:8.7,providers:["Netflix","Prime Video"],popularity:97
+  },
+  {
+    id:15,title:"House of the Dragon",originalTitle:"House of the Dragon",
+    type:"series",categories:["Trending","Ongoing"],
+    year:2022,endYear:null,status:"ongoing",
+    description:"The story of House Targaryen — a civil war that divided one of the great houses of Westeros.",
+    cover:"https://image.tmdb.org/t/p/w400/z2yahl2uefxDCl0nogcRBstwruJ.jpg",
+    altCovers:[],backdrop:null,
+    seasons:2,episodes:18,runtime:60,imdb:8.4,tmdb:8.1,providers:["HBO Max"],popularity:92
+  },
+  {
+    id:16,title:"One Piece",originalTitle:"One Piece",
+    type:"anime",categories:["Anime","Ongoing","Popular"],
+    year:1999,endYear:null,status:"ongoing",
+    description:"Follows the adventures of Monkey D. Luffy and his pirate crew in their search for the world's ultimate treasure.",
+    cover:"https://image.tmdb.org/t/p/w400/e3NBGiAifW9Xt8xD5tpARskjccO.jpg",
+    altCovers:[],backdrop:null,
+    seasons:20,episodes:1100,runtime:24,imdb:8.9,tmdb:8.7,providers:["Crunchyroll","Netflix","Funimation"],popularity:89
+  },
+  // ── STAR WARS ──
+  {
+    id:101,title:"Star Wars: Episode IV – A New Hope",originalTitle:"Star Wars",
+    type:"movie",categories:["Movies","Star Wars","Popular"],
+    year:1977,endYear:null,status:null,
+    description:"Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee, and two droids to save the galaxy from the Empire's world-destroying battle station.",
+    cover:"https://image.tmdb.org/t/p/w400/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
+    seasons:null,episodes:null,runtime:121,imdb:8.6,tmdb:8.2,providers:["Disney+"],popularity:97
+  },
+  {
+    id:102,title:"Star Wars: Episode V – The Empire Strikes Back",originalTitle:"The Empire Strikes Back",
+    type:"movie",categories:["Movies","Star Wars","Popular"],
+    year:1980,endYear:null,status:null,
+    description:"After the Rebels are overpowered by the Empire on their newly established base, Luke Skywalker begins Jedi training with Yoda.",
+    cover:"https://image.tmdb.org/t/p/w400/2l05cFWJacyIsTpsqSgH0wQXe4V.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:124,imdb:8.7,tmdb:8.4,providers:["Disney+"],popularity:96
+  },
+  {
+    id:103,title:"Star Wars: Episode VI – Return of the Jedi",originalTitle:"Return of the Jedi",
+    type:"movie",categories:["Movies","Star Wars","Popular"],
+    year:1983,endYear:null,status:null,
+    description:"After a daring mission to rescue Han Solo from Jabba the Hutt, the rebels dispatch to Endor to destroy the second Death Star.",
+    cover:"https://image.tmdb.org/t/p/w400/mDCBQNhR6R0PVFucJl1OlApr7AL.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:131,imdb:8.3,tmdb:7.9,providers:["Disney+"],popularity:93
+  },
+  {
+    id:104,title:"Star Wars: Episode I – The Phantom Menace",originalTitle:"The Phantom Menace",
+    type:"movie",categories:["Movies","Star Wars"],
+    year:1999,endYear:null,status:null,
+    description:"Two Jedi Knights escape a hostile blockade to find a young boy who may bring balance to the Force, but the long dormant Sith resurface to claim their old glory.",
+    cover:"https://image.tmdb.org/t/p/w400/6wkfovpn7Grj2gQqzFNDynAliNY.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:136,imdb:6.5,tmdb:6.5,providers:["Disney+"],popularity:80
+  },
+  {
+    id:105,title:"Rogue One: A Star Wars Story",originalTitle:"Rogue One",
+    type:"movie",categories:["Movies","Star Wars","Popular"],
+    year:2016,endYear:null,status:null,
+    description:"The daughter of an Imperial scientist joins the Rebel Alliance in a risky mission to steal the plans for the Death Star.",
+    cover:"https://image.tmdb.org/t/p/w400/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:133,imdb:7.8,tmdb:7.5,providers:["Disney+"],popularity:88
+  },
+  {
+    id:106,title:"The Mandalorian",originalTitle:"The Mandalorian",
+    type:"series",categories:["Series","Star Wars","Trending"],
+    year:2019,endYear:null,status:"ongoing",
+    description:"The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
+    cover:"https://image.tmdb.org/t/p/w400/sWgBv7LV2reonceSRqyHh3Ukz9Q.jpg",
+    altCovers:[],backdrop:null,
+    seasons:3,episodes:24,runtime:40,imdb:8.7,tmdb:8.5,providers:["Disney+"],popularity:95
+  },
+  // ── MARVEL ──
+  {
+    id:201,title:"Iron Man",originalTitle:"Iron Man",
+    type:"movie",categories:["Movies","Marvel","Popular"],
+    year:2008,endYear:null,status:null,
+    description:"After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+    cover:"https://image.tmdb.org/t/p/w400/78lPtwv72eTNqFW9COBF8l5eB8f.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:126,imdb:7.9,tmdb:7.7,providers:["Disney+"],popularity:90
+  },
+  {
+    id:202,title:"Avengers: Endgame",originalTitle:"Avengers: Endgame",
+    type:"movie",categories:["Movies","Marvel","Popular"],
+    year:2019,endYear:null,status:null,
+    description:"After Thanos decimates half the universe, the remaining Avengers must do whatever it takes to undo the damage and restore order.",
+    cover:"https://image.tmdb.org/t/p/w400/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:181,imdb:8.4,tmdb:8.4,providers:["Disney+"],popularity:98
+  },
+  {
+    id:203,title:"Avengers: Infinity War",originalTitle:"Avengers: Infinity War",
+    type:"movie",categories:["Movies","Marvel","Popular"],
+    year:2018,endYear:null,status:null,
+    description:"The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos.",
+    cover:"https://image.tmdb.org/t/p/w400/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:149,imdb:8.4,tmdb:8.3,providers:["Disney+"],popularity:97
+  },
+  {
+    id:204,title:"Black Panther",originalTitle:"Black Panther",
+    type:"movie",categories:["Movies","Marvel","Popular"],
+    year:2018,endYear:null,status:null,
+    description:"T'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future.",
+    cover:"https://image.tmdb.org/t/p/w400/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:134,imdb:7.3,tmdb:7.4,providers:["Disney+"],popularity:91
+  },
+  {
+    id:205,title:"WandaVision",originalTitle:"WandaVision",
+    type:"series",categories:["Series","Marvel","Trending"],
+    year:2021,endYear:2021,status:"ended",
+    description:"Wanda Maximoff and Vision live an idyllic suburban life — but begin to suspect that everything is not as it seems.",
+    cover:"https://image.tmdb.org/t/p/w400/glKDfE6btIRcmq4LZqKAFLPCOQh.jpg",
+    altCovers:[],backdrop:null,
+    seasons:1,episodes:9,runtime:30,imdb:7.9,tmdb:8.0,providers:["Disney+"],popularity:88
+  },
+  // ── NOLAN ──
+  {
+    id:301,title:"The Dark Knight Rises",originalTitle:"The Dark Knight Rises",
+    type:"movie",categories:["Movies","Popular","Nolan","DC"],
+    year:2012,endYear:null,status:null,
+    description:"Eight years after the Joker's reign of anarchy, Batman must return to defend Gotham City against the cunning villain Bane.",
+    cover:"https://image.tmdb.org/t/p/w400/hr0L2aueqlP2BYUblTTjmtn41Gr.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:164,imdb:8.4,tmdb:7.9,providers:["HBO Max","Prime Video"],popularity:92
+  },
+  {
+    id:302,title:"Batman Begins",originalTitle:"Batman Begins",
+    type:"movie",categories:["Movies","Popular","Nolan","DC"],
+    year:2005,endYear:null,status:null,
+    description:"After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.",
+    cover:"https://image.tmdb.org/t/p/w400/dr6C9GBDMKBkBGjuGGpLzoqNm8d.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:140,imdb:8.2,tmdb:7.7,providers:["HBO Max","Prime Video"],popularity:88
+  },
+  {
+    id:303,title:"Memento",originalTitle:"Memento",
+    type:"movie",categories:["Movies","Popular","Nolan"],
+    year:2000,endYear:null,status:null,
+    description:"A man with short-term memory loss attempts to track down his wife's murderer using notes and tattoos.",
+    cover:"https://image.tmdb.org/t/p/w400/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:113,imdb:8.4,tmdb:8.2,providers:["Prime Video"],popularity:87
+  },
+  {
+    id:304,title:"Oppenheimer",originalTitle:"Oppenheimer",
+    type:"movie",categories:["Movies","Popular","Nolan"],
+    year:2023,endYear:null,status:null,
+    description:"The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
+    cover:"https://image.tmdb.org/t/p/w400/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:180,imdb:8.3,tmdb:8.2,providers:["Prime Video"],popularity:96
+  },
+  // ── DC ──
+  {
+    id:401,title:"Joker",originalTitle:"Joker",
+    type:"movie",categories:["Movies","Popular","DC"],
+    year:2019,endYear:null,status:null,
+    description:"A failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City.",
+    cover:"https://image.tmdb.org/t/p/w400/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:122,imdb:8.4,tmdb:8.2,providers:["HBO Max","Prime Video"],popularity:94
+  },
+  {
+    id:402,title:"Man of Steel",originalTitle:"Man of Steel",
+    type:"movie",categories:["Movies","DC"],
+    year:2013,endYear:null,status:null,
+    description:"An alien child is evacuated from his dying world and sent to Earth to live among humans. His peace is threatened when others from his homeworld invade Earth.",
+    cover:"https://image.tmdb.org/t/p/w400/oQaIVOCzHIHlhRYmE3K4Dve49iN.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:143,imdb:7.1,tmdb:6.9,providers:["HBO Max"],popularity:80
+  },
+  // ── TERMINATOR ──
+  {
+    id:501,title:"The Terminator",originalTitle:"The Terminator",
+    type:"movie",categories:["Movies","Popular","Terminator"],
+    year:1984,endYear:null,status:null,
+    description:"A human soldier is sent from 2029 to 1984 to stop a cyborg assassin from killing the woman whose unborn son will lead humanity in a war against machines.",
+    cover:"https://image.tmdb.org/t/p/w400/qvktm0BHcnmDpul4Hz01GIazWPr.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:107,imdb:8.1,tmdb:7.9,providers:["Netflix","Prime Video"],popularity:88
+  },
+  {
+    id:502,title:"Terminator 2: Judgment Day",originalTitle:"Terminator 2: Judgment Day",
+    type:"movie",categories:["Movies","Popular","Terminator"],
+    year:1991,endYear:null,status:null,
+    description:"A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son John Connor from a more advanced and powerful cyborg.",
+    cover:"https://image.tmdb.org/t/p/w400/weVXMD5QBGeQOQ6RRFBGXu8JcBr.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:137,imdb:8.6,tmdb:8.3,providers:["Netflix","Prime Video"],popularity:95
+  },
+  {
+    id:503,title:"Terminator 3: Rise of the Machines",originalTitle:"Terminator 3: Rise of the Machines",
+    type:"movie",categories:["Movies","Terminator"],
+    year:2003,endYear:null,status:null,
+    description:"A new Terminator is sent back in time to kill John Connor and his future officers, while a reprogrammed Terminator is sent to protect them.",
+    cover:"https://image.tmdb.org/t/p/w400/vbRkMtVIgDMJzSnYOXMG1fJqJZU.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:109,imdb:6.3,tmdb:6.2,providers:["Prime Video"],popularity:72
+  },
+  {
+    id:504,title:"Terminator: Dark Fate",originalTitle:"Terminator: Dark Fate",
+    type:"movie",categories:["Movies","Terminator"],
+    year:2019,endYear:null,status:null,
+    description:"An augmented human and Sarah Connor must protect a young woman from a newly modified liquid Terminator from the future.",
+    cover:"https://image.tmdb.org/t/p/w400/4Y1HMFHBqKDqnCTMNSFCHPPBFTl.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:128,imdb:6.2,tmdb:6.2,providers:["Netflix","Prime Video"],popularity:70
+  },
+  // ── DEXTER ──
+  {
+    id:601,title:"Dexter",originalTitle:"Dexter",
+    type:"series",categories:["Series","Popular","Dexter"],
+    year:2006,endYear:2013,status:"ended",
+    description:"A forensic technician who moonlights as a vigilante serial killer, targeting only those he believes to be murderers themselves.",
+    cover:"https://image.tmdb.org/t/p/w400/6k5HKeYVTAo1R1m0LIIzSBIBMnk.jpg",
+    altCovers:[],backdrop:null,
+    seasons:8,episodes:96,runtime:50,imdb:8.7,tmdb:8.3,providers:["Paramount+","Netflix"],popularity:91
+  },
+  {
+    id:602,title:"Dexter: New Blood",originalTitle:"Dexter: New Blood",
+    type:"series",categories:["Series","Trending","Dexter"],
+    year:2021,endYear:2022,status:"ended",
+    description:"Set 10 years after Dexter went missing in the eye of Hurricane Laura, he is now living under an assumed name in the small town of Iron Lake, New York.",
+    cover:"https://image.tmdb.org/t/p/w400/lvGiCRuHJByNKSKRrVkWtfGMoAT.jpg",
+    altCovers:[],backdrop:null,
+    seasons:1,episodes:10,runtime:50,imdb:7.9,tmdb:7.8,providers:["Paramount+"],popularity:83
+  },
+  {
+    id:603,title:"Dexter: Original Sin",originalTitle:"Dexter: Original Sin",
+    type:"series",categories:["Series","Dexter","Ongoing"],
+    year:2024,endYear:null,status:"ongoing",
+    description:"A prequel series following a young Dexter Morgan as he channels his dark urges and becomes the vigilante serial killer we know.",
+    cover:"https://image.tmdb.org/t/p/w400/3GrRgt6CiLIUXDkuqcgXQMDKBsc.jpg",
+    altCovers:[],backdrop:null,
+    seasons:1,episodes:10,runtime:48,imdb:7.2,tmdb:7.1,providers:["Paramount+"],popularity:75
+  },
+  // ── MORTAL KOMBAT ──
+  {
+    id:701,title:"Mortal Kombat",originalTitle:"Mortal Kombat",
+    type:"movie",categories:["Movies","Popular","Mortal Kombat"],
+    year:1995,endYear:null,status:null,
+    description:"Three martial artists are chosen to defend Earth against the evil sorcerer Shang Tsung and his deadly warriors in a mystical tournament.",
+    cover:"https://image.tmdb.org/t/p/w400/5jFZnTYhUHSUlJJQaWOkGUE9zP1.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:101,imdb:6.0,tmdb:6.1,providers:["HBO Max"],popularity:74
+  },
+  {
+    id:702,title:"Mortal Kombat",originalTitle:"Mortal Kombat",
+    type:"movie",categories:["Movies","Trending","Mortal Kombat"],
+    year:2021,endYear:null,status:null,
+    description:"MMA fighter Cole Young seeks out Earth's greatest champions to stand against the enemies of Outworld in a high stakes battle for the universe.",
+    cover:"https://image.tmdb.org/t/p/w400/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:110,imdb:6.0,tmdb:7.0,providers:["HBO Max","Prime Video"],popularity:78
+  },
+  {
+    id:703,title:"Mortal Kombat Legends: Scorpion's Revenge",originalTitle:"Mortal Kombat Legends: Scorpion's Revenge",
+    type:"movie",categories:["Movies","Mortal Kombat"],
+    year:2020,endYear:null,status:null,
+    description:"After the vicious slaughter of his family, ninja Hanzo Hasashi is resurrected as the spectre Scorpion to seek revenge on the Outworld warrior who killed them.",
+    cover:"https://image.tmdb.org/t/p/w400/5BHuvQ7p1ChdFl8GGGIKMszqzAV.jpg",
+    altCovers:[],backdrop:null,
+    seasons:null,episodes:null,runtime:80,imdb:7.2,tmdb:7.3,providers:["HBO Max"],popularity:71
+  },
+];
+
+// ─────────────────────────────────────────────
+// COLLECTIONS
+// ─────────────────────────────────────────────
+const COLLECTIONS = [
+  {
+    id: "star-wars",
+    name: "Star Wars",
+    description: "A galaxy far, far away — the complete Skywalker Saga and beyond",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+    color: "#ffe81f",
+    colorDark: "#b8a800",
+    backdrop: "https://image.tmdb.org/t/p/w780/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
+    itemIds: [101,102,103,104,105,106]
+  },
+  {
+    id: "marvel",
+    name: "Marvel Cinematic Universe",
+    description: "Earth's mightiest heroes — the essential MCU watchlist",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>`,
+    color: "#e23636",
+    colorDark: "#b02828",
+    backdrop: null,
+    itemIds: [201,202,203,204,205]
+  },
+  {
+    id: "nolan",
+    name: "Christopher Nolan",
+    description: "Mind-bending masterpieces from the master of practical filmmaking",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>`,
+    color: "#4a90d9",
+    colorDark: "#2d6aa8",
+    backdrop: null,
+    itemIds: [4,6,11,301,302,303,304]
+  },
+  {
+    id: "dc",
+    name: "DC Universe",
+    description: "The iconic heroes and villains of the DC Extended Universe",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8.5 8.5c0 0 1-2 3.5-2s3.5 2 3.5 2"/><path d="M7 14c1 2 2.5 3 5 3s4-1 5-3"/></svg>`,
+    color: "#1565c0",
+    colorDark: "#0d47a1",
+    backdrop: null,
+    itemIds: [11,301,302,401,402]
+  },
+  {
+    id: "terminator",
+    name: "Terminator",
+    description: "I'll be back — the complete Terminator franchise",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/><line x1="9" y1="7" x2="9.01" y2="7"/><line x1="15" y1="7" x2="15.01" y2="7"/></svg>`,
+    color: "#e53935",
+    colorDark: "#b71c1c",
+    backdrop: null,
+    itemIds: [501,502,503,504]
+  },
+  {
+    id: "dexter",
+    name: "Dexter Universe",
+    description: "Today's the day I kill you, Dexter Morgan — the full Dexter saga",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
+    color: "#c62828",
+    colorDark: "#8e0000",
+    backdrop: null,
+    itemIds: [601,602,603]
+  },
+  {
+    id: "mortal-kombat",
+    name: "Mortal Kombat",
+    description: "FINISH HIM — every Mortal Kombat film and animation",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14.5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.83 8 21v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>`,
+    color: "#ff6f00",
+    colorDark: "#e65100",
+    backdrop: null,
+    itemIds: [701,702,703]
+  },
+];
+
+// ─────────────────────────────────────────────
+// COLLECTIONS RENDER
+// ─────────────────────────────────────────────
+function collectionAddedCount(coll){
+  return coll.itemIds.filter(id=>addedIds.has(id)).length;
+}
+function allCollectionAdded(coll){
+  return coll.itemIds.every(id=>addedIds.has(id));
+}
+
+function buildCollections(){
+  const grid = document.getElementById('collectionsGrid');
+  if(!grid) return;
+  grid.innerHTML = COLLECTIONS.map(coll=>{
+    const added = collectionAddedCount(coll);
+    const total = coll.itemIds.length;
+    const allAdded = added===total;
+    const pct = Math.round((added/total)*100);
+    const bgStyle = coll.backdrop ? "background-image:url('" + coll.backdrop + "')" : "background:linear-gradient(135deg," + coll.color + "33," + coll.colorDark + "22)";
+    return `<div class="coll-card" onclick="openCollectionModal('${coll.id}')">
+      <div class="coll-card-bg" style="${bgStyle}"></div>
+      <div class="coll-card-overlay"></div>
+      <div class="coll-card-body">
+        <span class="coll-card-icon" style="color:${coll.color}">${coll.icon}</span>
+        <div class="coll-card-name">${coll.name}</div>
+        <div class="coll-card-desc">${coll.description||''}</div>
+        <div class="coll-card-meta">
+          <span class="coll-card-count">${total} titles</span>
+          <button class="coll-add-btn ${allAdded?'all-added':''}" data-coll="${coll.id}"
+            onclick="event.stopPropagation();toggleCollection('${coll.id}')">
+            ${allAdded?'✓ All Added':'＋ Add All'}
+          </button>
+        </div>
+        <div class="coll-progress">
+          <div class="coll-progress-bar" style="width:${pct}%;background:${coll.color}"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleCollection(collId){
+  const coll = COLLECTIONS.find(c=>c.id===collId);
+  if(!coll) return;
+  const allAdded = allCollectionAdded(coll);
+  if(allAdded){
+    coll.itemIds.forEach(id=>{
+      const item = CATALOGUE.find(x=>x.id===id);
+      if(item){ addedIds.delete(id); removeFromTracker(item.title); }
+    });
+    showToast(`Removed "${coll.name}" from library`,'#e50914');
+  } else {
+    coll.itemIds.forEach(id=>{
+      if(!addedIds.has(id)){
+        const item = CATALOGUE.find(x=>x.id===id);
+        if(item){ addedIds.add(id); addToTracker(item); }
+      }
+    });
+    showToast(`Added all of "${coll.name}" to library`,'#27ae60');
+  }
+  localStorage.setItem('mp_added',JSON.stringify([...addedIds]));
+  buildCollections();
+  renderGrid();
+  const backdrop = document.getElementById('collModalBackdrop');
+  if(backdrop && backdrop.classList.contains('open')){
+    const openColl = backdrop.dataset.collId;
+    if(openColl) renderCollectionModalContent(openColl);
+  }
+}
+
+function openCollectionModal(collId){
+  const backdrop = document.getElementById('collModalBackdrop');
+  backdrop.dataset.collId = collId;
+  renderCollectionModalContent(collId);
+  backdrop.classList.add('open');
+}
+
+function renderCollectionModalContent(collId){
+  const coll = COLLECTIONS.find(c=>c.id===collId);
+  if(!coll) return;
+  const allAdded = allCollectionAdded(coll);
+  const items = coll.itemIds.map(id=>CATALOGUE.find(x=>x.id===id)).filter(Boolean);
+  document.getElementById('collModalContent').innerHTML = `
+    <div class="coll-modal-head">
+      <span class="coll-modal-emoji" style="color:${coll.color}">${coll.icon}</span>
+      <div class="coll-modal-info">
+        <div class="coll-modal-name">${coll.name}</div>
+        <div class="coll-modal-desc">${coll.description||''}</div>
+      </div>
+      <button class="coll-modal-add-all ${allAdded?'all-added':''}"
+        onclick="toggleCollection('${coll.id}')">
+        ${allAdded?'✓ All Added':'＋ Add All'}
+      </button>
+      <button class="coll-modal-close-btn" onclick="closeCollectionModal()" style="margin-left:8px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="coll-modal-items">
+      ${items.map(item=>{
+        const added=addedIds.has(item.id);
+        return `<div class="coll-modal-item" onclick="openModal(${item.id});closeCollectionModal()">
+          <img class="coll-modal-item-img" src="${item.cover||''}" loading="lazy" onerror="this.style.display='none'">
+          <div class="coll-modal-item-info">
+            <div class="coll-modal-item-title">${item.title}</div>
+            <div class="coll-modal-item-meta">${item.year}${item.runtime?' · '+item.runtime+'min':''} · <svg width="9" height="9" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1" style="vertical-align:middle"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb||'—'}</div>
+          </div>
+          <button class="coll-modal-item-btn ${added?'added':''}"
+            onclick="event.stopPropagation();toggleAdd(${item.id});renderCollectionModalContent('${coll.id}')">
+            ${added?'✓':'＋'}
+          </button>
+        </div>`;
+      }).join('')}
+    </div>
+  `;
+}
+
+function closeCollectionModal(){
+  document.getElementById('collModalBackdrop').classList.remove('open');
+}
+
+let addedIds = new Set(JSON.parse(localStorage.getItem('mp_added')||'[]'));
+
+// On load: mark catalogue items whose title already exists in the tracker
+(function syncAddedFromTracker(){
+  try {
+    const data = loadTrackerData();
+    const allTitles = new Set(data.map(x=>x.title));
+    CATALOGUE.forEach(item => { if(allTitles.has(item.title)) addedIds.add(item.id); });
+    localStorage.setItem('mp_added', JSON.stringify([...addedIds]));
+  } catch(e){}
+})();
+let activeCategory = 'All';
+let searchQuery = '';
+let sortMode = 'popularity';
+let filterStatus = '';
+let filterProvider = '';
+let isListView = false;
+
+// ─────────────────────────────────────────────
+// CATEGORIES
+// ─────────────────────────────────────────────
+const CATEGORIES = ['All','Trending','Popular','Movies','Series','Anime'];
+
+function buildCatList(){
+  const el = document.getElementById('catList');
+  el.innerHTML = CATEGORIES.map(cat=>{
+    const count = cat==='All' ? CATALOGUE.length :
+      CATALOGUE.filter(x=>x.categories.includes(cat)||(cat==='Series'&&x.type==='series')).length;
+    return `<button class="cat-btn ${cat===activeCategory?'active':''}"
+      onclick="setCategory('${cat}')">${cat}<span class="cat-count">${count}</span></button>`;
+  }).join('');
+}
+
+function setCategory(cat){
+  activeCategory=cat;
+  buildCollections();
+  buildCatList();
+  renderGrid();
+}
+
+// ─────────────────────────────────────────────
+// FILTER / SORT
+// ─────────────────────────────────────────────
+function getFiltered(){
+  let items = [...CATALOGUE];
+
+  // category
+  if(activeCategory!=='All'){
+    if(activeCategory==='Series') items=items.filter(x=>x.type==='series');
+    else items=items.filter(x=>x.categories.includes(activeCategory));
+  }
+
+  // search
+  if(searchQuery){
+    const q=searchQuery.toLowerCase();
+    items=items.filter(x=>
+      x.title.toLowerCase().includes(q)||
+      (x.originalTitle&&x.originalTitle.toLowerCase().includes(q))
+    );
+  }
+
+  // status
+  if(filterStatus) items=items.filter(x=>x.status===filterStatus);
+
+  // provider
+  if(filterProvider) items=items.filter(x=>x.providers.includes(filterProvider));
+
+  // sort
+  if(sortMode==='rating') items.sort((a,b)=>b.imdb-a.imdb);
+  else if(sortMode==='year_desc') items.sort((a,b)=>b.year-a.year);
+  else if(sortMode==='year_asc') items.sort((a,b)=>a.year-b.year);
+  else if(sortMode==='title_asc') items.sort((a,b)=>a.title.localeCompare(b.title));
+  else items.sort((a,b)=>b.popularity-a.popularity);
+
+  return items;
+}
+
+// ─────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────
+function typeBadge(type){
+  const map={series:'badge-series',movie:'badge-movie',anime:'badge-anime'};
+  return `<span class="card-type-badge ${map[type]||''}">${type}</span>`;
+}
+
+function ribbon(item){
+  if(!item.status) return '';
+  if(item.status==='ongoing') return `<span class="card-ribbon ribbon-ongoing">Ongoing</span>`;
+  if(item.status==='ended') return `<span class="card-ribbon ribbon-ended">Ended</span>`;
+  return '';
+}
+
+function renderCard(item){
+  const added=addedIds.has(item.id);
+  const img=item.cover
+    ? `<img class="card-poster" src="${item.cover}" alt="${item.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
+    : '';
+  const imgFallback=`<div class="card-poster-placeholder" style="${item.cover?'display:none':''}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg></div>`;
+
+  if(isListView){
+    return `<div class="m-card" data-id="${item.id}" onclick="openModal(${item.id})">
+      ${img}${imgFallback}
+      <div class="card-body">
+        <div class="card-title">${item.title}</div>
+        <div class="card-meta">
+          ${typeBadge(item.type)}
+          <span class="card-year">${item.year}</span>
+          <span class="card-rating"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb}</span>
+        </button>
+      </div>
+      ${ribbon(item)}
+    </div>`;
+  }
+
+  return `<div class="m-card" data-id="${item.id}" onclick="openModal(${item.id})">
+    ${img}${imgFallback}
+    ${ribbon(item)}
+    <div class="card-body">
+      <div class="card-title">${item.title}</div>
+      <div class="card-meta">
+        ${typeBadge(item.type)}
+        <span class="card-year">${item.year}</span>
+        <span class="card-rating"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb}</span>
+      </div>
+      <button class="card-add-btn ${added?'added':''}"
+        onclick="event.stopPropagation();toggleAdd(${item.id})">
+        ${added?'✓ Added':'＋ Add'}
+      </button>
+    </div>
+  </div>`;
+}
+
+function renderGrid(){
+  const items=getFiltered();
+  const grid=document.getElementById('cardGrid');
+  document.getElementById('resultCount').textContent=
+    `${items.length} result${items.length!==1?'s':''}`;
+
+  if(!items.length){
+    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1">
+      <div class="empty-state-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
+      <div class="empty-state-title">No results found</div>
+      <div class="empty-state-desc">Try a different search or category.</div>
+    </div>`;
+    return;
+  }
+  grid.innerHTML=items.map(renderCard).join('');
+}
+
+function updateStats(){
+  document.getElementById('statTotal').textContent=CATALOGUE.length;
+  document.getElementById('statSeries').textContent=CATALOGUE.filter(x=>x.type==='series').length;
+  document.getElementById('statMovies').textContent=CATALOGUE.filter(x=>x.type==='movie').length;
+  document.getElementById('statAnime').textContent=CATALOGUE.filter(x=>x.type==='anime').length;
+}
+
+// ─────────────────────────────────────────────
+// ADD / REMOVE + TRACKER SYNC
+// ─────────────────────────────────────────────
+const TRACKER_KEY = 'seriesTrackerData_user_1780242730236';
+function loadTrackerData(){
+  try{const raw=localStorage.getItem(TRACKER_KEY);return raw?JSON.parse(raw):[];}catch(e){return[];}
+}
+function saveTrackerData(data){localStorage.setItem(TRACKER_KEY,JSON.stringify(data));}
+function catalogueToTrackerItem(item){
+  const today=new Date().toISOString().split('T')[0];const isMovie=item.type==='movie';
+  const d=loadTrackerData();const all=d;
+  const maxId=all.reduce((m,x)=>Math.max(m,x.id||0),1000);
+  return{id:maxId+1,title:item.title,image:item.cover||'',genre:'',status:'want',season:1,episode:1,time:0,
+    totalSeasons:item.seasons||1,totalEpisodes:item.episodes||(isMovie?1:0),
+    imdbRating:item.imdb?String(item.imdb).replace('.',','):'',language:'English',
+    inQueue:false,queueOrder:999,contentType:isMovie?'movie':'series',
+    streamingService:item.providers&&item.providers.length?item.providers[0].toLowerCase().replace(/ /g,''):'',
+    userRating:0,tags:item.categories?item.categories.filter(c=>['Popular','Trending'].includes(c)):[],
+    notes:item.description||'',startedDate:today,completedDate:null,lastWatchedDate:today,actors:[],watchHistory:[]};
+}
+function isInTracker(title){return loadTrackerData().some(x=>x.title===title);}
+function removeFromTracker(title){saveTrackerData(loadTrackerData().filter(x=>x.title!==title));}
+function addToTracker(item){if(isInTracker(item.title))return;const d=loadTrackerData();d.push(catalogueToTrackerItem(item));saveTrackerData(d);}
+
+function toggleAdd(id){
+  const item=CATALOGUE.find(x=>x.id===id);
+  if(!item) return;
+  if(addedIds.has(id)){
+    addedIds.delete(id);
+    removeFromTracker(item.title);
+    showToast(`Removed "${item.title}" from library`,'#e50914');
+  } else {
+    addedIds.add(id);
+    addToTracker(item);
+    showToast(`Added "${item.title}" to library`,'#27ae60');
+  }
+  localStorage.setItem('mp_added',JSON.stringify([...addedIds]));
+  document.querySelectorAll(`[data-id="${id}"] .card-add-btn`).forEach(btn=>{
+    btn.textContent=addedIds.has(id)?'✓ Added':'＋ Add';
+    btn.classList.toggle('added',addedIds.has(id));
+  });
+  const modalBtn=document.querySelector('.modal-add-btn');
+  if(modalBtn&&parseInt(modalBtn.dataset.id)===id){
+    modalBtn.textContent=addedIds.has(id)?'✓ Added to Library':'＋ Add to Library';
+    modalBtn.classList.toggle('added',addedIds.has(id));
+  }
+  buildCollections();
+}
+
+// ─────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────
+function openModal(id){
+  const item=CATALOGUE.find(x=>x.id===id);
+  if(!item) return;
+  const added=addedIds.has(id);
+
+  const backdrop=item.backdrop
+    ? `<img class="modal-backdrop" src="${item.backdrop}" alt="" style="position:relative">
+       <div class="modal-backdrop-gradient"></div>`
+    : `<div class="modal-backdrop-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg></div>`;
+
+  const poster=item.cover
+    ? `<img class="modal-poster" src="${item.cover}" alt="${item.title}">`
+    : `<div class="modal-poster-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20"/></svg></div>`;
+
+  const metaItems=[];
+  if(item.type!=='movie'){
+    metaItems.push({l:'Seasons',v:item.seasons??'—'});
+    metaItems.push({l:'Episodes',v:item.episodes??'—'});
+  }
+  metaItems.push({l:'Runtime',v:item.runtime?item.runtime+'min':'—'});
+  if(item.status) metaItems.push({l:'Status',v:item.status.charAt(0).toUpperCase()+item.status.slice(1)});
+  metaItems.push({l:'TMDb',v:item.tmdb??'—'});
+
+  const metaGrid=metaItems.map(m=>`
+    <div class="modal-meta-item">
+      <div class="modal-meta-label">${m.l}</div>
+      <div class="modal-meta-val">${m.v}</div>
+    </div>`).join('');
+
+  const providers=item.providers.map(p=>
+    `<span class="provider-chip">${p}</span>`).join('');
+
+  document.getElementById('modalContent').innerHTML=`
+    <div style="position:relative">${backdrop}</div>
+    <div class="modal-inner">
+      <div class="modal-top">
+        ${poster}
+        <div class="modal-header-text">
+          <div class="modal-type-badge">${typeBadge(item.type)}</div>
+          <div class="modal-title">${item.title}</div>
+          ${item.originalTitle!==item.title?`<div class="modal-original-title">${item.originalTitle}</div>`:''}
+          <div class="modal-rating-row">
+            <span class="modal-imdb"><svg width="12" height="12" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb} IMDb</span>
+            <span class="modal-year-status">${item.year}${item.endYear?` – ${item.endYear}`:''}</span>
+          </div>
+        </div>
+      </div>
+      <p class="modal-desc">${item.description}</p>
+      <div class="modal-section-title">Details</div>
+      <div class="modal-meta-grid">${metaGrid}</div>
+      <div class="modal-section-title">Available on</div>
+      <div class="modal-providers">${providers||'<span style="color:var(--text-muted);font-size:.85rem">Unknown</span>'}</div>
+      <button class="modal-add-btn ${added?'added':''}" data-id="${id}"
+        onclick="toggleAdd(${id})">
+        ${added?'✓ Added to Library':'＋ Add to Library'}
+      </button>
+    </div>`;
+
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+let toastTimer=null;
+function showToast(msg){
+  const t=document.getElementById('toast');
+  document.getElementById('toastMsg').textContent=msg;
+  t.classList.add('show');
+  if(toastTimer) clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
+}
+
+// ─────────────────────────────────────────────
+// EVENTS
+// ─────────────────────────────────────────────
+document.getElementById('mainSearch').addEventListener('input',e=>{
+  searchQuery=e.target.value.trim();
+  renderGrid();
+});
+
+document.getElementById('sortSelect').addEventListener('change',e=>{
+  sortMode=e.target.value;renderGrid();
+});
+
+document.getElementById('filterStatus').addEventListener('change',e=>{
+  filterStatus=e.target.value;renderGrid();
+});
+
+document.getElementById('filterProvider').addEventListener('change',e=>{
+  filterProvider=e.target.value;renderGrid();
+});
+
+document.getElementById('viewGrid').addEventListener('click',()=>{
+  isListView=false;
+  document.getElementById('cardGrid').classList.remove('list-view');
+  document.getElementById('viewGrid').classList.add('active');
+  document.getElementById('viewList').classList.remove('active');
+  renderGrid();
+});
+
+document.getElementById('viewList').addEventListener('click',()=>{
+  isListView=true;
+  document.getElementById('cardGrid').classList.add('list-view');
+  document.getElementById('viewList').classList.add('active');
+  document.getElementById('viewGrid').classList.remove('active');
+  renderGrid();
+});
+
+document.getElementById('modalClose').addEventListener('click',closeModal);
+document.getElementById('collModalBackdrop').addEventListener('click',e=>{
+  if(e.target===document.getElementById('collModalBackdrop')) closeCollectionModal();
+});
+document.getElementById('modalOverlay').addEventListener('click',e=>{
+  if(e.target===document.getElementById('modalOverlay')) closeModal();
+});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const light=document.body.classList.toggle('light-theme');
+  const moonSvg=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+  const sunSvg=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
+  document.getElementById('themeIcon').outerHTML=`<span id="themeIcon">${light?moonSvg:sunSvg}</span>`;
+  document.getElementById('themeLabel').textContent=light?'Dark':'Light';
+});
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+buildCollections();
+buildCatList();
+updateStats();
+renderGrid();
+
+// ─────────────────────────────────────────────
+// COLLECTIONS HORIZONTAL SCROLL ON WHEEL
+// ─────────────────────────────────────────────
+(function(){
+  const grid = document.getElementById('collectionsGrid');
+  if(!grid) return;
+  grid.addEventListener('wheel', function(e){
+    if(COLLECTIONS.length <= 4) return;
+    e.preventDefault();
+    grid.scrollLeft += e.deltaY;
+  }, { passive: false });
+})();
+</script>
+</body>
+</html>
