@@ -1610,7 +1610,9 @@ function updateStats(){
 // ─────────────────────────────────────────────
 // ADD / REMOVE + TRACKER SYNC
 // ─────────────────────────────────────────────
-const TRACKER_KEY = 'seriesTrackerData_user_1780242730236';
+const TRACKER_KEY = localStorage.getItem('seriesTrackerCurrentUser')
+  ? `seriesTrackerData_${localStorage.getItem('seriesTrackerCurrentUser')}`
+  : 'seriesTrackerData';
 function loadTrackerData(){
   try{const raw=localStorage.getItem(TRACKER_KEY);return raw?JSON.parse(raw):[];}catch(e){return[];}
 }
