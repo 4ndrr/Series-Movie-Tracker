@@ -694,6 +694,722 @@
       "tmdb": 6.8,
       "providers": [],
       "popularity": 155
+    },
+    {
+      "id": 26,
+      "title": "Swapped",
+      "originalTitle": "Swapped",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "A small woodland creature and a majestic bird, two natural sworn enemies of the Valley, magically trade places and set off on an adventure of a lifetime to switch back. Their journey soon uncovers a greater threat—one that could endanger not only their species, but the entire valley they call home.",
+      "cover": "https://image.tmdb.org/t/p/w400/tHhxWxge06goXU6ZQH1hj7vK8Hd.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/zMwhWailP1WY7sb6AoE6b8ugoy.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 102,
+      "imdb": null,
+      "tmdb": 9,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 170
+    },
+    {
+      "id": 27,
+      "title": "The Shawshank Redemption",
+      "originalTitle": "The Shawshank Redemption",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1994,
+      "endYear": null,
+      "status": null,
+      "description": "Imprisoned in the 1940s for the double murder of his wife and her lover, upstanding banker Andy Dufresne begins a new life at the Shawshank prison, where he puts his accounting skills to work for an amoral warden. During his long stretch in prison, Dufresne comes to be admired by the other inmates -- including an older prisoner named Red -- for his integrity and unquenchable sense of hope.",
+      "cover": "https://image.tmdb.org/t/p/w400/9cqNxx0GxF0bflZmeSMuL5tnGzr.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/zfbjgQE1uSd9wiPTX4VzsLi0rGG.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 142,
+      "imdb": null,
+      "tmdb": 8.7,
+      "providers": [
+        "AMC+ Roku Premium Channel"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": 28,
+      "title": "The Godfather",
+      "originalTitle": "The Godfather",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1972,
+      "endYear": null,
+      "status": null,
+      "description": "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
+      "cover": "https://image.tmdb.org/t/p/w400/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/ejdD20cdHNFAYAN2DlqPToXKyzx.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 175,
+      "imdb": null,
+      "tmdb": 8.7,
+      "providers": [
+        "fuboTV",
+        "Paramount Plus Premium",
+        "Paramount+ Amazon Channel",
+        "YouTube TV"
+      ],
+      "popularity": 41
+    },
+    {
+      "id": 29,
+      "title": "Project Hail Mary",
+      "originalTitle": "Project Hail Mary",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "Science teacher Ryland Grace wakes up on a spaceship light years from home with no recollection of who he is or how he got there. As his memory returns, he begins to uncover his mission: solve the riddle of the mysterious substance causing the sun to die out. He must call on his scientific knowledge and unorthodox ideas to save everything on Earth from extinction.",
+      "cover": "https://image.tmdb.org/t/p/w400/yihdXomYb5kTeSivtFndMy5iDmf.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/2I1OFQJ0L9T0dpU6FobKFWV2PxX.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 157,
+      "imdb": null,
+      "tmdb": 8.7,
+      "providers": [],
+      "popularity": 161
+    },
+    {
+      "id": 30,
+      "title": "Michael",
+      "originalTitle": "Michael",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "The story of Michael Jackson, one of the most influential artists the world has ever known, and his life beyond the music. His journey from the discovery of his extraordinary talent as the lead of the Jackson Five, to the visionary artist whose creative ambition fueled a relentless pursuit to become the biggest entertainer in the world, highlighting both his life off-stage and some of the most iconic performances from his early solo career.",
+      "cover": "https://image.tmdb.org/t/p/w400/zm0KAbOjlt9eR5y7vDiL2dEOwMl.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/ufSwlnECLoUbBjPrFqEQcWBzHwc.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 128,
+      "imdb": null,
+      "tmdb": 8.6,
+      "providers": [],
+      "popularity": 586
+    },
+    {
+      "id": 31,
+      "title": "The Godfather Part II",
+      "originalTitle": "The Godfather Part II",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1974,
+      "endYear": null,
+      "status": null,
+      "description": "In the continuing saga of the Corleone crime family, a young Vito Corleone grows up in Sicily and in 1910s New York. In the 1950s, Michael Corleone attempts to expand the family business into Las Vegas, Hollywood and Cuba.",
+      "cover": "https://image.tmdb.org/t/p/w400/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/kGzFbGhp99zva6oZODW5atUtnqi.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 202,
+      "imdb": null,
+      "tmdb": 8.6,
+      "providers": [
+        "fuboTV",
+        "Paramount Plus Premium",
+        "Paramount+ Amazon Channel",
+        "YouTube TV"
+      ],
+      "popularity": 25
+    },
+    {
+      "id": 32,
+      "title": "Schindler's List",
+      "originalTitle": "Schindler's List",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1993,
+      "endYear": null,
+      "status": null,
+      "description": "The true story of how businessman Oskar Schindler saved over a thousand Jewish lives from the Nazis while they worked as slaves in his factory during World War II.",
+      "cover": "https://image.tmdb.org/t/p/w400/sF1U4EUQS8YHUYjNl3pMGNIQyr0.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/zb6fM1CX41D9rF9hdgclu0peUmy.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 195,
+      "imdb": null,
+      "tmdb": 8.6,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 22
+    },
+    {
+      "id": 33,
+      "title": "Remarkably Bright Creatures",
+      "originalTitle": "Remarkably Bright Creatures",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "Through unlikely bonds formed during night shifts at a local aquarium, Tova, an elderly widow, learns of a life-changing discovery that may bring her joy and wonder once again.",
+      "cover": "https://image.tmdb.org/t/p/w400/9HcEqn3D4J6b2Z0jK54id9nA0fr.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/bVGHSe47W6oCQL1Q88pvRAet51A.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 114,
+      "imdb": null,
+      "tmdb": 8.6,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 33
+    },
+    {
+      "id": 34,
+      "title": "12 Angry Men",
+      "originalTitle": "12 Angry Men",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1957,
+      "endYear": null,
+      "status": null,
+      "description": "The defense and the prosecution have rested and the jury is filing into the jury room to decide if a young Spanish-American is guilty or innocent of murdering his father. What begins as an open and shut case soon becomes a mini-drama of each of the jurors' prejudices and preconceptions about the trial, the accused, and each other.",
+      "cover": "https://image.tmdb.org/t/p/w400/zhG3vKWyDRaZYoaww1UVAi29T9h.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/qqHQsStV6exghCM7zbObuYBiYxw.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 97,
+      "imdb": null,
+      "tmdb": 8.6,
+      "providers": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
+      ],
+      "popularity": 22
+    },
+    {
+      "id": 35,
+      "title": "Spirited Away",
+      "originalTitle": "千と千尋の神隠し",
+      "type": "anime",
+      "categories": [
+        "Anime"
+      ],
+      "year": 2001,
+      "endYear": null,
+      "status": null,
+      "description": "A young girl, Chihiro, becomes trapped in a strange new world of spirits. When her parents undergo a mysterious transformation, she must call upon the courage she never knew she had to free her family.",
+      "cover": "https://image.tmdb.org/t/p/w400/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/dyJvKsNs2KP8qQnAXbRwDjblViy.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 125,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "popularity": 30
+    },
+    {
+      "id": 36,
+      "title": "The Dark Knight",
+      "originalTitle": "The Dark Knight",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2008,
+      "endYear": null,
+      "status": null,
+      "description": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
+      "cover": "https://image.tmdb.org/t/p/w400/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/cfT29Im5VDvjE0RpyKOSdCKZal7.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 152,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "fuboTV",
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "popularity": 41
+    },
+    {
+      "id": 37,
+      "title": "Dilwale Dulhania Le Jayenge",
+      "originalTitle": "दिलवाले दुल्हनिया ले जायेंगे",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1995,
+      "endYear": null,
+      "status": null,
+      "description": "Raj is a rich, carefree, happy-go-lucky second generation NRI. Simran is the daughter of Chaudhary Baldev Singh, who in spite of being an NRI is very strict about adherence to Indian values. Simran has left for India to be married to her childhood fiancé. Raj leaves for India with a mission at his hands, to claim his lady love under the noses of her whole family. Thus begins a saga.",
+      "cover": "https://image.tmdb.org/t/p/w400/tFbfCkS7q6g96wVoAu8kyr93iPm.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/84beTJf26mfhoasUlKSOiNSutyS.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 190,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 15
+    },
+    {
+      "id": 38,
+      "title": "The Green Mile",
+      "originalTitle": "The Green Mile",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1999,
+      "endYear": null,
+      "status": null,
+      "description": "A supernatural tale set on death row in a Southern prison, where gentle giant John Coffey possesses the mysterious power to heal people's ailments. When the cell block's head guard, Paul Edgecomb, recognizes Coffey's miraculous gift, he tries desperately to help stave off the condemned man's execution.",
+      "cover": "https://image.tmdb.org/t/p/w400/8VG8fDNiy50H4FedGwdSVUPoaJe.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/b6HWTOxn1xevvyHU2K9ICvaRU6g.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 189,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [],
+      "popularity": 24
+    },
+    {
+      "id": 39,
+      "title": "The Lord of the Rings: The Return of the King",
+      "originalTitle": "The Lord of the Rings: The Return of the King",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2003,
+      "endYear": null,
+      "status": null,
+      "description": "As armies mass for a final battle that will decide the fate of the world--and powerful, ancient forces of Light and Dark compete to determine the outcome--one member of the Fellowship of the Ring is revealed as the noble heir to the throne of the Kings of Men. Yet, the sole hope for triumph over evil lies with a brave hobbit, Frodo, who, accompanied by his loyal friend Sam and the hideous, wretched Gollum, ventures deep into the very dark heart of Mordor on his seemingly impossible quest to destroy the Ring of Power.​",
+      "cover": "https://image.tmdb.org/t/p/w400/rCzpDGLbOoPwLjy3OAm5NUPOTrC.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/2u7zbn8EudG6kLlBzUYqP8RyFU4.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 201,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "popularity": 40
+    },
+    {
+      "id": 40,
+      "title": "Parasite",
+      "originalTitle": "기생충",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": null,
+      "description": "All unemployed, Ki-taek's family takes peculiar interest in the wealthy and glamorous Parks for their livelihood until they get entangled in an unexpected incident.",
+      "cover": "https://image.tmdb.org/t/p/w400/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/8eihUxjQsJ7WvGySkVMC0EwbPAD.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 133,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [],
+      "popularity": 33
+    },
+    {
+      "id": 41,
+      "title": "¿Quieres ser mi hijo?",
+      "originalTitle": "¿Quieres ser mi hijo?",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2023,
+      "endYear": null,
+      "status": null,
+      "description": "Lu, a conformist woman in her forties, learns that her 15-year partner has been having extramarital affairs. Starting from scratch, she gets involved in an unexpected relationship with a young womanizer.",
+      "cover": "https://image.tmdb.org/t/p/w400/6PQJsmuvSMZQMmlJfTpjIkrizUh.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/xyWKrni8WrYzqn7ztvI5nIY0h62.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 100,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "YouTube TV",
+        "VIX ",
+        "ViX Premium Amazon Channel"
+      ],
+      "popularity": 10
+    },
+    {
+      "id": 42,
+      "title": "Pulp Fiction",
+      "originalTitle": "Pulp Fiction",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1994,
+      "endYear": null,
+      "status": null,
+      "description": "A burger-loving hit man, his philosophical partner, a drug-addled gangster's moll and a washed-up boxer converge in this sprawling, comedic crime caper. Their adventures unfurl in three stories that ingeniously trip back and forth in time.",
+      "cover": "https://image.tmdb.org/t/p/w400/vQWk5YBFWF4bZaofAbv0tShwBvQ.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/suaEOtk1N1sgg2MTM7oZd2cfVp3.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 154,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount+ Amazon Channel",
+        "YouTube TV",
+        "MGM Plus"
+      ],
+      "popularity": 33
+    },
+    {
+      "id": 43,
+      "title": "Your Name.",
+      "originalTitle": "君の名は。",
+      "type": "anime",
+      "categories": [
+        "Anime"
+      ],
+      "year": 2016,
+      "endYear": null,
+      "status": null,
+      "description": "High schoolers Mitsuha and Taki are complete strangers living separate lives. But one night, they suddenly switch places. Mitsuha wakes up in Taki’s body, and he in hers. This bizarre occurrence continues to happen randomly, and the two must adjust their lives around each other.",
+      "cover": "https://image.tmdb.org/t/p/w400/q719jXXEzOoYaps6babgKnONONX.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/mMtUybQ6hL24FXo0F3Z4j2KG7kZ.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 106,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "popularity": 23
+    },
+    {
+      "id": 44,
+      "title": "Interstellar",
+      "originalTitle": "Interstellar",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 2014,
+      "endYear": null,
+      "status": null,
+      "description": "The adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+      "cover": "https://image.tmdb.org/t/p/w400/yQvGrMoipbRoddT0ZR8tPoR7NfX.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/2ssWTSVklAEc98frZUQhgtGHx7s.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 169,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount+ Amazon Channel"
+      ],
+      "popularity": 67
+    },
+    {
+      "id": 45,
+      "title": "The Good, the Bad and the Ugly",
+      "originalTitle": "Il buono, il brutto, il cattivo",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1966,
+      "endYear": null,
+      "status": null,
+      "description": "While the Civil War rages on between the Union and the Confederacy, three men – a quiet loner, a ruthless hitman, and a Mexican bandit – comb the American Southwest in search of a strongbox containing $200,000 in stolen gold.",
+      "cover": "https://image.tmdb.org/t/p/w400/bX2xnavhMYjWDoZp1VM6VnU1xwe.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/Adrip2Jqzw56KeuV2nAxucKMNXA.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 161,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "fuboTV",
+        "MGM+ Amazon Channel",
+        "MGM Plus Roku Premium Channel",
+        "YouTube TV",
+        "MGM Plus",
+        "Philo"
+      ],
+      "popularity": 20
+    },
+    {
+      "id": 46,
+      "title": "Forrest Gump",
+      "originalTitle": "Forrest Gump",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1994,
+      "endYear": null,
+      "status": null,
+      "description": "A man with a low IQ has accomplished great things in his life and been present during significant historic events—in each case, far exceeding what anyone imagined he could do. But despite all he has achieved, his one true love eludes him.",
+      "cover": "https://image.tmdb.org/t/p/w400/Cw4hIUIAmSYfK9QfaUW5igp9La.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/66Kn4XWhkuPkJxOJyPEx4U2CUfN.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 142,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount+ Amazon Channel",
+        "Wonder Project Amazon Channel"
+      ],
+      "popularity": 25
+    },
+    {
+      "id": 47,
+      "title": "GoodFellas",
+      "originalTitle": "GoodFellas",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1990,
+      "endYear": null,
+      "status": null,
+      "description": "The true story of Henry Hill, a half-Irish, half-Sicilian Brooklyn kid who is adopted by neighbourhood gangsters at an early age and climbs the ranks of a Mafia family under the guidance of Jimmy Conway.",
+      "cover": "https://image.tmdb.org/t/p/w400/9OkCLM73MIU2CrKZbqiT8Ln1wY2.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/gILte6Zd7m1YneIr6MVhh30S9pr.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 145,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "Philo"
+      ],
+      "popularity": 26
+    },
+    {
+      "id": 48,
+      "title": "Seven Samurai",
+      "originalTitle": "七人の侍",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1954,
+      "endYear": null,
+      "status": null,
+      "description": "A samurai answers a village's request for protection after he falls on hard times. The town needs protection from bandits, so the samurai gathers six others to help him teach the people how to defend themselves, and the villagers provide the soldiers with food.",
+      "cover": "https://image.tmdb.org/t/p/w400/lOMGc8bnSwQhS4XyE1S99uH8NXf.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/qvZ91FwMq6O47VViAr8vZNQz3WI.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 207,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "Criterion Channel",
+        "Philo",
+        "HBO Max"
+      ],
+      "popularity": 12
+    },
+    {
+      "id": 49,
+      "title": "Grave of the Fireflies",
+      "originalTitle": "火垂るの墓",
+      "type": "anime",
+      "categories": [
+        "Anime"
+      ],
+      "year": 1988,
+      "endYear": null,
+      "status": null,
+      "description": "In the final months of World War II, 14-year-old Seita and his sister Setsuko are orphaned when their mother is killed during an air raid in Kobe, Japan. After a falling out with their aunt, they move into an abandoned bomb shelter. With no surviving relatives and their emergency rations depleted, Seita and Setsuko struggle to survive.",
+      "cover": "https://image.tmdb.org/t/p/w400/k9tv1rXZbOhH7eiCk378x61kNQ1.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/aHaqZpOL7UyVu0nKqp3SMz0o2E1.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 89,
+      "imdb": null,
+      "tmdb": 8.4,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 0
+    },
+    {
+      "id": 50,
+      "title": "Life Is Beautiful",
+      "originalTitle": "La vita è bella",
+      "type": "movie",
+      "categories": [
+        "Movies"
+      ],
+      "year": 1997,
+      "endYear": null,
+      "status": null,
+      "description": "A touching story of an Italian book seller of Jewish ancestry who lives in his own little fairy tale. His creative and happy life would come to an abrupt halt when his entire family is deported to a concentration camp during World War II. While locked up he tries to convince his son that the whole thing is just a game.",
+      "cover": "https://image.tmdb.org/t/p/w400/6tEJnof1DKWPnl5lzkjf0FVv7oB.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/6aNKD81RHR1DqUUa8kOZ1TBY1Lp.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 116,
+      "imdb": null,
+      "tmdb": 8.4,
+      "providers": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount+ Amazon Channel",
+        "MGM Plus Roku Premium Channel"
+      ],
+      "popularity": 13
+    },
+    {
+      "id": 51,
+      "title": "Breaking Bad",
+      "originalTitle": "Breaking Bad",
+      "type": "series",
+      "categories": [
+        "Series"
+      ],
+      "year": 2008,
+      "endYear": 2013,
+      "status": "ended",
+      "description": "Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+      "cover": "https://image.tmdb.org/t/p/w400/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
+      "seasons": 5,
+      "episodes": 62,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.9,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 141
+    },
+    {
+      "id": 52,
+      "title": "Frieren: Beyond Journey's End",
+      "originalTitle": "葬送のフリーレン",
+      "type": "anime",
+      "categories": [
+        "Anime"
+      ],
+      "year": 2023,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "After the party of heroes defeated the Demon King, they restored peace to the land and returned to lives of solitude.  Generations pass, and the elven mage Frieren comes face to face with humanity’s mortality. She takes on a new apprentice and promises to fulfill old friends’ dying wishes. Can an elven mind make peace with the nature of life and death? Frieren embarks on her quest to find out.",
+      "cover": "https://image.tmdb.org/t/p/w400/dqZENchTd7lp5zht7BdlqM7RBhD.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/rBOnrVlck7BIlGeWVlzYiZeg4l2.jpg",
+      "seasons": 1,
+      "episodes": 38,
+      "runtime": 25,
+      "imdb": null,
+      "tmdb": 8.8,
+      "providers": [
+        "Netflix",
+        "Hulu",
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 69
     }
   ],
   "collections": []
