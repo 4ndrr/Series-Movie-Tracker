@@ -3,1854 +3,965 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marketplace — Series & Movie Tracker</title>
+<meta name="description" content="Browse a curated catalogue of movies and series and add them to your personal tracker with one click.">
+<title>Marketplace — Series &amp; Movie Tracker</title>
+<link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
 <style>
-:root {
-  --primary-color: #141414;
-  --secondary-color: #e50914;
-  --secondary-rgb: 229, 9, 20;
-  --surface: #1c1c1c;
-  --surface2: #242424;
-  --surface3: #2e2e2e;
-  --border: rgba(255,255,255,0.08);
-  --text: #ffffff;
-  --text-muted: #888;
-  --text-dim: #555;
-  --radius: 12px;
-  --watching-color: #e50914;
-  --want-color: #0062ff;
-  --completed-color: #27ae60;
+:root{
+  --bg:#0d0d10;
+  --surface:#17171c;
+  --surface-2:#1f1f26;
+  --surface-3:#282831;
+  --border:rgba(255,255,255,0.08);
+  --border-strong:rgba(255,255,255,0.16);
+  --text:#f4f4f6;
+  --text-muted:#8a8a93;
+  --text-dim:#5a5a63;
+  --accent:#e50914;
+  --accent-soft:rgba(229,9,20,0.14);
+  --gold:#f5c518;
+  --ok:#27ae60;
+  --radius:14px;
+  --radius-sm:9px;
+  --shadow:0 18px 50px rgba(0,0,0,0.55);
+  --maxw:1320px;
+  --font-body:'Helvetica Neue',Arial,sans-serif;
+}
+body.light{
+  --bg:#f4f4f5;
+  --surface:#ffffff;
+  --surface-2:#f0f0f2;
+  --surface-3:#e6e6ea;
+  --border:rgba(0,0,0,0.1);
+  --border-strong:rgba(0,0,0,0.2);
+  --text:#16161a;
+  --text-muted:#666;
+  --text-dim:#9a9aa2;
+  --accent-soft:rgba(229,9,20,0.1);
+  --shadow:0 18px 50px rgba(0,0,0,0.16);
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
-
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
 body{
-  background:#141414;
-  color:#fff;
-  font-family:'Helvetica Neue',Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
   -webkit-font-smoothing:antialiased;
   min-height:100vh;
-  overflow-x:hidden;
+  line-height:1.55;
 }
+a{color:inherit}
+button{font-family:inherit}
+img{display:block}
 
-body.light-theme{
-  --primary-color:#f5f5f5;
-  --surface:#fff;
-  --surface2:#f0f0f0;
-  --surface3:#e8e8e8;
-  --border:rgba(0,0,0,0.1);
-  --text:#111;
-  --text-muted:#666;
-  --text-dim:#aaa;
-  background:#f5f5f5;
-  color:#111;
+/* Visible keyboard focus everywhere */
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+
+.skip-link{
+  position:absolute;left:12px;top:-48px;z-index:1000;
+  background:var(--accent);color:#fff;padding:10px 16px;border-radius:8px;
+  font-weight:700;text-decoration:none;transition:top .2s;
 }
+.skip-link:focus{top:12px}
 
-/* ── NAV ── */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+
+/* ── HEADER ── */
 .nav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(20,20,20,0.92);
-  backdrop-filter:blur(12px);
+  position:sticky;top:0;z-index:200;
+  background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(14px);
   border-bottom:1px solid var(--border);
-  padding:0 clamp(16px,3vw,40px);
 }
-body.light-theme .nav{background:rgba(245,245,245,0.95)}
-
 .nav-inner{
-  max-width:1400px;margin:0 auto;
-  height:60px;display:flex;align-items:center;gap:16px;
+  max-width:var(--maxw);margin:0 auto;
+  padding:0 clamp(16px,3vw,40px);
+  height:62px;display:flex;align-items:center;gap:14px;
 }
-.nav-logo{
-  font-size:1.1rem;font-weight:800;letter-spacing:-0.5px;
-  color:var(--secondary-color);white-space:nowrap;
-  text-decoration:none;display:flex;align-items:center;gap:8px;
+.brand{
+  display:flex;align-items:center;gap:10px;text-decoration:none;
+  font-weight:800;letter-spacing:-0.3px;color:var(--text);white-space:nowrap;
 }
-.nav-logo-sub{
-  font-weight:400;font-size:0.8rem;color:var(--text-muted);
-  border-left:1px solid var(--border);padding-left:12px;margin-left:4px;
+.brand-mark{
+  width:30px;height:30px;border-radius:8px;flex-shrink:0;
+  background:var(--accent);display:grid;place-items:center;color:#fff;
+}
+.brand-name{font-size:1.02rem}
+.brand-tag{
+  font-size:0.62rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);border-left:1px solid var(--border-strong);
+  padding-left:10px;margin-left:2px;
 }
 .nav-spacer{flex:1}
-.nav-search-wrap{
-  position:relative;flex:1;max-width:340px;
+.nav-search{position:relative;flex:1;max-width:380px}
+.nav-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text-muted);pointer-events:none}
+.nav-search input{
+  width:100%;height:40px;padding:0 14px 0 38px;
+  background:var(--surface-2);border:1px solid var(--border);border-radius:10px;
+  color:var(--text);font-size:0.9rem;
 }
-.nav-search{
-  width:100%;height:38px;
-  background:var(--surface2);
-  border:1px solid var(--border);
-  border-radius:8px;
-  color:var(--text);
-  font-size:0.88rem;
-  padding:0 12px 0 36px;
-  outline:none;
-  transition:border-color .2s;
-  font-family:inherit;
+.nav-search input::placeholder{color:var(--text-dim)}
+.nav-search input:focus{border-color:var(--accent);background:var(--surface)}
+.nav-btn{
+  height:40px;padding:0 14px;border-radius:10px;
+  background:var(--surface-2);border:1px solid var(--border);
+  color:var(--text);font-size:0.86rem;font-weight:600;cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px;text-decoration:none;white-space:nowrap;
+  transition:background .18s,border-color .18s;
 }
-.nav-search:focus{border-color:var(--secondary-color)}
-.nav-search::placeholder{color:var(--text-muted)}
-.nav-search-icon{
-  position:absolute;left:10px;top:50%;transform:translateY(-50%);
-  color:var(--text-muted);pointer-events:none;
+.nav-btn:hover{background:var(--surface-3);border-color:var(--border-strong)}
+@media (max-width:680px){
+  .brand-tag{display:none}
+  .nav-btn-label{display:none}
 }
-.nav-theme-btn{
-  height:38px;padding:0 14px;border-radius:8px;
-  background:var(--surface2);border:1px solid var(--border);
-  color:var(--text);font-size:0.85rem;cursor:pointer;
-  transition:all .2s;font-family:inherit;white-space:nowrap;
-  display:flex;align-items:center;gap:6px;
-}
-.nav-theme-btn:hover{background:var(--surface3)}
 
 /* ── HERO ── */
 .hero{
-  background:linear-gradient(180deg,rgba(229,9,20,0.08) 0%,transparent 100%);
-  border-bottom:1px solid var(--border);
-  padding:40px clamp(16px,3vw,40px) 32px;
+  position:relative;overflow:hidden;
+  padding:clamp(40px,7vw,84px) 0 clamp(28px,4vw,48px);
 }
-.hero-inner{max-width:1400px;margin:0 auto}
+.hero::before{
+  content:"";position:absolute;inset:0;z-index:0;
+  background:
+    radial-gradient(900px 360px at 18% -10%,var(--accent-soft),transparent 60%),
+    radial-gradient(700px 320px at 92% 0%,rgba(245,197,24,0.07),transparent 55%);
+}
+.hero-inner{position:relative;z-index:1;max-width:760px}
 .hero-eyebrow{
-  font-size:0.7rem;font-weight:700;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--secondary-color);
-  margin-bottom:10px;
-  display:flex;align-items:center;gap:6px;
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:0.72rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:18px;
 }
-.hero-title{
-  font-size:clamp(1.8rem,4vw,2.8rem);
-  font-weight:900;letter-spacing:-1px;
-  line-height:1.1;margin-bottom:10px;
+.hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.hero h1{
+  font-size:clamp(2.3rem,6vw,4rem);font-weight:900;line-height:1.02;
+  letter-spacing:-0.02em;margin-bottom:18px;
 }
-.hero-title-3d{
-  display:inline-block;
-  background:linear-gradient(135deg,#fff 0%,#ccc 40%,#fff 60%,#999 100%);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-  background-clip:text;
-  filter:drop-shadow(0 1px 0 rgba(229,9,20,0.8)) drop-shadow(0 2px 0 rgba(180,0,10,0.6)) drop-shadow(0 3px 0 rgba(130,0,5,0.4)) drop-shadow(0 6px 18px rgba(229,9,20,0.25));
-  letter-spacing:-1px;
-}
-body.light-theme .hero-title-3d{
-  background:linear-gradient(135deg,#111 0%,#444 40%,#111 60%,#666 100%);
-  -webkit-background-clip:text;
-  background-clip:text;
-  filter:drop-shadow(0 1px 0 rgba(229,9,20,0.7)) drop-shadow(0 2px 0 rgba(180,0,10,0.5)) drop-shadow(0 4px 14px rgba(229,9,20,0.2));
-}
-.hero-desc{
-  font-size:0.95rem;color:var(--text-muted);
-  max-width:520px;line-height:1.6;margin-bottom:24px;
-}
-.hero-stats{display:flex;gap:24px;flex-wrap:wrap}
-.hero-stat{display:flex;flex-direction:column;gap:2px}
-.hero-stat-num{
-  font-size:1.5rem;font-weight:800;color:var(--secondary-color);
-}
-.hero-stat-label{font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;gap:4px}
+.hero h1 .em{color:var(--accent)}
+.hero p{font-size:clamp(1rem,2.2vw,1.18rem);color:var(--text-muted);max-width:560px}
+.hero-stats{display:flex;flex-wrap:wrap;gap:28px;margin-top:30px}
+.hstat{display:flex;flex-direction:column;gap:2px}
+.hstat-num{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:900;letter-spacing:-0.02em;line-height:1}
+.hstat-label{font-size:0.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-muted)}
 
-/* ── LAYOUT ── */
-.page{
-  max-width:1400px;margin:0 auto;
-  padding:32px clamp(16px,3vw,40px);
-  display:grid;grid-template-columns:220px 1fr;gap:28px;
-}
-@media(max-width:860px){.page{grid-template-columns:1fr}}
+/* ── COLLECTIONS (filmstrip rail) ── */
+.section{padding:clamp(26px,4vw,44px) 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px}
+.section-title{font-size:1.4rem;font-weight:800;letter-spacing:-0.01em;display:flex;align-items:center;gap:10px}
+.section-title .bar{width:4px;height:22px;border-radius:2px;background:var(--accent)}
+.section-sub{font-size:0.85rem;color:var(--text-muted)}
 
-/* ── SIDEBAR ── */
-.sidebar{}
-.sidebar-section{margin-bottom:28px}
-.sidebar-title{
-  font-size:0.68rem;font-weight:700;
-  letter-spacing:1.8px;text-transform:uppercase;
-  color:var(--secondary-color);margin-bottom:12px;
+.rail{
+  display:flex;gap:16px;overflow-x:auto;padding:6px 2px 16px;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;scrollbar-color:var(--surface-3) transparent;
 }
-.cat-list{display:flex;flex-direction:column;gap:4px}
-.cat-btn{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:8px 12px;border-radius:8px;border:none;
-  background:transparent;color:var(--text-muted);
-  font-size:0.88rem;cursor:pointer;font-family:inherit;
-  transition:all .15s;text-align:left;
+.rail::-webkit-scrollbar{height:8px}
+.rail::-webkit-scrollbar-thumb{background:var(--surface-3);border-radius:4px}
+.coll{
+  scroll-snap-align:start;flex:0 0 280px;position:relative;
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;
+  border:1px solid var(--border);min-height:168px;
+  background:var(--surface-2);text-align:left;color:var(--text);
+  transition:transform .2s,border-color .2s;
 }
-.cat-btn:hover{background:var(--surface2);color:var(--text)}
-.cat-btn.active{
-  background:rgba(var(--secondary-rgb),.12);
-  color:#fff;font-weight:600;
+.coll:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+.coll-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.5}
+.coll-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.88))}
+body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.7))}
+.coll-body{position:relative;z-index:1;padding:16px;display:flex;flex-direction:column;height:100%;min-height:168px;color:#fff}
+.coll-icon{margin-bottom:auto}
+.coll-name{font-size:1.12rem;font-weight:800;margin-top:8px}
+.coll-desc{font-size:0.78rem;opacity:.82;margin-top:3px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.coll-foot{display:flex;align-items:center;justify-content:space-between;margin-top:12px;gap:10px}
+.coll-count{font-size:0.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.85}
+.coll-add{
+  border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.35);color:#fff;
+  border-radius:999px;padding:6px 12px;font-size:0.76rem;font-weight:700;cursor:pointer;white-space:nowrap;
+  transition:background .15s;
 }
-body.light-theme .cat-btn.active{color:#111}
-.cat-count{
-  font-size:0.72rem;color:var(--text-dim);
-  background:var(--surface2);
-  border-radius:20px;padding:1px 7px;
-}
-.cat-btn.active .cat-count{
-  background:rgba(var(--secondary-rgb),.2);
-  color:var(--secondary-color);
-}
+.coll-add:hover{background:rgba(0,0,0,.6)}
+.coll-add.all-added{background:var(--ok);border-color:var(--ok)}
+.coll-prog{position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.15)}
+.coll-prog-bar{height:100%;background:var(--accent);transition:width .3s}
 
-.filter-group{display:flex;flex-direction:column;gap:6px}
-.filter-label{
-  font-size:0.78rem;color:var(--text-muted);margin-bottom:2px;
+/* ── TOOLBAR ── */
+.toolbar{position:sticky;top:62px;z-index:120;background:var(--bg);padding:14px 0 8px}
+.cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.cats::-webkit-scrollbar{display:none}
+.cat{
+  flex:0 0 auto;height:38px;padding:0 16px;border-radius:999px;cursor:pointer;
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text);
+  font-size:0.86rem;font-weight:600;display:inline-flex;align-items:center;gap:7px;
+  transition:background .15s,border-color .15s,color .15s;
 }
-.filter-select{
-  width:100%;padding:8px 10px;border-radius:8px;
-  background:var(--surface2);border:1px solid var(--border);
-  color:var(--text);font-size:0.85rem;font-family:inherit;
-  outline:none;cursor:pointer;
-  transition:border-color .2s;
-}
-.filter-select:focus{border-color:var(--secondary-color)}
+.cat:hover{border-color:var(--border-strong)}
+.cat[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.cat-count{font-size:0.7rem;opacity:.7;font-weight:700}
+.cat[aria-pressed="true"] .cat-count{opacity:.9}
 
-/* ── MAIN GRID ── */
-.main-area{}
-.toolbar{
-  display:flex;align-items:center;gap:10px;
-  margin-bottom:20px;flex-wrap:wrap;
+.controls{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:6px 0 4px}
+.control{
+  height:38px;padding:0 12px;border-radius:9px;
+  background:var(--surface-2);border:1px solid var(--border);color:var(--text);
+  font-size:0.84rem;cursor:pointer;
 }
-.toolbar-result-count{
-  font-size:0.82rem;color:var(--text-muted);flex:1;min-width:80px;
-}
-.view-btns{display:flex;gap:4px}
-.view-btn{
-  width:34px;height:34px;border-radius:7px;
-  background:var(--surface2);border:1px solid var(--border);
-  color:var(--text-muted);cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:all .15s;
-}
-.view-btn:hover{color:var(--text);background:var(--surface3)}
-.view-btn.active{
-  background:rgba(var(--secondary-rgb),.15);
-  border-color:var(--secondary-color);
-  color:var(--secondary-color);
-}
-.sort-select{
-  height:34px;padding:0 10px;border-radius:7px;
-  background:var(--surface2);border:1px solid var(--border);
-  color:var(--text);font-size:0.82rem;font-family:inherit;
-  outline:none;cursor:pointer;
-}
+.control:focus{border-color:var(--accent)}
+.result-count{font-size:0.82rem;color:var(--text-muted);font-weight:600}
+.view-toggle{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;overflow:hidden;margin-left:auto}
+.view-btn{width:40px;height:38px;display:grid;place-items:center;background:transparent;border:none;color:var(--text-muted);cursor:pointer}
+.view-btn[aria-pressed="true"]{background:var(--accent);color:#fff}
 
 /* ── CARD GRID ── */
-.card-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:16px;
+.grid{
+  display:grid;gap:18px;padding:22px 0 60px;
+  grid-template-columns:repeat(auto-fill,minmax(168px,1fr));
 }
-.card-grid.list-view{
-  display:flex;flex-direction:column;gap:8px;
+.grid.list-view{grid-template-columns:1fr;gap:12px}
+.card{
+  position:relative;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--radius);overflow:hidden;cursor:pointer;text-align:left;
+  color:var(--text);transition:transform .18s,border-color .18s;
+  display:flex;flex-direction:column;
 }
+.card:hover{transform:translateY(-4px);border-color:var(--border-strong)}
+.poster-wrap{position:relative;aspect-ratio:2/3;background:var(--surface-3);overflow:hidden}
+.poster{width:100%;height:100%;object-fit:cover}
+.poster-ph{width:100%;height:100%;display:grid;place-items:center;color:var(--text-dim)}
+.ribbon{
+  position:absolute;top:10px;left:10px;z-index:2;
+  font-size:0.64rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;
+  padding:4px 8px;border-radius:6px;color:#fff;backdrop-filter:blur(4px);
+}
+.ribbon.ongoing{background:rgba(39,174,96,.85)}
+.ribbon.ended{background:rgba(0,0,0,.6)}
+.quick-add{
+  position:absolute;right:10px;bottom:10px;z-index:2;
+  width:38px;height:38px;border-radius:50%;border:none;cursor:pointer;
+  background:var(--accent);color:#fff;display:grid;place-items:center;
+  box-shadow:0 6px 16px rgba(0,0,0,.4);
+  opacity:0;transform:translateY(6px) scale(.9);transition:opacity .18s,transform .18s,background .18s;
+}
+.card:hover .quick-add,.card:focus-within .quick-add{opacity:1;transform:none}
+.quick-add.added{background:var(--ok)}
+@media (hover:none){.quick-add{opacity:1;transform:none}}
+.card-body{padding:11px 12px 13px;display:flex;flex-direction:column;gap:6px}
+.card-title{font-size:0.92rem;font-weight:700;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:0.72rem;color:var(--text-muted)}
+.tbadge{font-size:0.62rem;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border-radius:5px}
+.tbadge.series{background:rgba(229,9,20,.16);color:#ff5862}
+.tbadge.movie{background:rgba(0,98,255,.16);color:#5a9bff}
+.tbadge.anime{background:rgba(155,89,182,.18);color:#c08fe0}
+.card-rating{display:inline-flex;align-items:center;gap:3px;color:var(--gold);font-weight:700}
 
-/* POSTER CARD */
-.m-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);
-  overflow:hidden;
-  cursor:pointer;
-  transition:transform .2s,box-shadow .2s,border-color .2s;
-  position:relative;
-}
-.m-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 20px 50px rgba(0,0,0,.6);
-  border-color:rgba(var(--secondary-rgb),.35);
-}
-.card-poster{
-  width:100%;aspect-ratio:2/3;
-  object-fit:cover;display:block;
-  background:var(--surface2);
-}
-.card-poster-placeholder{
-  width:100%;aspect-ratio:2/3;
-  background:var(--surface2);
-  display:flex;align-items:center;justify-content:center;
-  color:var(--text-dim);font-size:2rem;
-}
-.card-body{padding:10px 10px 12px}
-.card-title{
-  font-size:0.85rem;font-weight:700;
-  line-height:1.3;margin-bottom:4px;
-  display:-webkit-box;-webkit-line-clamp:2;
-  -webkit-box-orient:vertical;overflow:hidden;
-}
-.card-meta{
-  display:flex;align-items:center;gap:6px;
-  flex-wrap:wrap;margin-bottom:8px;
-}
-.card-type-badge{
-  font-size:0.62rem;font-weight:700;
-  text-transform:uppercase;letter-spacing:1px;
-  padding:2px 6px;border-radius:4px;
-}
-.badge-series{background:rgba(0,98,255,.18);color:#5b9fff}
-.badge-movie{background:rgba(255,180,0,.15);color:#ffb400}
-.badge-anime{background:rgba(180,0,255,.15);color:#c87fff}
-.card-year{font-size:0.72rem;color:var(--text-muted)}
-.card-rating{
-  display:flex;align-items:center;gap:4px;
-  font-size:0.75rem;font-weight:600;color:#f5c518;
-}
-.card-add-btn{
-  width:100%;height:32px;border-radius:7px;
-  background:var(--secondary-color);border:none;
-  color:#fff;font-size:0.8rem;font-weight:700;
-  cursor:pointer;font-family:inherit;
-  transition:filter .2s,transform .1s;
-  display:flex;align-items:center;justify-content:center;gap:5px;
-}
-.card-add-btn:hover{filter:brightness(1.1)}
-.card-add-btn:active{transform:scale(.97)}
-.card-add-btn.added{
-  background:var(--completed-color);
-}
-.card-add-btn.added:hover{filter:brightness(1.05)}
+/* list view tweaks */
+.list-view .card{flex-direction:row;align-items:stretch}
+.list-view .poster-wrap{aspect-ratio:auto;width:88px;flex-shrink:0}
+.list-view .card-body{flex:1;justify-content:center}
+.list-view .quick-add{opacity:1;transform:none;position:static;width:auto;height:36px;border-radius:8px;padding:0 14px;gap:6px;align-self:center;margin:0 14px 0 0;font-size:0.82rem;font-weight:700}
+.list-view .card{padding-right:0}
 
-/* STATUS RIBBON */
-.card-ribbon{
-  position:absolute;top:8px;right:8px;
-  font-size:0.6rem;font-weight:700;letter-spacing:.8px;
-  text-transform:uppercase;padding:3px 7px;border-radius:4px;
-}
-.ribbon-ongoing{background:rgba(39,174,96,.9);color:#fff}
-.ribbon-ended{background:rgba(80,80,80,.9);color:#ccc}
-.ribbon-new{background:rgba(229,9,20,.9);color:#fff}
+/* ── EMPTY ── */
+.empty{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--text-muted)}
+.empty svg{margin-bottom:14px;color:var(--text-dim)}
+.empty-title{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:6px}
+.empty-btn{margin-top:16px;height:40px;padding:0 18px;border-radius:9px;background:var(--accent);color:#fff;border:none;font-weight:700;cursor:pointer}
 
-/* LIST VIEW CARD */
-.card-grid.list-view .m-card{
-  display:flex;flex-direction:row;align-items:stretch;
-  height:96px;
-}
-.card-grid.list-view .card-poster{
-  width:64px;height:96px;aspect-ratio:unset;flex-shrink:0;
-}
-.card-grid.list-view .card-poster-placeholder{
-  width:64px;height:96px;aspect-ratio:unset;flex-shrink:0;font-size:1.2rem;
-}
-.card-grid.list-view .card-body{
-  flex:1;display:flex;align-items:center;
-  gap:16px;padding:12px 14px;
-}
-.card-grid.list-view .card-title{
-  flex:1;-webkit-line-clamp:1;font-size:0.92rem;margin-bottom:0;
-}
-.card-grid.list-view .card-add-btn{
-  width:90px;flex-shrink:0;height:34px;
-}
-.card-grid.list-view .card-ribbon{top:8px;right:110px}
-.card-grid.list-view .card-meta{margin-bottom:0}
-
-/* ── DETAIL MODAL ── */
+/* ── MODAL ── */
 .modal-overlay{
-  position:fixed;inset:0;z-index:200;
-  background:rgba(0,0,0,.75);
-  display:flex;align-items:center;justify-content:center;
-  padding:20px;opacity:0;pointer-events:none;
-  transition:opacity .25s;
+  position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.78);
+  display:none;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;
 }
-.modal-overlay.open{opacity:1;pointer-events:auto}
-
-.modal-box{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:18px;
-  width:100%;max-width:680px;
-  max-height:88vh;overflow-y:auto;
-  position:relative;
-  transform:scale(.96);
-  transition:transform .25s;
+.modal-overlay.open{display:flex}
+.modal{
+  background:var(--surface);border:1px solid var(--border);border-radius:18px;
+  width:100%;max-width:680px;overflow:hidden;box-shadow:var(--shadow);
+  animation:modalIn .25s cubic-bezier(.2,.8,.2,1);
 }
-.modal-overlay.open .modal-box{transform:scale(1)}
-
-.modal-backdrop{
-  width:100%;height:220px;object-fit:cover;
-  display:block;border-radius:18px 18px 0 0;
-  background:var(--surface2);
-  position:relative;
-}
-.modal-backdrop-placeholder{
-  width:100%;height:220px;
-  background:linear-gradient(135deg,var(--surface2) 0%,var(--surface3) 100%);
-  border-radius:18px 18px 0 0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:4rem;color:var(--text-dim);
-}
-.modal-backdrop-gradient{
-  position:absolute;bottom:0;left:0;right:0;height:120px;
-  background:linear-gradient(to bottom,transparent,var(--surface));
-  border-radius:0 0 0 0;
-}
-
-.modal-inner{padding:0 28px 28px}
-
-.modal-top{
-  display:flex;gap:18px;margin-top:-50px;
-  position:relative;margin-bottom:18px;
-  align-items:flex-end;
-}
-.modal-poster{
-  width:100px;height:150px;object-fit:cover;
-  border-radius:10px;border:3px solid var(--surface);
-  flex-shrink:0;background:var(--surface2);
-  box-shadow:0 8px 30px rgba(0,0,0,.5);
-}
-.modal-poster-placeholder{
-  width:100px;height:150px;
-  border-radius:10px;border:3px solid var(--surface);
-  flex-shrink:0;background:var(--surface2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:2.5rem;color:var(--text-dim);
-  box-shadow:0 8px 30px rgba(0,0,0,.5);
-}
-.modal-header-text{flex:1;padding-bottom:6px}
-.modal-type-badge{margin-bottom:6px;display:inline-block}
-.modal-title{
-  font-size:1.5rem;font-weight:800;letter-spacing:-.5px;
-  line-height:1.2;margin-bottom:4px;
-}
-.modal-original-title{
-  font-size:0.82rem;color:var(--text-muted);margin-bottom:8px;
-}
-.modal-rating-row{
-  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
-}
-.modal-imdb{
-  display:flex;align-items:center;gap:5px;
-  font-size:0.82rem;font-weight:600;color:#f5c518;
-}
-.modal-year-status{
-  font-size:0.8rem;color:var(--text-muted);
-}
-
-.modal-desc{
-  font-size:0.88rem;color:var(--text-muted);
-  line-height:1.65;margin-bottom:20px;
-}
-
-.modal-section-title{
-  font-size:0.68rem;font-weight:700;
-  letter-spacing:2px;text-transform:uppercase;
-  color:var(--secondary-color);margin-bottom:10px;
-}
-
-.modal-meta-grid{
-  display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));
-  gap:12px;margin-bottom:20px;
-}
-.modal-meta-item{
-  background:var(--surface2);
-  border-radius:10px;padding:12px 14px;
-}
-.modal-meta-label{
-  font-size:0.65rem;color:var(--text-muted);
-  text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;
-}
-.modal-meta-val{
-  font-size:0.9rem;font-weight:700;
-}
-
-.modal-providers{
-  display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;
-}
-.provider-chip{
-  background:var(--surface2);
-  border:1px solid var(--border);
-  border-radius:8px;padding:6px 12px;
-  font-size:0.78rem;font-weight:600;
-  color:var(--text-muted);
-}
-
-.modal-covers-row{
-  display:flex;gap:10px;overflow-x:auto;
-  padding-bottom:6px;margin-bottom:20px;
-  scrollbar-width:thin;
-}
-.modal-alt-cover{
-  width:70px;height:105px;object-fit:cover;
-  border-radius:8px;flex-shrink:0;
-  border:2px solid transparent;cursor:pointer;
-  transition:border-color .2s,transform .15s;
-  background:var(--surface2);
-}
-.modal-alt-cover:hover{
-  border-color:var(--secondary-color);
-  transform:scale(1.04);
-}
-
-.modal-add-btn{
-  width:100%;height:46px;border-radius:10px;
-  background:var(--secondary-color);border:none;
-  color:#fff;font-size:0.95rem;font-weight:700;
-  cursor:pointer;font-family:inherit;
-  transition:filter .2s;
-  display:flex;align-items:center;justify-content:center;gap:8px;
-}
-.modal-add-btn:hover{filter:brightness(1.1)}
-.modal-add-btn.added{background:var(--completed-color)}
-
+@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.modal-hero{position:relative;height:200px;background:var(--surface-3)}
+.modal-hero img{width:100%;height:100%;object-fit:cover}
+.modal-hero-ph{width:100%;height:100%;display:grid;place-items:center;color:var(--text-dim)}
+.modal-hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,var(--surface))}
 .modal-close{
-  position:absolute;top:14px;right:14px;
-  width:34px;height:34px;border-radius:8px;
-  background:rgba(0,0,0,.5);border:none;
-  color:#fff;font-size:1.1rem;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  transition:background .2s;z-index:10;
+  position:absolute;top:14px;right:14px;z-index:3;width:38px;height:38px;border-radius:50%;
+  background:rgba(0,0,0,.55);border:none;color:#fff;cursor:pointer;display:grid;place-items:center;
 }
-.modal-close:hover{background:rgba(0,0,0,.75)}
+.modal-close:hover{background:rgba(0,0,0,.8)}
+.modal-body{padding:0 clamp(20px,4vw,32px) clamp(22px,4vw,30px);margin-top:-60px;position:relative;z-index:2}
+.modal-top{display:flex;gap:18px;align-items:flex-end}
+.modal-poster{width:118px;flex-shrink:0;aspect-ratio:2/3;border-radius:10px;object-fit:cover;border:2px solid var(--surface);box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.modal-poster-ph{width:118px;aspect-ratio:2/3;border-radius:10px;background:var(--surface-3);display:grid;place-items:center;color:var(--text-dim);flex-shrink:0}
+.modal-headtext{padding-bottom:6px;min-width:0}
+.modal-title{font-size:1.5rem;font-weight:900;letter-spacing:-0.01em;line-height:1.1}
+.modal-orig{font-size:0.85rem;color:var(--text-muted);font-style:italic;margin-top:2px}
+.modal-rating-row{display:flex;align-items:center;gap:14px;margin-top:10px;font-size:0.85rem;flex-wrap:wrap}
+.modal-imdb{display:inline-flex;align-items:center;gap:5px;color:var(--gold);font-weight:700}
+.modal-desc{margin-top:18px;color:var(--text-muted);font-size:0.95rem;line-height:1.65}
+.mlabel{font-size:0.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);margin:22px 0 10px}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(90px,1fr));gap:10px}
+.meta-cell{background:var(--surface-2);border:1px solid var(--border);border-radius:10px;padding:11px 12px}
+.meta-cell .l{font-size:0.68rem;letter-spacing:.5px;text-transform:uppercase;color:var(--text-dim);font-weight:700}
+.meta-cell .v{font-size:1.02rem;font-weight:700;margin-top:3px}
+.providers{display:flex;flex-wrap:wrap;gap:8px}
+.provider{background:var(--surface-2);border:1px solid var(--border);border-radius:999px;padding:6px 13px;font-size:0.82rem;font-weight:600}
+.modal-add{
+  margin-top:24px;width:100%;height:48px;border-radius:11px;border:none;cursor:pointer;
+  background:var(--accent);color:#fff;font-size:0.98rem;font-weight:800;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:filter .15s;
+}
+.modal-add:hover{filter:brightness(1.1)}
+.modal-add.added{background:var(--ok)}
 
 /* ── TOAST ── */
 .toast{
-  position:fixed;bottom:28px;left:50%;
-  transform:translateX(-50%) translateY(20px);
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:10px;padding:12px 20px;
-  font-size:0.88rem;font-weight:600;
-  box-shadow:0 12px 40px rgba(0,0,0,.5);
-  z-index:300;opacity:0;
-  transition:opacity .2s,transform .2s;
-  white-space:nowrap;
-  display:flex;align-items:center;gap:10px;
-  border-left:3px solid var(--toast-accent,#27ae60);
+  position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(140%);
+  z-index:600;background:var(--surface);border:1px solid var(--border);
+  border-left:4px solid var(--toast,var(--ok));
+  border-radius:12px;padding:13px 18px;display:flex;align-items:center;gap:11px;
+  box-shadow:var(--shadow);font-size:0.9rem;font-weight:600;max-width:90vw;
+  transition:transform .35s cubic-bezier(.2,.9,.2,1);
 }
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast-icon{color:var(--completed-color);font-size:1rem}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.toast-icon{flex-shrink:0;display:grid;place-items:center}
 
-/* ── EMPTY STATE ── */
-.empty-state{
-  text-align:center;padding:60px 20px;
-  color:var(--text-muted);
-}
-.empty-state-icon{font-size:3rem;margin-bottom:16px}
-.empty-state-title{font-size:1.1rem;font-weight:700;margin-bottom:6px;color:var(--text)}
-.empty-state-desc{font-size:0.85rem;line-height:1.6}
+/* ── FOOTER ── */
+.foot{border-top:1px solid var(--border);padding:30px 0;color:var(--text-muted);font-size:0.82rem;text-align:center}
+.foot a{color:var(--accent);text-decoration:none;font-weight:600}
+.foot-inner{max-width:1100px;margin:0 auto;padding:0 clamp(16px,3vw,40px);display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;text-align:left}
+.tmdb-attribution{display:inline-flex;align-items:center;flex-shrink:0}
+.tmdb-logo{height:20px;width:auto;display:block}
+.tmdb-notice{color:var(--text-muted);font-size:0.8rem;line-height:1.5;margin:0;max-width:620px}
+.foot-links{display:flex;gap:16px;flex-wrap:wrap;width:100%;justify-content:center;margin-top:4px}
+.foot-links a{color:var(--text-muted);font-weight:500}
+.foot-links a:hover{color:var(--accent)}
+@media(max-width:560px){.foot-inner{flex-direction:column;align-items:flex-start}}
+.modal-tmdb-credit{margin:16px 0 0;font-size:0.74rem;line-height:1.5;color:var(--text-muted);opacity:.85}
+.modal-tmdb-credit a{color:inherit;text-decoration:underline}
 
-/* ── RESPONSIVE SIDEBAR ── */
-@media(max-width:860px){
-  .sidebar{display:none}
-  .sidebar.mobile-open{display:block}
-}
+/* ── LOADING ── */
+.loading{display:flex;align-items:center;justify-content:center;gap:12px;padding:80px 20px;color:var(--text-muted)}
+.spinner{width:26px;height:26px;border:3px solid var(--surface-3);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* skeleton */
-.skel{
-  background:linear-gradient(90deg,var(--surface2) 25%,var(--surface3) 50%,var(--surface2) 75%);
-  background-size:200% 100%;
-  animation:skel-anim 1.4s infinite;
-  border-radius:6px;
-}
-@keyframes skel-anim{to{background-position:-200% 0}}
-.skel-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:var(--radius);overflow:hidden;
-}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* ── COLLECTIONS ── */
-.collections-section{
-  max-width:1400px;margin:0 auto;
-  padding:32px clamp(16px,3vw,40px) 0;
+@media (max-width:560px){
+  .modal-top{flex-direction:column;align-items:flex-start}
+  .modal-poster,.modal-poster-ph{width:96px}
+  .grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px}
 }
-.collections-header{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-bottom:20px;
-}
-.collections-title{
-  font-size:1.2rem;font-weight:800;letter-spacing:-0.5px;
-}
-.collections-subtitle{
-  font-size:0.82rem;color:var(--text-muted);margin-top:2px;
-}
-.collections-grid{
-  display:flex;
-  flex-direction:row;
-  gap:16px;
-  margin-bottom:8px;
-  overflow-x:auto;
-  scroll-behavior:smooth;
-  padding-bottom:8px;
-  /* hide scrollbar visually but keep it functional */
-  scrollbar-width:none;
-  -ms-overflow-style:none;
-}
-.collections-grid::-webkit-scrollbar{display:none}
-.coll-card{
-  flex:0 0 280px;
-}
-.coll-card{
-  position:relative;overflow:hidden;
-  border-radius:var(--radius);
-  background:var(--surface);
-  border:1px solid var(--border);
-  cursor:pointer;
-  transition:transform .2s, box-shadow .2s;
-  min-height:140px;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  padding:20px;
-  flex:0 0 280px;
-}
-.coll-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4)}
-.coll-card-bg{
-  position:absolute;inset:0;
-  background-size:cover;background-position:center;
-  opacity:0.18;
-  transition:opacity .2s;
-}
-.coll-card:hover .coll-card-bg{opacity:0.28}
-.coll-card-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(0,0,0,0.6) 0%,rgba(0,0,0,0.2) 100%);
-}
-.coll-card-body{position:relative;z-index:1}
-.coll-card-icon{font-size:1.6rem;margin-bottom:6px;display:flex;align-items:center}
-.coll-card-name{font-size:1rem;font-weight:800;margin-bottom:3px}
-.coll-card-desc{font-size:0.76rem;color:var(--text-muted);line-height:1.4;margin-bottom:12px}
-.coll-card-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.coll-card-count{
-  font-size:0.72rem;color:var(--text-muted);
-  background:var(--surface2);border-radius:20px;padding:2px 8px;
-}
-.coll-add-btn{
-  padding:6px 14px;border-radius:7px;border:none;
-  font-size:0.78rem;font-weight:700;cursor:pointer;
-  font-family:inherit;transition:all .15s;
-  background:rgba(255,255,255,0.12);
-  color:#fff;
-  border:1px solid rgba(255,255,255,0.2);
-}
-.coll-add-btn:hover{background:rgba(255,255,255,0.22)}
-.coll-add-btn.all-added{
-  background:rgba(39,174,96,0.25);
-  border-color:rgba(39,174,96,0.4);
-  color:#27ae60;
-}
-.coll-progress{
-  height:3px;border-radius:2px;
-  background:var(--surface3);
-  margin-top:10px;overflow:hidden;
-}
-.coll-progress-bar{
-  height:100%;border-radius:2px;
-  transition:width .3s;
-}
-/* Collection modal */
-.coll-modal-backdrop{
-  position:fixed;inset:0;z-index:200;
-  background:rgba(0,0,0,0.75);
-  display:flex;align-items:center;justify-content:center;
-  padding:20px;
-  opacity:0;pointer-events:none;
-  transition:opacity .2s;
-}
-.coll-modal-backdrop.open{opacity:1;pointer-events:all}
-.coll-modal{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  max-width:620px;width:100%;
-  max-height:85vh;overflow-y:auto;
-  padding:28px;
-}
-.coll-modal-head{display:flex;align-items:flex-start;gap:14px;margin-bottom:20px}
-.coll-modal-emoji{font-size:2.2rem;line-height:1}
-.coll-modal-info{flex:1}
-.coll-modal-name{font-size:1.3rem;font-weight:900;margin-bottom:4px}
-.coll-modal-desc{font-size:0.87rem;color:var(--text-muted)}
-.coll-modal-add-all{
-  padding:9px 20px;border-radius:9px;border:none;
-  font-size:0.85rem;font-weight:700;cursor:pointer;
-  font-family:inherit;background:var(--secondary-color);
-  color:#fff;transition:all .15s;white-space:nowrap;
-}
-.coll-modal-add-all:hover{filter:brightness(1.1)}
-.coll-modal-add-all.all-added{background:var(--completed-color)}
-.coll-modal-items{display:flex;flex-direction:column;gap:10px}
-.coll-modal-item{
-  display:flex;align-items:center;gap:12px;
-  padding:10px;border-radius:10px;
-  background:var(--surface2);
-  transition:background .15s;cursor:pointer;
-}
-.coll-modal-item:hover{background:var(--surface3)}
-.coll-modal-item-img{
-  width:44px;height:66px;object-fit:cover;
-  border-radius:6px;flex-shrink:0;
-  background:var(--surface3);
-}
-.coll-modal-item-info{flex:1;min-width:0}
-.coll-modal-item-title{font-size:0.9rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.coll-modal-item-meta{font-size:0.76rem;color:var(--text-muted);margin-top:2px}
-.coll-modal-item-btn{
-  width:32px;height:32px;border-radius:8px;border:none;
-  background:var(--surface3);color:var(--text-muted);
-  font-size:1rem;cursor:pointer;flex-shrink:0;
-  transition:all .15s;display:flex;align-items:center;justify-content:center;
-}
-.coll-modal-item-btn.added{background:rgba(39,174,96,0.2);color:#27ae60}
-.coll-modal-close-btn{
-  width:32px;height:32px;border-radius:8px;border:none;
-  background:var(--surface2);color:var(--text-muted);
-  font-size:1rem;cursor:pointer;
-  transition:all .15s;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-}
-.collections-divider{
-  max-width:1400px;margin:28px auto 0;
-  padding:0 clamp(16px,3vw,40px);
-  border-bottom:1px solid var(--border);
-}
-
 </style>
 </head>
 <body>
+<a class="skip-link" href="#catalogue">Skip to catalogue</a>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-inner">
-    <a class="nav-logo" href="#">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
-      <span>Tracker</span>
-      <span class="nav-logo-sub">Marketplace</span>
-    </a>
-    <span class="nav-spacer"></span>
-    <div class="nav-search-wrap">
-      <svg class="nav-search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input class="nav-search" id="mainSearch" type="search" placeholder="Search titles…">
-    </div>
-    <button class="nav-theme-btn" id="themeToggle">
-      <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <span id="themeLabel">Light</span>
-    </button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-eyebrow">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="12"/></svg>
-      Beta — Curated Database
-    </div>
-    <h1 class="hero-title">
-      <span class="hero-title-3d">Marketplace</span>
-    </h1>
-    <p class="hero-desc">Browse pre-configured movies and series. One click to add to your personal library — no setup needed.</p>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <span class="hero-stat-num" id="statTotal">0</span>
-        <span class="hero-stat-label">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-          Entries
+<header>
+  <nav class="nav" aria-label="Primary">
+    <div class="nav-inner">
+      <a class="brand" href="index.html" aria-label="Series and Movie Tracker home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
         </span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" id="statSeries">0</span>
-        <span class="hero-stat-label">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-          Series
-        </span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" id="statMovies">0</span>
-        <span class="hero-stat-label">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
-          Movies
-        </span>
-      </div>
-      <div class="hero-stat">
-        <span class="hero-stat-num" id="statAnime">0</span>
-        <span class="hero-stat-label">
-          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-          Anime
-        </span>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- COLLECTIONS -->
-<section class="collections-section" id="collectionsSection">
-  <div class="collections-header">
-    <div>
-      <div class="collections-title">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:6px;color:var(--secondary-color)"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        Collections
-      </div>
-      <div class="collections-subtitle">Add entire franchises to your library in one click</div>
-    </div>
-  </div>
-  <div class="collections-grid" id="collectionsGrid"></div>
-</section>
-<div class="collections-divider"></div>
-
-<!-- COLLECTION MODAL -->
-<div class="coll-modal-backdrop" id="collModalBackdrop">
-  <div class="coll-modal" id="collModal">
-    <div id="collModalContent"></div>
-  </div>
-</div>
-
-<!-- PAGE -->
-<div class="page">
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-section">
-      <div class="sidebar-title">Categories</div>
-      <div class="cat-list" id="catList"></div>
-    </div>
-    <div class="sidebar-section">
-      <div class="sidebar-title">Filters</div>
-      <div class="filter-group">
-        <label class="filter-label">Status</label>
-        <select class="filter-select" id="filterStatus">
-          <option value="">All</option>
-          <option value="ongoing">Ongoing</option>
-          <option value="ended">Ended</option>
-          <option value="cancelled">Cancelled</option>
-        </select>
-        <label class="filter-label" style="margin-top:10px">Provider</label>
-        <select class="filter-select" id="filterProvider">
-          <option value="">All</option>
-          <option value="Netflix">Netflix</option>
-          <option value="Disney+">Disney+</option>
-          <option value="Prime Video">Prime Video</option>
-          <option value="Hulu">Hulu</option>
-          <option value="Apple TV+">Apple TV+</option>
-          <option value="HBO Max">HBO Max</option>
-          <option value="Crunchyroll">Crunchyroll</option>
-        </select>
-      </div>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <main class="main-area">
-    <div class="toolbar">
-      <span class="toolbar-result-count" id="resultCount">Loading…</span>
+        <span class="brand-name">Tracker</span>
+        <span class="brand-tag">Marketplace</span>
+      </a>
       <span class="nav-spacer"></span>
-      <select class="sort-select" id="sortSelect">
-        <option value="popularity">Most Popular</option>
-        <option value="rating">Highest Rated</option>
-        <option value="year_desc">Newest First</option>
-        <option value="year_asc">Oldest First</option>
-        <option value="title_asc">A → Z</option>
-      </select>
-      <div class="view-btns">
-        <button class="view-btn active" id="viewGrid" title="Grid view">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </button>
-        <button class="view-btn" id="viewList" title="List view">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
+      <div class="nav-search" role="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="search" type="search" placeholder="Search titles…" aria-label="Search the catalogue" autocomplete="off">
+      </div>
+      <a class="nav-btn" href="index.html" title="Back to your tracker">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span class="nav-btn-label">Tracker</span>
+      </a>
+      <button class="nav-btn" id="themeToggle" type="button" aria-label="Toggle light and dark theme">
+        <span id="themeIcon" aria-hidden="true"></span>
+        <span class="nav-btn-label" id="themeLabel">Light</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-inner">
+      <p class="hero-eyebrow"><span class="dot"></span> Curated catalogue · Beta</p>
+      <h1 id="hero-title">Add to your library<br>in <span class="em">one click.</span></h1>
+      <p>Browse pre-configured movies and series with covers, ratings and metadata already filled in. Pick a title, hit add, and it lands in your tracker — your ratings, notes and progress are never touched.</p>
+      <div class="hero-stats" id="heroStats" aria-label="Catalogue size"></div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="coll-title" id="collectionsSection" hidden>
+    <div class="wrap">
+      <div class="section-head">
+        <h2 class="section-title" id="coll-title"><span class="bar" aria-hidden="true"></span> Collections</h2>
+        <span class="section-sub">Add a whole franchise at once</span>
+      </div>
+      <div class="rail" id="collectionsRail"></div>
+    </div>
+  </section>
+
+  <div class="toolbar" id="catalogue">
+    <div class="wrap">
+      <div class="cats" id="cats" role="group" aria-label="Filter by category"></div>
+      <div class="controls">
+        <label class="sr-only" for="sortSelect">Sort by</label>
+        <select class="control" id="sortSelect">
+          <option value="popularity">Most popular</option>
+          <option value="rating">Highest rated</option>
+          <option value="year_desc">Newest first</option>
+          <option value="year_asc">Oldest first</option>
+          <option value="title_asc">Title (A–Z)</option>
+        </select>
+        <label class="sr-only" for="statusSelect">Filter by status</label>
+        <select class="control" id="statusSelect"><option value="">Any status</option><option value="ongoing">Ongoing</option><option value="ended">Ended</option></select>
+        <label class="sr-only" for="providerSelect">Filter by provider</label>
+        <select class="control" id="providerSelect"><option value="">Any provider</option></select>
+        <span class="result-count" id="resultCount" role="status" aria-live="polite"></span>
+        <div class="view-toggle" role="group" aria-label="View layout">
+          <button class="view-btn" id="viewGrid" type="button" aria-label="Grid view" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button>
+          <button class="view-btn" id="viewList" type="button" aria-label="List view" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></button>
+        </div>
       </div>
     </div>
-    <div class="card-grid" id="cardGrid"></div>
-  </main>
-</div>
+  </div>
 
-<!-- DETAIL MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal-box" id="modalBox">
-    <button class="modal-close" id="modalClose"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <div class="wrap">
+    <div class="grid" id="grid" aria-busy="true" aria-label="Catalogue results">
+      <div class="loading"><span class="spinner" aria-hidden="true"></span> Loading catalogue…</div>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot-inner">
+    <a class="tmdb-attribution" href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" aria-label="The Movie Database (TMDB)">
+      <svg class="tmdb-logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 273.42 35.52" role="img" aria-label="TMDB logo"><defs><linearGradient id="tmdbGrad" y1="17.76" x2="273.42" y2="17.76" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#90cea1"/><stop offset="0.56" stop-color="#3cbec9"/><stop offset="1" stop-color="#00b3e5"/></linearGradient></defs><g><path fill="url(#tmdbGrad)" d="M191.85,35.37h63.9A17.67,17.67,0,0,0,273.42,17.7h0A17.67,17.67,0,0,0,255.75,0h-63.9A17.67,17.67,0,0,0,174.18,17.7h0A17.67,17.67,0,0,0,191.85,35.37ZM10.1,35.42h7.8V6.92H28V0H0v6.9H10.1Zm28.1,0H46V8.25h.1L55.05,35.4h6L70.3,8.25h.1V35.4h7.8V0H66.45l-8.2,23.1h-.1L50,0H38.2ZM89.14.12h11.7a33.56,33.56,0,0,1,8.08,1,18.52,18.52,0,0,1,6.67,3.08,15.09,15.09,0,0,1,4.53,5.52,18.5,18.5,0,0,1,1.67,8.25,16.91,16.91,0,0,1-1.62,7.58,16.3,16.3,0,0,1-4.38,5.5,19.24,19.24,0,0,1-6.35,3.37,24.53,24.53,0,0,1-7.55,1.15H89.14Zm7.8,28.2h4a21.66,21.66,0,0,0,5-.55A10.58,10.58,0,0,0,110,26a8.73,8.73,0,0,0,2.68-3.35,11.9,11.9,0,0,0,1-5.08,9.87,9.87,0,0,0-1-4.52,9.17,9.17,0,0,0-2.63-3.18A11.61,11.61,0,0,0,106.22,8a17.06,17.06,0,0,0-4.68-.63h-4.6ZM133.09.12h13.2a32.87,32.87,0,0,1,4.63.33,12.66,12.66,0,0,1,4.17,1.3,7.94,7.94,0,0,1,3,2.72,8.34,8.34,0,0,1,1.15,4.65,7.48,7.48,0,0,1-1.67,5,9.13,9.13,0,0,1-4.43,2.82V17a10.28,10.28,0,0,1,3.18,1,8.51,8.51,0,0,1,2.45,1.85,7.79,7.79,0,0,1,1.57,2.62,9.16,9.16,0,0,1,.55,3.2,8.52,8.52,0,0,1-1.2,4.68,9.32,9.32,0,0,1-3.1,3A13.38,13.38,0,0,1,152.32,35a22.5,22.5,0,0,1-4.73.5h-14.5Zm7.8,14.15h5.65a7.65,7.65,0,0,0,1.78-.2,4.78,4.78,0,0,0,1.57-.65,3.43,3.43,0,0,0,1.13-1.2,3.63,3.63,0,0,0,.42-1.8A3.3,3.3,0,0,0,151,8.6a3.42,3.42,0,0,0-1.23-1.13A6.07,6.07,0,0,0,148,6.9a9.9,9.9,0,0,0-1.85-.18h-5.3Zm0,14.65h7a8.27,8.27,0,0,0,1.83-.2,4.67,4.67,0,0,0,1.67-.7,3.93,3.93,0,0,0,1.23-1.3,3.8,3.8,0,0,0,.47-1.95,3.16,3.16,0,0,0-.62-2,4,4,0,0,0-1.58-1.18,8.23,8.23,0,0,0-2-.55,15.12,15.12,0,0,0-2.05-.15h-5.9Z"/></g></svg>
+    </a>
+    <p class="tmdb-notice">This product uses the TMDB API but is not endorsed or certified by TMDB. Movie and series metadata, ratings and images are provided by The Movie Database (TMDB). Marketplace metadata only &mdash; your personal library stays private on this device.</p>
+    <nav class="foot-links">
+      <a href="index.html">Tracker</a>
+      <a href="Application_Summary.html">Application Summary</a>
+      <a href="Legal.html">Legal &amp; Attribution</a>
+      <a href="SeriesTracker_Guide.html">Guide</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- Detail modal -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitleNode" hidden>
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose" type="button" aria-label="Close details">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
     <div id="modalContent"></div>
   </div>
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast">
-  <span id="toastIcon" class="toast-icon"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-  <span id="toastMsg">Added to library</span>
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="toast-icon" id="toastIcon" aria-hidden="true"></span>
+  <span id="toastMsg"></span>
 </div>
 
 <script>
-// ─────────────────────────────────────────────
-// DATA — rich sample catalogue
-// ─────────────────────────────────────────────
-const CATALOGUE = [
-  {
-    id:1,title:"Breaking Bad",originalTitle:"Breaking Bad",
-    type:"series",categories:["Popular","Ongoing"],
-    year:2008,endYear:2013,status:"ended",
-    description:"A chemistry teacher diagnosed with inoperable lung cancer teams with a former student to manufacture and sell methamphetamine to secure his family's future.",
-    cover:"https://image.tmdb.org/t/p/w400/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
-    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
-    seasons:5,episodes:62,runtime:47,imdb:9.5,tmdb:8.9,providers:["Netflix","Prime Video"],popularity:99
-  },
-  {
-    id:2,title:"Stranger Things",originalTitle:"Stranger Things",
-    type:"series",categories:["Popular","Trending","Ongoing"],
-    year:2016,endYear:null,status:"ongoing",
-    description:"When a young boy disappears, his mother, a police chief, and his friends must confront terrifying supernatural forces to get him back.",
-    cover:"https://image.tmdb.org/t/p/w400/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
-    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
-    seasons:4,episodes:42,runtime:51,imdb:8.7,tmdb:8.6,providers:["Netflix"],popularity:98
-  },
-  {
-    id:3,title:"The Wire",originalTitle:"The Wire",
-    type:"series",categories:["Popular"],
-    year:2002,endYear:2008,status:"ended",
-    description:"The lives of drug dealers and law enforcement officers in Baltimore are explored through their roles in a complex urban ecosystem.",
-    cover:"https://image.tmdb.org/t/p/w400/4lbclFySvugI51fwsyxBTOm4DqK.jpg",
-    altCovers:[],backdrop:null,
-    seasons:5,episodes:60,runtime:58,imdb:9.3,tmdb:8.7,providers:["HBO Max"],popularity:91
-  },
-  {
-    id:4,title:"Inception",originalTitle:"Inception",
-    type:"movie",categories:["Popular","Movies","Nolan"],
-    year:2010,endYear:null,status:null,
-    description:"A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea in the mind of a CEO.",
-    cover:"https://image.tmdb.org/t/p/w400/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg",
-    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg",
-    seasons:null,episodes:null,runtime:148,imdb:8.8,tmdb:8.4,providers:["Netflix","Prime Video","HBO Max"],popularity:96
-  },
-  {
-    id:5,title:"Attack on Titan",originalTitle:"Shingeki no Kyojin",
-    type:"anime",categories:["Anime","Popular"],
-    year:2013,endYear:2023,status:"ended",
-    description:"In a world where humanity lives within enormous walled cities to escape the Titans, a young boy vows to kill every Titan after they destroy his hometown.",
-    cover:"https://image.tmdb.org/t/p/w400/hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg",
-    altCovers:[],backdrop:null,
-    seasons:4,episodes:87,runtime:24,imdb:9.0,tmdb:8.8,providers:["Crunchyroll","Prime Video","Netflix"],popularity:95
-  },
-  {
-    id:6,title:"Interstellar",originalTitle:"Interstellar",
-    type:"movie",categories:["Movies","Popular","Nolan"],
-    year:2014,endYear:null,status:null,
-    description:"A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-    cover:"https://image.tmdb.org/t/p/w400/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
-    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/pbrkL804c8yAv3zBZR4QPEafpAR.jpg",
-    seasons:null,episodes:null,runtime:169,imdb:8.6,tmdb:8.5,providers:["Prime Video","Apple TV+"],popularity:94
-  },
-  {
-    id:7,title:"Demon Slayer",originalTitle:"Kimetsu no Yaiba",
-    type:"anime",categories:["Anime","Trending","Ongoing"],
-    year:2019,endYear:null,status:"ongoing",
-    description:"A young boy becomes a demon slayer after his family is slaughtered and his sister transformed into a demon.",
-    cover:"https://image.tmdb.org/t/p/w400/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg",
-    altCovers:[],backdrop:null,
-    seasons:4,episodes:55,runtime:23,imdb:8.7,tmdb:8.7,providers:["Crunchyroll","Netflix","Funimation"],popularity:93
-  },
-  {
-    id:8,title:"The Last of Us",originalTitle:"The Last of Us",
-    type:"series",categories:["Trending","Ongoing"],
-    year:2023,endYear:null,status:"ongoing",
-    description:"Twenty years after a fungal outbreak, a hardened survivor is hired to smuggle a 14-year-old girl out of a quarantine zone.",
-    cover:"https://image.tmdb.org/t/p/w400/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
-    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/uDgy6hyPd82kOHh6I95eDDe7dC2.jpg",
-    seasons:2,episodes:19,runtime:55,imdb:8.8,tmdb:8.5,providers:["HBO Max"],popularity:97
-  },
-  {
-    id:9,title:"Parasite",originalTitle:"기생충",
-    type:"movie",categories:["Movies","Popular"],
-    year:2019,endYear:null,status:null,
-    description:"Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
-    cover:"https://image.tmdb.org/t/p/w400/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:132,imdb:8.5,tmdb:8.5,providers:["Prime Video","Hulu"],popularity:90
-  },
-  {
-    id:10,title:"Death Note",originalTitle:"デスノート",
-    type:"anime",categories:["Anime","Popular"],
-    year:2006,endYear:2007,status:"ended",
-    description:"A high school student discovers a supernatural notebook that allows him to kill anyone by writing their name in it.",
-    cover:"https://image.tmdb.org/t/p/w400/g4N51oXBNBKFxcs2FRwdHSDkMqq.jpg",
-    altCovers:[],backdrop:null,
-    seasons:1,episodes:37,runtime:23,imdb:9.0,tmdb:8.7,providers:["Netflix","Crunchyroll"],popularity:92
-  },
-  {
-    id:11,title:"The Dark Knight",originalTitle:"The Dark Knight",
-    type:"movie",categories:["Movies","Popular","Nolan","DC"],
-    year:2008,endYear:null,status:null,
-    description:"Batman raises the stakes in his war on crime and must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
-    cover:"https://image.tmdb.org/t/p/w400/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:152,imdb:9.0,tmdb:8.6,providers:["HBO Max","Prime Video"],popularity:98
-  },
-  {
-    id:12,title:"Succession",originalTitle:"Succession",
-    type:"series",categories:["Popular"],
-    year:2018,endYear:2023,status:"ended",
-    description:"The Roy family controls one of the biggest media and entertainment conglomerates — but a question hangs over them all: Who will succeed Logan Roy?",
-    cover:"https://image.tmdb.org/t/p/w400/e2X8x4J1oUiSPLv5JMbNpeSqpBH.jpg",
-    altCovers:[],backdrop:null,
-    seasons:4,episodes:39,runtime:55,imdb:8.9,tmdb:8.6,providers:["HBO Max"],popularity:94
-  },
-  {
-    id:13,title:"Arcane",originalTitle:"Arcane",
-    type:"anime",categories:["Anime","Popular","Trending"],
-    year:2021,endYear:2024,status:"ended",
-    description:"Set in the universe of League of Legends, it follows the origins of two iconic champions and the power that will tear them apart.",
-    cover:"https://image.tmdb.org/t/p/w400/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
-    altCovers:[],backdrop:null,
-    seasons:2,episodes:18,runtime:40,imdb:9.0,tmdb:8.7,providers:["Netflix"],popularity:93
-  },
-  {
-    id:14,title:"The Shawshank Redemption",originalTitle:"The Shawshank Redemption",
-    type:"movie",categories:["Movies","Popular"],
-    year:1994,endYear:null,status:null,
-    description:"Two imprisoned men bond over years, finding solace and eventual redemption through acts of common decency.",
-    cover:"https://image.tmdb.org/t/p/w400/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:142,imdb:9.3,tmdb:8.7,providers:["Netflix","Prime Video"],popularity:97
-  },
-  {
-    id:15,title:"House of the Dragon",originalTitle:"House of the Dragon",
-    type:"series",categories:["Trending","Ongoing"],
-    year:2022,endYear:null,status:"ongoing",
-    description:"The story of House Targaryen — a civil war that divided one of the great houses of Westeros.",
-    cover:"https://image.tmdb.org/t/p/w400/z2yahl2uefxDCl0nogcRBstwruJ.jpg",
-    altCovers:[],backdrop:null,
-    seasons:2,episodes:18,runtime:60,imdb:8.4,tmdb:8.1,providers:["HBO Max"],popularity:92
-  },
-  {
-    id:16,title:"One Piece",originalTitle:"One Piece",
-    type:"anime",categories:["Anime","Ongoing","Popular"],
-    year:1999,endYear:null,status:"ongoing",
-    description:"Follows the adventures of Monkey D. Luffy and his pirate crew in their search for the world's ultimate treasure.",
-    cover:"https://image.tmdb.org/t/p/w400/e3NBGiAifW9Xt8xD5tpARskjccO.jpg",
-    altCovers:[],backdrop:null,
-    seasons:20,episodes:1100,runtime:24,imdb:8.9,tmdb:8.7,providers:["Crunchyroll","Netflix","Funimation"],popularity:89
-  },
-  // ── STAR WARS ──
-  {
-    id:101,title:"Star Wars: Episode IV – A New Hope",originalTitle:"Star Wars",
-    type:"movie",categories:["Movies","Star Wars","Popular"],
-    year:1977,endYear:null,status:null,
-    description:"Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee, and two droids to save the galaxy from the Empire's world-destroying battle station.",
-    cover:"https://image.tmdb.org/t/p/w400/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
-    altCovers:[],backdrop:"https://image.tmdb.org/t/p/w780/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
-    seasons:null,episodes:null,runtime:121,imdb:8.6,tmdb:8.2,providers:["Disney+"],popularity:97
-  },
-  {
-    id:102,title:"Star Wars: Episode V – The Empire Strikes Back",originalTitle:"The Empire Strikes Back",
-    type:"movie",categories:["Movies","Star Wars","Popular"],
-    year:1980,endYear:null,status:null,
-    description:"After the Rebels are overpowered by the Empire on their newly established base, Luke Skywalker begins Jedi training with Yoda.",
-    cover:"https://image.tmdb.org/t/p/w400/2l05cFWJacyIsTpsqSgH0wQXe4V.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:124,imdb:8.7,tmdb:8.4,providers:["Disney+"],popularity:96
-  },
-  {
-    id:103,title:"Star Wars: Episode VI – Return of the Jedi",originalTitle:"Return of the Jedi",
-    type:"movie",categories:["Movies","Star Wars","Popular"],
-    year:1983,endYear:null,status:null,
-    description:"After a daring mission to rescue Han Solo from Jabba the Hutt, the rebels dispatch to Endor to destroy the second Death Star.",
-    cover:"https://image.tmdb.org/t/p/w400/mDCBQNhR6R0PVFucJl1OlApr7AL.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:131,imdb:8.3,tmdb:7.9,providers:["Disney+"],popularity:93
-  },
-  {
-    id:104,title:"Star Wars: Episode I – The Phantom Menace",originalTitle:"The Phantom Menace",
-    type:"movie",categories:["Movies","Star Wars"],
-    year:1999,endYear:null,status:null,
-    description:"Two Jedi Knights escape a hostile blockade to find a young boy who may bring balance to the Force, but the long dormant Sith resurface to claim their old glory.",
-    cover:"https://image.tmdb.org/t/p/w400/6wkfovpn7Grj2gQqzFNDynAliNY.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:136,imdb:6.5,tmdb:6.5,providers:["Disney+"],popularity:80
-  },
-  {
-    id:105,title:"Rogue One: A Star Wars Story",originalTitle:"Rogue One",
-    type:"movie",categories:["Movies","Star Wars","Popular"],
-    year:2016,endYear:null,status:null,
-    description:"The daughter of an Imperial scientist joins the Rebel Alliance in a risky mission to steal the plans for the Death Star.",
-    cover:"https://image.tmdb.org/t/p/w400/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:133,imdb:7.8,tmdb:7.5,providers:["Disney+"],popularity:88
-  },
-  {
-    id:106,title:"The Mandalorian",originalTitle:"The Mandalorian",
-    type:"series",categories:["Series","Star Wars","Trending"],
-    year:2019,endYear:null,status:"ongoing",
-    description:"The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
-    cover:"https://image.tmdb.org/t/p/w400/sWgBv7LV2reonceSRqyHh3Ukz9Q.jpg",
-    altCovers:[],backdrop:null,
-    seasons:3,episodes:24,runtime:40,imdb:8.7,tmdb:8.5,providers:["Disney+"],popularity:95
-  },
-  // ── MARVEL ──
-  {
-    id:201,title:"Iron Man",originalTitle:"Iron Man",
-    type:"movie",categories:["Movies","Marvel","Popular"],
-    year:2008,endYear:null,status:null,
-    description:"After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
-    cover:"https://image.tmdb.org/t/p/w400/78lPtwv72eTNqFW9COBF8l5eB8f.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:126,imdb:7.9,tmdb:7.7,providers:["Disney+"],popularity:90
-  },
-  {
-    id:202,title:"Avengers: Endgame",originalTitle:"Avengers: Endgame",
-    type:"movie",categories:["Movies","Marvel","Popular"],
-    year:2019,endYear:null,status:null,
-    description:"After Thanos decimates half the universe, the remaining Avengers must do whatever it takes to undo the damage and restore order.",
-    cover:"https://image.tmdb.org/t/p/w400/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:181,imdb:8.4,tmdb:8.4,providers:["Disney+"],popularity:98
-  },
-  {
-    id:203,title:"Avengers: Infinity War",originalTitle:"Avengers: Infinity War",
-    type:"movie",categories:["Movies","Marvel","Popular"],
-    year:2018,endYear:null,status:null,
-    description:"The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos.",
-    cover:"https://image.tmdb.org/t/p/w400/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:149,imdb:8.4,tmdb:8.3,providers:["Disney+"],popularity:97
-  },
-  {
-    id:204,title:"Black Panther",originalTitle:"Black Panther",
-    type:"movie",categories:["Movies","Marvel","Popular"],
-    year:2018,endYear:null,status:null,
-    description:"T'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future.",
-    cover:"https://image.tmdb.org/t/p/w400/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:134,imdb:7.3,tmdb:7.4,providers:["Disney+"],popularity:91
-  },
-  {
-    id:205,title:"WandaVision",originalTitle:"WandaVision",
-    type:"series",categories:["Series","Marvel","Trending"],
-    year:2021,endYear:2021,status:"ended",
-    description:"Wanda Maximoff and Vision live an idyllic suburban life — but begin to suspect that everything is not as it seems.",
-    cover:"https://image.tmdb.org/t/p/w400/glKDfE6btIRcmq4LZqKAFLPCOQh.jpg",
-    altCovers:[],backdrop:null,
-    seasons:1,episodes:9,runtime:30,imdb:7.9,tmdb:8.0,providers:["Disney+"],popularity:88
-  },
-  // ── NOLAN ──
-  {
-    id:301,title:"The Dark Knight Rises",originalTitle:"The Dark Knight Rises",
-    type:"movie",categories:["Movies","Popular","Nolan","DC"],
-    year:2012,endYear:null,status:null,
-    description:"Eight years after the Joker's reign of anarchy, Batman must return to defend Gotham City against the cunning villain Bane.",
-    cover:"https://image.tmdb.org/t/p/w400/hr0L2aueqlP2BYUblTTjmtn41Gr.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:164,imdb:8.4,tmdb:7.9,providers:["HBO Max","Prime Video"],popularity:92
-  },
-  {
-    id:302,title:"Batman Begins",originalTitle:"Batman Begins",
-    type:"movie",categories:["Movies","Popular","Nolan","DC"],
-    year:2005,endYear:null,status:null,
-    description:"After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.",
-    cover:"https://image.tmdb.org/t/p/w400/dr6C9GBDMKBkBGjuGGpLzoqNm8d.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:140,imdb:8.2,tmdb:7.7,providers:["HBO Max","Prime Video"],popularity:88
-  },
-  {
-    id:303,title:"Memento",originalTitle:"Memento",
-    type:"movie",categories:["Movies","Popular","Nolan"],
-    year:2000,endYear:null,status:null,
-    description:"A man with short-term memory loss attempts to track down his wife's murderer using notes and tattoos.",
-    cover:"https://image.tmdb.org/t/p/w400/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:113,imdb:8.4,tmdb:8.2,providers:["Prime Video"],popularity:87
-  },
-  {
-    id:304,title:"Oppenheimer",originalTitle:"Oppenheimer",
-    type:"movie",categories:["Movies","Popular","Nolan"],
-    year:2023,endYear:null,status:null,
-    description:"The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
-    cover:"https://image.tmdb.org/t/p/w400/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:180,imdb:8.3,tmdb:8.2,providers:["Prime Video"],popularity:96
-  },
-  // ── DC ──
-  {
-    id:401,title:"Joker",originalTitle:"Joker",
-    type:"movie",categories:["Movies","Popular","DC"],
-    year:2019,endYear:null,status:null,
-    description:"A failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City.",
-    cover:"https://image.tmdb.org/t/p/w400/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:122,imdb:8.4,tmdb:8.2,providers:["HBO Max","Prime Video"],popularity:94
-  },
-  {
-    id:402,title:"Man of Steel",originalTitle:"Man of Steel",
-    type:"movie",categories:["Movies","DC"],
-    year:2013,endYear:null,status:null,
-    description:"An alien child is evacuated from his dying world and sent to Earth to live among humans. His peace is threatened when others from his homeworld invade Earth.",
-    cover:"https://image.tmdb.org/t/p/w400/oQaIVOCzHIHlhRYmE3K4Dve49iN.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:143,imdb:7.1,tmdb:6.9,providers:["HBO Max"],popularity:80
-  },
-  // ── TERMINATOR ──
-  {
-    id:501,title:"The Terminator",originalTitle:"The Terminator",
-    type:"movie",categories:["Movies","Popular","Terminator"],
-    year:1984,endYear:null,status:null,
-    description:"A human soldier is sent from 2029 to 1984 to stop a cyborg assassin from killing the woman whose unborn son will lead humanity in a war against machines.",
-    cover:"https://image.tmdb.org/t/p/w400/qvktm0BHcnmDpul4Hz01GIazWPr.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:107,imdb:8.1,tmdb:7.9,providers:["Netflix","Prime Video"],popularity:88
-  },
-  {
-    id:502,title:"Terminator 2: Judgment Day",originalTitle:"Terminator 2: Judgment Day",
-    type:"movie",categories:["Movies","Popular","Terminator"],
-    year:1991,endYear:null,status:null,
-    description:"A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son John Connor from a more advanced and powerful cyborg.",
-    cover:"https://image.tmdb.org/t/p/w400/weVXMD5QBGeQOQ6RRFBGXu8JcBr.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:137,imdb:8.6,tmdb:8.3,providers:["Netflix","Prime Video"],popularity:95
-  },
-  {
-    id:503,title:"Terminator 3: Rise of the Machines",originalTitle:"Terminator 3: Rise of the Machines",
-    type:"movie",categories:["Movies","Terminator"],
-    year:2003,endYear:null,status:null,
-    description:"A new Terminator is sent back in time to kill John Connor and his future officers, while a reprogrammed Terminator is sent to protect them.",
-    cover:"https://image.tmdb.org/t/p/w400/vbRkMtVIgDMJzSnYOXMG1fJqJZU.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:109,imdb:6.3,tmdb:6.2,providers:["Prime Video"],popularity:72
-  },
-  {
-    id:504,title:"Terminator: Dark Fate",originalTitle:"Terminator: Dark Fate",
-    type:"movie",categories:["Movies","Terminator"],
-    year:2019,endYear:null,status:null,
-    description:"An augmented human and Sarah Connor must protect a young woman from a newly modified liquid Terminator from the future.",
-    cover:"https://image.tmdb.org/t/p/w400/4Y1HMFHBqKDqnCTMNSFCHPPBFTl.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:128,imdb:6.2,tmdb:6.2,providers:["Netflix","Prime Video"],popularity:70
-  },
-  // ── DEXTER ──
-  {
-    id:601,title:"Dexter",originalTitle:"Dexter",
-    type:"series",categories:["Series","Popular","Dexter"],
-    year:2006,endYear:2013,status:"ended",
-    description:"A forensic technician who moonlights as a vigilante serial killer, targeting only those he believes to be murderers themselves.",
-    cover:"https://image.tmdb.org/t/p/w400/6k5HKeYVTAo1R1m0LIIzSBIBMnk.jpg",
-    altCovers:[],backdrop:null,
-    seasons:8,episodes:96,runtime:50,imdb:8.7,tmdb:8.3,providers:["Paramount+","Netflix"],popularity:91
-  },
-  {
-    id:602,title:"Dexter: New Blood",originalTitle:"Dexter: New Blood",
-    type:"series",categories:["Series","Trending","Dexter"],
-    year:2021,endYear:2022,status:"ended",
-    description:"Set 10 years after Dexter went missing in the eye of Hurricane Laura, he is now living under an assumed name in the small town of Iron Lake, New York.",
-    cover:"https://image.tmdb.org/t/p/w400/lvGiCRuHJByNKSKRrVkWtfGMoAT.jpg",
-    altCovers:[],backdrop:null,
-    seasons:1,episodes:10,runtime:50,imdb:7.9,tmdb:7.8,providers:["Paramount+"],popularity:83
-  },
-  {
-    id:603,title:"Dexter: Original Sin",originalTitle:"Dexter: Original Sin",
-    type:"series",categories:["Series","Dexter","Ongoing"],
-    year:2024,endYear:null,status:"ongoing",
-    description:"A prequel series following a young Dexter Morgan as he channels his dark urges and becomes the vigilante serial killer we know.",
-    cover:"https://image.tmdb.org/t/p/w400/3GrRgt6CiLIUXDkuqcgXQMDKBsc.jpg",
-    altCovers:[],backdrop:null,
-    seasons:1,episodes:10,runtime:48,imdb:7.2,tmdb:7.1,providers:["Paramount+"],popularity:75
-  },
-  // ── MORTAL KOMBAT ──
-  {
-    id:701,title:"Mortal Kombat",originalTitle:"Mortal Kombat",
-    type:"movie",categories:["Movies","Popular","Mortal Kombat"],
-    year:1995,endYear:null,status:null,
-    description:"Three martial artists are chosen to defend Earth against the evil sorcerer Shang Tsung and his deadly warriors in a mystical tournament.",
-    cover:"https://image.tmdb.org/t/p/w400/5jFZnTYhUHSUlJJQaWOkGUE9zP1.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:101,imdb:6.0,tmdb:6.1,providers:["HBO Max"],popularity:74
-  },
-  {
-    id:702,title:"Mortal Kombat",originalTitle:"Mortal Kombat",
-    type:"movie",categories:["Movies","Trending","Mortal Kombat"],
-    year:2021,endYear:null,status:null,
-    description:"MMA fighter Cole Young seeks out Earth's greatest champions to stand against the enemies of Outworld in a high stakes battle for the universe.",
-    cover:"https://image.tmdb.org/t/p/w400/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:110,imdb:6.0,tmdb:7.0,providers:["HBO Max","Prime Video"],popularity:78
-  },
-  {
-    id:703,title:"Mortal Kombat Legends: Scorpion's Revenge",originalTitle:"Mortal Kombat Legends: Scorpion's Revenge",
-    type:"movie",categories:["Movies","Mortal Kombat"],
-    year:2020,endYear:null,status:null,
-    description:"After the vicious slaughter of his family, ninja Hanzo Hasashi is resurrected as the spectre Scorpion to seek revenge on the Outworld warrior who killed them.",
-    cover:"https://image.tmdb.org/t/p/w400/5BHuvQ7p1ChdFl8GGGIKMszqzAV.jpg",
-    altCovers:[],backdrop:null,
-    seasons:null,episodes:null,runtime:80,imdb:7.2,tmdb:7.3,providers:["HBO Max"],popularity:71
-  },
-];
-
-// ─────────────────────────────────────────────
-// COLLECTIONS
-// ─────────────────────────────────────────────
-const COLLECTIONS = [
-  {
-    id: "star-wars",
-    name: "Star Wars",
-    description: "A galaxy far, far away — the complete Skywalker Saga and beyond",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
-    color: "#ffe81f",
-    colorDark: "#b8a800",
-    backdrop: "https://image.tmdb.org/t/p/w780/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
-    itemIds: [101,102,103,104,105,106]
-  },
-  {
-    id: "marvel",
-    name: "Marvel Cinematic Universe",
-    description: "Earth's mightiest heroes — the essential MCU watchlist",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/></svg>`,
-    color: "#e23636",
-    colorDark: "#b02828",
-    backdrop: "https://wallpapers.com/images/featured/marvel-movie-km5otxtmsqb0ijdb.jpg",
-    itemIds: [201,202,203,204,205]
-  },
-  {
-    id: "nolan",
-    name: "Christopher Nolan",
-    description: "Mind-bending masterpieces from the master of practical filmmaking",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>`,
-    color: "#4a90d9",
-    colorDark: "#2d6aa8",
-    backdrop: "https://www.heldenderfreizeit.com/wp-content/uploads/2020/07/Christopher-Nolan-Titelbild-1200x800_c.jpg",
-    itemIds: [4,6,11,301,302,303,304]
-  },
-  {
-    id: "dc",
-    name: "DC Universe",
-    description: "The iconic heroes and villains of the DC Extended Universe",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z"/><path d="M8.5 8.5c0 0 1-2 3.5-2s3.5 2 3.5 2"/><path d="M7 14c1 2 2.5 3 5 3s4-1 5-3"/></svg>`,
-    color: "#1565c0",
-    colorDark: "#0d47a1",
-    backdrop: "https://media.thepopverse.com/media/justice-league-dceu-vycc1wk1ra1f3fevudmh4bo2w2.jpg",
-    itemIds: [11,301,302,401,402]
-  },
-  {
-    id: "terminator",
-    name: "Terminator",
-    description: "I'll be back — the complete Terminator franchise",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/><line x1="9" y1="7" x2="9.01" y2="7"/><line x1="15" y1="7" x2="15.01" y2="7"/></svg>`,
-    color: "#e53935",
-    colorDark: "#b71c1c",
-    backdrop: "https://www.galaxus.de/Files/7/6/4/6/5/2/8/9/terminator_skeleton_2_1.jpg",
-    itemIds: [501,502,503,504]
-  },
-  {
-    id: "dexter",
-    name: "Dexter Universe",
-    description: "Today's the day I kill you, Dexter Morgan — the full Dexter saga",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
-    color: "#c62828",
-    colorDark: "#8e0000",
-    backdrop: "https://static.beebom.com/wp-content/uploads/2025/10/Dexter-2.jpg?w=1168&quality=75",
-    itemIds: [601,602,603]
-  },
-  {
-    id: "mortal-kombat",
-    name: "Mortal Kombat",
-    description: "FINISH HIM — every Mortal Kombat film and animation",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14.5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.83 8 21v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z"/></svg>`,
-    color: "#ff6f00",
-    colorDark: "#e65100",
-    backdrop: "https://cdn.kinocheck.com/i/8ophv13swv.jpg",
-    itemIds: [701,702,703]
-  },
-];
-
-// ─────────────────────────────────────────────
-// COLLECTIONS RENDER
-// ─────────────────────────────────────────────
-function collectionAddedCount(coll){
-  return coll.itemIds.filter(id=>addedIds.has(id)).length;
+"use strict";
+(function(){
+// ── Tracker bridge (reads the active profile's data) ───────────
+function trackerKey(){
+  var u=localStorage.getItem('seriesTrackerCurrentUser');
+  return u ? 'seriesTrackerData_'+u : 'seriesTrackerData';
 }
-function allCollectionAdded(coll){
-  return coll.itemIds.every(id=>addedIds.has(id));
-}
+function loadTracker(){ try{var r=localStorage.getItem(trackerKey());return r?JSON.parse(r):[];}catch(e){return[];} }
+function saveTracker(d){ localStorage.setItem(trackerKey(),JSON.stringify(d)); }
 
-function buildCollections(){
-  const grid = document.getElementById('collectionsGrid');
-  if(!grid) return;
-  grid.innerHTML = COLLECTIONS.map(coll=>{
-    const added = collectionAddedCount(coll);
-    const total = coll.itemIds.length;
-    const allAdded = added===total;
-    const pct = Math.round((added/total)*100);
-    const bgStyle = coll.backdrop ? "background-image:url('" + coll.backdrop + "')" : "background:linear-gradient(135deg," + coll.color + "33," + coll.colorDark + "22)";
-    return `<div class="coll-card" onclick="openCollectionModal('${coll.id}')">
-      <div class="coll-card-bg" style="${bgStyle}"></div>
-      <div class="coll-card-overlay"></div>
-      <div class="coll-card-body">
-        <span class="coll-card-icon" style="color:${coll.color}">${coll.icon}</span>
-        <div class="coll-card-name">${coll.name}</div>
-        <div class="coll-card-desc">${coll.description||''}</div>
-        <div class="coll-card-meta">
-          <span class="coll-card-count">${total} titles</span>
-          <button class="coll-add-btn ${allAdded?'all-added':''}" data-coll="${coll.id}"
-            onclick="event.stopPropagation();toggleCollection('${coll.id}')">
-            ${allAdded?'✓ All Added':'＋ Add All'}
-          </button>
-        </div>
-        <div class="coll-progress">
-          <div class="coll-progress-bar" style="width:${pct}%;background:${coll.color}"></div>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
-}
+// ── State ───────────────────────────────────────────────────────
+var CATALOGUE=[], COLLECTIONS=[];
+var addedIds=new Set();
+try{ addedIds=new Set(JSON.parse(localStorage.getItem('mp_added')||'[]')); }catch(e){}
+var state={category:'All',query:'',sort:'popularity',status:'',provider:'',list:false};
 
-function toggleCollection(collId){
-  const coll = COLLECTIONS.find(c=>c.id===collId);
-  if(!coll) return;
-  const allAdded = allCollectionAdded(coll);
-  if(allAdded){
-    coll.itemIds.forEach(id=>{
-      const item = CATALOGUE.find(x=>x.id===id);
-      if(item){ addedIds.delete(id); removeFromTracker(item.title); }
-    });
-    showToast(`Removed "${coll.name}" from library`,'#e50914');
-  } else {
-    coll.itemIds.forEach(id=>{
-      if(!addedIds.has(id)){
-        const item = CATALOGUE.find(x=>x.id===id);
-        if(item){ addedIds.add(id); addToTracker(item); }
-      }
-    });
-    showToast(`Added all of "${coll.name}" to library`,'#27ae60');
+// ── Safe DOM helpers (prevent HTML injection from data) ─────────
+function el(tag,attrs,kids){
+  var n=document.createElement(tag);
+  if(attrs)for(var k in attrs){
+    if(k==='class')n.className=attrs[k];
+    else if(k==='text')n.textContent=attrs[k];
+    else if(k==='html')n.innerHTML=attrs[k]; // only used with our own trusted SVG strings
+    else if(k.indexOf('on')===0&&typeof attrs[k]==='function')n.addEventListener(k.slice(2),attrs[k]);
+    else if(attrs[k]!=null)n.setAttribute(k,attrs[k]);
   }
-  localStorage.setItem('mp_added',JSON.stringify([...addedIds]));
-  buildCollections();
-  renderGrid();
-  const backdrop = document.getElementById('collModalBackdrop');
-  if(backdrop && backdrop.classList.contains('open')){
-    const openColl = backdrop.dataset.collId;
-    if(openColl) renderCollectionModalContent(openColl);
-  }
+  if(kids)(Array.isArray(kids)?kids:[kids]).forEach(function(c){ if(c!=null)n.appendChild(typeof c==='string'?document.createTextNode(c):c); });
+  return n;
+}
+function ico(path,size,extra){
+  var s='<svg width="'+(size||16)+'" height="'+(size||16)+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+path+'</svg>';
+  var span=document.createElement('span'); span.style.display='inline-grid'; span.style.placeItems='center'; if(extra)span.style.cssText+=extra; span.innerHTML=s; return span;
+}
+function safeUrl(u){ // allow only http(s) image URLs
+  if(typeof u!=='string')return '';
+  return /^https?:\/\//i.test(u.trim()) ? u.trim() : '';
 }
 
-function openCollectionModal(collId){
-  const backdrop = document.getElementById('collModalBackdrop');
-  backdrop.dataset.collId = collId;
-  renderCollectionModalContent(collId);
-  backdrop.classList.add('open');
-}
-
-function renderCollectionModalContent(collId){
-  const coll = COLLECTIONS.find(c=>c.id===collId);
-  if(!coll) return;
-  const allAdded = allCollectionAdded(coll);
-  const items = coll.itemIds.map(id=>CATALOGUE.find(x=>x.id===id)).filter(Boolean);
-  document.getElementById('collModalContent').innerHTML = `
-    <div class="coll-modal-head">
-      <span class="coll-modal-emoji" style="color:${coll.color}">${coll.icon}</span>
-      <div class="coll-modal-info">
-        <div class="coll-modal-name">${coll.name}</div>
-        <div class="coll-modal-desc">${coll.description||''}</div>
-      </div>
-      <button class="coll-modal-add-all ${allAdded?'all-added':''}"
-        onclick="toggleCollection('${coll.id}')">
-        ${allAdded?'✓ All Added':'＋ Add All'}
-      </button>
-      <button class="coll-modal-close-btn" onclick="closeCollectionModal()" style="margin-left:8px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-    </div>
-    <div class="coll-modal-items">
-      ${items.map(item=>{
-        const added=addedIds.has(item.id);
-        return `<div class="coll-modal-item" onclick="openModal(${item.id});closeCollectionModal()">
-          <img class="coll-modal-item-img" src="${item.cover||''}" loading="lazy" onerror="this.style.display='none'">
-          <div class="coll-modal-item-info">
-            <div class="coll-modal-item-title">${item.title}</div>
-            <div class="coll-modal-item-meta">${item.year}${item.runtime?' · '+item.runtime+'min':''} · <svg width="9" height="9" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1" style="vertical-align:middle"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb||'—'}</div>
-          </div>
-          <button class="coll-modal-item-btn ${added?'added':''}"
-            onclick="event.stopPropagation();toggleAdd(${item.id});renderCollectionModalContent('${coll.id}')">
-            ${added?'✓':'＋'}
-          </button>
-        </div>`;
-      }).join('')}
-    </div>
-  `;
-}
-
-function closeCollectionModal(){
-  document.getElementById('collModalBackdrop').classList.remove('open');
-}
-
-let addedIds = new Set(JSON.parse(localStorage.getItem('mp_added')||'[]'));
-
-// On load: mark catalogue items whose title already exists in the tracker
-(function syncAddedFromTracker(){
-  try {
-    const data = loadTrackerData();
-    const allTitles = new Set(data.map(x=>x.title));
-    CATALOGUE.forEach(item => { if(allTitles.has(item.title)) addedIds.add(item.id); });
-    localStorage.setItem('mp_added', JSON.stringify([...addedIds]));
-  } catch(e){}
-})();
-let activeCategory = 'All';
-let searchQuery = '';
-let sortMode = 'popularity';
-let filterStatus = '';
-let filterProvider = '';
-let isListView = false;
-
-// ─────────────────────────────────────────────
-// CATEGORIES
-// ─────────────────────────────────────────────
-const CATEGORIES = ['All','Trending','Popular','Movies','Series','Anime'];
-
-function buildCatList(){
-  const el = document.getElementById('catList');
-  el.innerHTML = CATEGORIES.map(cat=>{
-    const count = cat==='All' ? CATALOGUE.length :
-      CATALOGUE.filter(x=>x.categories.includes(cat)||(cat==='Series'&&x.type==='series')).length;
-    return `<button class="cat-btn ${cat===activeCategory?'active':''}"
-      onclick="setCategory('${cat}')">${cat}<span class="cat-count">${count}</span></button>`;
-  }).join('');
-}
-
-function setCategory(cat){
-  activeCategory=cat;
-  buildCollections();
-  buildCatList();
-  renderGrid();
-}
-
-// ─────────────────────────────────────────────
-// FILTER / SORT
-// ─────────────────────────────────────────────
-function getFiltered(){
-  let items = [...CATALOGUE];
-
-  // category
-  if(activeCategory!=='All'){
-    if(activeCategory==='Series') items=items.filter(x=>x.type==='series');
-    else items=items.filter(x=>x.categories.includes(activeCategory));
-  }
-
-  // search
-  if(searchQuery){
-    const q=searchQuery.toLowerCase();
-    items=items.filter(x=>
-      x.title.toLowerCase().includes(q)||
-      (x.originalTitle&&x.originalTitle.toLowerCase().includes(q))
-    );
-  }
-
-  // status
-  if(filterStatus) items=items.filter(x=>x.status===filterStatus);
-
-  // provider
-  if(filterProvider) items=items.filter(x=>x.providers.includes(filterProvider));
-
-  // sort
-  if(sortMode==='rating') items.sort((a,b)=>b.imdb-a.imdb);
-  else if(sortMode==='year_desc') items.sort((a,b)=>b.year-a.year);
-  else if(sortMode==='year_asc') items.sort((a,b)=>a.year-b.year);
-  else if(sortMode==='title_asc') items.sort((a,b)=>a.title.localeCompare(b.title));
-  else items.sort((a,b)=>b.popularity-a.popularity);
-
-  return items;
-}
-
-// ─────────────────────────────────────────────
-// RENDER
-// ─────────────────────────────────────────────
-function typeBadge(type){
-  const map={series:'badge-series',movie:'badge-movie',anime:'badge-anime'};
-  return `<span class="card-type-badge ${map[type]||''}">${type}</span>`;
-}
-
-function ribbon(item){
-  if(!item.status) return '';
-  if(item.status==='ongoing') return `<span class="card-ribbon ribbon-ongoing">Ongoing</span>`;
-  if(item.status==='ended') return `<span class="card-ribbon ribbon-ended">Ended</span>`;
-  return '';
-}
-
-function renderCard(item){
-  const added=addedIds.has(item.id);
-  const img=item.cover
-    ? `<img class="card-poster" src="${item.cover}" alt="${item.title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`
-    : '';
-  const imgFallback=`<div class="card-poster-placeholder" style="${item.cover?'display:none':''}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg></div>`;
-
-  if(isListView){
-    return `<div class="m-card" data-id="${item.id}" onclick="openModal(${item.id})">
-      ${img}${imgFallback}
-      <div class="card-body">
-        <div class="card-title">${item.title}</div>
-        <div class="card-meta">
-          ${typeBadge(item.type)}
-          <span class="card-year">${item.year}</span>
-          <span class="card-rating"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb}</span>
-        </div>
-        <button class="card-add-btn ${added?'added':''}"
-          onclick="event.stopPropagation();toggleAdd(${item.id})">
-          ${added?'✓ Added':'＋ Add'}
-        </button>
-      </div>
-      ${ribbon(item)}
-    </div>`;
-  }
-
-  return `<div class="m-card" data-id="${item.id}" onclick="openModal(${item.id})">
-    ${img}${imgFallback}
-    ${ribbon(item)}
-    <div class="card-body">
-      <div class="card-title">${item.title}</div>
-      <div class="card-meta">
-        ${typeBadge(item.type)}
-        <span class="card-year">${item.year}</span>
-        <span class="card-rating"><svg width="10" height="10" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb}</span>
-      </div>
-      <button class="card-add-btn ${added?'added':''}"
-        onclick="event.stopPropagation();toggleAdd(${item.id})">
-        ${added?'✓ Added':'＋ Add'}
-      </button>
-    </div>
-  </div>`;
-}
-function renderGrid(){
-  const items=getFiltered();
-  const grid=document.getElementById('cardGrid');
-  document.getElementById('resultCount').textContent=
-    `${items.length} result${items.length!==1?'s':''}`;
-
-  if(!items.length){
-    grid.innerHTML=`<div class="empty-state" style="grid-column:1/-1">
-      <div class="empty-state-icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg></div>
-      <div class="empty-state-title">No results found</div>
-      <div class="empty-state-desc">Try a different search or category.</div>
-    </div>`;
-    return;
-  }
-  grid.innerHTML=items.map(renderCard).join('');
-}
-
-function updateStats(){
-  document.getElementById('statTotal').textContent=CATALOGUE.length;
-  document.getElementById('statSeries').textContent=CATALOGUE.filter(x=>x.type==='series').length;
-  document.getElementById('statMovies').textContent=CATALOGUE.filter(x=>x.type==='movie').length;
-  document.getElementById('statAnime').textContent=CATALOGUE.filter(x=>x.type==='anime').length;
-}
-
-// ─────────────────────────────────────────────
-// ADD / REMOVE + TRACKER SYNC
-// ─────────────────────────────────────────────
-const TRACKER_KEY = localStorage.getItem('seriesTrackerCurrentUser')
-  ? `seriesTrackerData_${localStorage.getItem('seriesTrackerCurrentUser')}`
-  : 'seriesTrackerData';
-function loadTrackerData(){
-  try{const raw=localStorage.getItem(TRACKER_KEY);return raw?JSON.parse(raw):[];}catch(e){return[];}
-}
-function saveTrackerData(data){localStorage.setItem(TRACKER_KEY,JSON.stringify(data));}
-function catalogueToTrackerItem(item){
-  const today=new Date().toISOString().split('T')[0];const isMovie=item.type==='movie';
-  const all=loadTrackerData();
-  const maxId=all.reduce((m,x)=>Math.max(m,x.id||0),1000);
-  return{id:maxId+1,title:item.title,image:item.cover||'',genre:'',status:'want',season:1,episode:1,time:0,
+// ── Mapping marketplace entry -> tracker item ───────────────────
+function toTrackerItem(item){
+  var today=new Date().toISOString().split('T')[0];
+  var isMovie=item.type==='movie';
+  var all=loadTracker();
+  var maxId=all.reduce(function(m,x){return Math.max(m,x.id||0);},1000);
+  return {id:maxId+1,title:item.title,image:safeUrl(item.cover),genre:'',status:'want',season:1,episode:1,time:0,
     totalSeasons:item.seasons||1,totalEpisodes:item.episodes||(isMovie?1:0),
     imdbRating:item.imdb?String(item.imdb).replace('.',','):'',language:'English',
     inQueue:false,queueOrder:999,contentType:isMovie?'movie':'series',
-    streamingService:item.providers&&item.providers.length?item.providers[0].toLowerCase().replace(/ /g,''):'',
-    userRating:0,tags:item.categories?item.categories.filter(c=>['Popular','Trending'].includes(c)):[],
+    streamingService:(item.providers&&item.providers.length)?String(item.providers[0]).toLowerCase().replace(/ /g,''):'',
+    userRating:0,tags:Array.isArray(item.categories)?item.categories.filter(function(c){return c==='Popular'||c==='Trending';}):[],
     notes:item.description||'',startedDate:today,completedDate:null,lastWatchedDate:today,actors:[],watchHistory:[]};
 }
-function isInTracker(title){return loadTrackerData().some(x=>x.title===title);}
-function getTrackerStatus(title){
-  const entry=loadTrackerData().find(x=>x.title===title);
-  if(!entry) return null;
-  if(entry.status==='watching') return 'Watching';
-  if(entry.status==='completed') return 'Completed';
-  return 'Want to Watch';
-}
-function removeFromTracker(title){saveTrackerData(loadTrackerData().filter(x=>x.title!==title));}
-function addToTracker(item){if(isInTracker(item.title))return;const d=loadTrackerData();d.push(catalogueToTrackerItem(item));saveTrackerData(d);}
+function inTracker(title){return loadTracker().some(function(x){return x.title===title;});}
+function trackerStatus(title){var e=loadTracker().find(function(x){return x.title===title;});if(!e)return null;return e.status==='watching'?'Watching':e.status==='completed'?'Completed':'Want to Watch';}
+function addToTracker(item){if(inTracker(item.title))return;var d=loadTracker();d.push(toTrackerItem(item));saveTracker(d);}
+function removeFromTracker(title){saveTracker(loadTracker().filter(function(x){return x.title!==title;}));}
+function persistAdded(){localStorage.setItem('mp_added',JSON.stringify([].slice.call(addedIds)));}
 
-function toggleAdd(id){
-  const item=CATALOGUE.find(x=>x.id===id);
-  if(!item) return;
-  // Check if already in tracker (from another session/device)
-  const alreadyInTracker=isInTracker(item.title);
-  if(addedIds.has(id)){
-    addedIds.delete(id);
-    removeFromTracker(item.title);
-    showToast(`Removed "${item.title}" from library`, 'remove');
-  } else if(alreadyInTracker && !addedIds.has(id)){
-    // Already in tracker but not marked in this session — just block
-    const status=getTrackerStatus(item.title);
-    showToast(`"${item.title}" is already in your library (${status})`, 'blocked');
-    addedIds.add(id);
-    localStorage.setItem('mp_added',JSON.stringify([...addedIds]));
-    updateButtons(id);
-    buildCollections();
-    return;
-  } else {
-    addedIds.add(id);
-    addToTracker(item);
-    showToast(`Added "${item.title}" to your library`, 'success');
-  }
-  localStorage.setItem('mp_added',JSON.stringify([...addedIds]));
-  updateButtons(id);
-  buildCollections();
-}
-
-function updateButtons(id){
-  document.querySelectorAll(`[data-id="${id}"] .card-add-btn`).forEach(btn=>{
-    btn.innerHTML=addedIds.has(id)
-      ? `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Added`
-      : `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add`;
-    btn.classList.toggle('added',addedIds.has(id));
+// ── Derive categories + providers from data (future-friendly) ───
+function deriveFilters(){
+  var cats=new Set(['All']); var provs=new Set();
+  CATALOGUE.forEach(function(x){
+    (x.categories||[]).forEach(function(c){cats.add(c);});
+    (x.providers||[]).forEach(function(p){provs.add(p);});
   });
-  const modalBtn=document.querySelector('.modal-add-btn');
-  if(modalBtn&&parseInt(modalBtn.dataset.id)===id){
-    modalBtn.innerHTML=addedIds.has(id)
-      ? `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg> Added to Library`
-      : `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add to Library`;
-    modalBtn.classList.toggle('added',addedIds.has(id));
-  }
+  // Prefer a sensible lead order, then any extras alphabetically
+  var lead=['All','Trending','Popular','Movies','Series','Anime'];
+  var ordered=lead.filter(function(c){return cats.has(c);})
+    .concat([].slice.call(cats).filter(function(c){return lead.indexOf(c)<0;}).sort());
+  return {categories:ordered,providers:[].slice.call(provs).sort()};
 }
 
-// ─────────────────────────────────────────────
-// MODAL
-// ─────────────────────────────────────────────
+// ── Filtering / sorting ─────────────────────────────────────────
+function getFiltered(){
+  var items=CATALOGUE.slice();
+  if(state.category!=='All'){
+    if(state.category==='Series')items=items.filter(function(x){return x.type==='series';});
+    else if(state.category==='Movies')items=items.filter(function(x){return x.type==='movie'||(x.categories||[]).indexOf('Movies')>=0;});
+    else items=items.filter(function(x){return (x.categories||[]).indexOf(state.category)>=0;});
+  }
+  if(state.query){var q=state.query.toLowerCase();items=items.filter(function(x){
+    return x.title.toLowerCase().indexOf(q)>=0 || (x.originalTitle&&x.originalTitle.toLowerCase().indexOf(q)>=0);
+  });}
+  if(state.status)items=items.filter(function(x){return x.status===state.status;});
+  if(state.provider)items=items.filter(function(x){return (x.providers||[]).indexOf(state.provider)>=0;});
+  var s=state.sort;
+  items.sort(function(a,b){
+    if(s==='rating')return (b.imdb||0)-(a.imdb||0);
+    if(s==='year_desc')return (b.year||0)-(a.year||0);
+    if(s==='year_asc')return (a.year||0)-(b.year||0);
+    if(s==='title_asc')return a.title.localeCompare(b.title);
+    return (b.popularity||0)-(a.popularity||0);
+  });
+  return items;
+}
+
+// ── Render: hero stats ──────────────────────────────────────────
+function renderHero(){
+  var host=document.getElementById('heroStats'); host.innerHTML='';
+  var counts=[
+    {n:CATALOGUE.length,l:'Titles'},
+    {n:CATALOGUE.filter(function(x){return x.type==='series';}).length,l:'Series'},
+    {n:CATALOGUE.filter(function(x){return x.type==='movie';}).length,l:'Movies'},
+    {n:CATALOGUE.filter(function(x){return x.type==='anime';}).length,l:'Anime'}
+  ];
+  counts.forEach(function(c){
+    host.appendChild(el('div',{class:'hstat'},[
+      el('span',{class:'hstat-num',text:String(c.n)}),
+      el('span',{class:'hstat-label',text:c.l})
+    ]));
+  });
+}
+
+// ── Render: category tabs ───────────────────────────────────────
+function renderCats(){
+  var host=document.getElementById('cats'); host.innerHTML='';
+  var d=deriveFilters();
+  d.categories.forEach(function(cat){
+    var count=cat==='All'?CATALOGUE.length:CATALOGUE.filter(function(x){
+      return (x.categories||[]).indexOf(cat)>=0 || (cat==='Series'&&x.type==='series') || (cat==='Movies'&&x.type==='movie');
+    }).length;
+    var b=el('button',{class:'cat',type:'button','aria-pressed':String(cat===state.category),
+      onclick:function(){state.category=cat;renderCats();renderGrid();}},[
+      document.createTextNode(cat), el('span',{class:'cat-count',text:String(count)})
+    ]);
+    host.appendChild(b);
+  });
+  // provider select (built once, refreshed here is fine)
+  var ps=document.getElementById('providerSelect');
+  if(ps.options.length<=1){ d.providers.forEach(function(p){ps.appendChild(el('option',{value:p,text:p}));}); }
+}
+
+// ── Render: a single card ───────────────────────────────────────
+function typeBadge(t){return el('span',{class:'tbadge '+t,text:t});}
+function ratingEl(v){
+  if(v==null)return null;
+  var s=el('span',{class:'card-rating'});
+  s.appendChild(ico('<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5c518" stroke="#f5c518"/>',11));
+  s.appendChild(document.createTextNode(' '+v));
+  return s;
+}
+function posterEl(item){
+  var url=safeUrl(item.cover);
+  var wrap=el('div',{class:'poster-wrap'});
+  if(item.status==='ongoing')wrap.appendChild(el('span',{class:'ribbon ongoing',text:'Ongoing'}));
+  else if(item.status==='ended')wrap.appendChild(el('span',{class:'ribbon ended',text:'Ended'}));
+  if(url){
+    var img=el('img',{class:'poster',src:url,alt:'',loading:'lazy'});
+    img.onerror=function(){img.replaceWith(posterPh());};
+    wrap.appendChild(img);
+  } else { wrap.appendChild(posterPh()); }
+  return wrap;
+}
+function posterPh(){var d=el('div',{class:'poster-ph'});d.appendChild(ico('<rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/>',28));return d;}
+function addBtnIcon(added){
+  return added
+    ? ico('<polyline points="20 6 9 17 4 12"/>',16)
+    : ico('<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>',16);
+}
+function renderCard(item){
+  var added=addedIds.has(item.id);
+  var card=el('button',{class:'card',type:'button','data-id':item.id,
+    'aria-label':'View details for '+item.title,
+    onclick:function(){openModal(item.id);}});
+  var pw=posterEl(item);
+  var qa=el('button',{class:'quick-add'+(added?' added':''),type:'button',
+    'aria-label':(added?'Remove ':'Add ')+item.title+(added?' from':' to')+' your library',
+    'aria-pressed':String(added),
+    onclick:function(e){e.stopPropagation();toggleAdd(item.id);}});
+  qa.appendChild(addBtnIcon(added));
+  pw.appendChild(qa);
+  card.appendChild(pw);
+  var meta=el('div',{class:'card-meta'},[typeBadge(item.type)]);
+  if(item.year)meta.appendChild(el('span',{text:String(item.year)}));
+  var r=ratingEl(item.imdb); if(r)meta.appendChild(r);
+  card.appendChild(el('div',{class:'card-body'},[
+    el('div',{class:'card-title',text:item.title}),
+    meta
+  ]));
+  return card;
+}
+
+function renderGrid(){
+  var grid=document.getElementById('grid');
+  var items=getFiltered();
+  var rc=document.getElementById('resultCount');
+  rc.textContent=items.length+(items.length===1?' result':' results');
+  grid.setAttribute('aria-busy','false');
+  grid.innerHTML='';
+  if(!items.length){
+    var empty=el('div',{class:'empty'});
+    empty.appendChild(ico('<circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>',40));
+    empty.appendChild(el('div',{class:'empty-title',text:'No titles match'}));
+    empty.appendChild(el('div',{text:'Try a different search term or category.'}));
+    empty.appendChild(el('button',{class:'empty-btn',type:'button',text:'Clear filters',onclick:function(){
+      state={category:'All',query:'',sort:'popularity',status:'',provider:'',list:state.list};
+      document.getElementById('search').value='';
+      document.getElementById('sortSelect').value='popularity';
+      document.getElementById('statusSelect').value='';
+      document.getElementById('providerSelect').value='';
+      renderCats();renderGrid();
+    }}));
+    grid.appendChild(empty);
+    return;
+  }
+  var frag=document.createDocumentFragment();
+  items.forEach(function(it){frag.appendChild(renderCard(it));});
+  grid.appendChild(frag);
+}
+
+// ── Collections ─────────────────────────────────────────────────
+function sanitizeSvg(svg){
+  if(typeof svg!=='string'||svg.indexOf('<svg')!==0)return '';
+  // Reject anything with scripts or inline event handlers / dangerous URLs
+  if(/<script|on\w+\s*=|javascript:|<foreignObject|<!ENTITY|<\?/i.test(svg))return '';
+  return svg;
+}
+function setColIcon(span,coll){
+  var safe=sanitizeSvg(coll.icon);
+  if(safe)span.innerHTML=safe;
+}
+function collAdded(coll){return coll.itemIds.filter(function(i){return addedIds.has(i);}).length;}
+function renderCollections(){
+  if(!COLLECTIONS.length){document.getElementById('collectionsSection').hidden=true;return;}
+  document.getElementById('collectionsSection').hidden=false;
+  var rail=document.getElementById('collectionsRail'); rail.innerHTML='';
+  COLLECTIONS.forEach(function(coll){
+    var total=coll.itemIds.length, done=collAdded(coll), all=done===total&&total>0;
+    var pct=total?Math.round(done/total*100):0;
+    var card=el('button',{class:'coll',type:'button','aria-label':'Open collection '+coll.name,
+      onclick:function(){openCollection(coll.id);}});
+    var bg=el('div',{class:'coll-bg'});
+    var bgUrl=safeUrl(coll.backdrop); if(bgUrl)bg.style.backgroundImage="url('"+encodeURI(bgUrl)+"')";
+    card.appendChild(bg);
+    card.appendChild(el('div',{class:'coll-shade'}));
+    var iconSpan=el('span',{class:'coll-icon'}); setColIcon(iconSpan,coll);
+    if(coll.color)iconSpan.style.color=coll.color;
+    var addBtn=el('button',{class:'coll-add'+(all?' all-added':''),type:'button',
+      'aria-label':(all?'Remove all from ':'Add all of ')+coll.name,
+      onclick:function(e){e.stopPropagation();toggleCollection(coll.id);}},[all?'✓ All added':'+ Add all']);
+    var prog=el('div',{class:'coll-prog'},[el('div',{class:'coll-prog-bar'})]);
+    prog.firstChild.style.width=pct+'%'; if(coll.color)prog.firstChild.style.background=coll.color;
+    card.appendChild(el('div',{class:'coll-body'},[
+      iconSpan,
+      el('div',{class:'coll-name',text:coll.name}),
+      el('div',{class:'coll-desc',text:coll.description||''}),
+      el('div',{class:'coll-foot'},[el('span',{class:'coll-count',text:total+' titles'}),addBtn])
+    ]));
+    card.appendChild(prog);
+    rail.appendChild(card);
+  });
+}
+function toggleCollection(id){
+  var coll=COLLECTIONS.find(function(c){return c.id===id;}); if(!coll)return;
+  var all=coll.itemIds.every(function(i){return addedIds.has(i);});
+  coll.itemIds.forEach(function(i){
+    var item=CATALOGUE.find(function(x){return x.id===i;}); if(!item)return;
+    if(all){addedIds.delete(i);removeFromTracker(item.title);}
+    else if(!addedIds.has(i)){addedIds.add(i);addToTracker(item);}
+  });
+  persistAdded();
+  toast(all?('Removed “'+coll.name+'” from library'):('Added all of “'+coll.name+'” to library'),all?'remove':'success');
+  renderCollections();renderGrid();
+}
+
+// ── Add / remove a single title ─────────────────────────────────
+function toggleAdd(id){
+  var item=CATALOGUE.find(function(x){return x.id===id;}); if(!item)return;
+  if(addedIds.has(id)){
+    addedIds.delete(id);removeFromTracker(item.title);persistAdded();
+    toast('Removed “'+item.title+'” from library','remove');
+  } else if(inTracker(item.title)){
+    addedIds.add(id);persistAdded();
+    toast('“'+item.title+'” is already in your library ('+trackerStatus(item.title)+')','blocked');
+  } else {
+    addedIds.add(id);addToTracker(item);persistAdded();
+    toast('Added “'+item.title+'” to library','success');
+  }
+  // refresh affected UI
+  renderGrid();renderCollections();
+  if(modalOpenId===id)renderModalContent(id);
+}
+
+// ── Modal (accessible dialog) ───────────────────────────────────
+var modalOpenId=null, lastFocused=null;
+function metaCell(l,v){return el('div',{class:'meta-cell'},[el('div',{class:'l',text:l}),el('div',{class:'v',text:String(v)})]);}
+function renderModalContent(id){
+  var item=CATALOGUE.find(function(x){return x.id===id;}); if(!item)return;
+  var added=addedIds.has(id);
+  var c=document.getElementById('modalContent'); c.innerHTML='';
+
+  var hero=el('div',{class:'modal-hero'});
+  var bd=safeUrl(item.backdrop)||safeUrl(item.cover);
+  if(bd){var bi=el('img',{src:bd,alt:''});bi.onerror=function(){bi.remove();};hero.appendChild(bi);}
+  else {var ph=el('div',{class:'modal-hero-ph'});ph.appendChild(ico('<rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20"/>',46));hero.appendChild(ph);}
+  hero.appendChild(el('div',{class:'modal-hero-grad'}));
+  c.appendChild(hero);
+
+  var top=el('div',{class:'modal-top'});
+  var pUrl=safeUrl(item.cover);
+  if(pUrl){var pi=el('img',{class:'modal-poster',src:pUrl,alt:''});pi.onerror=function(){var ph=el('div',{class:'modal-poster-ph'});ph.appendChild(ico('<rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20"/>',30));pi.replaceWith(ph);};top.appendChild(pi);}
+  else {var pph=el('div',{class:'modal-poster-ph'});pph.appendChild(ico('<rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20"/>',30));top.appendChild(pph);}
+
+  var head=el('div',{class:'modal-headtext'});
+  head.appendChild(typeBadge(item.type));
+  head.appendChild(el('div',{class:'modal-title',id:'modalTitleNode',text:item.title}));
+  if(item.originalTitle&&item.originalTitle!==item.title)head.appendChild(el('div',{class:'modal-orig',text:item.originalTitle}));
+  var rr=el('div',{class:'modal-rating-row'});
+  if(item.imdb!=null){var im=el('span',{class:'modal-imdb'});im.appendChild(ico('<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#f5c518" stroke="#f5c518"/>',12));im.appendChild(document.createTextNode(' '+item.imdb+' IMDb'));rr.appendChild(im);}
+  if(item.year)rr.appendChild(el('span',{text:item.year+(item.endYear?(' – '+item.endYear):'')}));
+  head.appendChild(rr);
+  top.appendChild(head);
+  var body=el('div',{class:'modal-body'},[top]);
+
+  if(item.description)body.appendChild(el('p',{class:'modal-desc',text:item.description}));
+
+  body.appendChild(el('div',{class:'mlabel',text:'Details'}));
+  var mg=el('div',{class:'meta-grid'});
+  if(item.type!=='movie'){mg.appendChild(metaCell('Seasons',item.seasons!=null?item.seasons:'—'));mg.appendChild(metaCell('Episodes',item.episodes!=null?item.episodes:'—'));}
+  mg.appendChild(metaCell('Runtime',item.runtime?item.runtime+' min':'—'));
+  if(item.status)mg.appendChild(metaCell('Status',item.status.charAt(0).toUpperCase()+item.status.slice(1)));
+  if(item.tmdb!=null)mg.appendChild(metaCell('TMDb',item.tmdb));
+  body.appendChild(mg);
+
+  if(item.providers&&item.providers.length){
+    body.appendChild(el('div',{class:'mlabel',text:'Available on'}));
+    var pv=el('div',{class:'providers'});
+    item.providers.forEach(function(p){pv.appendChild(el('span',{class:'provider',text:p}));});
+    body.appendChild(pv);
+  }
+
+  var addBtn=el('button',{class:'modal-add'+(added?' added':''),type:'button','aria-pressed':String(added),
+    onclick:function(){toggleAdd(id);}});
+  addBtn.appendChild(addBtnIcon(added));
+  addBtn.appendChild(document.createTextNode(added?' Added to library':' Add to library'));
+  body.appendChild(addBtn);
+
+  var credit=el('p',{class:'modal-tmdb-credit'});
+  credit.appendChild(document.createTextNode('Data provided by '));
+  credit.appendChild(el('a',{href:'https://www.themoviedb.org/',target:'_blank',rel:'noopener noreferrer',text:'The Movie Database (TMDB)'}));
+  credit.appendChild(document.createTextNode('. This product uses the TMDB API but is not endorsed or certified by TMDB.'));
+  body.appendChild(credit);
+
+  c.appendChild(body);
+}
 function openModal(id){
-  const item=CATALOGUE.find(x=>x.id===id);
-  if(!item) return;
-  const added=addedIds.has(id);
-
-  const backdrop=item.backdrop
-    ? `<img class="modal-backdrop" src="${item.backdrop}" alt="" style="position:relative">
-       <div class="modal-backdrop-gradient"></div>`
-    : `<div class="modal-backdrop-placeholder"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg></div>`;
-
-  const poster=item.cover
-    ? `<img class="modal-poster" src="${item.cover}" alt="${item.title}">`
-    : `<div class="modal-poster-placeholder"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.4"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20"/></svg></div>`;
-
-  const metaItems=[];
-  if(item.type!=='movie'){
-    metaItems.push({l:'Seasons',v:item.seasons??'—'});
-    metaItems.push({l:'Episodes',v:item.episodes??'—'});
-  }
-  metaItems.push({l:'Runtime',v:item.runtime?item.runtime+'min':'—'});
-  if(item.status) metaItems.push({l:'Status',v:item.status.charAt(0).toUpperCase()+item.status.slice(1)});
-  metaItems.push({l:'TMDb',v:item.tmdb??'—'});
-
-  const metaGrid=metaItems.map(m=>`
-    <div class="modal-meta-item">
-      <div class="modal-meta-label">${m.l}</div>
-      <div class="modal-meta-val">${m.v}</div>
-    </div>`).join('');
-
-  const providers=item.providers.map(p=>
-    `<span class="provider-chip">${p}</span>`).join('');
-
-  document.getElementById('modalContent').innerHTML=`
-    <div style="position:relative">${backdrop}</div>
-    <div class="modal-inner">
-      <div class="modal-top">
-        ${poster}
-        <div class="modal-header-text">
-          <div class="modal-type-badge">${typeBadge(item.type)}</div>
-          <div class="modal-title">${item.title}</div>
-          ${item.originalTitle!==item.title?`<div class="modal-original-title">${item.originalTitle}</div>`:''}
-          <div class="modal-rating-row">
-            <span class="modal-imdb"><svg width="12" height="12" viewBox="0 0 24 24" fill="#f5c518" stroke="#f5c518" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> ${item.imdb} IMDb</span>
-            <span class="modal-year-status">${item.year}${item.endYear?` – ${item.endYear}`:''}</span>
-          </div>
-        </div>
-      </div>
-      <p class="modal-desc">${item.description}</p>
-      <div class="modal-section-title">Details</div>
-      <div class="modal-meta-grid">${metaGrid}</div>
-      <div class="modal-section-title">Available on</div>
-      <div class="modal-providers">${providers||'<span style="color:var(--text-muted);font-size:.85rem">Unknown</span>'}</div>
-      <button class="modal-add-btn ${added?'added':''}" data-id="${id}"
-        onclick="toggleAdd(${id})">
-        ${added?'✓ Added to Library':'＋ Add to Library'}
-      </button>
-    </div>`;
-
-  document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
+  modalOpenId=id; lastFocused=document.activeElement;
+  renderModalContent(id);
+  var ov=document.getElementById('modalOverlay');
+  ov.hidden=false; ov.classList.add('open'); document.body.style.overflow='hidden';
+  document.getElementById('modalClose').focus();
 }
-
 function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow='';
+  var ov=document.getElementById('modalOverlay');
+  ov.classList.remove('open'); ov.hidden=true; document.body.style.overflow='';
+  modalOpenId=null;
+  if(lastFocused&&lastFocused.focus)lastFocused.focus();
+}
+// focus trap
+document.getElementById('modalOverlay').addEventListener('keydown',function(e){
+  if(e.key==='Escape'){closeModal();return;}
+  if(e.key!=='Tab')return;
+  var f=this.querySelectorAll('button, a, [tabindex]:not([tabindex="-1"])');
+  if(!f.length)return;
+  var first=f[0],last=f[f.length-1];
+  if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+  else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+});
+
+// ── Collections open as a filtered modal-less view (reuse modal for franchise list) ──
+function openCollection(id){
+  var coll=COLLECTIONS.find(function(c){return c.id===id;}); if(!coll)return;
+  modalOpenId=null; lastFocused=document.activeElement;
+  var c=document.getElementById('modalContent'); c.innerHTML='';
+  var all=coll.itemIds.every(function(i){return addedIds.has(i);});
+  var head=el('div',{class:'modal-body',style:'margin-top:24px'});
+  head.appendChild(el('div',{class:'modal-title',id:'modalTitleNode',text:coll.name}));
+  if(coll.description)head.appendChild(el('p',{class:'modal-desc',style:'margin-top:8px',text:coll.description}));
+  var addAll=el('button',{class:'modal-add'+(all?' added':''),type:'button',onclick:function(){toggleCollection(id);openCollection(id);}});
+  addAll.appendChild(addBtnIcon(all));
+  addAll.appendChild(document.createTextNode(all?' All added to library':' Add all to library'));
+  head.appendChild(addAll);
+  head.appendChild(el('div',{class:'mlabel',text:coll.itemIds.length+' titles'}));
+  var listGrid=el('div',{class:'grid',style:'padding:0 0 10px;grid-template-columns:repeat(auto-fill,minmax(120px,1fr))'});
+  coll.itemIds.forEach(function(i){var it=CATALOGUE.find(function(x){return x.id===i;});if(it)listGrid.appendChild(renderCard(it));});
+  head.appendChild(listGrid);
+  c.appendChild(head);
+  var ov=document.getElementById('modalOverlay');
+  ov.hidden=false; ov.classList.add('open'); document.body.style.overflow='hidden';
+  document.getElementById('modalClose').focus();
 }
 
-// ─────────────────────────────────────────────
-// TOAST
-// ─────────────────────────────────────────────
-let toastTimer=null;
-function showToast(msg, type='success'){
-  const t=document.getElementById('toast');
-  const iconEl=document.getElementById('toastIcon');
+// ── Toast ───────────────────────────────────────────────────────
+var toastTimer=null;
+function toast(msg,type){
+  var t=document.getElementById('toast');
   document.getElementById('toastMsg').textContent=msg;
-  const configs={
-    success:{color:'#27ae60',icon:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>`},
-    remove:{color:'#e50914',icon:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#e50914" stroke-width="3" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`},
-    blocked:{color:'#f5a623',icon:`<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f5a623" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`},
-  };
-  const cfg=configs[type]||configs.success;
-  t.style.setProperty('--toast-accent',cfg.color);
-  if(iconEl) iconEl.innerHTML=cfg.icon;
+  var map={success:{c:'#27ae60',p:'<polyline points="20 6 9 17 4 12"/>'},
+           remove:{c:'#e50914',p:'<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'},
+           blocked:{c:'#f5a623',p:'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>'}};
+  var cfg=map[type]||map.success;
+  t.style.setProperty('--toast',cfg.c);
+  var ie=document.getElementById('toastIcon'); ie.innerHTML='';
+  var s=ico(cfg.p,15); s.querySelector('svg').setAttribute('stroke',cfg.c); s.querySelector('svg').setAttribute('stroke-width','3'); ie.appendChild(s);
   t.classList.add('show');
-  if(toastTimer) clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2800);
+  if(toastTimer)clearTimeout(toastTimer);
+  toastTimer=setTimeout(function(){t.classList.remove('show');},2800);
 }
 
-// ─────────────────────────────────────────────
-// EVENTS
-// ─────────────────────────────────────────────
-document.getElementById('mainSearch').addEventListener('input',e=>{
-  searchQuery=e.target.value.trim();
-  renderGrid();
-});
-
-document.getElementById('sortSelect').addEventListener('change',e=>{
-  sortMode=e.target.value;renderGrid();
-});
-
-document.getElementById('filterStatus').addEventListener('change',e=>{
-  filterStatus=e.target.value;renderGrid();
-});
-
-document.getElementById('filterProvider').addEventListener('change',e=>{
-  filterProvider=e.target.value;renderGrid();
-});
-
-document.getElementById('viewGrid').addEventListener('click',()=>{
-  isListView=false;
-  document.getElementById('cardGrid').classList.remove('list-view');
-  document.getElementById('viewGrid').classList.add('active');
-  document.getElementById('viewList').classList.remove('active');
-  renderGrid();
-});
-
-document.getElementById('viewList').addEventListener('click',()=>{
-  isListView=true;
-  document.getElementById('cardGrid').classList.add('list-view');
-  document.getElementById('viewList').classList.add('active');
-  document.getElementById('viewGrid').classList.remove('active');
-  renderGrid();
-});
-
+// ── Events ──────────────────────────────────────────────────────
+document.getElementById('search').addEventListener('input',function(e){state.query=e.target.value.trim();renderGrid();});
+document.getElementById('sortSelect').addEventListener('change',function(e){state.sort=e.target.value;renderGrid();});
+document.getElementById('statusSelect').addEventListener('change',function(e){state.status=e.target.value;renderGrid();});
+document.getElementById('providerSelect').addEventListener('change',function(e){state.provider=e.target.value;renderGrid();});
+document.getElementById('viewGrid').addEventListener('click',function(){state.list=false;document.getElementById('grid').classList.remove('list-view');this.setAttribute('aria-pressed','true');document.getElementById('viewList').setAttribute('aria-pressed','false');});
+document.getElementById('viewList').addEventListener('click',function(){state.list=true;document.getElementById('grid').classList.add('list-view');this.setAttribute('aria-pressed','true');document.getElementById('viewGrid').setAttribute('aria-pressed','false');});
 document.getElementById('modalClose').addEventListener('click',closeModal);
-document.getElementById('collModalBackdrop').addEventListener('click',e=>{
-  if(e.target===document.getElementById('collModalBackdrop')) closeCollectionModal();
-});
-document.getElementById('modalOverlay').addEventListener('click',e=>{
-  if(e.target===document.getElementById('modalOverlay')) closeModal();
-});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 
-document.getElementById('themeToggle').addEventListener('click',()=>{
-  const light=document.body.classList.toggle('light-theme');
-  const moonSvg=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
-  const sunSvg=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>`;
-  document.getElementById('themeIcon').outerHTML=`<span id="themeIcon">${light?moonSvg:sunSvg}</span>`;
+// Theme (persisted, shared key with tracker-friendly behaviour)
+var moon='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+var sun='<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+function applyTheme(light){
+  document.body.classList.toggle('light',light);
+  document.getElementById('themeIcon').innerHTML=light?moon:sun;
   document.getElementById('themeLabel').textContent=light?'Dark':'Light';
+}
+document.getElementById('themeToggle').addEventListener('click',function(){
+  var light=!document.body.classList.contains('light');
+  applyTheme(light);
+  try{localStorage.setItem('mp_theme',light?'light':'dark');}catch(e){}
 });
+applyTheme((function(){try{return localStorage.getItem('mp_theme')==='light';}catch(e){return false;}})());
 
-// ─────────────────────────────────────────────
-// INIT
-// ─────────────────────────────────────────────
-buildCollections();
-buildCatList();
-updateStats();
-renderGrid();
+// ── Normalise an entry from JSON / generator output ─────────────
+function normalize(item,idx){
+  var t=String(item.type||'series').toLowerCase(); if(t==='film')t='movie';
+  return {
+    id:item.id!=null?item.id:1000+idx,
+    title:String(item.title||'Untitled'),
+    originalTitle:item.originalTitle||item.original_title||item.title||'Untitled',
+    type:(t==='movie'||t==='series'||t==='anime')?t:'series',
+    categories:Array.isArray(item.categories)?item.categories:[],
+    year:item.year!=null?item.year:(item.releaseYear||null),
+    endYear:item.endYear!=null?item.endYear:(item.end_year||null),
+    status:item.status||null,
+    description:item.description||'',
+    cover:item.cover||(Array.isArray(item.altCovers)&&item.altCovers[0])||'',
+    altCovers:Array.isArray(item.altCovers)?item.altCovers:[],
+    backdrop:item.backdrop||null,
+    seasons:item.seasons!=null?item.seasons:null,
+    episodes:item.episodes!=null?item.episodes:null,
+    runtime:item.runtime!=null?item.runtime:null,
+    imdb:item.imdb!=null?item.imdb:(item.imdbRating!=null?item.imdbRating:null),
+    tmdb:item.tmdb!=null?item.tmdb:null,
+    providers:Array.isArray(item.providers)?item.providers:[],
+    popularity:item.popularity!=null?item.popularity:0
+  };
+}
+function syncAdded(){
+  try{var titles=new Set(loadTracker().map(function(x){return x.title;}));
+    CATALOGUE.forEach(function(it){if(titles.has(it.title))addedIds.add(it.id);});persistAdded();}catch(e){}
+}
+function boot(){
+  syncAdded();renderHero();renderCats();renderCollections();renderGrid();
+}
+function fail(msg){
+  var grid=document.getElementById('grid'); grid.setAttribute('aria-busy','false'); grid.innerHTML='';
+  var e=el('div',{class:'empty'});
+  e.appendChild(ico('<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',40));
+  e.appendChild(el('div',{class:'empty-title',text:'Catalogue unavailable'}));
+  e.appendChild(el('div',{text:msg}));
+  grid.appendChild(e);
+}
 
-// ─────────────────────────────────────────────
-// COLLECTIONS HORIZONTAL SCROLL ON WHEEL
-// ─────────────────────────────────────────────
-(function(){
-  const grid = document.getElementById('collectionsGrid');
-  if(!grid) return;
-  grid.addEventListener('wheel', function(e){
-    if(COLLECTIONS.length <= 4) return;
-    e.preventDefault();
-    grid.scrollLeft += e.deltaY;
-  }, { passive: false });
+// ── Load external data (future-update friendly) ─────────────────
+fetch('marketplace-data.json',{cache:'no-store'})
+  .then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+  .then(function(json){
+    var cat=Array.isArray(json)?json:json.catalogue;
+    if(!Array.isArray(cat)||!cat.length)throw new Error('empty catalogue');
+    CATALOGUE=cat.map(normalize);
+    COLLECTIONS=(!Array.isArray(json)&&Array.isArray(json.collections))?json.collections.filter(function(c){return c&&Array.isArray(c.itemIds);}):[];
+    boot();
+  })
+  .catch(function(err){
+    console.warn('Marketplace data failed to load:',err.message);
+    fail('Could not load the catalogue. If you opened this file directly, run it from the tracker (a local server or GitHub Pages) so the data file can be read.');
+  });
+
 })();
 </script>
 </body>

@@ -1,0 +1,1289 @@
+{
+  "generatedAt": "2026-06-16",
+  "attribution": "This product uses the TMDb API but is not endorsed or certified by TMDb.",
+  "source": "The Movie Database (TMDb)",
+  "catalogue": [
+    {
+      "id": 1,
+      "title": "Breaking Bad",
+      "originalTitle": "Breaking Bad",
+      "type": "series",
+      "categories": [
+        "Popular",
+        "Ongoing"
+      ],
+      "year": 2008,
+      "endYear": 2013,
+      "status": "ended",
+      "description": "A chemistry teacher diagnosed with inoperable lung cancer teams with a former student to manufacture and sell methamphetamine to secure his family's future.",
+      "cover": "https://image.tmdb.org/t/p/w400/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
+      "seasons": 5,
+      "episodes": 62,
+      "runtime": 47,
+      "imdb": 9.5,
+      "tmdb": 8.9,
+      "providers": [
+        "Netflix",
+        "Prime Video"
+      ],
+      "popularity": 99
+    },
+    {
+      "id": 2,
+      "title": "Stranger Things",
+      "originalTitle": "Stranger Things",
+      "type": "series",
+      "categories": [
+        "Popular",
+        "Trending",
+        "Ongoing"
+      ],
+      "year": 2016,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "When a young boy disappears, his mother, a police chief, and his friends must confront terrifying supernatural forces to get him back.",
+      "cover": "https://image.tmdb.org/t/p/w400/49WJfeN0moxb9IPfGn8AIqMGskD.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/56v2KjBlU4XaOv9rVYEQypROD7P.jpg",
+      "seasons": 4,
+      "episodes": 42,
+      "runtime": 51,
+      "imdb": 8.7,
+      "tmdb": 8.6,
+      "providers": [
+        "Netflix"
+      ],
+      "popularity": 98
+    },
+    {
+      "id": 3,
+      "title": "The Wire",
+      "originalTitle": "The Wire",
+      "type": "series",
+      "categories": [
+        "Popular"
+      ],
+      "year": 2002,
+      "endYear": 2008,
+      "status": "ended",
+      "description": "The lives of drug dealers and law enforcement officers in Baltimore are explored through their roles in a complex urban ecosystem.",
+      "cover": "https://image.tmdb.org/t/p/w400/4lbclFySvugI51fwsyxBTOm4DqK.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 5,
+      "episodes": 60,
+      "runtime": 58,
+      "imdb": 9.3,
+      "tmdb": 8.7,
+      "providers": [
+        "HBO Max"
+      ],
+      "popularity": 91
+    },
+    {
+      "id": 4,
+      "title": "Inception",
+      "originalTitle": "Inception",
+      "type": "movie",
+      "categories": [
+        "Popular",
+        "Movies",
+        "Nolan"
+      ],
+      "year": 2010,
+      "endYear": null,
+      "status": null,
+      "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea in the mind of a CEO.",
+      "cover": "https://image.tmdb.org/t/p/w400/ljsZTbVsrQSqZgWeep2B1QiDKuh.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/s2bT29y0ngXxxu2IA8AOzzXTRhd.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 148,
+      "imdb": 8.8,
+      "tmdb": 8.4,
+      "providers": [
+        "Netflix",
+        "Prime Video",
+        "HBO Max"
+      ],
+      "popularity": 96
+    },
+    {
+      "id": 5,
+      "title": "Attack on Titan",
+      "originalTitle": "Shingeki no Kyojin",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Popular"
+      ],
+      "year": 2013,
+      "endYear": 2023,
+      "status": "ended",
+      "description": "In a world where humanity lives within enormous walled cities to escape the Titans, a young boy vows to kill every Titan after they destroy his hometown.",
+      "cover": "https://image.tmdb.org/t/p/w400/hTP1DtLGFamjfu8WqjnuQdP1n4i.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 4,
+      "episodes": 87,
+      "runtime": 24,
+      "imdb": 9,
+      "tmdb": 8.8,
+      "providers": [
+        "Crunchyroll",
+        "Prime Video",
+        "Netflix"
+      ],
+      "popularity": 95
+    },
+    {
+      "id": 6,
+      "title": "Interstellar",
+      "originalTitle": "Interstellar",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Nolan"
+      ],
+      "year": 2014,
+      "endYear": null,
+      "status": null,
+      "description": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
+      "cover": "https://image.tmdb.org/t/p/w400/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/pbrkL804c8yAv3zBZR4QPEafpAR.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 169,
+      "imdb": 8.6,
+      "tmdb": 8.5,
+      "providers": [
+        "Prime Video",
+        "Apple TV+"
+      ],
+      "popularity": 94
+    },
+    {
+      "id": 7,
+      "title": "Demon Slayer",
+      "originalTitle": "Kimetsu no Yaiba",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Trending",
+        "Ongoing"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "A young boy becomes a demon slayer after his family is slaughtered and his sister transformed into a demon.",
+      "cover": "https://image.tmdb.org/t/p/w400/xUfRZu2mi8jH6SzQEJGP6tjBuYj.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 4,
+      "episodes": 55,
+      "runtime": 23,
+      "imdb": 8.7,
+      "tmdb": 8.7,
+      "providers": [
+        "Crunchyroll",
+        "Netflix",
+        "Funimation"
+      ],
+      "popularity": 93
+    },
+    {
+      "id": 8,
+      "title": "The Last of Us",
+      "originalTitle": "The Last of Us",
+      "type": "series",
+      "categories": [
+        "Trending",
+        "Ongoing"
+      ],
+      "year": 2023,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Twenty years after a fungal outbreak, a hardened survivor is hired to smuggle a 14-year-old girl out of a quarantine zone.",
+      "cover": "https://image.tmdb.org/t/p/w400/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/uDgy6hyPd82kOHh6I95eDDe7dC2.jpg",
+      "seasons": 2,
+      "episodes": 19,
+      "runtime": 55,
+      "imdb": 8.8,
+      "tmdb": 8.5,
+      "providers": [
+        "HBO Max"
+      ],
+      "popularity": 97
+    },
+    {
+      "id": 9,
+      "title": "Parasite",
+      "originalTitle": "기생충",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": null,
+      "description": "Greed and class discrimination threaten the newly formed symbiotic relationship between the wealthy Park family and the destitute Kim clan.",
+      "cover": "https://image.tmdb.org/t/p/w400/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 132,
+      "imdb": 8.5,
+      "tmdb": 8.5,
+      "providers": [
+        "Prime Video",
+        "Hulu"
+      ],
+      "popularity": 90
+    },
+    {
+      "id": 10,
+      "title": "Death Note",
+      "originalTitle": "デスノート",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Popular"
+      ],
+      "year": 2006,
+      "endYear": 2007,
+      "status": "ended",
+      "description": "A high school student discovers a supernatural notebook that allows him to kill anyone by writing their name in it.",
+      "cover": "https://image.tmdb.org/t/p/w400/g4N51oXBNBKFxcs2FRwdHSDkMqq.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 1,
+      "episodes": 37,
+      "runtime": 23,
+      "imdb": 9,
+      "tmdb": 8.7,
+      "providers": [
+        "Netflix",
+        "Crunchyroll"
+      ],
+      "popularity": 92
+    },
+    {
+      "id": 11,
+      "title": "The Dark Knight",
+      "originalTitle": "The Dark Knight",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Nolan",
+        "DC"
+      ],
+      "year": 2008,
+      "endYear": null,
+      "status": null,
+      "description": "Batman raises the stakes in his war on crime and must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+      "cover": "https://image.tmdb.org/t/p/w400/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 152,
+      "imdb": 9,
+      "tmdb": 8.6,
+      "providers": [
+        "HBO Max",
+        "Prime Video"
+      ],
+      "popularity": 98
+    },
+    {
+      "id": 12,
+      "title": "Succession",
+      "originalTitle": "Succession",
+      "type": "series",
+      "categories": [
+        "Popular"
+      ],
+      "year": 2018,
+      "endYear": 2023,
+      "status": "ended",
+      "description": "The Roy family controls one of the biggest media and entertainment conglomerates — but a question hangs over them all: Who will succeed Logan Roy?",
+      "cover": "https://image.tmdb.org/t/p/w400/e2X8x4J1oUiSPLv5JMbNpeSqpBH.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 4,
+      "episodes": 39,
+      "runtime": 55,
+      "imdb": 8.9,
+      "tmdb": 8.6,
+      "providers": [
+        "HBO Max"
+      ],
+      "popularity": 94
+    },
+    {
+      "id": 13,
+      "title": "Arcane",
+      "originalTitle": "Arcane",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Popular",
+        "Trending"
+      ],
+      "year": 2021,
+      "endYear": 2024,
+      "status": "ended",
+      "description": "Set in the universe of League of Legends, it follows the origins of two iconic champions and the power that will tear them apart.",
+      "cover": "https://image.tmdb.org/t/p/w400/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 2,
+      "episodes": 18,
+      "runtime": 40,
+      "imdb": 9,
+      "tmdb": 8.7,
+      "providers": [
+        "Netflix"
+      ],
+      "popularity": 93
+    },
+    {
+      "id": 14,
+      "title": "The Shawshank Redemption",
+      "originalTitle": "The Shawshank Redemption",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular"
+      ],
+      "year": 1994,
+      "endYear": null,
+      "status": null,
+      "description": "Two imprisoned men bond over years, finding solace and eventual redemption through acts of common decency.",
+      "cover": "https://image.tmdb.org/t/p/w400/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 142,
+      "imdb": 9.3,
+      "tmdb": 8.7,
+      "providers": [
+        "Netflix",
+        "Prime Video"
+      ],
+      "popularity": 97
+    },
+    {
+      "id": 15,
+      "title": "House of the Dragon",
+      "originalTitle": "House of the Dragon",
+      "type": "series",
+      "categories": [
+        "Trending",
+        "Ongoing"
+      ],
+      "year": 2022,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "The story of House Targaryen — a civil war that divided one of the great houses of Westeros.",
+      "cover": "https://image.tmdb.org/t/p/w400/z2yahl2uefxDCl0nogcRBstwruJ.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 2,
+      "episodes": 18,
+      "runtime": 60,
+      "imdb": 8.4,
+      "tmdb": 8.1,
+      "providers": [
+        "HBO Max"
+      ],
+      "popularity": 92
+    },
+    {
+      "id": 16,
+      "title": "One Piece",
+      "originalTitle": "One Piece",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Ongoing",
+        "Popular"
+      ],
+      "year": 1999,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Follows the adventures of Monkey D. Luffy and his pirate crew in their search for the world's ultimate treasure.",
+      "cover": "https://image.tmdb.org/t/p/w400/e3NBGiAifW9Xt8xD5tpARskjccO.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 20,
+      "episodes": 1100,
+      "runtime": 24,
+      "imdb": 8.9,
+      "tmdb": 8.7,
+      "providers": [
+        "Crunchyroll",
+        "Netflix",
+        "Funimation"
+      ],
+      "popularity": 89
+    },
+    {
+      "id": 101,
+      "title": "Star Wars: Episode IV – A New Hope",
+      "originalTitle": "Star Wars",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars",
+        "Popular"
+      ],
+      "year": 1977,
+      "endYear": null,
+      "status": null,
+      "description": "Luke Skywalker joins forces with a Jedi Knight, a cocky pilot, a Wookiee, and two droids to save the galaxy from the Empire's world-destroying battle station.",
+      "cover": "https://image.tmdb.org/t/p/w400/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 121,
+      "imdb": 8.6,
+      "tmdb": 8.2,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 97
+    },
+    {
+      "id": 102,
+      "title": "Star Wars: Episode V – The Empire Strikes Back",
+      "originalTitle": "The Empire Strikes Back",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars",
+        "Popular"
+      ],
+      "year": 1980,
+      "endYear": null,
+      "status": null,
+      "description": "After the Rebels are overpowered by the Empire on their newly established base, Luke Skywalker begins Jedi training with Yoda.",
+      "cover": "https://image.tmdb.org/t/p/w400/2l05cFWJacyIsTpsqSgH0wQXe4V.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 124,
+      "imdb": 8.7,
+      "tmdb": 8.4,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 96
+    },
+    {
+      "id": 103,
+      "title": "Star Wars: Episode VI – Return of the Jedi",
+      "originalTitle": "Return of the Jedi",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars",
+        "Popular"
+      ],
+      "year": 1983,
+      "endYear": null,
+      "status": null,
+      "description": "After a daring mission to rescue Han Solo from Jabba the Hutt, the rebels dispatch to Endor to destroy the second Death Star.",
+      "cover": "https://image.tmdb.org/t/p/w400/mDCBQNhR6R0PVFucJl1OlApr7AL.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 131,
+      "imdb": 8.3,
+      "tmdb": 7.9,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 93
+    },
+    {
+      "id": 104,
+      "title": "Star Wars: Episode I – The Phantom Menace",
+      "originalTitle": "The Phantom Menace",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1999,
+      "endYear": null,
+      "status": null,
+      "description": "Two Jedi Knights escape a hostile blockade to find a young boy who may bring balance to the Force, but the long dormant Sith resurface to claim their old glory.",
+      "cover": "https://image.tmdb.org/t/p/w400/6wkfovpn7Grj2gQqzFNDynAliNY.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 136,
+      "imdb": 6.5,
+      "tmdb": 6.5,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": 105,
+      "title": "Rogue One: A Star Wars Story",
+      "originalTitle": "Rogue One",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars",
+        "Popular"
+      ],
+      "year": 2016,
+      "endYear": null,
+      "status": null,
+      "description": "The daughter of an Imperial scientist joins the Rebel Alliance in a risky mission to steal the plans for the Death Star.",
+      "cover": "https://image.tmdb.org/t/p/w400/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 133,
+      "imdb": 7.8,
+      "tmdb": 7.5,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 88
+    },
+    {
+      "id": 106,
+      "title": "The Mandalorian",
+      "originalTitle": "The Mandalorian",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars",
+        "Trending"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "The travels of a lone bounty hunter in the outer reaches of the galaxy, far from the authority of the New Republic.",
+      "cover": "https://image.tmdb.org/t/p/w400/sWgBv7LV2reonceSRqyHh3Ukz9Q.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 3,
+      "episodes": 24,
+      "runtime": 40,
+      "imdb": 8.7,
+      "tmdb": 8.5,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 95
+    },
+    {
+      "id": 201,
+      "title": "Iron Man",
+      "originalTitle": "Iron Man",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Marvel",
+        "Popular"
+      ],
+      "year": 2008,
+      "endYear": null,
+      "status": null,
+      "description": "After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",
+      "cover": "https://image.tmdb.org/t/p/w400/78lPtwv72eTNqFW9COBF8l5eB8f.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 126,
+      "imdb": 7.9,
+      "tmdb": 7.7,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 90
+    },
+    {
+      "id": 202,
+      "title": "Avengers: Endgame",
+      "originalTitle": "Avengers: Endgame",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Marvel",
+        "Popular"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": null,
+      "description": "After Thanos decimates half the universe, the remaining Avengers must do whatever it takes to undo the damage and restore order.",
+      "cover": "https://image.tmdb.org/t/p/w400/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 181,
+      "imdb": 8.4,
+      "tmdb": 8.4,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 98
+    },
+    {
+      "id": 203,
+      "title": "Avengers: Infinity War",
+      "originalTitle": "Avengers: Infinity War",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Marvel",
+        "Popular"
+      ],
+      "year": 2018,
+      "endYear": null,
+      "status": null,
+      "description": "The Avengers and their allies must be willing to sacrifice all in an attempt to defeat the powerful Thanos.",
+      "cover": "https://image.tmdb.org/t/p/w400/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 149,
+      "imdb": 8.4,
+      "tmdb": 8.3,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 97
+    },
+    {
+      "id": 204,
+      "title": "Black Panther",
+      "originalTitle": "Black Panther",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Marvel",
+        "Popular"
+      ],
+      "year": 2018,
+      "endYear": null,
+      "status": null,
+      "description": "T'Challa, heir to the hidden but advanced kingdom of Wakanda, must step forward to lead his people into a new future.",
+      "cover": "https://image.tmdb.org/t/p/w400/uxzzxijgPIY7slzFvMotPv8wjKA.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 134,
+      "imdb": 7.3,
+      "tmdb": 7.4,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 91
+    },
+    {
+      "id": 205,
+      "title": "WandaVision",
+      "originalTitle": "WandaVision",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Marvel",
+        "Trending"
+      ],
+      "year": 2021,
+      "endYear": 2021,
+      "status": "ended",
+      "description": "Wanda Maximoff and Vision live an idyllic suburban life — but begin to suspect that everything is not as it seems.",
+      "cover": "https://image.tmdb.org/t/p/w400/glKDfE6btIRcmq4LZqKAFLPCOQh.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 1,
+      "episodes": 9,
+      "runtime": 30,
+      "imdb": 7.9,
+      "tmdb": 8,
+      "providers": [
+        "Disney+"
+      ],
+      "popularity": 88
+    },
+    {
+      "id": 301,
+      "title": "The Dark Knight Rises",
+      "originalTitle": "The Dark Knight Rises",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Nolan",
+        "DC"
+      ],
+      "year": 2012,
+      "endYear": null,
+      "status": null,
+      "description": "Eight years after the Joker's reign of anarchy, Batman must return to defend Gotham City against the cunning villain Bane.",
+      "cover": "https://image.tmdb.org/t/p/w400/hr0L2aueqlP2BYUblTTjmtn41Gr.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 164,
+      "imdb": 8.4,
+      "tmdb": 7.9,
+      "providers": [
+        "HBO Max",
+        "Prime Video"
+      ],
+      "popularity": 92
+    },
+    {
+      "id": 302,
+      "title": "Batman Begins",
+      "originalTitle": "Batman Begins",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Nolan",
+        "DC"
+      ],
+      "year": 2005,
+      "endYear": null,
+      "status": null,
+      "description": "After training with his mentor, Batman begins his fight to free crime-ridden Gotham City from corruption.",
+      "cover": "https://image.tmdb.org/t/p/w400/dr6C9GBDMKBkBGjuGGpLzoqNm8d.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 140,
+      "imdb": 8.2,
+      "tmdb": 7.7,
+      "providers": [
+        "HBO Max",
+        "Prime Video"
+      ],
+      "popularity": 88
+    },
+    {
+      "id": 303,
+      "title": "Memento",
+      "originalTitle": "Memento",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Nolan"
+      ],
+      "year": 2000,
+      "endYear": null,
+      "status": null,
+      "description": "A man with short-term memory loss attempts to track down his wife's murderer using notes and tattoos.",
+      "cover": "https://image.tmdb.org/t/p/w400/yuNs09hvpHVU1cBTCAk9zxsL2oW.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 113,
+      "imdb": 8.4,
+      "tmdb": 8.2,
+      "providers": [
+        "Prime Video"
+      ],
+      "popularity": 87
+    },
+    {
+      "id": 304,
+      "title": "Oppenheimer",
+      "originalTitle": "Oppenheimer",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Nolan"
+      ],
+      "year": 2023,
+      "endYear": null,
+      "status": null,
+      "description": "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
+      "cover": "https://image.tmdb.org/t/p/w400/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 180,
+      "imdb": 8.3,
+      "tmdb": 8.2,
+      "providers": [
+        "Prime Video"
+      ],
+      "popularity": 96
+    },
+    {
+      "id": 401,
+      "title": "Joker",
+      "originalTitle": "Joker",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "DC"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": null,
+      "description": "A failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City.",
+      "cover": "https://image.tmdb.org/t/p/w400/udDclJoHjfjb8Ekgsd4FDteOkCU.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 122,
+      "imdb": 8.4,
+      "tmdb": 8.2,
+      "providers": [
+        "HBO Max",
+        "Prime Video"
+      ],
+      "popularity": 94
+    },
+    {
+      "id": 402,
+      "title": "Man of Steel",
+      "originalTitle": "Man of Steel",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "DC"
+      ],
+      "year": 2013,
+      "endYear": null,
+      "status": null,
+      "description": "An alien child is evacuated from his dying world and sent to Earth to live among humans. His peace is threatened when others from his homeworld invade Earth.",
+      "cover": "https://image.tmdb.org/t/p/w400/oQaIVOCzHIHlhRYmE3K4Dve49iN.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 143,
+      "imdb": 7.1,
+      "tmdb": 6.9,
+      "providers": [
+        "HBO Max"
+      ],
+      "popularity": 80
+    },
+    {
+      "id": 501,
+      "title": "The Terminator",
+      "originalTitle": "The Terminator",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Terminator"
+      ],
+      "year": 1984,
+      "endYear": null,
+      "status": null,
+      "description": "A human soldier is sent from 2029 to 1984 to stop a cyborg assassin from killing the woman whose unborn son will lead humanity in a war against machines.",
+      "cover": "https://image.tmdb.org/t/p/w400/qvktm0BHcnmDpul4Hz01GIazWPr.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 107,
+      "imdb": 8.1,
+      "tmdb": 7.9,
+      "providers": [
+        "Netflix",
+        "Prime Video"
+      ],
+      "popularity": 88
+    },
+    {
+      "id": 502,
+      "title": "Terminator 2: Judgment Day",
+      "originalTitle": "Terminator 2: Judgment Day",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Terminator"
+      ],
+      "year": 1991,
+      "endYear": null,
+      "status": null,
+      "description": "A cyborg, identical to the one who failed to kill Sarah Connor, must now protect her teenage son John Connor from a more advanced and powerful cyborg.",
+      "cover": "https://image.tmdb.org/t/p/w400/weVXMD5QBGeQOQ6RRFBGXu8JcBr.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 137,
+      "imdb": 8.6,
+      "tmdb": 8.3,
+      "providers": [
+        "Netflix",
+        "Prime Video"
+      ],
+      "popularity": 95
+    },
+    {
+      "id": 503,
+      "title": "Terminator 3: Rise of the Machines",
+      "originalTitle": "Terminator 3: Rise of the Machines",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Terminator"
+      ],
+      "year": 2003,
+      "endYear": null,
+      "status": null,
+      "description": "A new Terminator is sent back in time to kill John Connor and his future officers, while a reprogrammed Terminator is sent to protect them.",
+      "cover": "https://image.tmdb.org/t/p/w400/vbRkMtVIgDMJzSnYOXMG1fJqJZU.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 109,
+      "imdb": 6.3,
+      "tmdb": 6.2,
+      "providers": [
+        "Prime Video"
+      ],
+      "popularity": 72
+    },
+    {
+      "id": 504,
+      "title": "Terminator: Dark Fate",
+      "originalTitle": "Terminator: Dark Fate",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Terminator"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": null,
+      "description": "An augmented human and Sarah Connor must protect a young woman from a newly modified liquid Terminator from the future.",
+      "cover": "https://image.tmdb.org/t/p/w400/4Y1HMFHBqKDqnCTMNSFCHPPBFTl.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 128,
+      "imdb": 6.2,
+      "tmdb": 6.2,
+      "providers": [
+        "Netflix",
+        "Prime Video"
+      ],
+      "popularity": 70
+    },
+    {
+      "id": 601,
+      "title": "Dexter",
+      "originalTitle": "Dexter",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Popular",
+        "Dexter"
+      ],
+      "year": 2006,
+      "endYear": 2013,
+      "status": "ended",
+      "description": "A forensic technician who moonlights as a vigilante serial killer, targeting only those he believes to be murderers themselves.",
+      "cover": "https://image.tmdb.org/t/p/w400/6k5HKeYVTAo1R1m0LIIzSBIBMnk.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 8,
+      "episodes": 96,
+      "runtime": 50,
+      "imdb": 8.7,
+      "tmdb": 8.3,
+      "providers": [
+        "Paramount+",
+        "Netflix"
+      ],
+      "popularity": 91
+    },
+    {
+      "id": 602,
+      "title": "Dexter: New Blood",
+      "originalTitle": "Dexter: New Blood",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Trending",
+        "Dexter"
+      ],
+      "year": 2021,
+      "endYear": 2022,
+      "status": "ended",
+      "description": "Set 10 years after Dexter went missing in the eye of Hurricane Laura, he is now living under an assumed name in the small town of Iron Lake, New York.",
+      "cover": "https://image.tmdb.org/t/p/w400/lvGiCRuHJByNKSKRrVkWtfGMoAT.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 1,
+      "episodes": 10,
+      "runtime": 50,
+      "imdb": 7.9,
+      "tmdb": 7.8,
+      "providers": [
+        "Paramount+"
+      ],
+      "popularity": 83
+    },
+    {
+      "id": 603,
+      "title": "Dexter: Original Sin",
+      "originalTitle": "Dexter: Original Sin",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Dexter",
+        "Ongoing"
+      ],
+      "year": 2024,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "A prequel series following a young Dexter Morgan as he channels his dark urges and becomes the vigilante serial killer we know.",
+      "cover": "https://image.tmdb.org/t/p/w400/3GrRgt6CiLIUXDkuqcgXQMDKBsc.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": 1,
+      "episodes": 10,
+      "runtime": 48,
+      "imdb": 7.2,
+      "tmdb": 7.1,
+      "providers": [
+        "Paramount+"
+      ],
+      "popularity": 75
+    },
+    {
+      "id": 701,
+      "title": "Mortal Kombat",
+      "originalTitle": "Mortal Kombat",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Popular",
+        "Mortal Kombat"
+      ],
+      "year": 1995,
+      "endYear": null,
+      "status": null,
+      "description": "Three martial artists are chosen to defend Earth against the evil sorcerer Shang Tsung and his deadly warriors in a mystical tournament.",
+      "cover": "https://image.tmdb.org/t/p/w400/5jFZnTYhUHSUlJJQaWOkGUE9zP1.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 101,
+      "imdb": 6,
+      "tmdb": 6.1,
+      "providers": [
+        "HBO Max"
+      ],
+      "popularity": 74
+    },
+    {
+      "id": 702,
+      "title": "Mortal Kombat",
+      "originalTitle": "Mortal Kombat",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Trending",
+        "Mortal Kombat"
+      ],
+      "year": 2021,
+      "endYear": null,
+      "status": null,
+      "description": "MMA fighter Cole Young seeks out Earth's greatest champions to stand against the enemies of Outworld in a high stakes battle for the universe.",
+      "cover": "https://image.tmdb.org/t/p/w400/xGuOF1T3WmPsAcQEQJfnG7Ud9f8.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 110,
+      "imdb": 6,
+      "tmdb": 7,
+      "providers": [
+        "HBO Max",
+        "Prime Video"
+      ],
+      "popularity": 78
+    },
+    {
+      "id": 703,
+      "title": "Mortal Kombat Legends: Scorpion's Revenge",
+      "originalTitle": "Mortal Kombat Legends: Scorpion's Revenge",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Mortal Kombat"
+      ],
+      "year": 2020,
+      "endYear": null,
+      "status": null,
+      "description": "After the vicious slaughter of his family, ninja Hanzo Hasashi is resurrected as the spectre Scorpion to seek revenge on the Outworld warrior who killed them.",
+      "cover": "https://image.tmdb.org/t/p/w400/5BHuvQ7p1ChdFl8GGGIKMszqzAV.jpg",
+      "altCovers": [],
+      "backdrop": null,
+      "seasons": null,
+      "episodes": null,
+      "runtime": 80,
+      "imdb": 7.2,
+      "tmdb": 7.3,
+      "providers": [
+        "HBO Max"
+      ],
+      "popularity": 71
+    }
+  ],
+  "collections": [
+    {
+      "id": "star-wars",
+      "name": "Star Wars",
+      "description": "A galaxy far, far away — the complete Skywalker Saga and beyond",
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><polygon points=\"12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2\"/></svg>",
+      "color": "#ffe81f",
+      "colorDark": "#b8a800",
+      "backdrop": "https://image.tmdb.org/t/p/w780/zqkmTXzjkAgXmEWLRsY4UpTWCeo.jpg",
+      "itemIds": [
+        101,
+        102,
+        103,
+        104,
+        105,
+        106
+      ]
+    },
+    {
+      "id": "marvel",
+      "name": "Marvel Cinematic Universe",
+      "description": "Earth's mightiest heroes — the essential MCU watchlist",
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><path d=\"M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z\"/></svg>",
+      "color": "#e23636",
+      "colorDark": "#b02828",
+      "backdrop": "https://wallpapers.com/images/featured/marvel-movie-km5otxtmsqb0ijdb.jpg",
+      "itemIds": [
+        201,
+        202,
+        203,
+        204,
+        205
+      ]
+    },
+    {
+      "id": "nolan",
+      "name": "Christopher Nolan",
+      "description": "Mind-bending masterpieces from the master of practical filmmaking",
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><rect x=\"2\" y=\"2\" width=\"20\" height=\"20\" rx=\"3\"/><path d=\"M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5\"/></svg>",
+      "color": "#4a90d9",
+      "colorDark": "#2d6aa8",
+      "backdrop": "https://www.heldenderfreizeit.com/wp-content/uploads/2020/07/Christopher-Nolan-Titelbild-1200x800_c.jpg",
+      "itemIds": [
+        4,
+        6,
+        11,
+        301,
+        302,
+        303,
+        304
+      ]
+    },
+    {
+      "id": "dc",
+      "name": "DC Universe",
+      "description": "The iconic heroes and villains of the DC Extended Universe",
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><path d=\"M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z\"/><path d=\"M8.5 8.5c0 0 1-2 3.5-2s3.5 2 3.5 2\"/><path d=\"M7 14c1 2 2.5 3 5 3s4-1 5-3\"/></svg>",
+      "color": "#1565c0",
+      "colorDark": "#0d47a1",
+      "backdrop": "https://media.thepopverse.com/media/justice-league-dceu-vycc1wk1ra1f3fevudmh4bo2w2.jpg",
+      "itemIds": [
+        11,
+        301,
+        302,
+        401,
+        402
+      ]
+    },
+    {
+      "id": "terminator",
+      "name": "Terminator",
+      "description": "I'll be back — the complete Terminator franchise",
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M6 20v-2a6 6 0 0 1 12 0v2\"/><line x1=\"9\" y1=\"7\" x2=\"9.01\" y2=\"7\"/><line x1=\"15\" y1=\"7\" x2=\"15.01\" y2=\"7\"/></svg>",
+      "color": "#e53935",
+      "colorDark": "#b71c1c",
+      "backdrop": "https://www.galaxus.de/Files/7/6/4/6/5/2/8/9/terminator_skeleton_2_1.jpg",
+      "itemIds": [
+        501,
+        502,
+        503,
+        504
+      ]
+    },
+    {
+      "id": "dexter",
+      "name": "Dexter Universe",
+      "description": "Today's the day I kill you, Dexter Morgan — the full Dexter saga",
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"/></svg>",
+      "color": "#c62828",
+      "colorDark": "#8e0000",
+      "backdrop": "https://static.beebom.com/wp-content/uploads/2025/10/Dexter-2.jpg?w=1168&quality=75",
+      "itemIds": [
+        601,
+        602,
+        603
+      ]
+    },
+    {
+      "id": "mortal-kombat",
+      "name": "Mortal Kombat",
+      "description": "FINISH HIM — every Mortal Kombat film and animation",
+      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\"><path d=\"M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z\"/><path d=\"M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z\"/><path d=\"M9.5 14.5c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.83 8 21v-5c0-.83.67-1.5 1.5-1.5z\"/><path d=\"M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z\"/><path d=\"M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z\"/><path d=\"M15.5 19H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z\"/><path d=\"M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z\"/><path d=\"M8.5 5H10V3.5C10 2.67 9.33 2 8.5 2S7 2.67 7 3.5 7.67 5 8.5 5z\"/></svg>",
+      "color": "#ff6f00",
+      "colorDark": "#e65100",
+      "backdrop": "https://cdn.kinocheck.com/i/8ophv13swv.jpg",
+      "itemIds": [
+        701,
+        702,
+        703
+      ]
+    }
+  ]
+}

@@ -218,6 +218,14 @@
                 : (getComputedStyle(document.documentElement)
                     .getPropertyValue('--primary-color').trim() || '#141414');
 
+            const gridStrong = isLightTheme ? 'rgba(0,0,0,0.22)' : 'rgba(255,255,255,0.2)';
+            const gridWeak = isLightTheme ? 'rgba(0,0,0,0.08)' : 'rgba(255,255,255,0.07)';
+            const gridFaint = isLightTheme ? 'rgba(0,0,0,0.05)' : 'rgba(255,255,255,0.05)';
+            const axisText = isLightTheme ? 'rgba(0,0,0,0.55)' : 'rgba(255,255,255,0.35)';
+            const xLabelText = isLightTheme ? 'rgba(0,0,0,0.6)' : 'rgba(255,255,255,0.4)';
+            const yTitleText = isLightTheme ? 'rgba(0,0,0,0.45)' : 'rgba(255,255,255,0.3)';
+            const valLabelText = isLightTheme ? '#111111' : '#ffffff';
+
             // ── Build SVG ───────────────────────────────────────────────
             const NS = 'http://www.w3.org/2000/svg';
             function el(tag, attrs, parent) {
@@ -264,7 +272,7 @@
                 // Horizontal grid line
                 el('line', {
                     x1: PAD.left, y1: yy, x2: PAD.left + cW, y2: yy,
-                    stroke: t === yTicks ? 'rgba(255,255,255,0.2)' : 'rgba(255,255,255,0.07)',
+                    stroke: t === yTicks ? gridStrong : gridWeak,
                     'stroke-width': t === yTicks ? '1.5' : '1',
                     'stroke-dasharray': t === yTicks ? 'none' : '4 5'
                 }, gridG);
@@ -273,7 +281,7 @@
                     el('text', {
                         x: PAD.left - 8, y: yy + 4,
                         'text-anchor': 'end',
-                        fill: 'rgba(255,255,255,0.35)',
+                        fill: axisText,
                         'font-size': '11',
                         'font-family': 'inherit'
                     }, gridG).textContent = val;
@@ -287,7 +295,7 @@
                 const xx = xOf(i);
                 el('line', {
                     x1: xx, y1: PAD.top, x2: xx, y2: PAD.top + cH,
-                    stroke: 'rgba(255,255,255,0.05)',
+                    stroke: gridFaint,
                     'stroke-width': '1'
                 }, gridG);
             }
@@ -306,7 +314,7 @@
                 const t = el('text', {
                     x: xx + xOffset, y: H - 10,
                     'text-anchor': anchor,
-                    fill: 'rgba(255,255,255,0.4)',
+                    fill: xLabelText,
                     'font-size': '11',
                     'font-family': 'inherit'
                 }, labelsG);
@@ -427,7 +435,7 @@
                 const vLabel = el('text', {
                     x: '0', y: '-14',
                     'text-anchor': 'middle',
-                    fill: '#ffffff',
+                    fill: valLabelText,
                     'font-size': '11',
                     'font-weight': '700',
                     'font-family': 'inherit',
@@ -532,7 +540,7 @@
                 y: '12',
                 transform: 'rotate(-90)',
                 'text-anchor': 'middle',
-                fill: 'rgba(255,255,255,0.3)',
+                fill: yTitleText,
                 'font-size': '11',
                 'font-family': 'inherit'
             }, svgEl);
@@ -591,15 +599,61 @@
             });
         }
 
+        function applyReleaseToContent(notification) {
+            let item = null;
+            if (notification.seriesId != null) {
+                item = series.find(s => String(s.id) === String(notification.seriesId));
+            }
+            if (!item && notification.seriesName) {
+                item = series.find(s => s.title.toLowerCase() === notification.seriesName.toLowerCase());
+            }
+            if (!item) return false;
+            if (item.status !== 'completed') return false;
+
+            item.status = 'want';
+
+            if (notification.type === 'season' && notification.season) {
+                if (notification.season > (item.totalSeasons || 1)) {
+                    item.totalSeasons = notification.season;
+                }
+                item.season = notification.season;
+                item.episode = 1;
+            } else if (notification.type === 'episode') {
+                if (notification.season && notification.season > (item.totalSeasons || 1)) {
+                    item.totalSeasons = notification.season;
+                }
+                if (notification.season) item.season = notification.season;
+                if (notification.episode) {
+                    if (notification.episode > (item.totalEpisodes || 1)) {
+                        item.totalEpisodes = notification.episode;
+                    }
+                    item.episode = notification.episode;
+                }
+            }
+
+            item.completedDate = null;
+            item.lastWatchedDate = null;
+            item.time = 0;
+
+            saveData();
+            renderSeries();
+            return true;
+        }
+
         function showNotification(notification) {
             const container = document.getElementById('notificationContainer');
             if (!container) return;
-            
+
+            const adapted = applyReleaseToContent(notification);
+
             let message = '';
             if (notification.type === 'season') {
                 message = `Reminder!\n"${notification.seriesName}" has released Season ${notification.season}!`;
             } else if (notification.type === 'episode') {
                 message = `Reminder!\n"${notification.seriesName}" has released Episode ${notification.episode} for Season ${notification.season}!`;
+            }
+            if (adapted) {
+                message += `\nMoved to "Want to Watch" and updated to the newest version.`;
             }
             if (notification.language) {
                 message += `\nLanguage: ${notification.language}`;
@@ -667,15 +721,17 @@
         function renderNotificationsList() {
             const list = document.getElementById('notificationsList');
             if (!list) return;
-            
-            if (notifications.length === 0) {
+
+            const todayStr = getLocalDateStringFromDate(new Date());
+            const visibleNotifications = notifications.filter(n => n.date >= todayStr);
+
+            if (visibleNotifications.length === 0) {
                 list.innerHTML = '<div style="text-align: center; color: #999; padding: 20px;">No notifications scheduled</div>';
                 return;
             }
-            
-            // Sort by date
-            const sortedNotifications = [...notifications].sort((a, b) => new Date(a.date) - new Date(b.date));
-            
+
+            const sortedNotifications = [...visibleNotifications].sort((a, b) => new Date(a.date) - new Date(b.date));
+
             list.innerHTML = sortedNotifications.map(notification => {
                 let message = '';
                 if (notification.type === 'season') {
@@ -685,7 +741,7 @@
                 }
                 const langInfo = notification.language ? ` • Language: ${notification.language}` : '';
                 const sourceInfo = notification.apiSource && notification.apiSource !== 'manual' ? ` • Source: ${notification.apiSource.toUpperCase()}` : '';
-                
+
                 return `
                     <div class="notification-item">
                         <div class="notification-info">
@@ -693,6 +749,7 @@
                             <div class="notification-message">${message}${langInfo}${sourceInfo}</div>
                         </div>
                         <div class="notification-actions">
+                            <button class="notification-edit-btn" onclick="editNotification('${notification.id}')">Edit</button>
                             <button class="notification-delete-btn" onclick="deleteNotificationWithConfirm('${notification.id}')">Delete</button>
                         </div>
                     </div>
@@ -719,11 +776,63 @@
             }
         }
 
+        let editingNotificationId = null;
+
+        function editNotification(notificationId) {
+            const notification = notifications.find(n => n.id === notificationId);
+            if (!notification) return;
+            editingNotificationId = notificationId;
+
+            if (window.populateNotificationContentSelect) window.populateNotificationContentSelect();
+
+            const dateEl = document.getElementById('notificationDate');
+            const typeEl = document.getElementById('notificationType');
+            const seriesEl = document.getElementById('notificationSeries');
+            const langEl = document.getElementById('notificationLanguage');
+            const apiEl = document.getElementById('notificationApiSource');
+            const seasonEl = document.getElementById('notificationSeason');
+            const episodeEl = document.getElementById('notificationEpisode');
+            const seasonGroup = document.getElementById('notificationSeasonGroup');
+            const episodeGroup = document.getElementById('notificationEpisodeGroup');
+
+            dateEl.value = notification.date || '';
+            typeEl.value = notification.type || '';
+            seriesEl.value = notification.seriesId != null ? String(notification.seriesId) : '';
+            langEl.value = notification.language && notification.language !== 'default' ? notification.language : '';
+            apiEl.value = notification.apiSource || 'manual';
+
+            if (notification.type === 'season') {
+                seasonGroup.style.display = 'block';
+                episodeGroup.style.display = 'none';
+                seasonEl.value = notification.season || '';
+                seasonEl.required = true;
+                episodeEl.required = false;
+            } else if (notification.type === 'episode') {
+                seasonGroup.style.display = 'block';
+                episodeGroup.style.display = 'block';
+                seasonEl.value = notification.season || '';
+                episodeEl.value = notification.episode || '';
+                seasonEl.required = true;
+                episodeEl.required = true;
+            } else {
+                seasonGroup.style.display = 'none';
+                episodeGroup.style.display = 'none';
+            }
+
+            const modalTitle = document.querySelector('#addNotificationModal h2');
+            if (modalTitle) modalTitle.textContent = 'Edit Notification';
+            const submitBtn = document.querySelector('#notificationForm button[type="submit"]');
+            if (submitBtn) submitBtn.textContent = 'Save Changes';
+
+            openOverlay('addNotificationModal');
+        }
+
         // Make functions globally accessible
         window.closeNotification = closeNotification;
         window.dismissNotification = dismissNotification;
         window.deleteNotification = deleteNotification;
         window.deleteNotificationWithConfirm = deleteNotificationWithConfirm;
+        window.editNotification = editNotification;
 
         // API Integration Functions
         // Note: These APIs require API keys. Users need to add their own keys.
@@ -2543,6 +2652,39 @@
                 }
             });
 
+            document.querySelectorAll('.sidebar-section').forEach((section) => {
+                const title = section.querySelector('.sidebar-section-title');
+                if (!title) return;
+                if (!title.querySelector('.section-toggle-icon')) {
+                    const icon = document.createElement('span');
+                    icon.className = 'section-toggle-icon';
+                    icon.textContent = '▼';
+                    title.appendChild(icon);
+                }
+                section.classList.add('collapsed');
+                title.addEventListener('click', () => {
+                    section.classList.toggle('collapsed');
+                });
+            });
+
+            const stickyTopBar = document.getElementById('stickyTopBar');
+            const topbarCollapseToggle = document.getElementById('topbarCollapseToggle');
+            if (stickyTopBar) {
+                const updateStickyState = () => {
+                    const scrolled = window.scrollY > 4;
+                    stickyTopBar.classList.toggle('scrolled', scrolled);
+                };
+                updateStickyState();
+                window.addEventListener('scroll', updateStickyState, { passive: true });
+            }
+            if (topbarCollapseToggle && stickyTopBar) {
+                const labelEl = topbarCollapseToggle.querySelector('.tc-label');
+                topbarCollapseToggle.addEventListener('click', () => {
+                    const collapsed = stickyTopBar.classList.toggle('topbar-collapsed');
+                    if (labelEl) labelEl.textContent = collapsed ? 'Show search & filters' : 'Hide search & filters';
+                });
+            }
+
             closeSidebarBtn.addEventListener('click', () => {
                 closeSidebar();
             });
@@ -2714,6 +2856,7 @@
                     if (wcc) { wcc.style.backgroundColor = wc; wcc.style.setProperty('--picker-color', wc); document.getElementById('watchingColorValue').textContent = wc.toUpperCase(); }
                     if (wtc) { wtc.style.backgroundColor = wt; wtc.style.setProperty('--picker-color', wt); document.getElementById('wantColorValue').textContent = wt.toUpperCase(); }
                     if (ccc) { ccc.style.backgroundColor = cc; ccc.style.setProperty('--picker-color', cc); document.getElementById('completedColorValue').textContent = cc.toUpperCase(); }
+                    if (typeof applyStatusColorStyle === 'function') applyStatusColorStyle();
                     saveSettings();
                 }
             }
@@ -2744,7 +2887,7 @@
             }
             // Patch applyTheme to also apply status colors
             const _origApplyTheme = applyTheme;
-            applyTheme = function(theme) { _origApplyTheme(theme); applyStatusColorStyle(); };
+            applyTheme = function(theme) { _origApplyTheme(theme); applyStatusColorStyle(); if (typeof renderWatchTimeline === 'function') renderWatchTimeline(); };
 
             // Streaming multi-select chip logic
             document.querySelectorAll('#streamingMultiSelect .streaming-chip').forEach(chip => {
@@ -2810,17 +2953,33 @@
                 });
             }
 
+            function populateNotificationContentSelect() {
+                const sel = document.getElementById('notificationSeries');
+                if (!sel) return;
+                const sorted = [...series].sort((a, b) => a.title.localeCompare(b.title));
+                sel.innerHTML = '<option value="">Select existing content</option>' +
+                    sorted.map(s => `<option value="${s.id}">${s.title}${s.contentType === 'movie' ? ' (Movie)' : ''}</option>`).join('');
+            }
+            window.populateNotificationContentSelect = populateNotificationContentSelect;
+
             if (addNotificationBtn) {
                 addNotificationBtn.addEventListener('click', () => {
+                    editingNotificationId = null;
                     notificationForm.reset();
+                    populateNotificationContentSelect();
                     notificationSeasonGroup.style.display = 'none';
                     notificationEpisodeGroup.style.display = 'none';
+                    const modalTitle = document.querySelector('#addNotificationModal h2');
+                    if (modalTitle) modalTitle.textContent = 'Add Notification';
+                    const submitBtn = document.querySelector('#notificationForm button[type="submit"]');
+                    if (submitBtn) submitBtn.textContent = 'Add Notification';
                     openOverlay('addNotificationModal');
                 });
             }
 
             if (cancelNotificationBtn) {
                 cancelNotificationBtn.addEventListener('click', () => {
+                    editingNotificationId = null;
                     closeOverlay('addNotificationModal');
                 });
             }
@@ -2859,15 +3018,16 @@
                     e.preventDefault();
                     const date = document.getElementById('notificationDate').value;
                     const type = document.getElementById('notificationType').value;
-                    const seriesName = document.getElementById('notificationSeries').value.trim();
+                    const selectedContentId = document.getElementById('notificationSeries').value;
                     const season = document.getElementById('notificationSeason').value;
                     const episode = document.getElementById('notificationEpisode').value;
                     const language = document.getElementById('notificationLanguage').value.trim();
                     const apiSource = document.getElementById('notificationApiSource').value;
-                    const matchedItem = series.find(s => s.title.toLowerCase() === seriesName.toLowerCase());
+                    const matchedItem = series.find(s => String(s.id) === String(selectedContentId));
+                    const seriesName = matchedItem ? matchedItem.title : '';
                     const resolvedLanguage = language || (matchedItem && matchedItem.language ? matchedItem.language : null);
 
-                    if (!date || !type || !seriesName) {
+                    if (!date || !type || !selectedContentId || !matchedItem) {
                         alert('Please fill in all required fields');
                         return;
                     }
@@ -2882,10 +3042,32 @@
                         return;
                     }
 
+                    if (editingNotificationId) {
+                        const existing = notifications.find(n => n.id === editingNotificationId);
+                        if (existing) {
+                            existing.date = date;
+                            existing.type = type;
+                            existing.seriesId = matchedItem.id;
+                            existing.seriesName = seriesName;
+                            existing.season = (type === 'season' || type === 'episode') ? parseInt(season) : null;
+                            existing.episode = type === 'episode' ? parseInt(episode) : null;
+                            existing.language = resolvedLanguage;
+                            existing.apiSource = apiSource || 'manual';
+                            existing.futureApiRequest = buildFutureApiRequest(existing);
+                        }
+                        editingNotificationId = null;
+                        saveNotifications();
+                        renderNotificationsList();
+                        closeOverlay('addNotificationModal');
+                        notificationForm.reset();
+                        return;
+                    }
+
                     const newNotification = {
                         id: 'notification_' + Date.now(),
                         date: date,
                         type: type,
+                        seriesId: matchedItem.id,
                         seriesName: seriesName,
                         season: type === 'season' || type === 'episode' ? parseInt(season) : null,
                         episode: type === 'episode' ? parseInt(episode) : null,
@@ -4198,11 +4380,17 @@
                 'actorsContainer'
             ];
             
+            const maxTimeEl = document.getElementById('seriesMaxTime');
+            const maxTimeGroup = maxTimeEl ? (maxTimeEl.closest('.form-group') || maxTimeEl) : null;
+
             if (status === 'completed') {
                 // Hide current season/episode fields
                 currentSeasonGroup.classList.add('hidden');
                 currentEpisodeGroup.classList.add('hidden');
-                
+
+                if (maxTimeGroup) maxTimeGroup.style.display = 'none';
+                if (maxTimeEl) maxTimeEl.value = 0;
+
                 // Sync current with totals
                 if (totalSeasonsInput.value) {
                     currentSeasonInput.value = totalSeasonsInput.value;
@@ -4214,6 +4402,8 @@
                 // Show current season/episode fields
                 currentSeasonGroup.classList.remove('hidden');
                 currentEpisodeGroup.classList.remove('hidden');
+
+                if (maxTimeGroup && status !== 'want') maxTimeGroup.style.display = '';
             }
 
             const hideForWant = status === 'want';

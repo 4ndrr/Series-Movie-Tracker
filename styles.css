@@ -164,6 +164,123 @@
             margin-bottom: 30px;
         }
 
+        .sticky-top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1500;
+            background-color: transparent;
+            margin: 0 calc(-1 * clamp(14px, 2.6vw, 34px));
+            padding: 0 clamp(14px, 2.6vw, 34px);
+            box-shadow: none;
+            transition: background-color 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+        }
+
+        .sticky-top-bar.scrolled {
+            background-color: var(--primary-color, #141414);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+            padding-top: 6px;
+            padding-bottom: 2px;
+        }
+
+        body.light-theme .sticky-top-bar.scrolled {
+            background-color: #ffffff;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.10);
+        }
+
+        .sticky-top-bar header {
+            padding: 20px 0;
+            margin-bottom: 24px;
+            transition: padding 0.25s ease, margin-bottom 0.25s ease;
+        }
+
+        .sticky-top-bar header img {
+            height: 150px;
+            transition: height 0.25s ease;
+        }
+
+        .sticky-top-bar.scrolled header {
+            padding: 8px 0;
+            margin-bottom: 10px;
+        }
+
+        .sticky-top-bar.scrolled header img {
+            height: 56px;
+        }
+
+        .sticky-top-bar .filter-controls {
+            margin-bottom: 24px;
+            transition: margin-bottom 0.25s ease;
+        }
+
+        .sticky-top-bar .search-filter-bar {
+            margin-bottom: 18px;
+            transition: margin-bottom 0.25s ease;
+        }
+
+        .sticky-top-bar.scrolled .filter-controls {
+            margin-bottom: 10px;
+        }
+
+        .sticky-top-bar.scrolled .search-filter-bar {
+            margin-bottom: 10px;
+        }
+
+        /* Collapse toggle — only usable while at top (inline) */
+        .topbar-collapse-toggle {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            margin: 0 0 18px;
+            padding: 7px 0;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 8px;
+            color: #bbb;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .topbar-collapse-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        body.light-theme .topbar-collapse-toggle {
+            background-color: rgba(0, 0, 0, 0.04);
+            border-color: rgba(0, 0, 0, 0.12);
+            color: #555;
+        }
+
+        body.light-theme .topbar-collapse-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+            color: #111;
+        }
+
+        .topbar-collapse-toggle .tc-chevron {
+            transition: transform 0.2s;
+        }
+
+        /* Show the toggle only when inline (not scrolled) */
+        .sticky-top-bar:not(.scrolled) .topbar-collapse-toggle {
+            display: flex;
+        }
+
+        /* When collapsed at top: hide search + filters, keep header only */
+        .sticky-top-bar.topbar-collapsed:not(.scrolled) .search-filter-bar,
+        .sticky-top-bar.topbar-collapsed:not(.scrolled) .filter-controls {
+            display: none;
+        }
+
+        .sticky-top-bar.topbar-collapsed .topbar-collapse-toggle .tc-chevron {
+            transform: rotate(-90deg);
+        }
+
 
         .header-controls {
             display: flex;
@@ -773,8 +890,8 @@
             overflow: hidden;
         }
         body.light-theme .watch-timeline {
-            background: #f0f0f0;
-            border-color: rgba(0,0,0,0.07);
+            background: #ffffff;
+            border-color: rgba(0,0,0,0.12);
         }
 
         .watch-timeline-header {
@@ -1866,7 +1983,50 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            cursor: pointer;
+            user-select: none;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            text-align: left;
+            padding: 11px 12px;
+            transition: background-color 0.18s, border-color 0.18s;
+        }
+
+        .sidebar-section-title:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.16);
+        }
+
+        .sidebar-section.collapsed .sidebar-section-title {
+            margin-bottom: 0;
+        }
+
+        body.light-theme .sidebar-section-title {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body.light-theme .sidebar-section-title:hover {
+            background: rgba(0, 0, 0, 0.06);
+            border-color: rgba(0, 0, 0, 0.16);
+        }
+
+        .sidebar-section-title .section-toggle-icon {
+            margin-left: auto;
+            transition: transform 0.2s;
+            font-size: 0.7rem;
+            opacity: 0.7;
+        }
+
+        .sidebar-section.collapsed .sidebar-section-title .section-toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .sidebar-section.collapsed > *:not(.sidebar-section-title) {
+            display: none !important;
         }
 
         .sidebar-section {
@@ -1948,6 +2108,33 @@
         .sidebar-add-content-btn:hover {
             background-color: #f40612;
         }
+        .sidebar-marketplace-btn {
+            width: 100%;
+            padding: 0 14px;
+            height: 44px;
+            margin-top: 8px;
+            background-color: transparent;
+            color: var(--secondary-color, #e50914);
+            border: 1px solid var(--secondary-color, #e50914);
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-family: inherit;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .sidebar-marketplace-btn:hover {
+            background-color: var(--secondary-color, #e50914);
+            color: #fff;
+        }
+
 
         body.custom-theme .sidebar-add-content-btn {
             background-color: var(--secondary-color, #e50914);
@@ -2909,6 +3096,21 @@
             background-color: #ff6666;
         }
 
+        .notification-edit-btn {
+            background-color: var(--secondary-color, #e50914);
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: filter 0.2s;
+        }
+
+        .notification-edit-btn:hover {
+            filter: brightness(1.15);
+        }
+
         .notification-display {
             background-color: #1a1a1a;
             border: 2px solid var(--secondary-color, #e50914);
@@ -3106,6 +3308,10 @@
         body.custom-theme .streaming-chip.selected {
             background: rgba(var(--secondary-rgb, 229,9,20), 0.3);
             border-color: var(--secondary-color, #e50914);
+        }
+        body.light-theme .streaming-multi-select {
+            background: #ffffff;
+            border-color: #ddd;
         }
         body.light-theme .streaming-chip {
             background: rgba(0,0,0,0.05);
@@ -3318,4 +3524,7 @@
         body.light-theme .ct-cancel { background: #f0f0f0; border-color: #ddd; color: #777; }
         body.light-theme .ct-cancel:hover { background: #e4e4e4; }
 
-    
+/* TMDB attribution in sidebar (required by TMDB terms of use) */
+.tmdb-attribution-side{display:inline-flex;align-items:center;padding:4px 0 8px;}
+.tmdb-logo-side{height:18px;width:auto;display:block;}
+.tmdb-notice-side{font-size:0.72rem;line-height:1.5;opacity:0.7;margin:0;}

@@ -296,6 +296,8 @@
             </div>
             <div class="header-controls">
                 <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
+                <a href="Application_Summary.html" class="nav-link">Summary</a>
+                <a href="Legal.html" class="nav-link">Legal</a>
                 <a href="index.html" class="nav-link">← Back to Tracker</a>
             </div>
         </header>
@@ -305,6 +307,103 @@
         </div>
         
           <div class="changelog-content">
+            <!-- Version 1.13 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.13</span>
+        <span class="version-date">June 16 2026</span>
+    </div>
+
+    <h3 class="section-title">Marketplace &amp; Navigation</h3>
+    <ul class="feature-list">
+        <li><strong>New Marketplace build:</strong> Switched to a cleaner, accessible Marketplace (keyboard-friendly detail dialog, refined hero and collections) that loads its catalogue from <code>marketplace-data.json</code> &mdash; the file produced by the private Marketplace Generator.</li>
+        <li><strong>Marketplace button in the sidebar:</strong> Added a <em>Marketplace</em> link directly next to <em>Add Content</em> in the Content section, so the catalogue is one click away.</li>
+        <li><strong>TMDB attribution restored:</strong> The required TMDB notice and logo are shown in the Marketplace footer and inside each detail dialog, and the data file carries the attribution &mdash; keeping everything compliant with the TMDB API terms.</li>
+    </ul>
+</div>
+            <!-- Version 1.12 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.12</span>
+        <span class="version-date">June 16 2026</span>
+    </div>
+
+    <h3 class="section-title">Marketplace &amp; Generator</h3>
+    <ul class="feature-list">
+        <li><strong>Marketplace reconnected to the generator:</strong> The Marketplace now loads its catalogue from <code>marketplace-data.json</code> &mdash; the exact file the private Marketplace Generator produces &mdash; so new content can be published without editing the page.</li>
+        <li><strong>Offline fallback kept:</strong> If <code>marketplace-data.json</code> cannot be loaded (for example when the page is opened directly from disk), the Marketplace automatically falls back to its built-in catalogue, so it always works.</li>
+        <li><strong>Attribution preserved:</strong> The generated data file carries the required TMDB attribution, and the Marketplace continues to show the TMDB logo and notice.</li>
+    </ul>
+</div>
+            <!-- Version 1.11 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.11</span>
+        <span class="version-date">June 16 2026</span>
+    </div>
+
+    <h3 class="section-title">New Pages</h3>
+    <ul class="feature-list">
+        <li><strong>Application Summary:</strong> A new overview page describing everything the app does &mdash; the Tracker, the Marketplace, and the private Marketplace Generator &mdash; with feature cards and quick links.</li>
+        <li><strong>Legal &amp; Attribution:</strong> A new page covering data sources and TMDB/OMDb attribution, your data and privacy, cookies/local storage, trademarks &amp; copyright, non-commercial use, warranty, third-party services and contact/takedown. Written to be readable, with the formal points stated plainly.</li>
+    </ul>
+
+    <h3 class="section-title">Improvements</h3>
+    <ul class="feature-list">
+        <li>Both new pages are linked everywhere &mdash; from the Tracker sidebar (Help), the Marketplace footer, and the Guide and Changelog headers.</li>
+        <li>The new pages match the existing dark/light theme and remember your theme choice.</li>
+    </ul>
+</div>
+            <!-- Version 1.10 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.10</span>
+        <span class="version-date">June 16 2026</span>
+    </div>
+
+    <h3 class="section-title">Legal &amp; Attribution</h3>
+    <ul class="feature-list">
+        <li><strong>TMDB Attribution Added:</strong> The Marketplace now displays the official TMDB logo and the required notice &mdash; &ldquo;This product uses the TMDB API but is not endorsed or certified by TMDB&rdquo; &mdash; in the page footer and inside every title&rsquo;s detail view, since catalogue metadata, ratings and cover images are provided by The Movie Database (TMDB).</li>
+        <li><strong>About &amp; Credits in the Tracker:</strong> A new <strong>About &amp; Credits</strong> section in the sidebar carries the same TMDB logo and attribution, so credit is visible throughout the app and not only on the Marketplace.</li>
+        <li><strong>Brand-Compliant Logo:</strong> The TMDB logo is embedded unmodified, keeping its original colours and aspect ratio in line with TMDB&rsquo;s brand guidelines.</li>
+    </ul>
+
+    <h3 class="section-title">Compliance</h3>
+    <ul class="feature-list">
+        <li>Cover images are always linked directly from TMDB rather than copied or re-hosted, as required by the API terms.</li>
+        <li>Reviewed the whole project against the TMDB and OMDb API rules: no API keys are bundled, the data is never used for AI training, and a refresh window keeps cached metadata well within TMDB&rsquo;s limits.</li>
+    </ul>
+</div>
+            <!-- Version 1.7 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.7</span>
+        <span class="version-date">June 16 2026</span>
+    </div>
+
+    <h3 class="section-title">New Features</h3>
+    <ul class="feature-list">
+        <li><strong>Editable Notifications:</strong> Calendar entries can now be edited after creation. Press the new <strong>Edit</strong> button next to any entry to change its date, type, season, or episode.</li>
+        <li><strong>Collapsible Menu Sections:</strong> Each sidebar section title (Themes, Settings, etc.) is now a styled toggle button. Tap a title to expand or collapse its options, keeping the menu tidy.</li>
+        <li><strong>Adaptive Top Bar:</strong> The header, search bar, and status filters sit integrated in the page at the top, then smoothly turn into a floating bar the moment you scroll down. While at the top you can also collapse the search &amp; filters for a cleaner view.</li>
+        <li><strong>Click Logo to Reload:</strong> Clicking the logo reloads the page while keeping all of your saved data intact.</li>
+    </ul>
+
+    <h3 class="section-title">Improvements</h3>
+    <ul class="feature-list">
+        <li>Completely redesigned the Guide page with a modern layout, sticky on-page navigation, feature cards, and step-by-step instructions.</li>
+        <li>Notifications with a date in the past are now automatically hidden from the calendar, so the list only shows upcoming items.</li>
+        <li>The streaming-services selector now uses a proper white background in Light mode (it previously stayed dark).</li>
+        <li>Removed the outdated video tutorial link from the Guide page.</li>
+    </ul>
+
+    <h3 class="section-title">Coming Soon</h3>
+    <ul class="future-list">
+        <li><strong>Full API Integration:</strong> Automatic cover, rating, and streaming service detection via OMDB and Watchmode (work in progress).</li>
+        <li><strong>Better Statistics Graphs:</strong> More detailed per-genre and per-service breakdowns.</li>
+        <li><strong>Custom Filters:</strong> Create your own filter rules for advanced organisation.</li>
+    </ul>
+</div>
             <!-- Version 1.6 -->
 <div class="version-card">
     <div class="version-header">
