@@ -1,4 +1,4 @@
-# [Use:https://twilightmay.github.io/Series-Movie-Tracker/](https://series-movie-tracker.vercel.app/)
+# [Use:Series-Movie-Tracker/](https://series-movie-tracker.vercel.app/)
 
 # 🎬 Series & Movie Tracker
 
