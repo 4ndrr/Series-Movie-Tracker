@@ -32,7 +32,9 @@
       "originalTitle": "참교육",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": 2026,
@@ -58,7 +60,9 @@
       "originalTitle": "FROM",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2022,
       "endYear": null,
@@ -171,7 +175,8 @@
       "originalTitle": "The Polygamist",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2026,
       "endYear": null,
@@ -197,7 +202,8 @@
       "originalTitle": "Spider-Noir",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2026,
       "endYear": null,
@@ -223,7 +229,8 @@
       "originalTitle": "House of the Dragon",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2022,
       "endYear": null,
@@ -250,7 +257,9 @@
       "originalTitle": "Rick and Morty",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2013,
       "endYear": null,
@@ -279,7 +288,9 @@
       "originalTitle": "The Boys",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2019,
       "endYear": 2026,
@@ -331,7 +342,8 @@
       "originalTitle": "Every Year After",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2026,
       "endYear": null,
@@ -357,7 +369,8 @@
       "originalTitle": "Euphoria",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2019,
       "endYear": 2026,
@@ -384,7 +397,9 @@
       "originalTitle": "Dutton Ranch",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -415,7 +430,9 @@
       "originalTitle": "凡人修仙传",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2020,
       "endYear": null,
@@ -464,7 +481,9 @@
       "originalTitle": "Off Campus",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -490,7 +509,9 @@
       "originalTitle": "The Simpsons",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 1989,
       "endYear": null,
@@ -701,7 +722,8 @@
       "originalTitle": "炽夏",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2026,
       "endYear": null,
@@ -750,7 +772,8 @@
       "originalTitle": "Not Suitable for Work",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2026,
       "endYear": null,
@@ -803,7 +826,9 @@
       "originalTitle": "Raakh",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -983,7 +1008,8 @@
       "originalTitle": "呪術廻戦",
       "type": "anime",
       "categories": [
-        "Anime"
+        "Anime",
+        "Sci-Fi"
       ],
       "year": 2020,
       "endYear": null,
@@ -1067,7 +1093,9 @@
       "originalTitle": "Family Guy",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 1999,
       "endYear": null,
@@ -1211,7 +1239,9 @@
       "originalTitle": "The Rookie",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2018,
       "endYear": null,
@@ -1291,7 +1321,8 @@
       "originalTitle": "Stranger Things",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi"
       ],
       "year": 2016,
       "endYear": 2025,
@@ -1633,7 +1664,9 @@
       "originalTitle": "Criminal Minds",
       "type": "series",
       "categories": [
-        "Series"
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2005,
       "endYear": null,
@@ -5995,7 +6028,8 @@
       "originalTitle": "The Empire Strikes Back",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 1980,
       "endYear": null,
@@ -6308,7 +6342,1660 @@
         "Passionflix Amazon Channel"
       ],
       "popularity": 3
+    },
+    {
+      "id": 248,
+      "title": "Law & Order: Special Victims Unit",
+      "originalTitle": "Law & Order: Special Victims Unit",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 1999,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "In the criminal justice system, sexually-based offenses are considered especially heinous. In New York City, the dedicated detectives who investigate these vicious felonies are members of an elite squad known as the Special Victims Unit. These are their stories.",
+      "cover": "https://image.tmdb.org/t/p/w400/iofokHZoUB4Qhik4PflvJl8TT6a.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/obtdxPgmfykYwVnvuYXC5f2xKlQ.jpg",
+      "seasons": 28,
+      "episodes": 594,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.9,
+      "providers": [
+        "Hulu",
+        "Peacock Premium",
+        "YouTube TV",
+        "NBC",
+        "USA Network",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 325
+    },
+    {
+      "id": 249,
+      "title": "Law & Order",
+      "originalTitle": "Law & Order",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 1990,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "In cases ripped from the headlines, police investigate serious and often deadly crimes, weighing the evidence and questioning the suspects until someone is taken into custody. The district attorney's office then builds a case to convict the perpetrator by proving the person guilty beyond a reasonable doubt. Working together, these expert teams navigate all sides of the complex criminal justice system to make New York a safer place.",
+      "cover": "https://image.tmdb.org/t/p/w400/haJ9eHytVO3H3JooMJG1DiWwDNm.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/tc7canPSAn2X14hYi6Rl3gZm1o4.jpg",
+      "seasons": 25,
+      "episodes": 544,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.3,
+      "providers": [
+        "Netflix",
+        "Hulu",
+        "Peacock Premium",
+        "YouTube TV",
+        "NBC",
+        "Philo",
+        "Netflix Standard with Ads",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 223
+    },
+    {
+      "id": 250,
+      "title": "Grey's Anatomy",
+      "originalTitle": "Grey's Anatomy",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2005,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Follows the personal and professional lives of a group of doctors at Seattle's Grey Sloan Memorial Hospital.",
+      "cover": "https://image.tmdb.org/t/p/w400/hjJkrLXhWvGHpLeLBDFznpBTY1S.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/jP0Rhj9OTPDAwQlHQwOLFDdeE8t.jpg",
+      "seasons": 22,
+      "episodes": 465,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Netflix",
+        "Hulu",
+        "fuboTV",
+        "YouTube TV",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 211
+    },
+    {
+      "id": 251,
+      "title": "Dahoam is Dahoam",
+      "originalTitle": "Dahoam is Dahoam",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2007,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "The lives of the residents of the fictitious village of Lansing in Upper Bavaria.",
+      "cover": "https://image.tmdb.org/t/p/w400/tGXZEUgSbgufoOpXMImSKPDd5A3.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/1iAc3ML51uNe16jlxTQV84mLHG2.jpg",
+      "seasons": 23,
+      "episodes": 3765,
+      "runtime": 30,
+      "imdb": null,
+      "tmdb": 4.8,
+      "providers": [],
+      "popularity": 180
+    },
+    {
+      "id": 252,
+      "title": "Game of Thrones",
+      "originalTitle": "Game of Thrones",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2011,
+      "endYear": 2019,
+      "status": "ended",
+      "description": "Seven noble families fight for control of the mythical land of Westeros. Friction between the houses leads to full-scale war. All while a very ancient evil awakens in the farthest north. Amidst the war, a neglected military order of misfits, the Night's Watch, is all that stands between the realms of men and icy horrors beyond.",
+      "cover": "https://image.tmdb.org/t/p/w400/1XS1oqL89opfnbLl8WnZY1O1uJx.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/2OMB0ynKlyIenMJWI2Dy9IWT4c.jpg",
+      "seasons": 8,
+      "episodes": 73,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.5,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "popularity": 188
+    },
+    {
+      "id": 253,
+      "title": "Supernatural",
+      "originalTitle": "Supernatural",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2005,
+      "endYear": 2020,
+      "status": "ended",
+      "description": "When they were boys, Sam and Dean Winchester lost their mother to a mysterious and demonic supernatural force. Subsequently, their father raised them to be soldiers. He taught them about the paranormal evil that lives in the dark corners and on the back roads of America ... and he taught them how to kill it. Now, the Winchester brothers crisscross the country in their '67 Chevy Impala, battling every kind of supernatural threat they encounter along the way. ",
+      "cover": "https://image.tmdb.org/t/p/w400/8iixmfGx5EIFPdpNvB2JvI3VIqX.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/ro0tlgnsco4SwbdAgmscLkSlMSL.jpg",
+      "seasons": 15,
+      "episodes": 327,
+      "runtime": 45,
+      "imdb": null,
+      "tmdb": 8.3,
+      "providers": [
+        "Amazon Prime Video",
+        "Peacock Premium",
+        "TNT",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 188
+    },
+    {
+      "id": 254,
+      "title": "NCIS",
+      "originalTitle": "NCIS",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2003,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "From murder and espionage to terrorism and stolen submarines, a team of special agents investigates any crime that has any connection to Navy and Marine Corps personnel, regardless of rank or position.",
+      "cover": "https://image.tmdb.org/t/p/w400/mBcu8d6x6zB1el3MPNl7cZQEQ31.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/nn3SuLTO4hum8yAxaY4ql8h6kRk.jpg",
+      "seasons": 23,
+      "episodes": 507,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.6,
+      "providers": [
+        "Netflix",
+        "Hulu",
+        "fuboTV",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "YouTube TV",
+        "Philo",
+        "Paramount+ Roku Premium Channel",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 189
+    },
+    {
+      "id": 255,
+      "title": "The Mentalist",
+      "originalTitle": "The Mentalist",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2008,
+      "endYear": 2015,
+      "status": "ended",
+      "description": "Patrick Jane, a former celebrity psychic medium, uses his razor sharp skills of observation and expertise at \"reading\" people to solve serious crimes with the California Bureau of Investigation.",
+      "cover": "https://image.tmdb.org/t/p/w400/acYXu4KaDj1NIkMgObnhe4C4a0T.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/q3pCsNvJ7CmdJUz2sJEEUY3pOPC.jpg",
+      "seasons": 7,
+      "episodes": 151,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.4,
+      "providers": [
+        "Hulu"
+      ],
+      "popularity": 175
+    },
+    {
+      "id": 256,
+      "title": "Trespassing",
+      "originalTitle": "一夫三妻",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 1994,
+      "endYear": 1994,
+      "status": "ended",
+      "description": "",
+      "cover": "https://image.tmdb.org/t/p/w400/rZan9uyHoK5jY0DtN5w4XgwN362.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/eEOG92ZjryhwNAf3ek2fgZsCRdl.jpg",
+      "seasons": 1,
+      "episodes": 20,
+      "runtime": 45,
+      "imdb": null,
+      "tmdb": 0,
+      "providers": [],
+      "popularity": 153
+    },
+    {
+      "id": 257,
+      "title": "Tagesschau",
+      "originalTitle": "Tagesschau",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 1952,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "German daily news program, the oldest still existing program on German television.",
+      "cover": "https://image.tmdb.org/t/p/w400/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
+      "seasons": 75,
+      "episodes": 21352,
+      "runtime": 15,
+      "imdb": null,
+      "tmdb": 6.8,
+      "providers": [],
+      "popularity": 184
+    },
+    {
+      "id": 258,
+      "title": "CSI: Crime Scene Investigation",
+      "originalTitle": "CSI: Crime Scene Investigation",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2000,
+      "endYear": 2015,
+      "status": "ended",
+      "description": "A Las Vegas team of forensic investigators are trained to solve criminal cases by scouring the crime scene, collecting irrefutable evidence and finding the missing pieces that solve the mystery.",
+      "cover": "https://image.tmdb.org/t/p/w400/i5hmoRjHNWady4AtAGICTUXknKH.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/cvlLBcQWpO9X21jDHhgPJnE2aVq.jpg",
+      "seasons": 15,
+      "episodes": 335,
+      "runtime": 43,
+      "imdb": null,
+      "tmdb": 7.6,
+      "providers": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel"
+      ],
+      "popularity": 152
+    },
+    {
+      "id": 259,
+      "title": "The Tonight Show Starring Jimmy Fallon",
+      "originalTitle": "The Tonight Show Starring Jimmy Fallon",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2014,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "After Jay Leno's second retirement from the program, Jimmy Fallon stepped in as his permanent replacement. After 42 years in Los Angeles the program was brought back to New York.",
+      "cover": "https://image.tmdb.org/t/p/w400/1N4o5PmmqhlVDrcdJ2RlCFWbLGX.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/7VO04TtL1jIT6XOPs9u4jdB8KaB.jpg",
+      "seasons": 13,
+      "episodes": 1700,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 5.8,
+      "providers": [
+        "fuboTV",
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 171
+    },
+    {
+      "id": 260,
+      "title": "Wanna Be Happy?",
+      "originalTitle": "Клиника счастья",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi",
+        "Star Wars"
+      ],
+      "year": 2021,
+      "endYear": 2021,
+      "status": "ended",
+      "description": "Alyona Lipnitskaya, at the head of a team of doctors, helps patients to establish a personal life using the author's technique and demonstrates by her example the effectiveness of the chosen lifestyle — Alyona turns 50, but others do not give her more than 35. Her clinic is visited by people whose health problems and relationships with loved ones are rooted in sexual disharmony. However, problems appear in the life of a happy and successful doctor of sciences — the puzzle of a happy life collapses in an instant. Alyona will have to fight for the clinic, sort out her personal life and find a new formula for happiness.",
+      "cover": "https://image.tmdb.org/t/p/w400/9cSh9CuYeRcNMnJiWtBhwOoUghR.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/cA2K3clHcQBtRVbmYX7c6Outst9.jpg",
+      "seasons": 1,
+      "episodes": 8,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.2,
+      "providers": [],
+      "popularity": 179
+    },
+    {
+      "id": 261,
+      "title": "Watch What Happens Live with Andy Cohen",
+      "originalTitle": "Watch What Happens Live with Andy Cohen",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2009,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Bravo network executive Andy Cohen discusses pop culture topics with celebrities and reality show personalities.",
+      "cover": "https://image.tmdb.org/t/p/w400/onSD9UXfJwrMXWhq7UY7hGF2S1h.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/hINekSpbcBxjnjGqmIm6I4bz2ab.jpg",
+      "seasons": 24,
+      "episodes": 3165,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 5,
+      "providers": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 163
+    },
+    {
+      "id": 262,
+      "title": "Breaking Bad",
+      "originalTitle": "Breaking Bad",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2008,
+      "endYear": 2013,
+      "status": "ended",
+      "description": "Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
+      "cover": "https://image.tmdb.org/t/p/w400/3xnWaLQjelJDDF7LT1WBo6f4BRe.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/tsRy63Mu5cu8etL1X7ZLyf7UP1M.jpg",
+      "seasons": 5,
+      "episodes": 62,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.9,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 134
+    },
+    {
+      "id": 263,
+      "title": "Shameless",
+      "originalTitle": "Shameless",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2011,
+      "endYear": 2021,
+      "status": "ended",
+      "description": "Chicagoan Frank Gallagher is the proud single dad of six smart, industrious, independent kids, who without him would be... perhaps better off. When Frank's not at the bar spending what little money they have, he's passed out on the floor. But the kids have found ways to grow up in spite of him. They may not be like any family you know, but they make no apologies for being exactly who they are.",
+      "cover": "https://image.tmdb.org/t/p/w400/ifo31fMWLmyOVpdak9K0kY4jldQ.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/5s9XHTB9SLPdg3mNU6BlSLnZ9Qq.jpg",
+      "seasons": 11,
+      "episodes": 134,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 135
+    },
+    {
+      "id": 264,
+      "title": "Yellowstone",
+      "originalTitle": "Yellowstone",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2018,
+      "endYear": 2024,
+      "status": "ended",
+      "description": "Follow the violent world of the Dutton family, who controls the largest contiguous ranch in the United States. Led by their patriarch John Dutton, the family defends their property against constant attack by land developers, an Indian reservation, and America’s first National Park.",
+      "cover": "https://image.tmdb.org/t/p/w400/vOYfRZ0NpUK5hG2CB2dJFnYJlGe.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/ynSOcgDLZfdLCZfRSYZGiTgYJVo.jpg",
+      "seasons": 5,
+      "episodes": 53,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.3,
+      "providers": [
+        "fuboTV",
+        "Peacock Premium",
+        "YouTube TV",
+        "Philo",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 144
+    },
+    {
+      "id": 265,
+      "title": "Midsomer Murders",
+      "originalTitle": "Midsomer Murders",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1997,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "The peacefulness of the Midsomer community is shattered by violent crimes, suspects are placed under suspicion, and it is up to a veteran DCI and his young sergeant to calmly and diligently eliminate the innocent and ruthlessly pursue the guilty. ",
+      "cover": "https://image.tmdb.org/t/p/w400/pz7tsWxe0TTdfJnWPjZAEnrSl5M.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/qVmgq1KXBp6BF2EqYPPaUG9iUGy.jpg",
+      "seasons": 25,
+      "episodes": 144,
+      "runtime": 90,
+      "imdb": null,
+      "tmdb": 7.5,
+      "providers": [
+        "fuboTV",
+        "YouTube TV",
+        "Acorn TV",
+        "AcornTV Amazon Channel",
+        "BritBox Amazon Channel",
+        "Spectrum On Demand",
+        "Acorn TV Apple TV"
+      ],
+      "popularity": 137
+    },
+    {
+      "id": 266,
+      "title": "Bones",
+      "originalTitle": "Bones",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2005,
+      "endYear": 2017,
+      "status": "ended",
+      "description": "Dr. Temperance Brennan and her colleagues at the Jeffersonian's Medico-Legal Lab assist Special Agent Seeley Booth with murder investigations when the remains are so badly decomposed, burned or destroyed that the standard identification methods are useless.",
+      "cover": "https://image.tmdb.org/t/p/w400/eyTu5c8LniVciRZIOSHTvvkkgJa.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/aSye04zKzWtUP3U6Cl4bOXc5Ih9.jpg",
+      "seasons": 12,
+      "episodes": 246,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Amazon Prime Video",
+        "Hulu",
+        "Peacock Premium",
+        "YouTube TV",
+        "Philo",
+        "BBC America",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 137
+    },
+    {
+      "id": 267,
+      "title": "House",
+      "originalTitle": "House",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2004,
+      "endYear": 2012,
+      "status": "ended",
+      "description": "Dr. Gregory House, a drug-addicted, unconventional, misanthropic medical genius, leads a team of diagnosticians at the fictional Princeton–Plainsboro Teaching Hospital in New Jersey.",
+      "cover": "https://image.tmdb.org/t/p/w400/3Cz7ySOQJmqiuTdrc6CY0r65yDI.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/r0Q6eeN9L1ORL9QsV0Sg8ZV3vnv.jpg",
+      "seasons": 8,
+      "episodes": 176,
+      "runtime": 44,
+      "imdb": null,
+      "tmdb": 8.6,
+      "providers": [
+        "Amazon Prime Video",
+        "Hulu",
+        "Amazon Prime Video with Ads"
+      ],
+      "popularity": 131
+    },
+    {
+      "id": 268,
+      "title": "The Tonight Show Starring Johnny Carson",
+      "originalTitle": "The Tonight Show Starring Johnny Carson",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1962,
+      "endYear": 1992,
+      "status": "ended",
+      "description": "The Tonight Show Starring Johnny Carson is a talk show hosted by Johnny Carson under The Tonight Show franchise from 1962 to 1992. It originally aired during late-night. For its first ten years, Carson's Tonight Show was based in New York City with occasional trips to Burbank, California; in May 1972, the show moved permanently to Burbank, California. In 2002, The Tonight Show Starring Johnny Carson was ranked #12 on TV Guide's 50 Greatest TV Shows of All Time.",
+      "cover": "https://image.tmdb.org/t/p/w400/uSvET5YUvHNDIeoCpErrbSmasFb.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/qFfWFwfaEHzDLWLuttWiYq7Poy2.jpg",
+      "seasons": 31,
+      "episodes": 3753,
+      "runtime": 60,
+      "imdb": null,
+      "tmdb": 7.5,
+      "providers": [
+        "fuboTV",
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 143
+    },
+    {
+      "id": 269,
+      "title": "The Late Show with Stephen Colbert",
+      "originalTitle": "The Late Show with Stephen Colbert",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2015,
+      "endYear": 2026,
+      "status": "ended",
+      "description": "Stephen Colbert brings his signature satire and comedy to The Late Show with Stephen Colbert, the #1 show in late night, where he talks with an eclectic mix of guests about what is new and relevant in the worlds of politics, entertainment, business, music, technology, and more. Featuring bandleader Jon Batiste with his band Stay Human, the Emmy Award-nominated show is broadcast from the historic Ed Sullivan Theater.",
+      "cover": "https://image.tmdb.org/t/p/w400/9jkThAGYj2yp8jsS6Nriy5mzKFT.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/gMMnf8VRg3Z98WaFmOLr9Jk8pIs.jpg",
+      "seasons": 11,
+      "episodes": 1816,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 6.1,
+      "providers": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel"
+      ],
+      "popularity": 130
+    },
+    {
+      "id": 270,
+      "title": "The Blacklist",
+      "originalTitle": "The Blacklist",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2013,
+      "endYear": 2023,
+      "status": "ended",
+      "description": "Raymond \"Red\" Reddington, one of the FBI's most wanted fugitives, surrenders in person at FBI Headquarters in Washington, D.C. He claims that he and the FBI have the same interests: bringing down dangerous criminals and terrorists. In the last two decades, he's made a list of criminals and terrorists that matter the most but the FBI cannot find because it does not know they exist. Reddington calls this \"The Blacklist\". Reddington will co-operate, but insists that he will speak only to Elizabeth Keen, a rookie FBI profiler.",
+      "cover": "https://image.tmdb.org/t/p/w400/4HTfd1PhgFUenJxVuBDNdLmdr0c.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/2eIlCirgcvEwmCSYh2wDfz5Sxvz.jpg",
+      "seasons": 10,
+      "episodes": 218,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.6,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 123
+    },
+    {
+      "id": 271,
+      "title": "Late Night with Seth Meyers",
+      "originalTitle": "Late Night with Seth Meyers",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2014,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Seth Meyers, who is \"Saturday Night Live's\" longest serving anchor on the show's wildly popular \"Weekend Update,\" takes over as host of NBC's \"Late Night\" — home to A-list celebrity guests, memorable comedy and the best in musical talent. As the Emmy Award-winning head writer for \"SNL,\" Meyers has established a reputation for sharp wit and perfectly timed comedy, and has gained fame for his spot-on jokes and satire. Meyers takes his departure from \"SNL\" to his new post at \"Late Night,\" as Jimmy Fallon moves to \"The Tonight Show\".",
+      "cover": "https://image.tmdb.org/t/p/w400/u8VruEGv7mtyJihVn2CSA1u90pk.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/dfX2UaHVE5c7kLBFbgmEZJuy4Ev.jpg",
+      "seasons": 13,
+      "episodes": 1802,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 5.2,
+      "providers": [
+        "Peacock Premium",
+        "NBC",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 124
+    },
+    {
+      "id": 272,
+      "title": "The Daily Show",
+      "originalTitle": "The Daily Show",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1996,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "The World's Fakest News Team tackle the biggest stories in news, politics and pop culture.",
+      "cover": "https://image.tmdb.org/t/p/w400/ixcfyK7it6FjRM36Te4OdblAq4X.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/qLMfcvdCcCGD2BNLH8b6ZCBuO7D.jpg",
+      "seasons": 31,
+      "episodes": 4242,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 6.4,
+      "providers": [
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Philo",
+        "Paramount+ Roku Premium Channel",
+        "Sweatflix Amazon Channel"
+      ],
+      "popularity": 130
+    },
+    {
+      "id": 273,
+      "title": "Gullak",
+      "originalTitle": "गुल्लक",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Set in quaint by-lanes in the heart of India, Gullak is a collection of disarming and relatable tales of the Mishra family.",
+      "cover": "https://image.tmdb.org/t/p/w400/yvUFbucJg19kaR1HMNc7FKdEwYl.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/t0J74zw5N5Ux7CvvBtIHvjnSB4n.jpg",
+      "seasons": 5,
+      "episodes": 24,
+      "runtime": 30,
+      "imdb": null,
+      "tmdb": 7.9,
+      "providers": [
+        "YouTube TV"
+      ],
+      "popularity": 118
+    },
+    {
+      "id": 274,
+      "title": "Running Man",
+      "originalTitle": "런닝맨",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2010,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "These days, as variety shows are gradually disappearing, this is one of Korea’s representative variety shows that has been responsible for Sunday evenings for over 10 years. This program features numerous stars and members going around various places, playing games, and completing missions. In particular, among the many fun elements of variety shows, this one focuses solely on laughter.\n\nOpen your eyes! Big fun is coming in!\n\nOpen your mouth! Big laughter is coming in!\n\nOpen your heart! Useful lessons are coming in!",
+      "cover": "https://image.tmdb.org/t/p/w400/2Wmmu1MkqxJ48J7aySET9EKEjXz.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/wsHj4oHQJoe7DMYaqNFwVoyLiAh.jpg",
+      "seasons": 1,
+      "episodes": 807,
+      "runtime": 85,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Rakuten Viki",
+        "OnDemandKorea",
+        "Kocowa Amazon Channel",
+        "Kocowa"
+      ],
+      "popularity": 124
+    },
+    {
+      "id": 275,
+      "title": "Smallville",
+      "originalTitle": "Smallville",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2001,
+      "endYear": 2011,
+      "status": "ended",
+      "description": "The origins of the world’s greatest hero–from Krypton refugee Kal-el’s arrival on Earth through his tumultuous teen years to Clark Kent’s final steps toward embracing his destiny as the Man of Steel.",
+      "cover": "https://image.tmdb.org/t/p/w400/mHZSq8LA5Dt48JjaOZ5tcPXQRVN.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/4wVq9ICc4MI2XcssrumpCOhKLpI.jpg",
+      "seasons": 10,
+      "episodes": 216,
+      "runtime": 43,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Hulu"
+      ],
+      "popularity": 114
+    },
+    {
+      "id": 276,
+      "title": "American Dad!",
+      "originalTitle": "American Dad!",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2005,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "The series focuses on an eccentric motley crew that is the Smith family and their three housemates: Father, husband, and breadwinner Stan Smith; his better half housewife, Francine Smith; their college-aged daughter, Hayley Smith; and their high-school-aged son, Steve Smith. Outside of the Smith family, there are three additional main characters, including Hayley's boyfriend turned husband, Jeff Fischer; the family's man-in-a-goldfish-body pet, Klaus; and most notably the family's zany alien, Roger, who is \"full of masquerades, brazenness, and shocking antics.\"",
+      "cover": "https://image.tmdb.org/t/p/w400/eb9sH2am9IUSQ8GhXTNAVoujk8W.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/iixxhk3ycXmFqBn616pAsC3lu53.jpg",
+      "seasons": 22,
+      "episodes": 399,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7,
+      "providers": [
+        "Hulu",
+        "fuboTV",
+        "YouTube TV",
+        "Adult Swim",
+        "TBS",
+        "FOX One Amazon Channel"
+      ],
+      "popularity": 118
+    },
+    {
+      "id": 277,
+      "title": "S.W.A.T.",
+      "originalTitle": "S.W.A.T.",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2017,
+      "endYear": 2025,
+      "status": "ended",
+      "description": "A Los Angeles S.W.A.T. sergeant is assigned to lead a highly skilled unit in the community where he grew up. Torn between loyalty to the streets, where the cops are sometimes the enemy, and allegiance to his brothers in blue, he strategically straddles the two worlds.",
+      "cover": "https://image.tmdb.org/t/p/w400/1l7vsAIkqOzrqiPwjO27Cb5QdfJ.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/7j4ug9B6JXVeh5HhQjjPScrdj4Z.jpg",
+      "seasons": 8,
+      "episodes": 163,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8,
+      "providers": [
+        "Netflix",
+        "fuboTV",
+        "YouTube TV",
+        "Philo",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 121
+    },
+    {
+      "id": 278,
+      "title": "The Flash",
+      "originalTitle": "The Flash",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2014,
+      "endYear": 2023,
+      "status": "ended",
+      "description": "After being struck by lightning, CSI investigator Barry Allen awakens from a nine-month coma to discover he has been  granted the gift of super speed.  Teaming up with S.T.A.R. Labs, Barry takes on the persona of The Flash, the Fastest  Man Alive, to protect his city.",
+      "cover": "https://image.tmdb.org/t/p/w400/yZevl2vHQgmosfwUdVNzviIfaWS.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/gFkHcIh7iE5G0oVOgpmY8ONQjhl.jpg",
+      "seasons": 9,
+      "episodes": 184,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.8,
+      "providers": [
+        "Netflix",
+        "YouTube TV",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 109
+    },
+    {
+      "id": 279,
+      "title": "Miraculous: Tales of Ladybug & Cat Noir",
+      "originalTitle": "Miraculous, les aventures de Ladybug et Chat Noir",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2015,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Marinette and Adrien, two Parisian teenagers, are entrusted with powerful jewels in order to transform into superheroes Ladybug and Cat Noir. But neither hero knows the other's true identity — or that they're classmates!",
+      "cover": "https://image.tmdb.org/t/p/w400/acrtAy8gmxcsEvrDP09MpMSCeDZ.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/lH22EnM0ofC7GsVGU8dAA2RXV1c.jpg",
+      "seasons": 6,
+      "episodes": 155,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.1,
+      "providers": [
+        "Netflix",
+        "Disney Plus",
+        "fuboTV",
+        "YouTube TV",
+        "DisneyNOW",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 110
+    },
+    {
+      "id": 280,
+      "title": "Hotel",
+      "originalTitle": "狂潮",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1976,
+      "endYear": 1977,
+      "status": "ended",
+      "description": "Hotel is a TVB television series, premiered on 1 November 1976. Theme song \"Hotel\" composition and arrangement by Joseph Koo, lyricist by Wong Jim, sung by Susanna Kwan.",
+      "cover": "https://image.tmdb.org/t/p/w400/w5hwoVacFcF6a6YZ8CKHsR2gwH9.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/l2AFzFVPepVDekTcjKSH079biRC.jpg",
+      "seasons": 1,
+      "episodes": 129,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 0,
+      "providers": [],
+      "popularity": 89
+    },
+    {
+      "id": 281,
+      "title": "The Walking Dead",
+      "originalTitle": "The Walking Dead",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2010,
+      "endYear": 2022,
+      "status": "ended",
+      "description": "Sheriff's deputy Rick Grimes awakens from a coma to find a post-apocalyptic world dominated by flesh-eating zombies. He sets out to find his family and encounters many other survivors along the way.",
+      "cover": "https://image.tmdb.org/t/p/w400/aN29llVoCFtBTwDZFtqdD9d8dHb.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/rAOjnEFTuNysY7bot8zonhImGMh.jpg",
+      "seasons": 11,
+      "episodes": 177,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.1,
+      "providers": [
+        "Netflix",
+        "AMC Plus Apple TV Channel ",
+        "AMC+ Roku Premium Channel",
+        "AMC+",
+        "YouTube TV",
+        "Philo",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 101
+    },
+    {
+      "id": 282,
+      "title": "Modern Family",
+      "originalTitle": "Modern Family",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2009,
+      "endYear": 2020,
+      "status": "ended",
+      "description": "The Pritchett-Dunphy-Tucker clan is a wonderfully large and blended family. They give us an honest and often hilarious look into the sometimes warm, sometimes twisted, embrace of the modern family.",
+      "cover": "https://image.tmdb.org/t/p/w400/k5Qg5rgPoKdh3yTJJrLtyoyYGwC.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/nO7EzksrBzlNpAg5rgv8HzaBIkx.jpg",
+      "seasons": 11,
+      "episodes": 250,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.9,
+      "providers": [
+        "Hulu",
+        "Peacock Premium",
+        "YouTube TV",
+        "Philo",
+        "TBS",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 102
+    },
+    {
+      "id": 283,
+      "title": "Arrow",
+      "originalTitle": "Arrow",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2012,
+      "endYear": 2020,
+      "status": "ended",
+      "description": "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
+      "cover": "https://image.tmdb.org/t/p/w400/u8ZHFj1jC384JEkTt3vNg1DfWEb.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/wAFuDJfZJrnh6a1wf1Vt7PqYBvR.jpg",
+      "seasons": 8,
+      "episodes": 170,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 6.8,
+      "providers": [],
+      "popularity": 119
+    },
+    {
+      "id": 284,
+      "title": "Suits",
+      "originalTitle": "Suits",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2011,
+      "endYear": 2019,
+      "status": "ended",
+      "description": "While running from a drug deal gone bad, Mike Ross, a brilliant young college-dropout, slips into a job interview with one of New York City's best legal closers, Harvey Specter. Tired of cookie-cutter law school grads, Harvey takes a gamble by hiring Mike on the spot after he recognizes his raw talent and photographic memory.",
+      "cover": "https://image.tmdb.org/t/p/w400/vQiryp6LioFxQThywxbC6TuoDjy.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/or0E36KfzJYZwqXeiCfm1JgepKF.jpg",
+      "seasons": 9,
+      "episodes": 134,
+      "runtime": 42,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Netflix",
+        "Peacock Premium",
+        "Netflix Standard with Ads",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 99
+    },
+    {
+      "id": 285,
+      "title": "Overflow",
+      "originalTitle": "おーばーふろぉ",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Sci-Fi"
+      ],
+      "year": 2020,
+      "endYear": 2020,
+      "status": "ended",
+      "description": "Kazushi Sudou is a university student who is visited by his two childhood friends, the sisters Ayane and Kotone Shirakawa. When Ayane discovers that Kazushi not only forgot to buy her pudding but is also using her special lotion in the bath, she decides to take revenge and join Kazushi in his bath along with Kotone. Will the perverted Kazushi be able to remain indifferent to them both?",
+      "cover": "https://image.tmdb.org/t/p/w400/8RtwL5gxUvh9YViqjhNlVRvJpum.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/4NRBKA8qVzCvuD3WeLieiLGmIjm.jpg",
+      "seasons": 1,
+      "episodes": 8,
+      "runtime": 7,
+      "imdb": null,
+      "tmdb": 7.3,
+      "providers": [],
+      "popularity": 106
+    },
+    {
+      "id": 286,
+      "title": "Sword of Coming",
+      "originalTitle": "剑来",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2024,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Chen Ping’an grew up in a small, quiet town, living a humble and peaceful life. But when mysterious outsiders arrived, his ordinary world unraveled, exposing him to a reality where immortal cultivators, mythical dragons, and extraordinary powers were no longer just stories. Strange occurrences began to ripple through his town, pulling him into a grand, unpredictable destiny he never imagined.",
+      "cover": "https://image.tmdb.org/t/p/w400/2pT4uBFKymVPLktor6dbeOZzDcJ.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/lhLbAAwMaeoPxvE7bVUQkSDQZ4m.jpg",
+      "seasons": 3,
+      "episodes": 53,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.3,
+      "providers": [],
+      "popularity": 78
+    },
+    {
+      "id": 287,
+      "title": "Chicago Fire",
+      "originalTitle": "Chicago Fire",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2012,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "An edge-of-your-seat view into the lives of everyday heroes committed to one of America's noblest professions. For the firefighters, rescue squad and paramedics of Chicago Firehouse 51, no occupation is more stressful or dangerous, yet so rewarding and exhilarating. These courageous men and women are among the elite who forge headfirst into danger when everyone else is running the other way and whose actions make the difference between life and death.",
+      "cover": "https://image.tmdb.org/t/p/w400/r915sk2JpthZSjHEgZKifWxgo6L.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/14LzHqJrFcHk7ruMNCXpEkB0Thg.jpg",
+      "seasons": 14,
+      "episodes": 295,
+      "runtime": 42,
+      "imdb": null,
+      "tmdb": 8.4,
+      "providers": [
+        "Peacock Premium",
+        "YouTube TV",
+        "NBC",
+        "USA Network",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 99
+    },
+    {
+      "id": 288,
+      "title": "Dexter",
+      "originalTitle": "Dexter",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2006,
+      "endYear": 2013,
+      "status": "ended",
+      "description": "Dexter Morgan, a blood spatter pattern analyst for the Miami Metro Police also leads a secret life as a serial killer, hunting down criminals who have slipped through the cracks of justice.",
+      "cover": "https://image.tmdb.org/t/p/w400/q8dWfc4JwQuv3HayIZeO84jAXED.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/aSGSxGMTP893DPMCvMl9AdnEICE.jpg",
+      "seasons": 8,
+      "episodes": 96,
+      "runtime": 60,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "fuboTV",
+        "Paramount Plus Premium",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Amazon Channel",
+        "Paramount+ Roku Premium Channel",
+        "Spectrum On Demand"
+      ],
+      "popularity": 96
+    },
+    {
+      "id": 289,
+      "title": "Friends",
+      "originalTitle": "Friends",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1994,
+      "endYear": 2004,
+      "status": "ended",
+      "description": "Six young people from New York City, on their own and struggling to survive in the real world, find the companionship, comfort and support they get from each other to be the perfect antidote to the pressures of life.",
+      "cover": "https://image.tmdb.org/t/p/w400/2koX1xLkpTQM4IZebYvKysFW1Nh.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/l0qVZIpXtIo7km9u5Yqh0nKPOr5.jpg",
+      "seasons": 10,
+      "episodes": 228,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.4,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "TBS",
+        "HBO Max"
+      ],
+      "popularity": 98
+    },
+    {
+      "id": 290,
+      "title": "The Office",
+      "originalTitle": "The Office",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2005,
+      "endYear": 2013,
+      "status": "ended",
+      "description": "The everyday lives of office employees in the Scranton, Pennsylvania branch of the fictional Dunder Mifflin Paper Company.",
+      "cover": "https://image.tmdb.org/t/p/w400/7DJKHzAi83BmQrWLrYYOqcoKfhR.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/mLyW3UTgi2lsMdtueYODcfAB9Ku.jpg",
+      "seasons": 9,
+      "episodes": 186,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.6,
+      "providers": [
+        "Peacock Premium",
+        "YouTube TV",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 90
+    },
+    {
+      "id": 291,
+      "title": "Castle",
+      "originalTitle": "Castle",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2009,
+      "endYear": 2016,
+      "status": "ended",
+      "description": "After a serial killer imitates the plots of his novels, successful mystery novelist Richard \"Rick\" Castle receives permission from the Mayor of New York City to tag along with an NYPD homicide investigation team for research purposes.",
+      "cover": "https://image.tmdb.org/t/p/w400/diXBeMzvfJb2iJg3G0kCUaMCzEc.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/zOnLMRD3PIhwO5KZmWMVEnLokMo.jpg",
+      "seasons": 8,
+      "episodes": 173,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8,
+      "providers": [
+        "Amazon Prime Video",
+        "Hulu",
+        "Philo",
+        "Amazon Prime Video with Ads"
+      ],
+      "popularity": 96
+    },
+    {
+      "id": 292,
+      "title": "Raw",
+      "originalTitle": "Raw",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1993,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "A regularly scheduled, live, year-round program featuring some of the biggest WWE Superstars.",
+      "cover": "https://image.tmdb.org/t/p/w400/fstEe6RsyNyPUnMwNcL20iNl0nE.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/eGPH1IwktalozwCmeLTp3aPbHGC.jpg",
+      "seasons": 34,
+      "episodes": 1730,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 6.8,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 94
+    },
+    {
+      "id": 293,
+      "title": "A Girl's Guide to 21st Century Sex",
+      "originalTitle": "A Girl's Guide to 21st Century Sex",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2006,
+      "endYear": 2006,
+      "status": "ended",
+      "description": "A Girl's Guide to 21st Century Sex is a documentary TV series about sex, which ran in eight episodes on Channel 5 and was presented by Dr Catherine Hood. The 45-minute long episodes were broadcast on Monday nights. The series started on 30 October 2006, with the final programme broadcast on 18 December 2006.\n\nEach episode explained a sex position and covered a sexually transmitted disease. Additionally, the following topics were discussed: sex among handicapped and overweight people, penis enlargement devices, penis enlargement surgery, sexual violence against men and penis removal, tantric sex, the g-spot, erectile dysfunction, sex reassignment surgery, cosmetic surgery of the vagina, swinging, lichen sclerosus, the use of recreational drugs during sex, male homosexual sex in public toilets, full body plastic wrap bondage, and sex dolls.",
+      "cover": "https://image.tmdb.org/t/p/w400/9NSX2YrFGBIih0XqRedsSbDVx4U.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/xLzuiD43K9nywZ0eWRx8TGzICFa.jpg",
+      "seasons": 1,
+      "episodes": 8,
+      "runtime": 45,
+      "imdb": null,
+      "tmdb": 5.2,
+      "providers": [],
+      "popularity": 94
+    },
+    {
+      "id": 294,
+      "title": "Hawaii Five-0",
+      "originalTitle": "Hawaii Five-0",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2010,
+      "endYear": 2020,
+      "status": "ended",
+      "description": "Steve McGarrett returns home to Oahu, in order to find his father's killer. The governor offers him the chance to run his own task force (Five-0). Steve's team is joined by Chin Ho Kelly, Danny \"Danno\" Williams, and Kono Kalakaua.",
+      "cover": "https://image.tmdb.org/t/p/w400/sIdCKlmM2nU4akIvFQaAIiU8YES.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/tLccUh3uazZ9TkLhe53UwprJhI4.jpg",
+      "seasons": 10,
+      "episodes": 240,
+      "runtime": 42,
+      "imdb": null,
+      "tmdb": 7.7,
+      "providers": [
+        "Netflix",
+        "Paramount Plus Premium",
+        "Paramount Plus Essential",
+        "Paramount Plus Apple TV Channel ",
+        "Paramount+ Roku Premium Channel",
+        "Netflix Standard with Ads"
+      ],
+      "popularity": 90
+    },
+    {
+      "id": 295,
+      "title": "The Vampire Diaries",
+      "originalTitle": "The Vampire Diaries",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2009,
+      "endYear": 2017,
+      "status": "ended",
+      "description": "The story of two vampire brothers obsessed with the same girl, who bears a striking resemblance to the beautiful but ruthless vampire they knew and loved in 1864.",
+      "cover": "https://image.tmdb.org/t/p/w400/b3vl6wV1W8PBezFfntKTrhrehCY.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/cJYLon9ejKJV7ua03ab8Tj9u067.jpg",
+      "seasons": 8,
+      "episodes": 171,
+      "runtime": 43,
+      "imdb": null,
+      "tmdb": 8.3,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "Peacock Premium",
+        "YouTube TV",
+        "HBO Max",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 90
+    },
+    {
+      "id": 296,
+      "title": "Prison Break",
+      "originalTitle": "Prison Break",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2005,
+      "endYear": 2017,
+      "status": "ended",
+      "description": "Due to a political conspiracy, an innocent man is sent to death row and his only hope is his brother, who makes it his mission to deliberately get himself sent to the same prison in order to break the both of them out, from the inside out.",
+      "cover": "https://image.tmdb.org/t/p/w400/wnmNPaLvhnMeOqnWlhNkYCZxtda.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/n3Brk7roueE9HOwVmYlJx5j462g.jpg",
+      "seasons": 5,
+      "episodes": 88,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.1,
+      "providers": [
+        "Hulu"
+      ],
+      "popularity": 94
+    },
+    {
+      "id": 297,
+      "title": "Stargate SG-1",
+      "originalTitle": "Stargate SG-1",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1997,
+      "endYear": 2007,
+      "status": "ended",
+      "description": "The story of Stargate SG-1 begins about a year after the events of the feature film, when the United States government learns that an ancient alien device called the Stargate can access a network of such devices on a multitude of planets. SG-1 is an elite Air Force special operations team, one of more than two dozen teams from Earth who explore the galaxy and defend against alien threats such as the Goa'uld, Replicators, and the Ori.",
+      "cover": "https://image.tmdb.org/t/p/w400/dQjmI7XxI47v8IM2MUysHG0LuU2.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/yOyzlRw54oYaGvhUBdPr7TFwtrX.jpg",
+      "seasons": 10,
+      "episodes": 214,
+      "runtime": 42,
+      "imdb": null,
+      "tmdb": 8.3,
+      "providers": [
+        "Netflix",
+        "Amazon Prime Video",
+        "fuboTV",
+        "MGM+ Amazon Channel",
+        "MGM Plus Roku Premium Channel",
+        "YouTube TV",
+        "MGM Plus",
+        "Philo",
+        "Spectrum On Demand",
+        "Netflix Standard with Ads",
+        "Amazon Prime Video with Ads"
+      ],
+      "popularity": 91
+    },
+    {
+      "id": 298,
+      "title": "Vikings",
+      "originalTitle": "Vikings",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2013,
+      "endYear": 2020,
+      "status": "ended",
+      "description": "The adventures of Ragnar Lothbrok, the greatest hero of his age. The series tells the sagas of Ragnar's band of Viking brothers and his family, as he rises to become King of the Viking tribes. As well as being a fearless warrior, Ragnar embodies the Norse traditions of devotion to the gods. Legend has it that he was a direct descendant of Odin, the god of war and warriors.",
+      "cover": "https://image.tmdb.org/t/p/w400/bQLrHIRNEkE3PdIWQrZHynQZazu.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/13kblIK8DnxMurcRDkeyy2sGR7v.jpg",
+      "seasons": 6,
+      "episodes": 89,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.1,
+      "providers": [
+        "Netflix"
+      ],
+      "popularity": 92
+    },
+    {
+      "id": 299,
+      "title": "Fire in His Fingertips",
+      "originalTitle": "指先から本気の熱情",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Sci-Fi"
+      ],
+      "year": 2019,
+      "endYear": 2021,
+      "status": "ended",
+      "description": "Office worker Ryou Fujihashi is trapped inside her apartment which has set ablaze. The firefighters arrive in time to save her, and one of them happens to be Souma Mizuno, Fujihashi's childhood friend who she had a crush on. As the apartment fire gets put out, an old love gets rekindled.",
+      "cover": "https://image.tmdb.org/t/p/w400/yHUDRf2e9FGeWXPsT5lVF3iCUwc.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/lLOLKqe6r7uESLDcoO4TaZPHNdW.jpg",
+      "seasons": 2,
+      "episodes": 16,
+      "runtime": 7,
+      "imdb": null,
+      "tmdb": 6.9,
+      "providers": [],
+      "popularity": 94
+    },
+    {
+      "id": 300,
+      "title": "Kamen Rider",
+      "originalTitle": "仮面ライダー",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 1971,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Takeshi Hongo is a promising young man with a passion for motorcycle racing. However, his dreams are suddenly ruined when he gets kidnapped by Shocker, the evil secret organization planning to dominate the world. After being remodeled into a cyborg, Takeshi escapes and swears to protect the world from the inhuman monsters.",
+      "cover": "https://image.tmdb.org/t/p/w400/2DIBDFHiKQawz4WPsYekl9DHwyA.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/usLRh1bcbL0Q9X8zf6rL4OV1qrA.jpg",
+      "seasons": 37,
+      "episodes": 1740,
+      "runtime": 24,
+      "imdb": null,
+      "tmdb": 6.4,
+      "providers": [
+        "Amazon Prime Video",
+        "Crunchyroll Amazon Channel",
+        "Amazon Prime Video with Ads",
+        "Shout! Factory Amazon Channel"
+      ],
+      "popularity": 86
+    },
+    {
+      "id": 301,
+      "title": "Chicago P.D.",
+      "originalTitle": "Chicago P.D.",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Sci-Fi"
+      ],
+      "year": 2014,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "A riveting police drama about the men and women of the Chicago Police Department's District 21 who put it all on the line to serve and protect their community. District 21 is made up of two distinctly different groups: the uniformed cops who patrol the beat and go head-to-head with the city's street crimes and the Intelligence Unit that combats the city's major offenses - organized crime, drug trafficking, high profile murders and beyond.",
+      "cover": "https://image.tmdb.org/t/p/w400/bez40PgT36RUu4gstD2A6GSM0tP.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/rhp8vYG1sIFtqH3ETmHJuI5Z3Cb.jpg",
+      "seasons": 13,
+      "episodes": 264,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.4,
+      "providers": [
+        "Amazon Prime Video",
+        "Peacock Premium",
+        "YouTube TV",
+        "NBC",
+        "USA Network",
+        "Amazon Prime Video with Ads",
+        "Peacock Premium Plus"
+      ],
+      "popularity": 85
+    },
+    {
+      "id": 302,
+      "title": "A Christmas in New Hope",
+      "originalTitle": "A Christmas in New Hope",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2024,
+      "endYear": null,
+      "status": null,
+      "description": "To save her bungalow from foreclosure before Christmas, Victoria, an Instagram influencer and single mother of a child living with Down syndrome enters a home-improvement competition in New Hope, Texas. Complications arise when her ex returns home after touring Europe with his new album. Meanwhile, Victoria has fallen in love with her next-door neighbor, Gavin, a Texas musician who has bonded with her daughter Charlie while helping Victoria fix up her home, as well as her heart.",
+      "cover": "https://image.tmdb.org/t/p/w400/niHnCfIixaga9Ux9BKfHTbvpry1.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/6jXIe1AFMNwC3bH1rT0XoPMuRkE.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 94,
+      "imdb": null,
+      "tmdb": 6.3,
+      "providers": [],
+      "popularity": 0
+    },
+    {
+      "id": 303,
+      "title": "Return of the Jedi",
+      "originalTitle": "Return of the Jedi",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1983,
+      "endYear": null,
+      "status": null,
+      "description": "Luke Skywalker leads a mission to rescue his friend Han Solo from the clutches of Jabba the Hutt, the Emperor prepares to crush the Rebellion with a more powerful Death Star, and the Rebel fleet mounts a massive attack on the space station. Luke Skywalker confronts Darth Vader in a final climactic duel before the evil Emperor.",
+      "cover": "https://image.tmdb.org/t/p/w400/jQYlydvHm3kUix1f8prMucrplhm.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/ziECpBRIyclmBNaFSWlvCfsKbMD.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 132,
+      "imdb": null,
+      "tmdb": 7.9,
+      "providers": [
+        "Disney Plus",
+        "AMC Plus Apple TV Channel ",
+        "AMC+ Amazon Channel",
+        "AMC+ Roku Premium Channel",
+        "AMC+",
+        "YouTube TV",
+        "AMC",
+        "Philo"
+      ],
+      "popularity": 8
+    },
+    {
+      "id": 304,
+      "title": "Star Wars",
+      "originalTitle": "Star Wars",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1977,
+      "endYear": null,
+      "status": null,
+      "description": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
+      "cover": "https://image.tmdb.org/t/p/w400/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/4qCqAdHcNKeAHcK8tJ8wNJZa9cx.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 121,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Disney Plus",
+        "AMC Plus Apple TV Channel ",
+        "AMC+ Amazon Channel",
+        "AMC+ Roku Premium Channel",
+        "AMC+",
+        "YouTube TV",
+        "AMC",
+        "Philo"
+      ],
+      "popularity": 21
     }
   ],
-  "collections": []
+  "collections": [
+    {
+      "id": "star-wars",
+      "name": "Star Wars",
+      "description": "",
+      "icon": "",
+      "color": "#e50914",
+      "colorDark": "#e50914",
+      "backdrop": null,
+      "itemIds": [
+        304
+      ]
+    }
+  ]
 }
