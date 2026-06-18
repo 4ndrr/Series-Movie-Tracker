@@ -97,8 +97,7 @@
 
         <p class="intro-text">
             Series &amp; Movie Tracker is a fast, private, browser-based app for organising everything you watch &mdash;
-            paired with an optional Marketplace for adding popular titles in one click, and a private maintainer
-            tool that builds that Marketplace from real metadata. Here's the whole picture.
+            paired with an optional Marketplace for adding popular titles in one click. Here's the whole picture.
         </p>
 
         <div class="stats">
@@ -114,10 +113,9 @@
             What it is
         </h2>
         <p class="intro-text" style="margin-bottom:24px">
-            The project has three parts. The <strong>Tracker</strong> is the main app you use day to day. The
-            <strong>Marketplace</strong> is an optional in-app catalogue of ready-made titles. The
-            <strong>Marketplace Generator</strong> is a separate, private tool the maintainer uses to build that
-            catalogue from TMDB &mdash; it is never shipped to end users.
+            The project has two parts. The <strong>Tracker</strong> is the main app you use day to day. The
+            <strong>Marketplace</strong> is an optional in-app catalogue of ready-made titles you can add to your
+            library in one click.
         </p>
 
         <h2 class="section-title">
@@ -201,24 +199,6 @@
                 <h3>Search, filter, categories</h3>
                 <p>Browse by category (Movies, Series, Anime, Trending and more) or search the whole catalogue instantly.</p>
             </div>
-        </div>
-
-        <h2 class="section-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            Marketplace Generator <span class="pill priv">Private tool</span>
-        </h2>
-        <p class="intro-text" style="margin-bottom:20px">
-            A separate command-line + dashboard tool the maintainer runs locally to build the Marketplace catalogue
-            from real TMDB metadata. It is <strong>not</strong> part of the app users receive, and it needs the
-            maintainer's own API key to run.
-        </p>
-        <div class="rows">
-            <div class="row"><div class="k">Built with</div><div class="v">Node.js, no external dependencies. Command-line tool plus a local web dashboard.</div></div>
-            <div class="row"><div class="k">Generation modes</div><div class="v">Add a single title by search, bulk-add popular / top-rated / trending lists, build a named category, or refresh existing entries.</div></div>
-            <div class="row"><div class="k">Dashboard</div><div class="v">Shows catalogue stats, API usage &amp; quota, content freshness, validation results, and a one-click Publish button.</div></div>
-            <div class="row"><div class="k">Validation</div><div class="v">Checks for missing covers, duplicates, broken data and bad episode counts. Publishing is blocked until everything passes.</div></div>
-            <div class="row"><div class="k">Output</div><div class="v">A single <code>marketplace-data.json</code> file (plus an auto-generated changelog) that the Marketplace reads.</div></div>
-            <div class="row"><div class="k">Compliance built in</div><div class="v">Self-rate-limits requests, stamps the required TMDB attribution into the output, refreshes data within TMDB's limits, and never uses data for AI training.</div></div>
         </div>
 
         <h2 class="section-title">

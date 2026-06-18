@@ -553,15 +553,6 @@
                     <label for="notificationLanguage">Language for Release Date</label>
                     <input type="text" id="notificationLanguage" class="form-control" placeholder="e.g., en-US, de-DE, ja-JP">
                 </div>
-                <div class="form-group">
-                    <label for="notificationApiSource">Future API Source</label>
-                    <select id="notificationApiSource" class="form-control">
-                        <option value="manual">Manual Entry</option>
-                        <option value="watchmode">Watchmode</option>
-                        <option value="tmdb">TMDB</option>
-                        <option value="trakt">Trakt</option>
-                    </select>
-                </div>
                 <div class="form-group" id="notificationSeasonGroup" style="display: none;">
                     <label for="notificationSeason">Season Number</label>
                     <input type="number" id="notificationSeason" class="form-control" min="1" placeholder="e.g., 3">
@@ -654,6 +645,10 @@
                 <div class="form-group">
                     <label for="seriesMaxTime">Max Time To Finish (minutes)</label>
                     <input type="number" id="seriesMaxTime" class="form-control auto-save-field" min="0" value="0" data-field="maxTime">
+                </div>
+                <div class="form-group">
+                    <label for="seriesRuntime" id="seriesRuntimeLabel">Runtime (minutes per episode)</label>
+                    <input type="number" id="seriesRuntime" class="form-control auto-save-field" min="0" value="0" data-field="runtime" placeholder="e.g. 45">
                 </div>
                 <div class="form-group">
                     <label for="seriesImdb">IMDB Rating</label>

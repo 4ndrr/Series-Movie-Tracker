@@ -75,7 +75,11 @@
             const overlays = document.querySelectorAll('.overlay');
             const hasOpenOverlay = Array.from(overlays).some(isElementVisible);
             const isSidebarOpen = sidebar && sidebar.classList.contains('open');
-            document.body.classList.toggle('menu-open', !!(hasOpenOverlay || isSidebarOpen));
+            const anyPopupOpen = !!(hasOpenOverlay || isSidebarOpen);
+            document.body.classList.toggle('menu-open', anyPopupOpen);
+            // Hide & disable the search/filter bar (and underlying content) whenever
+            // any popup, modal or the sidebar is open, so the opened layer stays on top.
+            document.body.classList.toggle('popup-open', anyPopupOpen);
         }
 
         function openSidebar() {
@@ -658,9 +662,6 @@
             if (notification.language) {
                 message += `\nLanguage: ${notification.language}`;
             }
-            if (notification.apiSource && notification.apiSource !== 'manual') {
-                message += `\nSource: ${notification.apiSource.toUpperCase()} API`;
-            }
             
             const notificationDiv = document.createElement('div');
             notificationDiv.className = 'notification-display';
@@ -740,7 +741,7 @@
                     message = `"${notification.seriesName}" - Episode ${notification.episode} (S${notification.season})`;
                 }
                 const langInfo = notification.language ? ` • Language: ${notification.language}` : '';
-                const sourceInfo = notification.apiSource && notification.apiSource !== 'manual' ? ` • Source: ${notification.apiSource.toUpperCase()}` : '';
+                const sourceInfo = '';
 
                 return `
                     <div class="notification-item">
@@ -790,7 +791,6 @@
             const seriesEl = document.getElementById('notificationSeries');
             const langEl = document.getElementById('notificationLanguage');
             const apiEl = document.getElementById('notificationApiSource');
-            const seasonEl = document.getElementById('notificationSeason');
             const episodeEl = document.getElementById('notificationEpisode');
             const seasonGroup = document.getElementById('notificationSeasonGroup');
             const episodeGroup = document.getElementById('notificationEpisodeGroup');
@@ -799,7 +799,7 @@
             typeEl.value = notification.type || '';
             seriesEl.value = notification.seriesId != null ? String(notification.seriesId) : '';
             langEl.value = notification.language && notification.language !== 'default' ? notification.language : '';
-            apiEl.value = notification.apiSource || 'manual';
+            if (apiEl) apiEl.value = notification.apiSource || 'manual';
 
             if (notification.type === 'season') {
                 seasonGroup.style.display = 'block';
@@ -844,7 +844,7 @@
                 console.log('Watchmode API key not set');
                 return null;
             }
-            
+            recordApiRequest('watchmode');
             try {
                 // Watchmode API endpoint for searching
                 const searchUrl = `https://api.watchmode.com/v1/search/?apiKey=${WATCHMODE_API_KEY}&search_value=${encodeURIComponent(title)}&search_type=2`;
@@ -887,7 +887,7 @@
                 console.log('OMDB API key not set');
                 return null;
             }
-            
+            recordApiRequest('omdb');
             try {
                 const url = `https://www.omdbapi.com/?apikey=${OMDB_API_KEY}&t=${encodeURIComponent(title)}&type=${contentType === 'movie' ? 'movie' : 'series'}`;
                 const response = await fetch(url);
@@ -1039,7 +1039,8 @@
                 watching: watching,
                 wantToWatch: wantToWatch,
                 completed: completed,
-                version: '1.1'
+                notifications: notifications || [],
+                version: '1.2'
             };
 
             // Create filename: ProfileName_X_items_timestamp.json
@@ -1047,7 +1048,6 @@
             const timestamp = new Date().toISOString().replace(/[:.]/g, '-').split('T')[0] + '_' + 
                             new Date().toTimeString().split(' ')[0].replace(/:/g, '-');
             const filename = `${sanitizedName}_${totalItems}_items_${timestamp}.json`;
-            const recommendedFolderStructure = 'Movie and Series Tracker/logs/';
 
             // Try to use File System Access API if available (modern browsers) - only for manual exports
             if (!isAutoExport && 'showSaveFilePicker' in window) {
@@ -1072,9 +1072,7 @@
                             `Want to Watch: ${wantToWatch.length}`,
                             `Completed: ${completed.length}`,
                             '',
-                            `Saved to: ${fileHandle.name}`,
-                            '',
-                            `Recommended folder structure: ${recommendedFolderStructure}`
+                            `Saved to: ${fileHandle.name}`
                         ]);
                     }
                     return;
@@ -1106,8 +1104,6 @@
                     `Watching: ${watching.length}`,
                     `Want to Watch: ${wantToWatch.length}`,
                     `Completed: ${completed.length}`,
-                    '',
-                    `Recommended folder structure: ${recommendedFolderStructure}`,
                     '',
                     `File saved as: ${filename}`
                 ]);
@@ -1266,7 +1262,26 @@
 
                     // Save imported data
                     saveData();
-                    
+
+                    // Sync imported notifications / calendar entries
+                    let importedNotifs = 0;
+                    if (Array.isArray(importData.notifications) && importData.notifications.length) {
+                        const existingNotifKeys = new Set(notifications.map(n => `${n.date}|${n.type}|${(n.seriesName||'').toLowerCase()}|${n.season||''}|${n.episode||''}`));
+                        importData.notifications.forEach(n => {
+                            const key = `${n.date}|${n.type}|${(n.seriesName||'').toLowerCase()}|${n.season||''}|${n.episode||''}`;
+                            if (existingNotifKeys.has(key)) return;
+                            existingNotifKeys.add(key);
+                            const newNotifId = (notifications.length > 0 ? Math.max(...notifications.map(x => x.id || 0)) : 0) + 1 + importedNotifs;
+                            notifications.push({ ...n, id: newNotifId });
+                            importedNotifs++;
+                        });
+                        if (importedNotifs > 0) {
+                            saveNotifications();
+                            if (typeof renderNotificationsList === 'function') renderNotificationsList();
+                            if (typeof checkNotifications === 'function') checkNotifications();
+                        }
+                    }
+
                     // Ensure filter state is consistent
                     currentCategory = currentFilter;
                     
@@ -1278,6 +1293,9 @@
                     let message = `Successfully imported ${importedCount} items!`;
                     if (skippedCount > 0) {
                         message += `\n\n${skippedCount} items were skipped (already exist).`;
+                    }
+                    if (importedNotifs > 0) {
+                        message += `\n\n${importedNotifs} calendar/notification entries were synced.`;
                     }
                     if (importOption === 'list-and-profile') {
                         message += `\n\nProfile name and picture have been updated.`;
@@ -1344,6 +1362,76 @@
         function saveData() {
             const key = currentUserId ? `seriesTrackerData_${currentUserId}` : 'seriesTrackerData';
             localStorage.setItem(key, JSON.stringify(series));
+        }
+
+        function recordApiRequest(provider) {
+            try {
+                const today = getLocalDateString();
+                const month = today.slice(0, 7);
+                const u = getApiUsage();
+                u.total = (u.total || 0) + 1;
+                u.byDay[today] = (u.byDay[today] || 0) + 1;
+                u.byMonth[month] = (u.byMonth[month] || 0) + 1;
+                u.byProvider[provider] = (u.byProvider[provider] || 0) + 1;
+                localStorage.setItem('seriesTrackerApiUsage', JSON.stringify(u));
+            } catch (e) {}
+        }
+
+        function getApiUsage() {
+            try {
+                const raw = localStorage.getItem('seriesTrackerApiUsage');
+                if (raw) {
+                    const u = JSON.parse(raw);
+                    u.byDay = u.byDay || {};
+                    u.byMonth = u.byMonth || {};
+                    u.byProvider = u.byProvider || {};
+                    return u;
+                }
+            } catch (e) {}
+            return { total: 0, byDay: {}, byMonth: {}, byProvider: {} };
+        }
+
+        function syncMarketplaceTitles() {
+            const linked = series.filter(s => s.mpId != null);
+            if (!linked.length) return;
+            fetch('marketplace-data.json', { cache: 'no-store' })
+                .then(r => r.ok ? r.json() : null)
+                .then(json => {
+                    if (!json) return;
+                    const cat = Array.isArray(json) ? json : json.catalogue;
+                    if (!Array.isArray(cat)) return;
+                    const byId = {};
+                    cat.forEach(m => { if (m && m.id != null) byId[m.id] = m; });
+                    let changed = false;
+                    series.forEach(s => {
+                        if (s.mpId == null) return;
+                        const m = byId[s.mpId];
+                        if (!m) return;
+                        const isMovie = (s.contentType || 'series') === 'movie';
+                        const seasonCount = m.seasons || 1;
+                        const fullEpisodes = m.episodes || (isMovie ? 1 : 0);
+                        const perSeason = isMovie ? 1 : (seasonCount > 0 ? (Math.round(fullEpisodes / seasonCount) || fullEpisodes) : fullEpisodes);
+                        const next = {
+                            title: m.title,
+                            image: /^https?:\/\//i.test(m.cover || '') ? m.cover : s.image,
+                            runtime: m.runtime || s.runtime || 0,
+                            imdbRating: m.imdb != null ? String(m.imdb).replace('.', ',') : s.imdbRating,
+                            totalSeasons: seasonCount,
+                            fullSeasonEpisodes: fullEpisodes
+                        };
+                        if (!isMovie) next.totalEpisodes = perSeason;
+                        Object.keys(next).forEach(k => {
+                            if (next[k] != null && s[k] !== next[k]) { s[k] = next[k]; changed = true; }
+                        });
+                    });
+                    if (changed) {
+                        saveData();
+                        renderSeries();
+                        renderStatistics();
+                        renderPriorityList();
+                    }
+                })
+                .catch(() => {});
         }
 
         let statisticsCollapsed = false;
@@ -1824,7 +1912,7 @@
                 alert('Please set "Max Time To Finish" first.');
                 return;
             }
-            if (!confirm(`Start watching "${s.title}" now?`)) return;
+            if (!confirm(`Ready to dive into "${s.title}"? We'll move it to Currently Watching and start the clock.`)) return;
             s.status = 'watching';
             if (!s.startedDate) s.startedDate = getLocalDateString();
             saveData();
@@ -1906,8 +1994,8 @@
             if (filteredSeries.length === 0) {
                 seriesList.innerHTML = `
                     <div class="empty-state">
-                        <h3>No series found</h3>
-                        <p>${term ? 'Try a different search term or use a different filter' : 'Add a new series to get started!'}</p>
+                        <h3>${term ? 'Nothing matches that yet' : 'Your next favourite starts here'}</h3>
+                        <p>${term ? 'Try a different search term or switch filters to find it.' : 'Build your personal library — add a film or series, or browse the Marketplace to add titles in one click.'}</p>
                     </div>
                 `;
                 return;
@@ -2032,6 +2120,18 @@
                                     <span class="stat-value">S${serie.season} E${serie.episode}</span>
                                 </div>
                                 ` : ''}
+                                ${serie.runtime ? `
+                                <div class="stat-item">
+                                    <span class="stat-label">${isSeries ? 'Runtime / Ep' : 'Runtime'}</span>
+                                    <span class="stat-value">${formatTime(serie.runtime)}</span>
+                                </div>
+                                ` : ''}
+                                ${serie.imdbRating ? `
+                                <div class="stat-item">
+                                    <span class="stat-label">IMDb</span>
+                                    <span class="stat-value">★ ${serie.imdbRating}</span>
+                                </div>
+                                ` : ''}
                                 ${showTimeRating ? `<div class="stat-item">
                                     <span class="stat-label">Time In</span>
                                     <span class="stat-value">${formatTime(serie.time)}</span>
@@ -2050,9 +2150,9 @@
                         <div class="series-details-content">
                             <div class="details-section">
                                 <div class="details-actions">
-                                    ${isSeries ? `<button class="btn btn-small mark-ep-btn" data-id="${serie.id}" title="Log current episode as watched and advance to next">
+                                    ${serie.status === 'watching' ? (isSeries ? `<button class="btn btn-small mark-ep-btn" data-id="${serie.id}" title="Log current episode as watched and advance to next">
                                         <svg style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Episode Watched</button>` : `<button class="btn btn-small mark-ep-btn" data-id="${serie.id}" title="Log this movie as watched">
-                                        <svg style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mark Watched</button>`}
+                                        <svg style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Mark Watched</button>`) : ''}
                                     <button class="btn btn-small edit-btn" data-id="${serie.id}">Edit</button>
                                     <button class="btn btn-small more-btn" data-id="${serie.id}">More</button>
                                     <button class="btn btn-secondary btn-small delete-btn" data-id="${serie.id}">Delete</button>
@@ -2320,7 +2420,6 @@
             renderWatchTimeline();
         }
 
-        // Bulk Operations
         let selectedSeriesIds = new Set();
 
         // Make updateBulkOperations globally accessible for inline handlers
@@ -2673,9 +2772,28 @@
                 const updateStickyState = () => {
                     const scrolled = window.scrollY > 4;
                     stickyTopBar.classList.toggle('scrolled', scrolled);
+                    if (!scrolled) stickyTopBar.classList.remove('search-collapsed');
                 };
                 updateStickyState();
                 window.addEventListener('scroll', updateStickyState, { passive: true });
+
+                // While scrolled, tapping the search bar collapses it to a pill;
+                // tapping again (or the pill) expands it and focuses the input.
+                const searchBarEl = stickyTopBar.querySelector('.search-bar');
+                const searchInputEl = document.getElementById('searchInput');
+                if (searchBarEl) {
+                    searchBarEl.addEventListener('click', (e) => {
+                        if (!stickyTopBar.classList.contains('scrolled')) return;
+                        if (stickyTopBar.classList.contains('search-collapsed')) {
+                            stickyTopBar.classList.remove('search-collapsed');
+                            if (searchInputEl) setTimeout(() => searchInputEl.focus(), 50);
+                        } else if (e.target === searchBarEl || e.target.closest('.search-icon')) {
+                            if (!searchInputEl || !searchInputEl.value) {
+                                stickyTopBar.classList.add('search-collapsed');
+                            }
+                        }
+                    });
+                }
             }
             if (topbarCollapseToggle && stickyTopBar) {
                 const labelEl = topbarCollapseToggle.querySelector('.tc-label');
@@ -2890,8 +3008,14 @@
             applyTheme = function(theme) { _origApplyTheme(theme); applyStatusColorStyle(); if (typeof renderWatchTimeline === 'function') renderWatchTimeline(); };
 
             // Streaming multi-select chip logic
+            const MAX_PROVIDERS = 5;
             document.querySelectorAll('#streamingMultiSelect .streaming-chip').forEach(chip => {
                 chip.addEventListener('click', () => {
+                    const selectedCount = document.querySelectorAll('#streamingMultiSelect .streaming-chip.selected').length;
+                    if (!chip.classList.contains('selected') && selectedCount >= MAX_PROVIDERS) {
+                        showTrackingToast(`You can select up to ${MAX_PROVIDERS} streaming services`);
+                        return;
+                    }
                     chip.classList.toggle('selected');
                     const selected = Array.from(document.querySelectorAll('#streamingMultiSelect .streaming-chip.selected'))
                         .map(c => c.getAttribute('data-service'));
@@ -3022,7 +3146,8 @@
                     const season = document.getElementById('notificationSeason').value;
                     const episode = document.getElementById('notificationEpisode').value;
                     const language = document.getElementById('notificationLanguage').value.trim();
-                    const apiSource = document.getElementById('notificationApiSource').value;
+                    const apiSourceEl = document.getElementById('notificationApiSource');
+                    const apiSource = apiSourceEl ? apiSourceEl.value : 'manual';
                     const matchedItem = series.find(s => String(s.id) === String(selectedContentId));
                     const seriesName = matchedItem ? matchedItem.title : '';
                     const resolvedLanguage = language || (matchedItem && matchedItem.language ? matchedItem.language : null);
@@ -4098,6 +4223,7 @@
             const episode = parseInt(document.getElementById('seriesEpisode').value) || 1;
             const time = parseInt(document.getElementById('seriesTime').value) || 0;
             const maxTime = parseInt(document.getElementById('seriesMaxTime').value) || 0;
+            const runtime = parseInt(document.getElementById('seriesRuntime').value) || 0;
             const totalSeasons = parseInt(document.getElementById('seriesTotalSeasons').value) || 1;
             const totalEpisodes = parseInt(document.getElementById('seriesTotalEpisodes').value) || 10;
             const imdbRating = document.getElementById('seriesImdb').value.trim();
@@ -4128,7 +4254,14 @@
             });
 
             // Read streaming services (multi-select)
-            const streamingService = document.getElementById('seriesStreamingService').value || '';
+            let streamingService = document.getElementById('seriesStreamingService').value || '';
+            {
+                const provList = streamingService.split(',').map(s => s.trim()).filter(Boolean);
+                if (provList.length > 5) {
+                    alert('You can select up to 5 streaming services. Extra selections were removed.');
+                    streamingService = provList.slice(0, 5).join(',');
+                }
+            }
             
             const editingId = seriesForm.getAttribute('data-editing');
             
@@ -4175,6 +4308,7 @@
                         episode: contentType === 'series' ? episode : 1,
                         time: effectiveTime,
                         maxTime,
+                        runtime,
                         totalSeasons: contentType === 'series' ? totalSeasons : 1,
                         totalEpisodes: contentType === 'series' ? totalEpisodes : 10,
                         imdbRating,
@@ -4221,6 +4355,7 @@
                     episode: contentType === 'series' ? episode : 1,
                     time: effectiveTime,
                     maxTime,
+                    runtime,
                     totalSeasons: contentType === 'series' ? totalSeasons : 1,
                     totalEpisodes: contentType === 'series' ? totalEpisodes : 10,
                     imdbRating,
@@ -4271,6 +4406,7 @@
             document.getElementById('seriesEpisode').value = serie.episode || 1;
             document.getElementById('seriesTime').value = serie.time || 0;
             document.getElementById('seriesMaxTime').value = serie.maxTime || 0;
+            document.getElementById('seriesRuntime').value = serie.runtime || 0;
             document.getElementById('seriesTotalSeasons').value = serie.totalSeasons || 1;
             document.getElementById('seriesTotalEpisodes').value = serie.totalEpisodes || 10;
             document.getElementById('seriesImdb').value = serie.imdbRating || '';
@@ -4346,6 +4482,8 @@
         function toggleEpisodeFields(contentType) {
             const episodeFields = document.getElementById('seriesEpisodeFields');
             const streamingServiceField = document.getElementById('seriesStreamingService').parentElement;
+            const runtimeLabel = document.getElementById('seriesRuntimeLabel');
+            if (runtimeLabel) runtimeLabel.textContent = contentType === 'movie' ? 'Runtime (minutes)' : 'Runtime (minutes per episode)';
             
             if (contentType === 'movie') {
                 episodeFields.classList.add('hidden');
@@ -4481,6 +4619,7 @@
             loadUsers();
             loadCurrentUser();
             loadData();
+            syncMarketplaceTitles();
             loadSettings();
             loadAppSettings();
             loadNotifications(); // Load notifications for current user

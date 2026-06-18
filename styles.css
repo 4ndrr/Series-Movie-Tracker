@@ -175,6 +175,19 @@
             transition: background-color 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
         }
 
+        /* When any popup / modal / sidebar is open, hide the search & filter bar
+           and make it non-interactive so the opened layer is always on top. */
+        body.popup-open .sticky-top-bar {
+            visibility: hidden;
+            pointer-events: none;
+        }
+        body.popup-open .statistics-dashboard,
+        body.popup-open .bulk-operations,
+        body.popup-open .series-list,
+        body.popup-open .priority-section {
+            pointer-events: none;
+        }
+
         .sticky-top-bar.scrolled {
             background-color: var(--primary-color, #141414);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
@@ -275,6 +288,37 @@
         .sticky-top-bar.topbar-collapsed:not(.scrolled) .search-filter-bar,
         .sticky-top-bar.topbar-collapsed:not(.scrolled) .filter-controls {
             display: none;
+        }
+
+        /* When scrolled, the search bar can be tapped to collapse/expand it.
+           Collapsed-while-scrolled hides the filter row and shrinks the search
+           bar to a slim tappable pill that re-expands on click. */
+        .sticky-top-bar.scrolled .search-bar {
+            cursor: pointer;
+        }
+        .sticky-top-bar.scrolled.search-collapsed .search-filter-bar {
+            gap: 0;
+        }
+        .sticky-top-bar.scrolled.search-collapsed .filter-dropdown {
+            display: none;
+        }
+        .sticky-top-bar.scrolled.search-collapsed .search-bar .search-input {
+            display: none;
+        }
+        .sticky-top-bar.scrolled.search-collapsed .search-bar {
+            width: 44px;
+            min-width: 44px;
+            flex: 0 0 44px;
+            padding: 0;
+            justify-content: center;
+            border-radius: 999px;
+            transition: width 0.25s ease;
+        }
+        .sticky-top-bar.scrolled.search-collapsed .search-bar .search-icon {
+            margin: 0;
+        }
+        .sticky-top-bar.scrolled .search-bar {
+            transition: width 0.25s ease;
         }
 
         .sticky-top-bar.topbar-collapsed .topbar-collapse-toggle .tc-chevron {
@@ -423,6 +467,13 @@
         .btn-small {
             padding: 6px 16px;
             font-size: 0.9rem;
+            border-radius: 4px;
+            font-weight: 600;
+            min-height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
         }
 
         .mark-ep-btn {
@@ -658,7 +709,7 @@
             display: none;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
         }
 
         .modal {
@@ -1216,8 +1267,13 @@
             color: #ffffff;
             cursor: pointer;
             font-size: 0.9rem;
+            font-weight: 600;
             transition: all 0.2s;
-            min-height: 40px;
+            min-height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
         }
 
         .bulk-btn:hover {
@@ -2771,6 +2827,38 @@
                 width: 20px;
                 height: 20px;
             }
+
+            .bulk-operations-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .bulk-btn {
+                width: 100%;
+                min-height: 44px;
+            }
+
+            .details-actions {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+
+            .details-actions .btn,
+            .details-actions .btn-small {
+                width: 100%;
+                min-height: 44px;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px;
+            }
+
+            .statistics-dashboard {
+                padding: 16px;
+            }
         }
 
         /* Small Mobile Devices (320px - 480px) */
@@ -3528,3 +3616,158 @@
 .tmdb-attribution-side{display:inline-flex;align-items:center;padding:4px 0 8px;}
 .tmdb-logo-side{height:18px;width:auto;display:block;}
 .tmdb-notice-side{font-size:0.72rem;line-height:1.5;opacity:0.7;margin:0;}
+
+        /* ── API Usage Panel (rounded stats) ── */
+        .api-usage-panel {
+            margin-top: 22px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+        }
+        body.light-theme .api-usage-panel {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+        .api-usage-header {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 18px;
+        }
+        .api-usage-header h3 {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin: 0;
+        }
+        .api-usage-sub {
+            font-size: 0.78rem;
+            color: #999;
+        }
+        .api-usage-grid {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            flex-wrap: wrap;
+        }
+        .api-usage-ring {
+            width: 132px;
+            height: 132px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            background: conic-gradient(var(--ring-color, #27ae60) var(--ring, 0%), rgba(255, 255, 255, 0.08) 0);
+            display: grid;
+            place-items: center;
+            position: relative;
+            transition: background 0.5s;
+        }
+        body.light-theme .api-usage-ring {
+            background: conic-gradient(var(--ring-color, #27ae60) var(--ring, 0%), rgba(0, 0, 0, 0.07) 0);
+        }
+        .api-usage-ring-inner {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #141414;
+            display: grid;
+            place-items: center;
+            text-align: center;
+        }
+        body.light-theme .api-usage-ring-inner {
+            background: #fff;
+        }
+        body.custom-theme .api-usage-ring-inner {
+            background: var(--primary-color, #141414);
+        }
+        .api-usage-ring-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+        .api-usage-ring-label {
+            display: block;
+            font-size: 0.66rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+        .api-usage-ring-caption {
+            text-align: center;
+            font-size: 0.72rem;
+            color: #999;
+            margin-top: 8px;
+        }
+        .api-usage-stats {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+        .api-usage-stat {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 110px;
+        }
+        body.light-theme .api-usage-stat {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+        .api-usage-stat-value {
+            font-size: 1.4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+        .api-usage-stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #999;
+            font-weight: 700;
+        }
+        .api-usage-providers {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+        .api-usage-provider {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            padding: 7px 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+        }
+        body.light-theme .api-usage-provider {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+        .api-usage-provider-name {
+            font-weight: 600;
+        }
+        .api-usage-provider-count {
+            font-weight: 800;
+            color: var(--secondary-color, #e50914);
+        }
+        .api-usage-empty {
+            margin-top: 14px;
+            font-size: 0.85rem;
+            color: #999;
+            font-style: italic;
+        }
+        @media (max-width: 480px) {
+            .api-usage-grid { justify-content: center; }
+            .api-usage-stats { justify-content: center; }
+        }

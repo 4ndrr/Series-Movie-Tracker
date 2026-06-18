@@ -296,8 +296,6 @@
             </div>
             <div class="header-controls">
                 <button class="theme-toggle" id="themeToggle">🌙 Dark</button>
-                <a href="Application_Summary.html" class="nav-link">Summary</a>
-                <a href="Legal.html" class="nav-link">Legal</a>
                 <a href="index.html" class="nav-link">← Back to Tracker</a>
             </div>
         </header>
@@ -307,6 +305,49 @@
         </div>
         
           <div class="changelog-content">
+            <!-- Version 1.14 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.14</span>
+        <span class="version-date">June 17 2026</span>
+    </div>
+
+    <h3 class="section-title">Content, Tracking &amp; Sync</h3>
+    <ul class="feature-list">
+        <li><strong>Runtime / Time to Finish:</strong> New field on every title &mdash; average runtime per episode for series, total runtime for movies &mdash; shown directly on the cards.</li>
+        <li><strong>IMDb ratings on cards:</strong> Ratings now appear on the card itself (previously only in the expanded details), with auto-fill kept intact.</li>
+        <li><strong>Full-season episode counts:</strong> Marketplace adds now record the complete season episode count plus a per-season average, instead of only the tracked episodes.</li>
+        <li><strong>Marketplace synchronisation:</strong> Titles added from the Marketplace stay linked and refresh their title, cover, runtime, rating and season/episode counts automatically, so Marketplace changes reflect everywhere they appear.</li>
+        <li><strong>Watched button cleanup:</strong> The &ldquo;Episode Watched&rdquo; button now only shows for <em>Currently Watching</em> items &mdash; removed from Want to Watch and Completed.</li>
+        <li><strong>Imported lists sync notifications:</strong> Exports now include calendar/notification entries, and importing merges them (de-duplicated) into your profile.</li>
+    </ul>
+
+    <h3 class="section-title">Interface &amp; Navigation</h3>
+    <ul class="feature-list">
+        <li><strong>API details removed from the app:</strong> The API-usage panel and the &ldquo;Future API Source&rdquo; selector have been removed from the public tracker; only the legally-required TMDB attribution remains.</li>
+        <li><strong>Tap to hide the search bar:</strong> While scrolled, tap the search bar to collapse it to a slim pill and tap again to bring it back &mdash; handy on long lists and small screens.</li>
+        <li><strong>Top layer for popups:</strong> Opening any popup, modal or the side menu now hides and disables the search/filter bar so the opened layer is always on top and nothing behind it is clickable.</li>
+        <li><strong>Unified buttons:</strong> Bulk-action and small buttons now match the main button style, and the Guide and Changelog pages use the same button design with a single &ldquo;Back to Tracker&rdquo; link.</li>
+        <li><strong>Mobile polish:</strong> Two-column layouts for bulk actions, detail actions and stats, with 44px touch targets throughout.</li>
+        <li><strong>Marketplace fixes:</strong> Fixed a stray notification flashing on load, added an overwrite confirmation when re-adding an existing title, capped provider selection (max 5), and the search bar/toolbar hide while a detail dialog is open.</li>
+    </ul>
+
+    <h3 class="section-title">Pages</h3>
+    <ul class="feature-list">
+        <li><strong>Legal:</strong> Removed the Contact &amp; takedown section.</li>
+        <li><strong>Application Summary:</strong> Removed the Marketplace Generator section (it is a private maintainer tool).</li>
+        <li><strong>Start page &amp; Export:</strong> Reworked the start-page call-to-action and empty-state copy, and removed recommended-folder-structure references from Export.</li>
+    </ul>
+
+    <h3 class="section-title">Marketplace Generator (private maintainer tool)</h3>
+    <ul class="feature-list">
+        <li><strong>Higher throughput:</strong> Maximum request rate raised to 40 requests/second, with the daily limit set to unlimited (recommended ~1,000/day for politeness).</li>
+        <li><strong>Add-content helper:</strong> The dashboard now has an <em>Add Content</em> section with ready-to-copy command lines, so entries can be created without writing commands by hand.</li>
+        <li><strong>Redesigned dashboard:</strong> The dashboard UI was reorganised and cleaned up &mdash; same features, better grouped &mdash; with monitoring, coverage, rate-safety and one-click scan controls.</li>
+        <li><strong>Collections &amp; categories:</strong> Added a collection builder and de-duplicated category generation so franchises group cleanly without redundant tags.</li>
+    </ul>
+</div>
+
             <!-- Version 1.13 -->
 <div class="version-card">
     <div class="version-header">

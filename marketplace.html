@@ -326,8 +326,9 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
   border-radius:12px;padding:13px 18px;display:flex;align-items:center;gap:11px;
   box-shadow:var(--shadow);font-size:0.9rem;font-weight:600;max-width:90vw;
   transition:transform .35s cubic-bezier(.2,.9,.2,1);
+  visibility:hidden;
 }
-.toast.show{transform:translateX(-50%) translateY(0)}
+.toast.show{transform:translateX(-50%) translateY(0);visibility:visible}
 .toast-icon{flex-shrink:0;display:grid;place-items:center}
 
 /* ── FOOTER ── */
@@ -516,13 +517,18 @@ function toTrackerItem(item){
   var isMovie=item.type==='movie';
   var all=loadTracker();
   var maxId=all.reduce(function(m,x){return Math.max(m,x.id||0);},1000);
+  var seasonCount=item.seasons||1;
+  var fullEpisodes=item.episodes||(isMovie?1:0);
+  var perSeason=isMovie?1:(seasonCount>0?Math.round(fullEpisodes/seasonCount)||fullEpisodes:fullEpisodes);
   return {id:maxId+1,title:item.title,image:safeUrl(item.cover),genre:'',status:'want',season:1,episode:1,time:0,
-    totalSeasons:item.seasons||1,totalEpisodes:item.episodes||(isMovie?1:0),
+    totalSeasons:seasonCount,totalEpisodes:perSeason,fullSeasonEpisodes:fullEpisodes,
+    runtime:item.runtime||0,
     imdbRating:item.imdb?String(item.imdb).replace('.',','):'',language:'English',
     inQueue:false,queueOrder:999,contentType:isMovie?'movie':'series',
     streamingService:(item.providers&&item.providers.length)?String(item.providers[0]).toLowerCase().replace(/ /g,''):'',
     userRating:0,tags:Array.isArray(item.categories)?item.categories.filter(function(c){return c==='Popular'||c==='Trending';}):[],
-    notes:item.description||'',startedDate:today,completedDate:null,lastWatchedDate:today,actors:[],watchHistory:[]};
+    notes:item.description||'',startedDate:today,completedDate:null,lastWatchedDate:today,actors:[],watchHistory:[],
+    mpId:item.id};
 }
 function inTracker(title){return loadTracker().some(function(x){return x.title===title;});}
 function trackerStatus(title){var e=loadTracker().find(function(x){return x.title===title;});if(!e)return null;return e.status==='watching'?'Watching':e.status==='completed'?'Completed':'Want to Watch';}
@@ -744,8 +750,14 @@ function toggleAdd(id){
     addedIds.delete(id);removeFromTracker(item.title);persistAdded();
     toast('Removed “'+item.title+'” from library','remove');
   } else if(inTracker(item.title)){
-    addedIds.add(id);persistAdded();
-    toast('“'+item.title+'” is already in your library ('+trackerStatus(item.title)+')','blocked');
+    if(confirm('“'+item.title+'” is already in your library ('+trackerStatus(item.title)+').\n\nAre you sure? This will overwrite the existing entry with the Marketplace version and replace its current details.')){
+      removeFromTracker(item.title);
+      addedIds.add(id);addToTracker(item);persistAdded();
+      toast('Overwrote “'+item.title+'” with Marketplace version','success');
+    } else {
+      addedIds.add(id);persistAdded();
+      toast('Kept your existing “'+item.title+'”','blocked');
+    }
   } else {
     addedIds.add(id);addToTracker(item);persistAdded();
     toast('Added “'+item.title+'” to library','success');
@@ -822,13 +834,21 @@ function openModal(id){
   renderModalContent(id);
   var ov=document.getElementById('modalOverlay');
   ov.hidden=false; ov.classList.add('open'); document.body.style.overflow='hidden';
+  setSearchHidden(true);
   document.getElementById('modalClose').focus();
 }
 function closeModal(){
   var ov=document.getElementById('modalOverlay');
   ov.classList.remove('open'); ov.hidden=true; document.body.style.overflow='';
   modalOpenId=null;
+  setSearchHidden(false);
   if(lastFocused&&lastFocused.focus)lastFocused.focus();
+}
+function setSearchHidden(hidden){
+  var ns=document.querySelector('.nav-search');
+  var tb=document.querySelector('.toolbar');
+  if(ns)ns.style.visibility=hidden?'hidden':'';
+  if(tb)tb.style.display=hidden?'none':'';
 }
 // focus trap
 document.getElementById('modalOverlay').addEventListener('keydown',function(e){

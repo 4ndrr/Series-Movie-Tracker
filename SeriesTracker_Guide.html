@@ -43,9 +43,10 @@
         }
         .back-button {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 9px 18px; background: var(--accent); color: #fff;
-            border-radius: 999px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
-            transition: transform 0.15s, filter 0.15s; white-space: nowrap;
+            padding: 10px 24px; background: var(--accent); color: #fff;
+            border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 1rem;
+            min-height: 42px; box-sizing: border-box;
+            transition: background-color 0.2s, transform 0.15s, filter 0.15s; white-space: nowrap;
         }
         .back-button:hover { filter: brightness(1.12); transform: translateY(-1px); }
         .hero { max-width: 1100px; margin: 0 auto; padding: clamp(48px, 8vw, 96px) clamp(16px, 4vw, 48px) 32px; text-align: center; }
@@ -132,7 +133,7 @@
             <img src="https://i.imgur.com/zopUQf6.png" alt="Logo" onerror="this.style.display='none'">
             <span>Series &amp; Movie Tracker<small>User Guide</small></span>
         </div>
-        <a href="Application_Summary.html" class="back-button" style="margin-right:8px">Summary</a><a href="Legal.html" class="back-button" style="margin-right:8px">Legal</a><a href="index.html" class="back-button">&larr; Back to Tracker</a>
+        <a href="index.html" class="back-button">&larr; Back to Tracker</a>
     </div>
 
     <section class="hero">
