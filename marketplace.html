@@ -191,11 +191,11 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
 .coll-prog-bar{height:100%;background:var(--accent);transition:width .3s}
 
 /* ── TOOLBAR ── */
-.toolbar{position:sticky;top:62px;z-index:120;background:var(--bg);padding:14px 0 8px}
+.toolbar{position:sticky;top:0;z-index:250;background:var(--bg);padding:14px 0 8px}
 .toolbar-search{max-width:none;width:100%;margin:0 0 10px}
 .to-top{position:fixed;right:18px;bottom:18px;z-index:300;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:var(--accent);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.3);opacity:.92;transition:opacity .2s,transform .2s}
 .to-top:hover{transform:translateY(-2px);opacity:1}
-#catalogue{scroll-margin-top:62px}
+#catalogue{scroll-margin-top:8px}
 .poster-wrap.mature .poster{filter:blur(18px) brightness(.7);transform:scale(1.04)}
 .mature-reveal{position:absolute;inset:auto 0 0 0;z-index:3;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;font-size:.72rem;font-weight:700;background:rgba(0,0,0,.55);color:#fff;border:0;cursor:pointer;letter-spacing:.02em}
 .poster-wrap.revealed .poster{filter:none;transform:none}
@@ -1106,7 +1106,9 @@ fetch('marketplace-data.json',{cache:'no-store'})
 <style id="smGradientCss">
 body.gradient-text h1, body.gradient-text h2, body.gradient-text .section-title,
 body.gradient-text .hero h1, body.gradient-text .version-number, body.gradient-text .brand-name,
-body.gradient-text .page-title, body.gradient-text .modal-title {
+body.gradient-text .page-title, body.gradient-text .modal-title,
+body.gradient-text .card-title, body.gradient-text .coll-name,
+body.gradient-text .hstat-num, body.gradient-text .result-count {
   background: linear-gradient(92deg, var(--grad-start, #e50914), var(--grad-end, #f5c518));
   -webkit-background-clip: text; background-clip: text;
   -webkit-text-fill-color: transparent; color: transparent;

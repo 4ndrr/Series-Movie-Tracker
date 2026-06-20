@@ -280,13 +280,20 @@
         }
 
         /* Show the toggle only when inline (not scrolled) */
-        .sticky-top-bar:not(.scrolled) .topbar-collapse-toggle {
+        .sticky-top-bar:not(.scrolled) .topbar-collapse-toggle,
+        .sticky-top-bar.scrolled .topbar-collapse-toggle {
             display: flex;
         }
 
         /* When collapsed at top: hide search + filters, keep header only */
         .sticky-top-bar.topbar-collapsed:not(.scrolled) .search-filter-bar,
         .sticky-top-bar.topbar-collapsed:not(.scrolled) .filter-controls {
+            display: none;
+        }
+
+        /* When scrolled AND collapsed via the toggle: hide the whole search/filter row */
+        .sticky-top-bar.scrolled.topbar-collapsed .search-filter-bar,
+        .sticky-top-bar.scrolled.topbar-collapsed .filter-controls {
             display: none;
         }
 

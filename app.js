@@ -2847,8 +2847,10 @@
                 updateStickyState();
                 window.addEventListener('scroll', updateStickyState, { passive: true });
 
-                // While scrolled, tapping the search bar collapses it to a pill;
-                // tapping again (or the pill) expands it and focuses the input.
+                // While scrolled, tapping the collapsed pill expands it (and focuses
+                // the input); tapping the search bar's chrome (icon / padding) while
+                // expanded collapses it back to a pill. Typing in the input never
+                // collapses it.
                 const searchBarEl = stickyTopBar.querySelector('.search-bar');
                 const searchInputEl = document.getElementById('searchInput');
                 if (searchBarEl) {
@@ -2857,7 +2859,7 @@
                         if (stickyTopBar.classList.contains('search-collapsed')) {
                             stickyTopBar.classList.remove('search-collapsed');
                             if (searchInputEl) setTimeout(() => searchInputEl.focus(), 50);
-                        } else if (e.target === searchBarEl || e.target.closest('.search-icon')) {
+                        } else if (e.target !== searchInputEl) {
                             stickyTopBar.classList.add('search-collapsed');
                             if (searchInputEl) searchInputEl.blur();
                         }
