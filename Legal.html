@@ -337,5 +337,24 @@
         });
         loadTheme();
     </script>
+<style id="smGradientCss">
+body.gradient-text h1, body.gradient-text h2, body.gradient-text .section-title,
+body.gradient-text .hero h1, body.gradient-text .version-number, body.gradient-text .brand-name,
+body.gradient-text .page-title, body.gradient-text .modal-title {
+  background: linear-gradient(92deg, var(--grad-start, #e50914), var(--grad-end, #f5c518));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+</style>
+<script>
+(function(){try{
+  var g=JSON.parse(localStorage.getItem('smGradientText')||'null');
+  if(g&&g.enabled){
+    document.body.classList.add('gradient-text');
+    document.body.style.setProperty('--grad-start', g.start||'#e50914');
+    document.body.style.setProperty('--grad-end', g.end||'#f5c518');
+  }
+}catch(e){}})();
+</script>
 </body>
 </html>

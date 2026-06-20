@@ -52,6 +52,9 @@
         let globalContentType = 'series';
         let customPrimaryColor = '#141414';
         let customSecondaryColor = '#e50914';
+        let gradientTextEnabled = false;
+        let gradientStartColor = '#e50914';
+        let gradientEndColor = '#f5c518';
         let currentUserId = null;
         let users = [];
         let settings = {
@@ -792,6 +795,7 @@
             const langEl = document.getElementById('notificationLanguage');
             const apiEl = document.getElementById('notificationApiSource');
             const episodeEl = document.getElementById('notificationEpisode');
+            const seasonEl = document.getElementById('notificationSeason');
             const seasonGroup = document.getElementById('notificationSeasonGroup');
             const episodeGroup = document.getElementById('notificationEpisodeGroup');
 
@@ -1416,6 +1420,7 @@
                             image: /^https?:\/\//i.test(m.cover || '') ? m.cover : s.image,
                             runtime: m.runtime || s.runtime || 0,
                             imdbRating: m.imdb != null ? String(m.imdb).replace('.', ',') : s.imdbRating,
+                            age: m.age != null ? m.age : s.age,
                             totalSeasons: seasonCount,
                             fullSeasonEpisodes: fullEpisodes
                         };
@@ -1435,6 +1440,16 @@
         }
 
         let statisticsCollapsed = false;
+
+        function applyGradientText() {
+            document.body.classList.toggle('gradient-text', gradientTextEnabled);
+            document.body.style.setProperty('--grad-start', gradientStartColor);
+            document.body.style.setProperty('--grad-end', gradientEndColor);
+            const ctrl = document.getElementById('gradientColorControls');
+            if (ctrl) ctrl.style.display = gradientTextEnabled ? 'block' : 'none';
+            const tgl = document.getElementById('gradientTextToggle');
+            if (tgl) tgl.checked = gradientTextEnabled;
+        }
 
         function loadSettings() {
             const key = currentUserId ? `seriesTrackerSettings_${currentUserId}` : 'seriesTrackerSettings';
@@ -1457,6 +1472,10 @@
                     if (parsed.customWatchingColor) { const el = document.getElementById('watchingColor'); if (el) el.value = parsed.customWatchingColor; }
                     if (parsed.customWantColor) { const el = document.getElementById('wantColor'); if (el) el.value = parsed.customWantColor; }
                     if (parsed.customCompletedColor) { const el = document.getElementById('completedColor'); if (el) el.value = parsed.customCompletedColor; }
+                    gradientTextEnabled = parsed.gradientText === true;
+                    gradientStartColor = parsed.gradientStart || '#e50914';
+                    gradientEndColor = parsed.gradientEnd || '#f5c518';
+                    applyGradientText();
                 } catch (e) {
                     console.error('Error loading settings:', e);
                 }
@@ -1479,9 +1498,17 @@
                 statisticsCollapsed: statisticsCollapsed,
                 customWatchingColor: (document.getElementById('watchingColor') && document.getElementById('watchingColor').value) || '#e50914',
                 customWantColor: (document.getElementById('wantColor') && document.getElementById('wantColor').value) || '#0062ff',
-                customCompletedColor: (document.getElementById('completedColor') && document.getElementById('completedColor').value) || '#27ae60'
+                customCompletedColor: (document.getElementById('completedColor') && document.getElementById('completedColor').value) || '#27ae60',
+                gradientText: gradientTextEnabled,
+                gradientStart: gradientStartColor,
+                gradientEnd: gradientEndColor
             };
             localStorage.setItem(key, JSON.stringify(settingsData));
+            try {
+                localStorage.setItem('smGradientText', JSON.stringify({
+                    enabled: gradientTextEnabled, start: gradientStartColor, end: gradientEndColor
+                }));
+            } catch (e) {}
         }
 
         function loadAppSettings() {
@@ -1959,6 +1986,8 @@
         }
 
         function renderSeries() {
+            const validFilters = ['all', 'watching', 'want', 'completed'];
+            if (!validFilters.includes(currentFilter)) currentFilter = 'all';
             const term = searchInput ? searchInput.value.toLowerCase().trim() : '';
             
             seriesList.innerHTML = '';
@@ -1992,10 +2021,27 @@
             }
             
             if (filteredSeries.length === 0) {
+                let eTitle, eMsg;
+                if (term) {
+                    eTitle = 'Nothing matches that yet';
+                    eMsg = 'Try a different search term or switch filters to find it.';
+                } else if (currentFilter === 'watching') {
+                    eTitle = 'Nothing in progress right now';
+                    eMsg = 'Titles you mark as Currently Watching show up here. Set one going and pick up where you left off.';
+                } else if (currentFilter === 'want') {
+                    eTitle = 'Your watchlist is empty';
+                    eMsg = 'Add titles you want to watch — or browse the Marketplace to queue some up in one click.';
+                } else if (currentFilter === 'completed') {
+                    eTitle = 'No finished titles yet';
+                    eMsg = 'Once you complete something it lands here as your personal hall of fame.';
+                } else {
+                    eTitle = 'Your next favourite starts here';
+                    eMsg = 'Build your personal library — add a film or series, or browse the Marketplace to add titles in one click.';
+                }
                 seriesList.innerHTML = `
                     <div class="empty-state">
-                        <h3>${term ? 'Nothing matches that yet' : 'Your next favourite starts here'}</h3>
-                        <p>${term ? 'Try a different search term or switch filters to find it.' : 'Build your personal library — add a film or series, or browse the Marketplace to add titles in one click.'}</p>
+                        <h3>${eTitle}</h3>
+                        <p>${eMsg}</p>
                     </div>
                 `;
                 return;
@@ -2126,10 +2172,22 @@
                                     <span class="stat-value">${formatTime(serie.runtime)}</span>
                                 </div>
                                 ` : ''}
+                                ${serie.runtime ? `
+                                <div class="stat-item">
+                                    <span class="stat-label">Full Time</span>
+                                    <span class="stat-value">${formatTime(isSeries ? serie.runtime * ((serie.fullSeasonEpisodes || (serie.totalEpisodes || 1) * (serie.totalSeasons || 1)) || 1) : serie.runtime)}</span>
+                                </div>
+                                ` : ''}
                                 ${serie.imdbRating ? `
                                 <div class="stat-item">
                                     <span class="stat-label">IMDb</span>
                                     <span class="stat-value">★ ${serie.imdbRating}</span>
+                                </div>
+                                ` : ''}
+                                ${serie.age != null && serie.age !== '' ? `
+                                <div class="stat-item">
+                                    <span class="stat-label">Age</span>
+                                    <span class="stat-value">${serie.age}+</span>
                                 </div>
                                 ` : ''}
                                 ${showTimeRating ? `<div class="stat-item">
@@ -2545,12 +2603,17 @@
             const queueSeries = series
                 .filter(serie => serie.inQueue)
                 .sort((a, b) => a.queueOrder - b.queueOrder);
+
+            const countEl = document.getElementById('watchlistCount');
+            const clearBtn = document.getElementById('clearWatchlistBtn');
+            if (countEl) countEl.textContent = queueSeries.length ? `(${queueSeries.length})` : '';
+            if (clearBtn) clearBtn.style.display = queueSeries.length ? '' : 'none';
             
             if (queueSeries.length === 0) {
                 priorityList.innerHTML = `
                     <div class="empty-state">
-                        <h3>No series in queue</h3>
-                        <p>Add series to your watchlist queue to see them here</p>
+                        <h3>Your watchlist is empty</h3>
+                        <p>Pin titles here to plan what to watch next. Open any title and use “Add to queue”, or add from the Marketplace — then drag to reorder.</p>
                     </div>
                 `;
                 return;
@@ -2570,6 +2633,11 @@
                 } else if (!isSeries) {
                     progressPercent = serie.status === 'completed' ? 100 : 0;
                 }
+                const metaBits = [];
+                if (serie.imdbRating) metaBits.push(`★ ${serie.imdbRating}`);
+                if (serie.age != null && serie.age !== '') metaBits.push(`${serie.age}+`);
+                if (serie.runtime) metaBits.push(formatTime(isSeries ? serie.runtime * ((serie.fullSeasonEpisodes || (serie.totalEpisodes || 1) * (serie.totalSeasons || 1)) || 1) : serie.runtime));
+                const metaText = metaBits.join(' · ');
 
                 const item = document.createElement('div');
                 item.className = 'priority-item';
@@ -2578,13 +2646,15 @@
                 item.dataset.index = index;
                 item.innerHTML = `
                     <div class="priority-info" style="align-items:center;">
-                        <div class="drag-handle">☰</div>
+                        <div class="drag-handle" title="Drag to reorder">☰</div>
+                        <div class="queue-rank" aria-hidden="true">${index + 1}</div>
                         ${serie.image ? `<img src="${serie.image}" alt="" style="width:40px;height:60px;object-fit:cover;border-radius:4px;flex-shrink:0;" loading="lazy" onerror="this.style.display='none';">` : ''}
                         <div style="flex:1;min-width:0;">
                             <strong style="display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${serie.title}</strong>
                             <div style="display:flex;align-items:center;gap:8px;margin-top:3px;flex-wrap:wrap;">
                                 <span class="status-badge ${statusClass}" style="font-size:0.7rem;padding:2px 8px;margin:0;">${statusText[serie.status] || serie.status}</span>
                                 <span style="color:#999;font-size:0.85rem;">${progressText}</span>
+                                ${metaText ? `<span style="color:#777;font-size:0.78rem;">${metaText}</span>` : ''}
                             </div>
                             ${progressPercent > 0 ? `<div style="margin-top:5px;width:100%;height:4px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;"><div style="height:100%;width:${progressPercent}%;background:var(--secondary-color,#e50914);border-radius:2px;"></div></div>` : ''}
                         </div>
@@ -2788,9 +2858,8 @@
                             stickyTopBar.classList.remove('search-collapsed');
                             if (searchInputEl) setTimeout(() => searchInputEl.focus(), 50);
                         } else if (e.target === searchBarEl || e.target.closest('.search-icon')) {
-                            if (!searchInputEl || !searchInputEl.value) {
-                                stickyTopBar.classList.add('search-collapsed');
-                            }
+                            stickyTopBar.classList.add('search-collapsed');
+                            if (searchInputEl) searchInputEl.blur();
                         }
                     });
                 }
@@ -2846,6 +2915,50 @@
 
             if (importFileInput) {
                 importFileInput.addEventListener('change', handleFileImport);
+            }
+
+            const clearWatchlistBtn = document.getElementById('clearWatchlistBtn');
+            if (clearWatchlistBtn) {
+                clearWatchlistBtn.addEventListener('click', () => {
+                    const inQueue = series.filter(s => s.inQueue);
+                    if (!inQueue.length) return;
+                    if (!confirm(`Remove all ${inQueue.length} title${inQueue.length !== 1 ? 's' : ''} from your watchlist? This only clears the queue — your library stays intact.`)) return;
+                    series.forEach(s => { if (s.inQueue) { s.inQueue = false; s.queueOrder = 999; } });
+                    saveData();
+                    renderPriorityList();
+                    renderSeries();
+                });
+            }
+
+            const gradientTextToggle = document.getElementById('gradientTextToggle');
+            if (gradientTextToggle) {
+                gradientTextToggle.addEventListener('change', (e) => {
+                    gradientTextEnabled = e.target.checked;
+                    applyGradientText();
+                    saveSettings();
+                });
+            }
+            const gradStartInput = document.getElementById('gradientStartColor');
+            const gradEndInput = document.getElementById('gradientEndColor');
+            if (gradStartInput) {
+                gradStartInput.value = gradientStartColor;
+                gradStartInput.addEventListener('input', (e) => {
+                    gradientStartColor = e.target.value;
+                    const c = document.getElementById('gradientStartCircle'); if (c) c.style.setProperty('--picker-color', gradientStartColor);
+                    const v = document.getElementById('gradientStartValue'); if (v) v.textContent = gradientStartColor.toUpperCase();
+                    applyGradientText();
+                    saveSettings();
+                });
+            }
+            if (gradEndInput) {
+                gradEndInput.value = gradientEndColor;
+                gradEndInput.addEventListener('input', (e) => {
+                    gradientEndColor = e.target.value;
+                    const c = document.getElementById('gradientEndCircle'); if (c) c.style.setProperty('--picker-color', gradientEndColor);
+                    const v = document.getElementById('gradientEndValue'); if (v) v.textContent = gradientEndColor.toUpperCase();
+                    applyGradientText();
+                    saveSettings();
+                });
             }
             const exportMessageModal = document.getElementById('exportMessageModal');
             const closeExportMessageBtn = document.getElementById('closeExportMessageBtn');
@@ -4044,20 +4157,24 @@
 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
+                    const filterVal = e.currentTarget.getAttribute('data-filter');
+                    if (!filterVal) return;
                     filterBtns.forEach(b => b.classList.remove('active'));
-                    e.target.classList.add('active');
-                    currentFilter = e.target.getAttribute('data-filter');
+                    e.currentTarget.classList.add('active');
+                    currentFilter = filterVal;
                     currentCategory = currentFilter;
                     expandedSeriesId = null;
                     
                     document.querySelectorAll('[data-category]').forEach(opt => {
                         opt.classList.remove('active');
-                        opt.querySelector('.filter-option-check').style.display = 'none';
+                        const chk = opt.querySelector('.filter-option-check');
+                        if (chk) chk.style.display = 'none';
                     });
                     const matchingCategory = document.querySelector(`[data-category="${currentFilter}"]`);
                     if (matchingCategory) {
                         matchingCategory.classList.add('active');
-                        matchingCategory.querySelector('.filter-option-check').style.display = 'inline';
+                        const chk2 = matchingCategory.querySelector('.filter-option-check');
+                        if (chk2) chk2.style.display = 'inline';
                     }
                     
                     saveSettings();
@@ -4227,6 +4344,8 @@
             const totalSeasons = parseInt(document.getElementById('seriesTotalSeasons').value) || 1;
             const totalEpisodes = parseInt(document.getElementById('seriesTotalEpisodes').value) || 10;
             const imdbRating = document.getElementById('seriesImdb').value.trim();
+            const ageEl = document.getElementById('seriesAge');
+            const age = ageEl && ageEl.value !== '' ? parseInt(ageEl.value) : null;
             const language = document.getElementById('seriesLanguage').value.trim();
             const inQueue = document.getElementById('seriesInQueue').checked;
             const userRating = parseFloat(document.getElementById('seriesUserRatingValue').value) || 0;
@@ -4312,6 +4431,7 @@
                         totalSeasons: contentType === 'series' ? totalSeasons : 1,
                         totalEpisodes: contentType === 'series' ? totalEpisodes : 10,
                         imdbRating,
+                        age,
                         language,
                         inQueue,
                         userRating: normalized.userRating,
@@ -4359,6 +4479,7 @@
                     totalSeasons: contentType === 'series' ? totalSeasons : 1,
                     totalEpisodes: contentType === 'series' ? totalEpisodes : 10,
                     imdbRating,
+                    age,
                     language,
                     inQueue,
                     queueOrder,
@@ -4410,6 +4531,8 @@
             document.getElementById('seriesTotalSeasons').value = serie.totalSeasons || 1;
             document.getElementById('seriesTotalEpisodes').value = serie.totalEpisodes || 10;
             document.getElementById('seriesImdb').value = serie.imdbRating || '';
+            const ageSel = document.getElementById('seriesAge');
+            if (ageSel) ageSel.value = (serie.age != null ? String(serie.age) : '');
             document.getElementById('seriesLanguage').value = serie.language || '';
             document.getElementById('seriesInQueue').checked = serie.inQueue || false;
             

@@ -192,6 +192,22 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
 
 /* ── TOOLBAR ── */
 .toolbar{position:sticky;top:62px;z-index:120;background:var(--bg);padding:14px 0 8px}
+.toolbar-search{max-width:none;width:100%;margin:0 0 10px}
+.to-top{position:fixed;right:18px;bottom:18px;z-index:300;width:46px;height:46px;border-radius:50%;border:1px solid var(--border);background:var(--accent);color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.3);opacity:.92;transition:opacity .2s,transform .2s}
+.to-top:hover{transform:translateY(-2px);opacity:1}
+#catalogue{scroll-margin-top:62px}
+.poster-wrap.mature .poster{filter:blur(18px) brightness(.7);transform:scale(1.04)}
+.mature-reveal{position:absolute;inset:auto 0 0 0;z-index:3;display:flex;align-items:center;justify-content:center;gap:6px;padding:8px;font-size:.72rem;font-weight:700;background:rgba(0,0,0,.55);color:#fff;border:0;cursor:pointer;letter-spacing:.02em}
+.poster-wrap.revealed .poster{filter:none;transform:none}
+.poster-wrap.revealed .mature-reveal{display:none}
+.age-badge{position:absolute;top:8px;right:8px;z-index:3;font-size:.66rem;font-weight:800;padding:3px 6px;border-radius:6px;background:#e50914;color:#fff;letter-spacing:.03em}
+.age-badge.a16{background:#f5a623;color:#1a1a1a}
+.age-badge.akids{background:#27ae60}
+.ribbon.unreleased{background:#6c5ce7}
+body,.card,.coll,.toolbar,.nav,.modal,.control,.cat{transition:background-color .45s ease,color .45s ease,border-color .45s ease}
+body.theme-anim *{transition:background-color .45s ease,color .45s ease,border-color .45s ease,filter .45s ease !important}
+body.theme-anim{animation:themeBlur .45s ease}
+@keyframes themeBlur{0%{filter:blur(6px)}100%{filter:blur(0)}}
 .cats{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
 .cats::-webkit-scrollbar{display:none}
 .cat{
@@ -367,16 +383,12 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
     <div class="nav-inner">
       <a class="brand" href="index.html" aria-label="Series and Movie Tracker home">
         <span class="brand-mark" aria-hidden="true">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/></svg>
+          <img src="favicon.png" alt="" width="20" height="20" style="display:block;border-radius:5px">
         </span>
         <span class="brand-name">Tracker</span>
         <span class="brand-tag">Marketplace</span>
       </a>
       <span class="nav-spacer"></span>
-      <div class="nav-search" role="search">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input id="search" type="search" placeholder="Search titles…" aria-label="Search the catalogue" autocomplete="off">
-      </div>
       <a class="nav-btn" href="index.html" title="Back to your tracker">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
         <span class="nav-btn-label">Tracker</span>
@@ -411,6 +423,10 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
 
   <div class="toolbar" id="catalogue">
     <div class="wrap">
+      <div class="nav-search toolbar-search" role="search">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input id="search" type="search" placeholder="Search titles…" aria-label="Search the catalogue" autocomplete="off">
+      </div>
       <div class="cats" id="cats" role="group" aria-label="Filter by category"></div>
       <div class="controls">
         <label class="sr-only" for="sortSelect">Sort by</label>
@@ -422,9 +438,24 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
           <option value="title_asc">Title (A–Z)</option>
         </select>
         <label class="sr-only" for="statusSelect">Filter by status</label>
-        <select class="control" id="statusSelect"><option value="">Any status</option><option value="ongoing">Ongoing</option><option value="ended">Ended</option></select>
+        <select class="control" id="statusSelect"><option value="">Any status</option><option value="unreleased">Not released yet</option><option value="ongoing">Ongoing</option><option value="ended">Ended</option></select>
         <label class="sr-only" for="providerSelect">Filter by provider</label>
         <select class="control" id="providerSelect"><option value="">Any provider</option></select>
+        <label class="sr-only" for="ageSelect">Filter by age rating</label>
+        <select class="control" id="ageSelect">
+          <option value="">All ages</option>
+          <option value="kids">Kids only (≤12)</option>
+          <option value="16">16+ and under</option>
+          <option value="18">18+ and under</option>
+          <option value="only16">Only 16+</option>
+          <option value="only18">Only 18+</option>
+        </select>
+        <label class="sr-only" for="matureMode">Mature handling</label>
+        <select class="control" id="matureMode" title="How to show 16+/18+ titles">
+          <option value="blur">Blur mature</option>
+          <option value="show">Show mature</option>
+          <option value="hide">Hide mature</option>
+        </select>
         <span class="result-count" id="resultCount" role="status" aria-live="polite"></span>
         <div class="view-toggle" role="group" aria-label="View layout">
           <button class="view-btn" id="viewGrid" type="button" aria-label="Grid view" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></button>
@@ -440,6 +471,8 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
     </div>
   </div>
 </main>
+
+<button class="to-top" id="toTop" type="button" aria-label="Back to top" hidden><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
 
 <footer class="foot">
   <div class="foot-inner">
@@ -466,6 +499,22 @@ body.light .coll-shade{background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,
   </div>
 </div>
 
+<!-- Add-target picker -->
+<div class="modal-overlay" id="targetOverlay" role="dialog" aria-modal="true" aria-labelledby="targetTitle" hidden>
+  <div class="modal" id="targetModal" style="max-width:380px">
+    <div class="modal-body" style="margin-top:26px;text-align:center">
+      <div class="modal-title" id="targetTitle" style="font-size:1.12rem">Add to…</div>
+      <p class="modal-desc" style="margin:6px 0 16px">Choose where this title should go in your tracker.</p>
+      <div style="display:grid;gap:10px">
+        <button class="modal-add" id="tgtWatching" type="button">Currently Watching</button>
+        <button class="modal-add" id="tgtWant" type="button">Want to Watch</button>
+        <button class="modal-add" id="tgtFinished" type="button">Finished</button>
+        <button class="empty-btn" id="tgtCancel" type="button">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Toast -->
 <div class="toast" id="toast" role="status" aria-live="polite">
   <span class="toast-icon" id="toastIcon" aria-hidden="true"></span>
@@ -487,7 +536,7 @@ function saveTracker(d){ localStorage.setItem(trackerKey(),JSON.stringify(d)); }
 var CATALOGUE=[], COLLECTIONS=[];
 var addedIds=new Set();
 try{ addedIds=new Set(JSON.parse(localStorage.getItem('mp_added')||'[]')); }catch(e){}
-var state={category:'All',query:'',sort:'popularity',status:'',provider:'',list:false};
+var state={category:'All',query:'',sort:'popularity',status:'',provider:'',age:'',mature:'blur',list:false};
 
 // ── Safe DOM helpers (prevent HTML injection from data) ─────────
 function el(tag,attrs,kids){
@@ -510,30 +559,35 @@ function safeUrl(u){ // allow only http(s) image URLs
   if(typeof u!=='string')return '';
   return /^https?:\/\//i.test(u.trim()) ? u.trim() : '';
 }
+function ageOf(item){return (item&&item.age!=null&&!isNaN(item.age))?Number(item.age):null;}
+function isMature(item){var a=ageOf(item);return a!=null&&a>=16;}
+function ageClass(a){if(a==null)return '';if(a>=18)return 'a18';if(a>=16)return 'a16';if(a<=12)return 'akids';return '';}
+function ageLabel(a){if(a==null)return '';return a+'+';}
 
 // ── Mapping marketplace entry -> tracker item ───────────────────
-function toTrackerItem(item){
+function toTrackerItem(item,target){
   var today=new Date().toISOString().split('T')[0];
   var isMovie=item.type==='movie';
+  var st=(target==='watching'||target==='completed'||target==='want')?target:'want';
   var all=loadTracker();
   var maxId=all.reduce(function(m,x){return Math.max(m,x.id||0);},1000);
   var seasonCount=item.seasons||1;
   var fullEpisodes=item.episodes||(isMovie?1:0);
   var perSeason=isMovie?1:(seasonCount>0?Math.round(fullEpisodes/seasonCount)||fullEpisodes:fullEpisodes);
-  return {id:maxId+1,title:item.title,image:safeUrl(item.cover),genre:'',status:'want',season:1,episode:1,time:0,
+  return {id:maxId+1,title:item.title,image:safeUrl(item.cover),genre:'',status:st,season:1,episode:1,time:0,
     totalSeasons:seasonCount,totalEpisodes:perSeason,fullSeasonEpisodes:fullEpisodes,
     runtime:item.runtime||0,
     imdbRating:item.imdb?String(item.imdb).replace('.',','):'',language:'English',
     inQueue:false,queueOrder:999,contentType:isMovie?'movie':'series',
     streamingService:(item.providers&&item.providers.length)?String(item.providers[0]).toLowerCase().replace(/ /g,''):'',
     userRating:0,tags:Array.isArray(item.categories)?item.categories.filter(function(c){return c==='Popular'||c==='Trending';}):[],
-    notes:item.description||'',startedDate:today,completedDate:null,lastWatchedDate:today,actors:[],watchHistory:[],
-    mpId:item.id};
+    notes:item.description||'',startedDate:today,completedDate:st==='completed'?today:null,lastWatchedDate:today,actors:[],watchHistory:[],
+    age:ageOf(item),mpId:item.id};
 }
-function inTracker(title){return loadTracker().some(function(x){return x.title===title;});}
-function trackerStatus(title){var e=loadTracker().find(function(x){return x.title===title;});if(!e)return null;return e.status==='watching'?'Watching':e.status==='completed'?'Completed':'Want to Watch';}
-function addToTracker(item){if(inTracker(item.title))return;var d=loadTracker();d.push(toTrackerItem(item));saveTracker(d);}
-function removeFromTracker(title){saveTracker(loadTracker().filter(function(x){return x.title!==title;}));}
+function inTracker(title){var l=(title||'').toLowerCase();return loadTracker().some(function(x){return (x.title||'').toLowerCase()===l;});}
+function trackerStatus(title){var l=(title||'').toLowerCase();var e=loadTracker().find(function(x){return (x.title||'').toLowerCase()===l;});if(!e)return null;return e.status==='watching'?'Watching':e.status==='completed'?'Completed':'Want to Watch';}
+function addToTracker(item,target){if(inTracker(item.title))return;var d=loadTracker();d.push(toTrackerItem(item,target));saveTracker(d);}
+function removeFromTracker(title){var l=(title||'').toLowerCase();saveTracker(loadTracker().filter(function(x){return (x.title||'').toLowerCase()!==l;}));}
 function persistAdded(){localStorage.setItem('mp_added',JSON.stringify([].slice.call(addedIds)));}
 
 // ── Derive categories + providers from data (future-friendly) ───
@@ -563,6 +617,16 @@ function getFiltered(){
   });}
   if(state.status)items=items.filter(function(x){return x.status===state.status;});
   if(state.provider)items=items.filter(function(x){return (x.providers||[]).indexOf(state.provider)>=0;});
+  if(state.age){
+    items=items.filter(function(x){var a=ageOf(x);
+      if(state.age==='kids')return a==null||a<=12;
+      if(state.age==='16')return a==null||a<=16;
+      if(state.age==='18')return a==null||a<=18;
+      if(state.age==='only16')return a!=null&&a>=16&&a<18;
+      if(state.age==='only18')return a!=null&&a>=18;
+      return true;});
+  }
+  if(state.mature==='hide')items=items.filter(function(x){return !isMature(x);});
   var s=state.sort;
   items.sort(function(a,b){
     if(s==='rating')return (b.imdb||0)-(a.imdb||0);
@@ -607,7 +671,9 @@ function renderCats(){
   });
   // provider select (built once, refreshed here is fine)
   var ps=document.getElementById('providerSelect');
-  if(ps.options.length<=1){ d.providers.forEach(function(p){ps.appendChild(el('option',{value:p,text:p}));}); }
+  if(ps&&ps.options.length<=1&&d.providers.length){
+    d.providers.forEach(function(p){ps.appendChild(el('option',{value:p,text:p}));});
+  }
 }
 
 // ── Render: a single card ───────────────────────────────────────
@@ -622,13 +688,24 @@ function ratingEl(v){
 function posterEl(item){
   var url=safeUrl(item.cover);
   var wrap=el('div',{class:'poster-wrap'});
-  if(item.status==='ongoing')wrap.appendChild(el('span',{class:'ribbon ongoing',text:'Ongoing'}));
+  if(item.status==='unreleased')wrap.appendChild(el('span',{class:'ribbon unreleased',text:'Not released'}));
+  else if(item.status==='ongoing')wrap.appendChild(el('span',{class:'ribbon ongoing',text:'Ongoing'}));
   else if(item.status==='ended')wrap.appendChild(el('span',{class:'ribbon ended',text:'Ended'}));
+  var a=ageOf(item);
+  if(a!=null){var ab=el('span',{class:'age-badge '+ageClass(a),text:ageLabel(a)});wrap.appendChild(ab);}
+  var blur=isMature(item)&&state.mature==='blur';
+  if(blur)wrap.className='poster-wrap mature';
   if(url){
     var img=el('img',{class:'poster',src:url,alt:'',loading:'lazy'});
     img.onerror=function(){img.replaceWith(posterPh());};
     wrap.appendChild(img);
   } else { wrap.appendChild(posterPh()); }
+  if(blur){
+    var rev=el('button',{class:'mature-reveal',type:'button','aria-label':'Reveal mature cover',
+      onclick:function(e){e.stopPropagation();wrap.classList.add('revealed');}},
+      [ico('<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/>',13),document.createTextNode(ageLabel(a)+' · Reveal')]);
+    wrap.appendChild(rev);
+  }
   return wrap;
 }
 function posterPh(){var d=el('div',{class:'poster-ph'});d.appendChild(ico('<rect x="2" y="2" width="20" height="20" rx="3"/><path d="M7 2v20M17 2v20M2 12h20M2 7h5M2 17h5M17 7h5M17 17h5"/>',28));return d;}
@@ -673,11 +750,13 @@ function renderGrid(){
     empty.appendChild(el('div',{class:'empty-title',text:'No titles match'}));
     empty.appendChild(el('div',{text:'Try a different search term or category.'}));
     empty.appendChild(el('button',{class:'empty-btn',type:'button',text:'Clear filters',onclick:function(){
-      state={category:'All',query:'',sort:'popularity',status:'',provider:'',list:state.list};
+      state={category:'All',query:'',sort:'popularity',status:'',provider:'',age:'',mature:'blur',list:state.list};
       document.getElementById('search').value='';
       document.getElementById('sortSelect').value='popularity';
       document.getElementById('statusSelect').value='';
       document.getElementById('providerSelect').value='';
+      var ageSel=document.getElementById('ageSelect'); if(ageSel)ageSel.value='';
+      var matSel=document.getElementById('matureMode'); if(matSel)matSel.value='blur';
       renderCats();renderGrid();
     }}));
     grid.appendChild(empty);
@@ -710,7 +789,12 @@ function renderCollections(){
     var card=el('button',{class:'coll',type:'button','aria-label':'Open collection '+coll.name,
       onclick:function(){openCollection(coll.id);}});
     var bg=el('div',{class:'coll-bg'});
-    var bgUrl=safeUrl(coll.backdrop); if(bgUrl)bg.style.backgroundImage="url('"+encodeURI(bgUrl)+"')";
+    var bgUrl=safeUrl(coll.backdrop);
+    if(!bgUrl&&coll.itemIds&&coll.itemIds.length){
+      var first=CATALOGUE.find(function(x){return x.id===coll.itemIds[0];});
+      if(first)bgUrl=safeUrl(first.backdrop)||safeUrl(first.cover);
+    }
+    if(bgUrl)bg.style.backgroundImage="url('"+encodeURI(bgUrl)+"')";
     card.appendChild(bg);
     card.appendChild(el('div',{class:'coll-shade'}));
     var iconSpan=el('span',{class:'coll-icon'}); setColIcon(iconSpan,coll);
@@ -743,6 +827,20 @@ function toggleCollection(id){
   renderCollections();renderGrid();
 }
 
+// ── Ask where to add (Watching / Want / Finished) ───────────────
+function chooseTarget(title,cb){
+  var ov=document.getElementById('targetOverlay');
+  document.getElementById('targetTitle').textContent='Add “'+title+'” to…';
+  ov.hidden=false; ov.classList.add('open');
+  function pick(v){ov.classList.remove('open');ov.hidden=true;cleanup();cb&&cb(v);}
+  function cancel(){ov.classList.remove('open');ov.hidden=true;cleanup();}
+  var bw=document.getElementById('tgtWatching'),bn=document.getElementById('tgtWant'),bf=document.getElementById('tgtFinished'),bc=document.getElementById('tgtCancel');
+  function hw(){pick('watching');}function hn(){pick('want');}function hf(){pick('completed');}
+  function hc(){cancel();}
+  function cleanup(){bw.removeEventListener('click',hw);bn.removeEventListener('click',hn);bf.removeEventListener('click',hf);bc.removeEventListener('click',hc);}
+  bw.addEventListener('click',hw);bn.addEventListener('click',hn);bf.addEventListener('click',hf);bc.addEventListener('click',hc);
+}
+
 // ── Add / remove a single title ─────────────────────────────────
 function toggleAdd(id){
   var item=CATALOGUE.find(function(x){return x.id===id;}); if(!item)return;
@@ -759,8 +857,15 @@ function toggleAdd(id){
       toast('Kept your existing “'+item.title+'”','blocked');
     }
   } else {
-    addedIds.add(id);addToTracker(item);persistAdded();
-    toast('Added “'+item.title+'” to library','success');
+    chooseTarget(item.title,function(target){
+      if(!target)return;
+      addedIds.add(id);addToTracker(item,target);persistAdded();
+      var lbl=target==='watching'?'Currently Watching':target==='completed'?'Finished':'Want to Watch';
+      toast('Added “'+item.title+'” to '+lbl,'success');
+      renderGrid();renderCollections();
+      if(modalOpenId===id)renderModalContent(id);
+    });
+    return;
   }
   // refresh affected UI
   renderGrid();renderCollections();
@@ -804,7 +909,8 @@ function renderModalContent(id){
   var mg=el('div',{class:'meta-grid'});
   if(item.type!=='movie'){mg.appendChild(metaCell('Seasons',item.seasons!=null?item.seasons:'—'));mg.appendChild(metaCell('Episodes',item.episodes!=null?item.episodes:'—'));}
   mg.appendChild(metaCell('Runtime',item.runtime?item.runtime+' min':'—'));
-  if(item.status)mg.appendChild(metaCell('Status',item.status.charAt(0).toUpperCase()+item.status.slice(1)));
+  if(item.status)mg.appendChild(metaCell('Status',item.status==='unreleased'?'Not released yet':(item.status.charAt(0).toUpperCase()+item.status.slice(1))));
+  if(ageOf(item)!=null)mg.appendChild(metaCell('Age rating',ageLabel(ageOf(item))));
   if(item.tmdb!=null)mg.appendChild(metaCell('TMDb',item.tmdb));
   body.appendChild(mg);
 
@@ -906,6 +1012,8 @@ document.getElementById('search').addEventListener('input',function(e){state.que
 document.getElementById('sortSelect').addEventListener('change',function(e){state.sort=e.target.value;renderGrid();});
 document.getElementById('statusSelect').addEventListener('change',function(e){state.status=e.target.value;renderGrid();});
 document.getElementById('providerSelect').addEventListener('change',function(e){state.provider=e.target.value;renderGrid();});
+var _ageSel=document.getElementById('ageSelect'); if(_ageSel)_ageSel.addEventListener('change',function(e){state.age=e.target.value;renderGrid();});
+var _matSel=document.getElementById('matureMode'); if(_matSel)_matSel.addEventListener('change',function(e){state.mature=e.target.value;renderGrid();});
 document.getElementById('viewGrid').addEventListener('click',function(){state.list=false;document.getElementById('grid').classList.remove('list-view');this.setAttribute('aria-pressed','true');document.getElementById('viewList').setAttribute('aria-pressed','false');});
 document.getElementById('viewList').addEventListener('click',function(){state.list=true;document.getElementById('grid').classList.add('list-view');this.setAttribute('aria-pressed','true');document.getElementById('viewGrid').setAttribute('aria-pressed','false');});
 document.getElementById('modalClose').addEventListener('click',closeModal);
@@ -921,10 +1029,16 @@ function applyTheme(light){
 }
 document.getElementById('themeToggle').addEventListener('click',function(){
   var light=!document.body.classList.contains('light');
+  document.body.classList.add('theme-anim');
+  setTimeout(function(){document.body.classList.remove('theme-anim');},480);
   applyTheme(light);
   try{localStorage.setItem('mp_theme',light?'light':'dark');}catch(e){}
 });
 applyTheme((function(){try{return localStorage.getItem('mp_theme')==='light';}catch(e){return false;}})());
+(function(){var bt=document.getElementById('toTop');if(!bt)return;
+  window.addEventListener('scroll',function(){bt.hidden=window.scrollY<400;},{passive:true});
+  bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+})();
 
 // ── Normalise an entry from JSON / generator output ─────────────
 function normalize(item,idx){
@@ -948,12 +1062,17 @@ function normalize(item,idx){
     imdb:item.imdb!=null?item.imdb:(item.imdbRating!=null?item.imdbRating:null),
     tmdb:item.tmdb!=null?item.tmdb:null,
     providers:Array.isArray(item.providers)?item.providers:[],
+    age:item.age!=null?Number(item.age):null,
     popularity:item.popularity!=null?item.popularity:0
   };
 }
 function syncAdded(){
-  try{var titles=new Set(loadTracker().map(function(x){return x.title;}));
-    CATALOGUE.forEach(function(it){if(titles.has(it.title))addedIds.add(it.id);});persistAdded();}catch(e){}
+  try{var lib=loadTracker();
+    var titles=new Set(lib.map(function(x){return (x.title||'').toLowerCase();}));
+    var mpIds=new Set(lib.map(function(x){return x.mpId;}).filter(function(v){return v!=null;}));
+    CATALOGUE.forEach(function(it){
+      if(mpIds.has(it.id)||titles.has((it.title||'').toLowerCase()))addedIds.add(it.id);
+    });persistAdded();}catch(e){}
 }
 function boot(){
   syncAdded();renderHero();renderCats();renderCollections();renderGrid();
@@ -983,6 +1102,25 @@ fetch('marketplace-data.json',{cache:'no-store'})
   });
 
 })();
+</script>
+<style id="smGradientCss">
+body.gradient-text h1, body.gradient-text h2, body.gradient-text .section-title,
+body.gradient-text .hero h1, body.gradient-text .version-number, body.gradient-text .brand-name,
+body.gradient-text .page-title, body.gradient-text .modal-title {
+  background: linear-gradient(92deg, var(--grad-start, #e50914), var(--grad-end, #f5c518));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+</style>
+<script>
+(function(){try{
+  var g=JSON.parse(localStorage.getItem('smGradientText')||'null');
+  if(g&&g.enabled){
+    document.body.classList.add('gradient-text');
+    document.body.style.setProperty('--grad-start', g.start||'#e50914');
+    document.body.style.setProperty('--grad-end', g.end||'#f5c518');
+  }
+}catch(e){}})();
 </script>
 </body>
 </html>

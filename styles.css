@@ -1718,23 +1718,25 @@
             background-color: var(--secondary-color, #e50914);
         }
 
-        .series-item.compact .series-thumbnail {
-            width: 100px;
-            height: 150px;
-        }
+        /* ── Compact: shrink the whole content box so more items fit ── */
+        .series-item.compact { margin-bottom: 8px; }
+        .series-item.compact .series-header { padding: 10px; padding-right: 40px; gap: 12px; }
+        .series-item.compact .series-thumbnail { width: 70px; height: 105px; }
+        .series-item.compact .series-title { font-size: 1.05rem; margin-bottom: 4px; }
+        .series-item.compact .series-title-row { margin-bottom: 6px; }
+        .series-item.compact .series-stats { gap: 8px; }
+        .series-item.compact .stat-item { padding: 4px 8px; }
+        .series-item.compact .stat-label { font-size: 0.62rem; }
+        .series-item.compact .stat-value { font-size: 0.78rem; }
+        .series-item.compact .series-actions-row,
+        .series-item.compact .series-dates { font-size: 0.78rem; }
 
-        .series-item.compact .series-title {
-            font-size: 1.2rem;
-        }
-
-        .series-item.large .series-thumbnail {
-            width: 200px;
-            height: 300px;
-        }
-
-        .series-item.large .series-title {
-            font-size: 1.8rem;
-        }
+        /* ── Large: enlarge the whole content box ── */
+        .series-item.large .series-header { padding: 26px; padding-right: 56px; gap: 26px; }
+        .series-item.large .series-thumbnail { width: 200px; height: 300px; }
+        .series-item.large .series-title { font-size: 1.9rem; }
+        .series-item.large .stat-label { font-size: 0.82rem; }
+        .series-item.large .stat-value { font-size: 1.05rem; }
 
         /* Hamburger Menu Styles */
         .hamburger-menu {
@@ -3410,6 +3412,15 @@
             background: rgba(229,9,20,0.15);
             border-color: var(--secondary-color, #e50914);
         }
+        body.custom-theme .streaming-multi-select {
+            background: var(--surface-color, rgba(255,255,255,0.06));
+            border-color: var(--border-color, rgba(255,255,255,0.2));
+        }
+        body.custom-theme .streaming-chip {
+            background: rgba(128,128,128,0.14);
+            border-color: var(--border-color, rgba(255,255,255,0.25));
+            color: inherit;
+        }
 
         /* ── Reworked User Select Modal ───────────────── */
         .um-card {
@@ -3771,3 +3782,34 @@
             .api-usage-grid { justify-content: center; }
             .api-usage-stats { justify-content: center; }
         }
+
+        /* ── Gradient text (optional, public pages) ───────────────── */
+        body.gradient-text h1,
+        body.gradient-text h2,
+        body.gradient-text .series-title,
+        body.gradient-text .stat-card-value,
+        body.gradient-text .sidebar-section-title,
+        body.gradient-text .app-title,
+        body.gradient-text .page-title {
+            background: linear-gradient(92deg, var(--grad-start, #e50914), var(--grad-end, #f5c518));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        /* ── Watchlist header & rank ──────────────────────────────── */
+        .watchlist-head {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 12px; margin-bottom: 12px;
+        }
+        .watchlist-head h2 { margin: 0; }
+        .watchlist-count { color: #888; font-weight: 600; font-size: 0.85em; }
+        .queue-rank {
+            flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+            display: grid; place-items: center; font-size: 0.72rem; font-weight: 700;
+            background: rgba(255,255,255,0.08); color: #bbb;
+        }
+        body.light-theme .queue-rank { background: rgba(0,0,0,0.06); color: #555; }
+        .priority-item { transition: background-color .15s, transform .15s; }
+        .priority-item:hover { transform: translateX(2px); }

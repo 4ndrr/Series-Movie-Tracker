@@ -1,4 +1,5 @@
-# Use S&M at[: Website](https://series-movie-tracker.vercel.app/)
+# Use:https://twilightmay.github.io/Series-Movie-Tracker/
+
 # 🎬 Series & Movie Tracker
 
 ![Status](https://img.shields.io/badge/status-active-success)

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-18",
+  "generatedAt": "2026-06-20",
   "attribution": "This product uses the TMDb API but is not endorsed or certified by TMDb.",
   "source": "The Movie Database (TMDb)",
   "catalogue": [
@@ -24,6 +24,7 @@
       "imdb": null,
       "tmdb": 10,
       "providers": [],
+      "age": null,
       "popularity": 7
     },
     {
@@ -42,7 +43,7 @@
       "description": "An inspector from the Educational Rights Protection Bureau (ERPB) who is authorized by the government to use physical intervention and unconventional methods to discipline delinquent students and reform the educational system.",
       "cover": "https://image.tmdb.org/t/p/w400/fMECSPrTmRClSViMsXFYmiYIcWP.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/vyG93jhmPL7tBIhRtCLa5mdBKob.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/fOV6dJGG6EghbeXkU7RVQpDhFyp.jpg",
       "seasons": 1,
       "episodes": 10,
       "runtime": null,
@@ -52,7 +53,8 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "popularity": 251
+      "age": 18,
+      "popularity": 212
     },
     {
       "id": 3,
@@ -85,7 +87,8 @@
         "Philo",
         "Spectrum On Demand"
       ],
-      "popularity": 722
+      "age": 18,
+      "popularity": 675
     },
     {
       "id": 4,
@@ -111,6 +114,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 104
     },
     {
@@ -138,6 +142,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 80
     },
     {
@@ -167,6 +172,7 @@
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 42
     },
     {
@@ -194,6 +200,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 140
     },
     {
@@ -221,6 +228,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 117
     },
     {
@@ -249,6 +257,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 103
     },
     {
@@ -280,6 +289,7 @@
         "Adult Swim",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 144
     },
     {
@@ -308,7 +318,8 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
-      "popularity": 274
+      "age": 18,
+      "popularity": 260
     },
     {
       "id": 12,
@@ -334,6 +345,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 57
     },
     {
@@ -361,6 +373,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 148
     },
     {
@@ -389,6 +402,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 122
     },
     {
@@ -422,6 +436,7 @@
         "YouTube TV",
         "Philo"
       ],
+      "age": null,
       "popularity": 143
     },
     {
@@ -447,7 +462,8 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
-      "popularity": 139
+      "age": 14,
+      "popularity": 163
     },
     {
       "id": 17,
@@ -473,6 +489,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 62
     },
     {
@@ -501,7 +518,8 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
-      "popularity": 327
+      "age": 18,
+      "popularity": 308
     },
     {
       "id": 19,
@@ -532,7 +550,8 @@
         "YouTube TV",
         "FOX One Amazon Channel"
       ],
-      "popularity": 174
+      "age": 14,
+      "popularity": 203
     },
     {
       "id": 20,
@@ -558,6 +577,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 59
     },
     {
@@ -584,6 +604,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 42
     },
     {
@@ -607,6 +628,7 @@
       "imdb": null,
       "tmdb": 8,
       "providers": [],
+      "age": null,
       "popularity": 25
     },
     {
@@ -633,6 +655,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 39
     },
     {
@@ -665,6 +688,7 @@
         "Paramount+ Roku Premium Channel",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 28
     },
     {
@@ -691,6 +715,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 40
     },
     {
@@ -714,6 +739,7 @@
       "imdb": null,
       "tmdb": 9,
       "providers": [],
+      "age": null,
       "popularity": 53
     },
     {
@@ -723,7 +749,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -736,9 +763,10 @@
       "episodes": 29,
       "runtime": null,
       "imdb": null,
-      "tmdb": 4.2,
+      "tmdb": 8,
       "providers": [],
-      "popularity": 147
+      "age": null,
+      "popularity": 204
     },
     {
       "id": 28,
@@ -764,6 +792,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 27
     },
     {
@@ -790,6 +819,7 @@
       "providers": [
         "Hulu"
       ],
+      "age": null,
       "popularity": 105
     },
     {
@@ -818,12 +848,13 @@
         "Adult Swim",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 29
     },
     {
       "id": 31,
       "title": "Raakh",
-      "originalTitle": "Raakh",
+      "originalTitle": "राख",
       "type": "series",
       "categories": [
         "Series",
@@ -836,7 +867,7 @@
       "description": "When two teenagers vanish, a close-knit family is shattered and the city is left on edge. Determined to uncover the truth, a relentless officer leads a nationwide manhunt that pulls him deep into a world of violence and human depravity.",
       "cover": "https://image.tmdb.org/t/p/w400/5MbNy94ia4ZLf8OGtSfSjjlxxWN.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/8kROfHO2hM2TzIPaRWnZBeEVWMB.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/hAuYDYBgLJ1qIPoAOM7yOD56uCp.jpg",
       "seasons": 1,
       "episodes": 8,
       "runtime": null,
@@ -846,7 +877,8 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
-      "popularity": 432
+      "age": 18,
+      "popularity": 536
     },
     {
       "id": 32,
@@ -877,6 +909,7 @@
         "Philo",
         "Spectrum On Demand"
       ],
+      "age": null,
       "popularity": 43
     },
     {
@@ -902,6 +935,7 @@
       "providers": [
         "Rakuten Viki"
       ],
+      "age": null,
       "popularity": 38
     },
     {
@@ -925,6 +959,7 @@
       "imdb": null,
       "tmdb": 9.7,
       "providers": [],
+      "age": null,
       "popularity": 27
     },
     {
@@ -951,6 +986,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 25
     },
     {
@@ -977,6 +1013,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 6
     },
     {
@@ -1000,6 +1037,7 @@
       "imdb": null,
       "tmdb": 10,
       "providers": [],
+      "age": null,
       "popularity": 8
     },
     {
@@ -1030,6 +1068,7 @@
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 105
     },
     {
@@ -1059,6 +1098,7 @@
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 70
     },
     {
@@ -1085,6 +1125,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 12
     },
     {
@@ -1116,6 +1157,7 @@
         "Adult Swim",
         "FOX One Amazon Channel"
       ],
+      "age": null,
       "popularity": 153
     },
     {
@@ -1145,6 +1187,7 @@
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 11
     },
     {
@@ -1173,6 +1216,7 @@
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel"
       ],
+      "age": null,
       "popularity": 31
     },
     {
@@ -1196,6 +1240,7 @@
       "imdb": null,
       "tmdb": 9.4,
       "providers": [],
+      "age": null,
       "popularity": 19
     },
     {
@@ -1231,6 +1276,7 @@
         "Amazon Prime Video with Ads",
         "Sensical Amazon Channel"
       ],
+      "age": null,
       "popularity": 13
     },
     {
@@ -1261,7 +1307,8 @@
         "YouTube TV",
         "Philo"
       ],
-      "popularity": 220
+      "age": 14,
+      "popularity": 234
     },
     {
       "id": 47,
@@ -1287,6 +1334,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 11
     },
     {
@@ -1313,6 +1361,7 @@
         "Britbox Apple TV Channel ",
         "BritBox"
       ],
+      "age": null,
       "popularity": 9
     },
     {
@@ -1340,6 +1389,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 122
     },
     {
@@ -1367,6 +1417,7 @@
         "Crunchyroll Amazon Channel",
         "YouTube TV"
       ],
+      "age": null,
       "popularity": 39
     },
     {
@@ -1393,6 +1444,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 40
     },
     {
@@ -1419,6 +1471,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 16
     },
     {
@@ -1445,6 +1498,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 63
     },
     {
@@ -1470,6 +1524,7 @@
       "providers": [
         "Rakuten Viki"
       ],
+      "age": null,
       "popularity": 22
     },
     {
@@ -1496,6 +1551,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 22
     },
     {
@@ -1522,6 +1578,7 @@
         "Disney Plus",
         "Hulu"
       ],
+      "age": null,
       "popularity": 31
     },
     {
@@ -1549,6 +1606,7 @@
         "Crunchyroll Amazon Channel",
         "YouTube TV"
       ],
+      "age": null,
       "popularity": 47
     },
     {
@@ -1574,6 +1632,7 @@
       "providers": [
         "Hulu"
       ],
+      "age": null,
       "popularity": 71
     },
     {
@@ -1604,6 +1663,7 @@
         "Philo",
         "Spectrum On Demand"
       ],
+      "age": null,
       "popularity": 15
     },
     {
@@ -1629,6 +1689,7 @@
       "providers": [
         "HBO Max"
       ],
+      "age": null,
       "popularity": 11
     },
     {
@@ -1656,6 +1717,7 @@
         "Crunchyroll Amazon Channel",
         "YouTube TV"
       ],
+      "age": null,
       "popularity": 23
     },
     {
@@ -1692,7 +1754,8 @@
         "Paramount+ Roku Premium Channel",
         "Amazon Prime Video with Ads"
       ],
-      "popularity": 173
+      "age": 18,
+      "popularity": 189
     },
     {
       "id": 63,
@@ -1717,6 +1780,7 @@
       "providers": [
         "Rakuten Viki"
       ],
+      "age": null,
       "popularity": 18
     },
     {
@@ -1740,6 +1804,7 @@
       "imdb": null,
       "tmdb": 7.1,
       "providers": [],
+      "age": null,
       "popularity": 29
     },
     {
@@ -1766,6 +1831,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 52
     },
     {
@@ -1791,6 +1857,7 @@
       "providers": [
         "Rakuten Viki"
       ],
+      "age": null,
       "popularity": 16
     },
     {
@@ -1814,6 +1881,7 @@
       "imdb": null,
       "tmdb": 9.1,
       "providers": [],
+      "age": null,
       "popularity": 15
     },
     {
@@ -1840,6 +1908,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 34
     },
     {
@@ -1866,6 +1935,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 40
     },
     {
@@ -1892,6 +1962,7 @@
         "Disney Plus",
         "Hulu"
       ],
+      "age": null,
       "popularity": 45
     },
     {
@@ -1918,6 +1989,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 13
     },
     {
@@ -1944,6 +2016,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 33
     },
     {
@@ -1973,6 +2046,7 @@
         "YouTube TV",
         "DisneyNOW"
       ],
+      "age": null,
       "popularity": 10
     },
     {
@@ -1999,6 +2073,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 29
     },
     {
@@ -2022,6 +2097,7 @@
       "imdb": null,
       "tmdb": 8.1,
       "providers": [],
+      "age": null,
       "popularity": 86
     },
     {
@@ -2048,6 +2124,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 27
     },
     {
@@ -2075,6 +2152,7 @@
         "fuboTV",
         "YouTube TV"
       ],
+      "age": null,
       "popularity": 47
     },
     {
@@ -2102,6 +2180,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 35
     },
     {
@@ -2138,6 +2217,7 @@
         "Netflix Standard with Ads",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 24
     },
     {
@@ -2164,6 +2244,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 52
     },
     {
@@ -2190,6 +2271,7 @@
         "Disney Plus",
         "Hulu"
       ],
+      "age": null,
       "popularity": 20
     },
     {
@@ -2222,6 +2304,7 @@
         "YouTube TV",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 68
     },
     {
@@ -2252,6 +2335,7 @@
         "HiDive",
         "Hidive Amazon Channel"
       ],
+      "age": null,
       "popularity": 21
     },
     {
@@ -2278,6 +2362,7 @@
         "Philo",
         "History"
       ],
+      "age": null,
       "popularity": 9
     },
     {
@@ -2304,6 +2389,7 @@
         "Apple TV",
         "Apple TV Amazon Channel"
       ],
+      "age": null,
       "popularity": 12
     },
     {
@@ -2330,6 +2416,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 64
     },
     {
@@ -2358,6 +2445,7 @@
         "Spectrum On Demand",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 14
     },
     {
@@ -2384,6 +2472,7 @@
         "Disney Plus",
         "Hulu"
       ],
+      "age": null,
       "popularity": 8
     },
     {
@@ -2407,6 +2496,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 3
     },
     {
@@ -2437,6 +2527,7 @@
         "Rakuten Viki",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 15
     },
     {
@@ -2463,6 +2554,7 @@
         "Disney Plus",
         "Hulu"
       ],
+      "age": null,
       "popularity": 19
     },
     {
@@ -2490,6 +2582,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 55
     },
     {
@@ -2517,6 +2610,7 @@
         "Crunchyroll Amazon Channel",
         "YouTube TV"
       ],
+      "age": null,
       "popularity": 28
     },
     {
@@ -2545,6 +2639,7 @@
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 61
     },
     {
@@ -2568,6 +2663,7 @@
       "imdb": null,
       "tmdb": 5,
       "providers": [],
+      "age": null,
       "popularity": 5
     },
     {
@@ -2594,6 +2690,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 55
     },
     {
@@ -2617,6 +2714,7 @@
       "imdb": null,
       "tmdb": 9,
       "providers": [],
+      "age": null,
       "popularity": 8
     },
     {
@@ -2644,6 +2742,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 53
     },
     {
@@ -2676,6 +2775,7 @@
         "HISTORY Vault Amazon Channel",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 8
     },
     {
@@ -2699,6 +2799,7 @@
       "imdb": null,
       "tmdb": 9.2,
       "providers": [],
+      "age": null,
       "popularity": 11
     },
     {
@@ -2707,7 +2808,8 @@
       "originalTitle": "Toy Story 5",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2720,9 +2822,10 @@
       "episodes": null,
       "runtime": 102,
       "imdb": null,
-      "tmdb": 7.2,
+      "tmdb": 7.4,
       "providers": [],
-      "popularity": 160
+      "age": 7,
+      "popularity": 263
     },
     {
       "id": 102,
@@ -2730,7 +2833,8 @@
       "originalTitle": "Obsession",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2745,7 +2849,8 @@
       "imdb": null,
       "tmdb": 7.9,
       "providers": [],
-      "popularity": 617
+      "age": 16,
+      "popularity": 595
     },
     {
       "id": 103,
@@ -2753,12 +2858,13 @@
       "originalTitle": "Disclosure Day",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
-      "description": "If you found out we weren’t alone, if someone showed you, proved it to you, would that frighten you?",
+      "description": "A cybersecurity expert becomes a whistleblower after uncovering secrets about aliens, putting him on the run from a corporation. Meanwhile, a meteorologist experiencing strange phenomena joins forces with him to prove there's life beyond our understanding.",
       "cover": "https://image.tmdb.org/t/p/w400/3o5YPjDGDTcTDL5ftDA9NwN9dLd.jpg",
       "altCovers": [],
       "backdrop": "https://image.tmdb.org/t/p/w780/s6ly8laenkHWlIBRkLSfIuEMLC6.jpg",
@@ -2766,9 +2872,10 @@
       "episodes": null,
       "runtime": 145,
       "imdb": null,
-      "tmdb": 6.8,
+      "tmdb": 6.7,
       "providers": [],
-      "popularity": 326
+      "age": 13,
+      "popularity": 244
     },
     {
       "id": 104,
@@ -2791,6 +2898,7 @@
       "imdb": null,
       "tmdb": 6.9,
       "providers": [],
+      "age": null,
       "popularity": 115
     },
     {
@@ -2799,7 +2907,8 @@
       "originalTitle": "Your Fault: London",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2812,9 +2921,13 @@
       "episodes": null,
       "runtime": 123,
       "imdb": null,
-      "tmdb": 7.7,
-      "providers": [],
-      "popularity": 115
+      "tmdb": 7.6,
+      "providers": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
+      ],
+      "age": 16,
+      "popularity": 194
     },
     {
       "id": 106,
@@ -2822,7 +2935,8 @@
       "originalTitle": "Michael",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2837,7 +2951,8 @@
       "imdb": null,
       "tmdb": 8.7,
       "providers": [],
-      "popularity": 512
+      "age": 13,
+      "popularity": 536
     },
     {
       "id": 107,
@@ -2860,6 +2975,7 @@
       "imdb": null,
       "tmdb": 7.8,
       "providers": [],
+      "age": null,
       "popularity": 89
     },
     {
@@ -2883,6 +2999,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 77
     },
     {
@@ -2891,7 +3008,8 @@
       "originalTitle": "Mortal Kombat II",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2906,7 +3024,8 @@
       "imdb": null,
       "tmdb": 8,
       "providers": [],
-      "popularity": 537
+      "age": 16,
+      "popularity": 491
     },
     {
       "id": 110,
@@ -2929,6 +3048,7 @@
       "imdb": null,
       "tmdb": 5.5,
       "providers": [],
+      "age": null,
       "popularity": 77
     },
     {
@@ -2937,7 +3057,8 @@
       "originalTitle": "火遮眼",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2950,9 +3071,10 @@
       "episodes": null,
       "runtime": 113,
       "imdb": null,
-      "tmdb": 8.1,
+      "tmdb": 8,
       "providers": [],
-      "popularity": 173
+      "age": 16,
+      "popularity": 179
     },
     {
       "id": 112,
@@ -2975,6 +3097,7 @@
       "imdb": null,
       "tmdb": 8.7,
       "providers": [],
+      "age": null,
       "popularity": 145
     },
     {
@@ -2998,6 +3121,7 @@
       "imdb": null,
       "tmdb": 6.2,
       "providers": [],
+      "age": null,
       "popularity": 51
     },
     {
@@ -3021,6 +3145,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 42
     },
     {
@@ -3044,6 +3169,7 @@
       "imdb": null,
       "tmdb": 6.6,
       "providers": [],
+      "age": null,
       "popularity": 86
     },
     {
@@ -3052,7 +3178,8 @@
       "originalTitle": "The Super Mario Galaxy Movie",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3067,7 +3194,8 @@
       "imdb": null,
       "tmdb": 8.2,
       "providers": [],
-      "popularity": 244
+      "age": 7,
+      "popularity": 213
     },
     {
       "id": 117,
@@ -3090,6 +3218,7 @@
       "imdb": null,
       "tmdb": 7.3,
       "providers": [],
+      "age": null,
       "popularity": 152
     },
     {
@@ -3113,6 +3242,7 @@
       "imdb": null,
       "tmdb": 7,
       "providers": [],
+      "age": null,
       "popularity": 69
     },
     {
@@ -3136,6 +3266,7 @@
       "imdb": null,
       "tmdb": 6.2,
       "providers": [],
+      "age": null,
       "popularity": 42
     },
     {
@@ -3162,6 +3293,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 80
     },
     {
@@ -3185,6 +3317,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 19
     },
     {
@@ -3208,6 +3341,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 22
     },
     {
@@ -3231,6 +3365,7 @@
       "imdb": null,
       "tmdb": 6.6,
       "providers": [],
+      "age": null,
       "popularity": 144
     },
     {
@@ -3256,6 +3391,7 @@
       "providers": [
         "Hulu"
       ],
+      "age": null,
       "popularity": 23
     },
     {
@@ -3279,6 +3415,7 @@
       "imdb": null,
       "tmdb": 9,
       "providers": [],
+      "age": null,
       "popularity": 5
     },
     {
@@ -3302,6 +3439,7 @@
       "imdb": null,
       "tmdb": 7.6,
       "providers": [],
+      "age": null,
       "popularity": 109
     },
     {
@@ -3310,7 +3448,8 @@
       "originalTitle": "भूत बंगला",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3323,12 +3462,13 @@
       "episodes": null,
       "runtime": 163,
       "imdb": null,
-      "tmdb": 5.5,
+      "tmdb": 5.6,
       "providers": [
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "popularity": 337
+      "age": 13,
+      "popularity": 368
     },
     {
       "id": 128,
@@ -3351,6 +3491,7 @@
       "imdb": null,
       "tmdb": 6.7,
       "providers": [],
+      "age": null,
       "popularity": 86
     },
     {
@@ -3377,6 +3518,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 122
     },
     {
@@ -3400,6 +3542,7 @@
       "imdb": null,
       "tmdb": 10,
       "providers": [],
+      "age": null,
       "popularity": 9
     },
     {
@@ -3426,6 +3569,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 28
     },
     {
@@ -3453,6 +3597,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 50
     },
     {
@@ -3481,6 +3626,7 @@
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 55
     },
     {
@@ -3489,7 +3635,8 @@
       "originalTitle": "The Mandalorian and Grogu",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3502,9 +3649,10 @@
       "episodes": null,
       "runtime": 132,
       "imdb": null,
-      "tmdb": 6.8,
+      "tmdb": 6.7,
       "providers": [],
-      "popularity": 239
+      "age": 13,
+      "popularity": 212
     },
     {
       "id": 135,
@@ -3530,6 +3678,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 36
     },
     {
@@ -3553,6 +3702,7 @@
       "imdb": null,
       "tmdb": 8.5,
       "providers": [],
+      "age": null,
       "popularity": 10
     },
     {
@@ -3576,6 +3726,7 @@
       "imdb": null,
       "tmdb": 6.6,
       "providers": [],
+      "age": null,
       "popularity": 43
     },
     {
@@ -3599,6 +3750,7 @@
       "imdb": null,
       "tmdb": 6.3,
       "providers": [],
+      "age": null,
       "popularity": 83
     },
     {
@@ -3622,6 +3774,7 @@
       "imdb": null,
       "tmdb": 7.7,
       "providers": [],
+      "age": null,
       "popularity": 39
     },
     {
@@ -3648,6 +3801,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 18
     },
     {
@@ -3671,6 +3825,7 @@
       "imdb": null,
       "tmdb": 7.4,
       "providers": [],
+      "age": null,
       "popularity": 16
     },
     {
@@ -3694,6 +3849,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 13
     },
     {
@@ -3702,13 +3858,14 @@
       "originalTitle": "கருப்பு",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
       "description": "In a world where justice falters, guardian deity Vettai Karuppu takes the guise of a lawyer to battle a corrupt legal system preying on the powerless.",
-      "cover": "https://image.tmdb.org/t/p/w400/4KZXlZ5tTT6ghbW77gS4hSLkCd7.jpg",
+      "cover": "https://image.tmdb.org/t/p/w400/ky3KDMdvaeApRVL03kpfYHXzXqd.jpg",
       "altCovers": [],
       "backdrop": "https://image.tmdb.org/t/p/w780/1eAuwNBy34kkM3xkl202z4f1NiI.jpg",
       "seasons": null,
@@ -3720,7 +3877,8 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
-      "popularity": 414
+      "age": null,
+      "popularity": 348
     },
     {
       "id": 144,
@@ -3747,6 +3905,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 13
     },
     {
@@ -3770,6 +3929,7 @@
       "imdb": null,
       "tmdb": 6.9,
       "providers": [],
+      "age": null,
       "popularity": 33
     },
     {
@@ -3793,6 +3953,7 @@
       "imdb": null,
       "tmdb": 7,
       "providers": [],
+      "age": null,
       "popularity": 7
     },
     {
@@ -3818,6 +3979,7 @@
       "providers": [
         "Disney Plus"
       ],
+      "age": null,
       "popularity": 135
     },
     {
@@ -3843,6 +4005,7 @@
       "providers": [
         "Disney Plus"
       ],
+      "age": null,
       "popularity": 68
     },
     {
@@ -3866,6 +4029,7 @@
       "imdb": null,
       "tmdb": 4.2,
       "providers": [],
+      "age": null,
       "popularity": 9
     },
     {
@@ -3874,7 +4038,8 @@
       "originalTitle": "Lee Cronin's The Mummy",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3889,7 +4054,8 @@
       "imdb": null,
       "tmdb": 8,
       "providers": [],
-      "popularity": 168
+      "age": 16,
+      "popularity": 152
     },
     {
       "id": 151,
@@ -3919,6 +4085,7 @@
         "Philo",
         "Starz Amazon Channel"
       ],
+      "age": null,
       "popularity": 90
     },
     {
@@ -3942,6 +4109,7 @@
       "imdb": null,
       "tmdb": 7,
       "providers": [],
+      "age": null,
       "popularity": 50
     },
     {
@@ -3968,6 +4136,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 37
     },
     {
@@ -3994,6 +4163,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 75
     },
     {
@@ -4017,6 +4187,7 @@
       "imdb": null,
       "tmdb": 6.5,
       "providers": [],
+      "age": null,
       "popularity": 29
     },
     {
@@ -4045,6 +4216,7 @@
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 8
     },
     {
@@ -4068,6 +4240,7 @@
       "imdb": null,
       "tmdb": 6.4,
       "providers": [],
+      "age": null,
       "popularity": 8
     },
     {
@@ -4091,6 +4264,7 @@
       "imdb": null,
       "tmdb": 5.6,
       "providers": [],
+      "age": null,
       "popularity": 7
     },
     {
@@ -4114,6 +4288,7 @@
       "imdb": null,
       "tmdb": 7,
       "providers": [],
+      "age": null,
       "popularity": 16
     },
     {
@@ -4137,6 +4312,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 20
     },
     {
@@ -4160,6 +4336,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 18
     },
     {
@@ -4183,6 +4360,7 @@
       "imdb": null,
       "tmdb": 7,
       "providers": [],
+      "age": null,
       "popularity": 33
     },
     {
@@ -4206,6 +4384,7 @@
       "imdb": null,
       "tmdb": 6.4,
       "providers": [],
+      "age": null,
       "popularity": 44
     },
     {
@@ -4232,6 +4411,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 23
     },
     {
@@ -4255,6 +4435,7 @@
       "imdb": null,
       "tmdb": 5.7,
       "providers": [],
+      "age": null,
       "popularity": 92
     },
     {
@@ -4278,6 +4459,7 @@
       "imdb": null,
       "tmdb": 6.4,
       "providers": [],
+      "age": null,
       "popularity": 2
     },
     {
@@ -4303,6 +4485,7 @@
       "providers": [
         "Hulu"
       ],
+      "age": null,
       "popularity": 39
     },
     {
@@ -4326,6 +4509,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 2
     },
     {
@@ -4349,6 +4533,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 12
     },
     {
@@ -4357,7 +4542,8 @@
       "originalTitle": "Твоё сердце будет разбито",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -4372,7 +4558,8 @@
       "imdb": null,
       "tmdb": 7,
       "providers": [],
-      "popularity": 254
+      "age": null,
+      "popularity": 290
     },
     {
       "id": 171,
@@ -4395,6 +4582,7 @@
       "imdb": null,
       "tmdb": 6.5,
       "providers": [],
+      "age": null,
       "popularity": 16
     },
     {
@@ -4421,6 +4609,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 116
     },
     {
@@ -4444,6 +4633,7 @@
       "imdb": null,
       "tmdb": 6.5,
       "providers": [],
+      "age": null,
       "popularity": 8
     },
     {
@@ -4467,6 +4657,7 @@
       "imdb": null,
       "tmdb": 6.3,
       "providers": [],
+      "age": null,
       "popularity": 16
     },
     {
@@ -4494,6 +4685,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 26
     },
     {
@@ -4517,6 +4709,7 @@
       "imdb": null,
       "tmdb": 9.1,
       "providers": [],
+      "age": null,
       "popularity": 14
     },
     {
@@ -4540,6 +4733,7 @@
       "imdb": null,
       "tmdb": 6.4,
       "providers": [],
+      "age": null,
       "popularity": 12
     },
     {
@@ -4563,6 +4757,7 @@
       "imdb": null,
       "tmdb": 8.2,
       "providers": [],
+      "age": null,
       "popularity": 14
     },
     {
@@ -4589,6 +4784,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 134
     },
     {
@@ -4615,6 +4811,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 29
     },
     {
@@ -4645,6 +4842,7 @@
         "Philo",
         "Starz Amazon Channel"
       ],
+      "age": null,
       "popularity": 51
     },
     {
@@ -4671,6 +4869,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 48
     },
     {
@@ -4694,6 +4893,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 68
     },
     {
@@ -4717,6 +4917,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 17
     },
     {
@@ -4725,7 +4926,8 @@
       "originalTitle": "Swapped",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -4743,7 +4945,8 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
-      "popularity": 161
+      "age": 7,
+      "popularity": 154
     },
     {
       "id": 186,
@@ -4766,6 +4969,7 @@
       "imdb": null,
       "tmdb": 6.8,
       "providers": [],
+      "age": null,
       "popularity": 8
     },
     {
@@ -4789,6 +4993,7 @@
       "imdb": null,
       "tmdb": 6.9,
       "providers": [],
+      "age": null,
       "popularity": 19
     },
     {
@@ -4812,6 +5017,7 @@
       "imdb": null,
       "tmdb": 7.5,
       "providers": [],
+      "age": null,
       "popularity": 2
     },
     {
@@ -4835,6 +5041,7 @@
       "imdb": null,
       "tmdb": 6,
       "providers": [],
+      "age": null,
       "popularity": 6
     },
     {
@@ -4862,6 +5069,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 53
     },
     {
@@ -4885,6 +5093,7 @@
       "imdb": null,
       "tmdb": 6.5,
       "providers": [],
+      "age": null,
       "popularity": 16
     },
     {
@@ -4912,6 +5121,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 27
     },
     {
@@ -4935,6 +5145,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 5
     },
     {
@@ -4958,6 +5169,7 @@
       "imdb": null,
       "tmdb": 6,
       "providers": [],
+      "age": null,
       "popularity": 5
     },
     {
@@ -4988,6 +5200,7 @@
         "Philo",
         "Starz Amazon Channel"
       ],
+      "age": null,
       "popularity": 28
     },
     {
@@ -5017,6 +5230,7 @@
         "HBO Max",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 30
     },
     {
@@ -5040,6 +5254,7 @@
       "imdb": null,
       "tmdb": 6.3,
       "providers": [],
+      "age": null,
       "popularity": 19
     },
     {
@@ -5063,6 +5278,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 11
     },
     {
@@ -5086,6 +5302,7 @@
       "imdb": null,
       "tmdb": 8.1,
       "providers": [],
+      "age": null,
       "popularity": 49
     },
     {
@@ -5109,6 +5326,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 8
     },
     {
@@ -5134,6 +5352,7 @@
       "providers": [
         "AMC+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 71
     },
     {
@@ -5163,6 +5382,7 @@
         "YouTube TV",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 39
     },
     {
@@ -5192,6 +5412,7 @@
         "YouTube TV",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 26
     },
     {
@@ -5218,6 +5439,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 22
     },
     {
@@ -5244,6 +5466,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 37
     },
     {
@@ -5270,6 +5493,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 21
     },
     {
@@ -5297,6 +5521,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 29
     },
     {
@@ -5325,6 +5550,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 48
     },
     {
@@ -5351,6 +5577,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 15
     },
     {
@@ -5374,6 +5601,7 @@
       "imdb": null,
       "tmdb": 8.5,
       "providers": [],
+      "age": null,
       "popularity": 24
     },
     {
@@ -5401,6 +5629,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 40
     },
     {
@@ -5424,6 +5653,7 @@
       "imdb": null,
       "tmdb": 8.5,
       "providers": [],
+      "age": null,
       "popularity": 33
     },
     {
@@ -5451,6 +5681,7 @@
         "VIX ",
         "ViX Premium Amazon Channel"
       ],
+      "age": null,
       "popularity": 9
     },
     {
@@ -5481,6 +5712,7 @@
         "MGM Plus",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 35
     },
     {
@@ -5508,6 +5740,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 23
     },
     {
@@ -5536,6 +5769,7 @@
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 73
     },
     {
@@ -5566,6 +5800,7 @@
         "MGM Plus",
         "Philo"
       ],
+      "age": null,
       "popularity": 18
     },
     {
@@ -5594,6 +5829,7 @@
         "Paramount+ Amazon Channel",
         "Wonder Project Amazon Channel"
       ],
+      "age": null,
       "popularity": 22
     },
     {
@@ -5619,6 +5855,7 @@
       "providers": [
         "Philo"
       ],
+      "age": null,
       "popularity": 30
     },
     {
@@ -5648,6 +5885,7 @@
         "Philo",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 12
     },
     {
@@ -5674,6 +5912,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 0
     },
     {
@@ -5699,6 +5938,7 @@
       "providers": [
         "Criterion Channel"
       ],
+      "age": null,
       "popularity": 8
     },
     {
@@ -5728,6 +5968,7 @@
         "MGM Plus Roku Premium Channel",
         "Paramount+ Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 14
     },
     {
@@ -5751,6 +5992,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 29
     },
     {
@@ -5778,6 +6020,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 37
     },
     {
@@ -5801,6 +6044,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 13
     },
     {
@@ -5826,6 +6070,7 @@
       "providers": [
         "MGM Plus Roku Premium Channel"
       ],
+      "age": null,
       "popularity": 12
     },
     {
@@ -5853,6 +6098,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 28
     },
     {
@@ -5876,6 +6122,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 16
     },
     {
@@ -5902,6 +6149,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 26
     },
     {
@@ -5925,6 +6173,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 14
     },
     {
@@ -5948,6 +6197,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 4
     },
     {
@@ -5971,6 +6221,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 15
     },
     {
@@ -5994,6 +6245,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 4
     },
     {
@@ -6020,6 +6272,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 22
     },
     {
@@ -6053,6 +6306,7 @@
         "AMC",
         "Philo"
       ],
+      "age": null,
       "popularity": 12
     },
     {
@@ -6083,6 +6337,7 @@
         "Kartoon Channel Amazon Channel",
         "UP Faith & Family Amazon Channel "
       ],
+      "age": null,
       "popularity": 7
     },
     {
@@ -6109,6 +6364,7 @@
         "Crunchyroll",
         "Crunchyroll Amazon Channel"
       ],
+      "age": null,
       "popularity": 19
     },
     {
@@ -6136,6 +6392,7 @@
         "YouTube TV",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 26
     },
     {
@@ -6161,6 +6418,7 @@
       "providers": [
         "Passionflix Amazon Channel"
       ],
+      "age": null,
       "popularity": 4
     },
     {
@@ -6184,6 +6442,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 25
     },
     {
@@ -6210,6 +6469,7 @@
         "Amazon Prime Video",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 14
     },
     {
@@ -6236,6 +6496,7 @@
         "YouTube TV",
         "MGM Plus"
       ],
+      "age": null,
       "popularity": 21
     },
     {
@@ -6265,6 +6526,7 @@
         "CuriosityStream Apple TV Channel",
         "CuriosityStream Amazon Channel"
       ],
+      "age": null,
       "popularity": 11
     },
     {
@@ -6288,6 +6550,7 @@
       "imdb": null,
       "tmdb": 8.4,
       "providers": [],
+      "age": null,
       "popularity": 32
     },
     {
@@ -6316,6 +6579,7 @@
         "Criterion Channel",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 6
     },
     {
@@ -6341,6 +6605,7 @@
       "providers": [
         "Passionflix Amazon Channel"
       ],
+      "age": null,
       "popularity": 3
     },
     {
@@ -6360,11 +6625,11 @@
       "cover": "https://image.tmdb.org/t/p/w400/iofokHZoUB4Qhik4PflvJl8TT6a.jpg",
       "altCovers": [],
       "backdrop": "https://image.tmdb.org/t/p/w780/obtdxPgmfykYwVnvuYXC5f2xKlQ.jpg",
-      "seasons": 28,
+      "seasons": 27,
       "episodes": 594,
       "runtime": null,
       "imdb": null,
-      "tmdb": 7.9,
+      "tmdb": 8,
       "providers": [
         "Hulu",
         "Peacock Premium",
@@ -6373,7 +6638,8 @@
         "USA Network",
         "Peacock Premium Plus"
       ],
-      "popularity": 325
+      "age": 14,
+      "popularity": 344
     },
     {
       "id": 249,
@@ -6407,7 +6673,8 @@
         "Netflix Standard with Ads",
         "Peacock Premium Plus"
       ],
-      "popularity": 223
+      "age": 14,
+      "popularity": 290
     },
     {
       "id": 250,
@@ -6438,7 +6705,8 @@
         "YouTube TV",
         "Netflix Standard with Ads"
       ],
-      "popularity": 211
+      "age": 14,
+      "popularity": 240
     },
     {
       "id": 251,
@@ -6463,6 +6731,7 @@
       "imdb": null,
       "tmdb": 4.8,
       "providers": [],
+      "age": null,
       "popularity": 180
     },
     {
@@ -6492,7 +6761,8 @@
         "YouTube TV",
         "HBO Max"
       ],
-      "popularity": 188
+      "age": 18,
+      "popularity": 210
     },
     {
       "id": 253,
@@ -6523,7 +6793,8 @@
         "Amazon Prime Video with Ads",
         "Peacock Premium Plus"
       ],
-      "popularity": 188
+      "age": 14,
+      "popularity": 223
     },
     {
       "id": 254,
@@ -6560,7 +6831,8 @@
         "Paramount+ Roku Premium Channel",
         "Netflix Standard with Ads"
       ],
-      "popularity": 189
+      "age": 14,
+      "popularity": 226
     },
     {
       "id": 255,
@@ -6587,7 +6859,8 @@
       "providers": [
         "Hulu"
       ],
-      "popularity": 175
+      "age": 14,
+      "popularity": 190
     },
     {
       "id": 256,
@@ -6612,6 +6885,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 153
     },
     {
@@ -6637,7 +6911,8 @@
       "imdb": null,
       "tmdb": 6.8,
       "providers": [],
-      "popularity": 184
+      "age": null,
+      "popularity": 213
     },
     {
       "id": 258,
@@ -6668,7 +6943,8 @@
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
       ],
-      "popularity": 152
+      "age": 14,
+      "popularity": 180
     },
     {
       "id": 259,
@@ -6693,11 +6969,11 @@
       "imdb": null,
       "tmdb": 5.8,
       "providers": [
-        "fuboTV",
         "Peacock Premium",
         "Peacock Premium Plus"
       ],
-      "popularity": 171
+      "age": 14,
+      "popularity": 174
     },
     {
       "id": 260,
@@ -6722,7 +6998,8 @@
       "imdb": null,
       "tmdb": 7.2,
       "providers": [],
-      "popularity": 179
+      "age": 18,
+      "popularity": 195
     },
     {
       "id": 261,
@@ -6731,7 +7008,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2009,
       "endYear": null,
@@ -6749,7 +7027,8 @@
         "Peacock Premium",
         "Peacock Premium Plus"
       ],
-      "popularity": 163
+      "age": 14,
+      "popularity": 175
     },
     {
       "id": 262,
@@ -6776,6 +7055,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 134
     },
     {
@@ -6803,6 +7083,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 135
     },
     {
@@ -6833,6 +7114,7 @@
         "Philo",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 144
     },
     {
@@ -6865,6 +7147,7 @@
         "Spectrum On Demand",
         "Acorn TV Apple TV"
       ],
+      "age": null,
       "popularity": 137
     },
     {
@@ -6874,7 +7157,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2005,
       "endYear": 2017,
@@ -6898,7 +7182,8 @@
         "Amazon Prime Video with Ads",
         "Peacock Premium Plus"
       ],
-      "popularity": 137
+      "age": 14,
+      "popularity": 162
     },
     {
       "id": 267,
@@ -6926,6 +7211,7 @@
         "Hulu",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 131
     },
     {
@@ -6954,6 +7240,7 @@
         "Peacock Premium",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 143
     },
     {
@@ -6983,6 +7270,7 @@
         "Paramount Plus Apple TV Channel ",
         "Paramount+ Amazon Channel"
       ],
+      "age": null,
       "popularity": 130
     },
     {
@@ -7010,6 +7298,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 123
     },
     {
@@ -7038,6 +7327,7 @@
         "NBC",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 124
     },
     {
@@ -7070,6 +7360,7 @@
         "Paramount+ Roku Premium Channel",
         "Sweatflix Amazon Channel"
       ],
+      "age": null,
       "popularity": 130
     },
     {
@@ -7096,6 +7387,7 @@
       "providers": [
         "YouTube TV"
       ],
+      "age": null,
       "popularity": 118
     },
     {
@@ -7105,7 +7397,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Sci-Fi"
+        "Sci-Fi",
+        "Star Wars"
       ],
       "year": 2010,
       "endYear": null,
@@ -7125,7 +7418,8 @@
         "Kocowa Amazon Channel",
         "Kocowa"
       ],
-      "popularity": 124
+      "age": 14,
+      "popularity": 239
     },
     {
       "id": 275,
@@ -7151,6 +7445,7 @@
       "providers": [
         "Hulu"
       ],
+      "age": null,
       "popularity": 114
     },
     {
@@ -7182,6 +7477,7 @@
         "TBS",
         "FOX One Amazon Channel"
       ],
+      "age": null,
       "popularity": 118
     },
     {
@@ -7212,6 +7508,7 @@
         "Philo",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 121
     },
     {
@@ -7240,6 +7537,7 @@
         "YouTube TV",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 109
     },
     {
@@ -7271,6 +7569,7 @@
         "DisneyNOW",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 110
     },
     {
@@ -7295,6 +7594,7 @@
       "imdb": null,
       "tmdb": 0,
       "providers": [],
+      "age": null,
       "popularity": 89
     },
     {
@@ -7327,6 +7627,7 @@
         "Philo",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 101
     },
     {
@@ -7358,6 +7659,7 @@
         "TBS",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 102
     },
     {
@@ -7382,6 +7684,7 @@
       "imdb": null,
       "tmdb": 6.8,
       "providers": [],
+      "age": null,
       "popularity": 119
     },
     {
@@ -7411,6 +7714,7 @@
         "Netflix Standard with Ads",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 99
     },
     {
@@ -7435,6 +7739,7 @@
       "imdb": null,
       "tmdb": 7.3,
       "providers": [],
+      "age": null,
       "popularity": 106
     },
     {
@@ -7459,6 +7764,7 @@
       "imdb": null,
       "tmdb": 8.3,
       "providers": [],
+      "age": null,
       "popularity": 78
     },
     {
@@ -7489,6 +7795,7 @@
         "USA Network",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 99
     },
     {
@@ -7520,6 +7827,7 @@
         "Paramount+ Roku Premium Channel",
         "Spectrum On Demand"
       ],
+      "age": null,
       "popularity": 96
     },
     {
@@ -7549,6 +7857,7 @@
         "TBS",
         "HBO Max"
       ],
+      "age": null,
       "popularity": 98
     },
     {
@@ -7577,6 +7886,7 @@
         "YouTube TV",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 90
     },
     {
@@ -7606,6 +7916,7 @@
         "Philo",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 96
     },
     {
@@ -7633,6 +7944,7 @@
         "Netflix",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 94
     },
     {
@@ -7657,6 +7969,7 @@
       "imdb": null,
       "tmdb": 5.2,
       "providers": [],
+      "age": null,
       "popularity": 94
     },
     {
@@ -7688,6 +8001,7 @@
         "Paramount+ Roku Premium Channel",
         "Netflix Standard with Ads"
       ],
+      "age": null,
       "popularity": 90
     },
     {
@@ -7718,6 +8032,7 @@
         "HBO Max",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 90
     },
     {
@@ -7744,6 +8059,7 @@
       "providers": [
         "Hulu"
       ],
+      "age": null,
       "popularity": 94
     },
     {
@@ -7780,6 +8096,7 @@
         "Netflix Standard with Ads",
         "Amazon Prime Video with Ads"
       ],
+      "age": null,
       "popularity": 91
     },
     {
@@ -7806,6 +8123,7 @@
       "providers": [
         "Netflix"
       ],
+      "age": null,
       "popularity": 92
     },
     {
@@ -7830,6 +8148,7 @@
       "imdb": null,
       "tmdb": 6.9,
       "providers": [],
+      "age": null,
       "popularity": 94
     },
     {
@@ -7859,6 +8178,7 @@
         "Amazon Prime Video with Ads",
         "Shout! Factory Amazon Channel"
       ],
+      "age": null,
       "popularity": 86
     },
     {
@@ -7891,6 +8211,7 @@
         "Amazon Prime Video with Ads",
         "Peacock Premium Plus"
       ],
+      "age": null,
       "popularity": 85
     },
     {
@@ -7915,6 +8236,7 @@
       "imdb": null,
       "tmdb": 6.3,
       "providers": [],
+      "age": null,
       "popularity": 0
     },
     {
@@ -7948,6 +8270,7 @@
         "AMC",
         "Philo"
       ],
+      "age": null,
       "popularity": 8
     },
     {
@@ -7981,7 +8304,313 @@
         "AMC",
         "Philo"
       ],
+      "age": 7,
       "popularity": 21
+    },
+    {
+      "id": 305,
+      "title": "Please Put Them On, Takamine-san",
+      "originalTitle": "履いてください、鷹峰さん",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Star Wars"
+      ],
+      "year": 2025,
+      "endYear": 2025,
+      "status": "ended",
+      "description": "Student council president Takane Takamine is a popular star student. On the other hand, Koushi Shirota doesn't have many friends. That all changes when Koushi accidentally discovers Takane's ability to go back in time and alter past actions just by changing her lingerie. After some pestering, Koushi agrees to help Takane and be her closet, by having spare lingerie on hand.",
+      "cover": "https://image.tmdb.org/t/p/w400/aN4X9QSECSfh5p8S3HtTiWRKJla.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/5AYXcPhbtPe6i1MPnutPhCV6qNd.jpg",
+      "seasons": 1,
+      "episodes": 12,
+      "runtime": 24,
+      "imdb": null,
+      "tmdb": 7.5,
+      "providers": [
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel"
+      ],
+      "age": 18,
+      "popularity": 219
+    },
+    {
+      "id": 306,
+      "title": "Salitan",
+      "originalTitle": "Salitan",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2024,
+      "endYear": null,
+      "status": null,
+      "description": "A suspicious wife follows her husband in Bali. She meets a dashing man who captures her heart. She soon wants her husband to really have an affair to alleviate the guilt she is feeling.",
+      "cover": "https://image.tmdb.org/t/p/w400/rMgG7cWuq9O6zhhLs2CbqIKVA8V.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/emK2hOB6ACiExT0lNLog9lAmMFL.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 105,
+      "imdb": null,
+      "tmdb": 4.4,
+      "providers": [],
+      "age": 19,
+      "popularity": 350
+    },
+    {
+      "id": 307,
+      "title": "Madness",
+      "originalTitle": "Vacanze per un massacro",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1980,
+      "endYear": null,
+      "status": null,
+      "description": "An escaped convicted murderer invades the cottage of a man, his wife and the wife's sister, whereupon he proceeds to torment this already dysfunctional trio with rape and violence.",
+      "cover": "https://image.tmdb.org/t/p/w400/gV0J0Fqw2mYMtQbzb0ruxv9MAeZ.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/7TJjD2X9GTEqyLVIJKLS85J2V47.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 89,
+      "imdb": null,
+      "tmdb": 5,
+      "providers": [],
+      "age": null,
+      "popularity": 302
+    },
+    {
+      "id": 308,
+      "title": "Peddi",
+      "originalTitle": "పెద్ది",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "In 1980s rural Andhra Pradesh, a spirited villager unites his community through sports to defend their pride against a powerful rivals.",
+      "cover": "https://image.tmdb.org/t/p/w400/kJAJNNBYlbqAcpTDxBNnaILSMTy.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/oPsRr7AfNLw6XaPuMpvkWK0bIUA.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 192,
+      "imdb": null,
+      "tmdb": 6.2,
+      "providers": [],
+      "age": null,
+      "popularity": 278
+    },
+    {
+      "id": 309,
+      "title": "The Unknown Man",
+      "originalTitle": "L'homme inconnu",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2021,
+      "endYear": null,
+      "status": null,
+      "description": "Louis, a Flemish writer, decides to isolate himself at the Côte d’Azur, hoping this place will bring him inspiration.",
+      "cover": "https://image.tmdb.org/t/p/w400/4TpBhdaSl5ALHbgeaYOLF8Q3haz.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/7uXzE0ZBkbAeKylOz7cUQF4Yw75.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 23,
+      "imdb": null,
+      "tmdb": 7.8,
+      "providers": [],
+      "age": null,
+      "popularity": 240
+    },
+    {
+      "id": 310,
+      "title": "Hai Jawani Toh Ishq Hona Hai",
+      "originalTitle": "है जवानी तो इश्क होना है",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "When Jass leaves his marriage over conflicting priorities, a new romance abroad is upended by shocking revelations, forcing him to confront love, loyalty, and the true meaning of commitment.",
+      "cover": "https://image.tmdb.org/t/p/w400/vmlJvz6qVzYgei2V74GvnmcuQfW.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/l5QgEvlfK6eHPM4YPEk7AArXmh8.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 136,
+      "imdb": null,
+      "tmdb": 5.5,
+      "providers": [],
+      "age": 6,
+      "popularity": 223
+    },
+    {
+      "id": 311,
+      "title": "Damage",
+      "originalTitle": "Damage",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1992,
+      "endYear": null,
+      "status": null,
+      "description": "The life of a respected British politician at the height of his career crumbles when he becomes obsessed with his son's lover.",
+      "cover": "https://image.tmdb.org/t/p/w400/alf3JOPP7EYP0iO24gwe5YfRnqo.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/krhj4Fhb0G3QCmyBtEADxgFFmRX.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 111,
+      "imdb": null,
+      "tmdb": 6.6,
+      "providers": [],
+      "age": 16,
+      "popularity": 197
+    },
+    {
+      "id": 312,
+      "title": "KD – The Devil",
+      "originalTitle": "ಕೆಡಿ - ದಿ ಡೆವಿಲ್",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "In the early 1970s, a petty criminal Kaali unwittingly involves himself with underworld thugs, catalyzing events beyond his control.",
+      "cover": "https://image.tmdb.org/t/p/w400/nEuEMJrnLBneE9tJlmzbhCFLu95.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/l1nekhf05HS5OpBr0vRqcD3NxoS.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 141,
+      "imdb": null,
+      "tmdb": 7.5,
+      "providers": [],
+      "age": null,
+      "popularity": 195
+    },
+    {
+      "id": 313,
+      "title": "Dridam",
+      "originalTitle": "ദൃഢം",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "A police officer arrives at a seemingly peaceful station but faces pressure when human remains are discovered. Given only a week to solve the murder, he must navigate demands from his department and an anxious public seeking swift justice.",
+      "cover": "https://image.tmdb.org/t/p/w400/fXSdAujfiRRW6LqekN4FvFQidh3.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/jPr9Id0f3knF82ETEBGPpMhXj4M.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 127,
+      "imdb": null,
+      "tmdb": 7,
+      "providers": [
+        "Hulu"
+      ],
+      "age": 15,
+      "popularity": 159
+    },
+    {
+      "id": 314,
+      "title": "나는 신혼 너는 재혼",
+      "originalTitle": "나는 신혼 너는 재혼",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2021,
+      "endYear": null,
+      "status": null,
+      "description": "",
+      "cover": "https://image.tmdb.org/t/p/w400/wTFF1SFTDYL7M1yWjY0K8Ga5pZS.jpg",
+      "altCovers": [],
+      "backdrop": "",
+      "seasons": null,
+      "episodes": null,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 0,
+      "providers": [],
+      "age": null,
+      "popularity": 152
+    },
+    {
+      "id": 315,
+      "title": "Main Vaapas Aaunga",
+      "originalTitle": "मैं वापस आऊंगा",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "An elderly man remains haunted by a childhood romance and memories of love lost during the 1947 Partition of India. As he shares his story with his grandson, the past unfolds through memories of migration, longing, and a love that endures across generations.",
+      "cover": "https://image.tmdb.org/t/p/w400/8n7OeeyAqwmGS81Is2c6Ho65tgW.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/bWw9PuPH6vFXlezBoHZ6D9XBhQW.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 166,
+      "imdb": null,
+      "tmdb": 4,
+      "providers": [],
+      "age": null,
+      "popularity": 145
+    },
+    {
+      "id": 316,
+      "title": "Graphic Desires",
+      "originalTitle": "Graphic Desires",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2023,
+      "endYear": null,
+      "status": null,
+      "description": "When reclusive Franklin cheats on his partner with a mysterious girl he meets on a dating app, it becomes the start of a deadly obsession.",
+      "cover": "https://image.tmdb.org/t/p/w400/3BjLdTWRiHc1ISIZMFvToOmghOM.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/rHnANzYUmV3WZw3n0yWOLiR3pen.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 90,
+      "imdb": null,
+      "tmdb": 7,
+      "providers": [],
+      "age": null,
+      "popularity": 138
     }
   ],
   "collections": [

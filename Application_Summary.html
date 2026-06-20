@@ -236,7 +236,7 @@
             <div class="card"><h3>📘 Guide &amp; Tutorials</h3><p>Step-by-step help for getting the most out of the tracker. <a href="SeriesTracker_Guide.html">Open the guide →</a></p></div>
             <div class="card"><h3>🗓️ Changelog</h3><p>Every update, feature and fix, version by version. <a href="ChangelogSerien.html">See what's new →</a></p></div>
             <div class="card"><h3>⚖️ Legal &amp; Attribution</h3><p>Data sources, attribution, privacy and terms. <a href="Legal.html">Read the legal page →</a></p></div>
-            <div class="card"><h3>🎬 Marketplace</h3><p>Browse ready-made titles and add them in one click. <a href="marketplace.html">Open the Marketplace →</a></p></div>
+            <div class="card"><h3><img src="favicon.png" alt="S&amp;M" style="width:1.1em;height:1.1em;vertical-align:-0.18em;border-radius:4px;margin-right:.15em"> Marketplace</h3><p>Browse ready-made titles and add them in one click. <a href="marketplace.html">Open the Marketplace →</a></p></div>
         </div>
 
         <footer class="sum-footer">
@@ -268,5 +268,24 @@
         document.getElementById('themeToggle').addEventListener('click', () => { applyTheme(currentTheme === 'dark' ? 'light' : 'dark'); });
         loadTheme();
     </script>
+<style id="smGradientCss">
+body.gradient-text h1, body.gradient-text h2, body.gradient-text .section-title,
+body.gradient-text .hero h1, body.gradient-text .version-number, body.gradient-text .brand-name,
+body.gradient-text .page-title, body.gradient-text .modal-title {
+  background: linear-gradient(92deg, var(--grad-start, #e50914), var(--grad-end, #f5c518));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+</style>
+<script>
+(function(){try{
+  var g=JSON.parse(localStorage.getItem('smGradientText')||'null');
+  if(g&&g.enabled){
+    document.body.classList.add('gradient-text');
+    document.body.style.setProperty('--grad-start', g.start||'#e50914');
+    document.body.style.setProperty('--grad-end', g.end||'#f5c518');
+  }
+}catch(e){}})();
+</script>
 </body>
 </html>

@@ -305,10 +305,50 @@
         </div>
         
           <div class="changelog-content">
-            <!-- Version 1.14 -->
+            <!-- Version 1.13 -->
 <div class="version-card">
     <div class="version-header">
-        <span class="version-number">Version 1.14</span>
+        <span class="version-number">Version 1.13</span>
+        <span class="version-date">June 18 2026</span>
+    </div>
+
+    <h3 class="section-title">Marketplace</h3>
+    <ul class="feature-list">
+        <li><strong>Provider filter:</strong> The provider dropdown is now populated from the catalogue &mdash; pick a specific streaming service instead of only &ldquo;Any provider&rdquo;.</li>
+        <li><strong>Search in the filter bar:</strong> The search box moved into the sticky filter section so it stays reachable while scrolling, and the filter/grid area now sits at the top of the viewport when you scroll down.</li>
+        <li><strong>Age filter &amp; blur:</strong> New Age filter (All ages / 16+ / 18+). Mature titles can be blurred or hidden entirely, with a per-card reveal.</li>
+        <li><strong>Not released yet:</strong> Titles with a future release date now carry a <em>Not released yet</em> status badge.</li>
+        <li><strong>Franchise hero images:</strong> Collections now show a hero image taken from the first title inside them.</li>
+        <li><strong>Already-added detection:</strong> Manually added titles are now correctly recognised as already in your library, with an overwrite warning.</li>
+        <li><strong>Add target choice:</strong> When adding a title you now choose Watching / Want to Watch / Finished, and an age rating is shown in the detail view.</li>
+        <li><strong>Smoother theming:</strong> A short blur/cross-fade plays when switching themes, and the S&amp;M logo replaces the emoji on the Tracker link.</li>
+    </ul>
+
+    <h3 class="section-title">Tracker</h3>
+    <ul class="feature-list">
+        <li><strong>Reworked watchlist:</strong> A cleaner, more useful watchlist with matching category icons, an empty-state fallback so the page is never blank, and a fix for the &ldquo;no filter selected&rdquo; error.</li>
+        <li><strong>Collapsible top bar:</strong> The collapsed search pill can now be tapped to close and tapped again to reopen.</li>
+        <li><strong>View sizes:</strong> Small / Large now also rescale the content box (not just the image) so more items fit on screen; Normal is unchanged.</li>
+        <li><strong>Full time spent:</strong> Cards now show total time for the whole title rather than per episode.</li>
+        <li><strong>Age information:</strong> Age ratings now appear in the detail view and are stored with each title.</li>
+        <li><strong>Gradient text option:</strong> An optional, customisable gradient-text mode for headings and key labels across the public pages (off by default).</li>
+    </ul>
+
+    <h3 class="section-title">Marketplace Generator (private maintainer tool)</h3>
+    <ul class="feature-list">
+        <li><strong>Strict genre fetch:</strong> Choose a single genre and the generator only pulls titles of that genre.</li>
+        <li><strong>Collection modes:</strong> Add existing titles into a collection, or create a franchise and pull all matching titles into it.</li>
+        <li><strong>Rate-limit modes:</strong> Switch between Normal / Bulk / Emergency from the dashboard; the hard ceiling stays at 40 requests/second (never above 50).</li>
+        <li><strong>Auto-monitoring:</strong> Titles are refreshed automatically once they pass 30 days, with manual refresh still available.</li>
+        <li><strong>Age &amp; release detection:</strong> The generator now records age certifications and a &ldquo;not released yet&rdquo; status.</li>
+        <li><strong>Dashboard polish:</strong> Light gradients and small animations across the dashboard.</li>
+    </ul>
+</div>
+
+            <!-- Version 1.12 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.12</span>
         <span class="version-date">June 17 2026</span>
     </div>
 
@@ -348,10 +388,10 @@
     </ul>
 </div>
 
-            <!-- Version 1.13 -->
+            <!-- Version 1.9 -->
 <div class="version-card">
     <div class="version-header">
-        <span class="version-number">Version 1.13</span>
+        <span class="version-number">Version 1.11</span>
         <span class="version-date">June 16 2026</span>
     </div>
 
@@ -362,10 +402,10 @@
         <li><strong>TMDB attribution restored:</strong> The required TMDB notice and logo are shown in the Marketplace footer and inside each detail dialog, and the data file carries the attribution &mdash; keeping everything compliant with the TMDB API terms.</li>
     </ul>
 </div>
-            <!-- Version 1.12 -->
+            <!-- Version 1.8 -->
 <div class="version-card">
     <div class="version-header">
-        <span class="version-number">Version 1.12</span>
+        <span class="version-number">Version 1.10</span>
         <span class="version-date">June 16 2026</span>
     </div>
 
@@ -376,10 +416,10 @@
         <li><strong>Attribution preserved:</strong> The generated data file carries the required TMDB attribution, and the Marketplace continues to show the TMDB logo and notice.</li>
     </ul>
 </div>
-            <!-- Version 1.11 -->
+            <!-- Version 1.9 -->
 <div class="version-card">
     <div class="version-header">
-        <span class="version-number">Version 1.11</span>
+        <span class="version-number">Version 1.9</span>
         <span class="version-date">June 16 2026</span>
     </div>
 
@@ -395,10 +435,10 @@
         <li>The new pages match the existing dark/light theme and remember your theme choice.</li>
     </ul>
 </div>
-            <!-- Version 1.10 -->
+            <!-- Version 1.8 -->
 <div class="version-card">
     <div class="version-header">
-        <span class="version-number">Version 1.10</span>
+        <span class="version-number">Version 1.8</span>
         <span class="version-date">June 16 2026</span>
     </div>
 
@@ -870,5 +910,24 @@
 
         loadTheme();
     </script>
+<style id="smGradientCss">
+body.gradient-text h1, body.gradient-text h2, body.gradient-text .section-title,
+body.gradient-text .hero h1, body.gradient-text .version-number, body.gradient-text .brand-name,
+body.gradient-text .page-title, body.gradient-text .modal-title {
+  background: linear-gradient(92deg, var(--grad-start, #e50914), var(--grad-end, #f5c518));
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+</style>
+<script>
+(function(){try{
+  var g=JSON.parse(localStorage.getItem('smGradientText')||'null');
+  if(g&&g.enabled){
+    document.body.classList.add('gradient-text');
+    document.body.style.setProperty('--grad-start', g.start||'#e50914');
+    document.body.style.setProperty('--grad-end', g.end||'#f5c518');
+  }
+}catch(e){}})();
+</script>
 </body>
 </html>

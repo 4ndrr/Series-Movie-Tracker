@@ -105,6 +105,32 @@
                         </div>
                     </div>
                 </div>
+                <div class="gradient-text-controls" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">
+                    <label class="toggle-row" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:10px;">
+                        <span style="display:flex;align-items:center;gap:6px;"><svg style="width:15px;height:15px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg> Gradient text</span>
+                        <input type="checkbox" id="gradientTextToggle">
+                    </label>
+                    <div class="gradient-color-controls" id="gradientColorControls" style="display:none;margin-top:10px;">
+                        <div class="color-picker-wrapper">
+                            <div class="color-picker-circle" id="gradientStartCircle" style="--picker-color: #e50914;">
+                                <input type="color" id="gradientStartColor" class="color-picker-input" value="#e50914">
+                            </div>
+                            <div class="color-picker-label">
+                                <span class="color-picker-label-text">Gradient Start</span>
+                                <span class="color-picker-value" id="gradientStartValue">#e50914</span>
+                            </div>
+                        </div>
+                        <div class="color-picker-wrapper">
+                            <div class="color-picker-circle" id="gradientEndCircle" style="--picker-color: #f5c518;">
+                                <input type="color" id="gradientEndColor" class="color-picker-input" value="#f5c518">
+                            </div>
+                            <div class="color-picker-label">
+                                <span class="color-picker-label-text">Gradient End</span>
+                                <span class="color-picker-value" id="gradientEndValue">#f5c518</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <!-- SETTINGS -->
             <div class="sidebar-section">
@@ -248,11 +274,11 @@
                     <div class="filter-section">
                         <div class="filter-section-title"><svg style="width:13px;height:13px;vertical-align:-2px;margin-right:4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>Filter by Category</div>
                         <div class="filter-option active" data-category="all">
-                            <span><svg style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>All Categories</span>
+                            <span><svg style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>All Categories</span>
                             <span class="filter-option-check">✓</span>
                         </div>
                         <div class="filter-option" data-category="watching">
-                            <span><svg style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>Currently Watching</span>
+                            <span><svg style="width:13px;height:13px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>Currently Watching</span>
                             <span class="filter-option-check">✓</span>
                         </div>
                         <div class="filter-option" data-category="want">
@@ -334,7 +360,10 @@
         <div class="series-list" id="seriesList"></div>
 
         <div class="priority-section">
-            <h2>Watchlist</h2>
+            <div class="watchlist-head">
+                <h2>Watchlist <span class="watchlist-count" id="watchlistCount"></span></h2>
+                <button class="btn btn-small btn-secondary" id="clearWatchlistBtn" style="display:none;">Clear all</button>
+            </div>
             <div id="priorityList"></div>
         </div>
     </div>
@@ -597,7 +626,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="seriesStatus">Status</label>
+                    <label for="seriesStatus">Add to / Status</label>
                     <select id="seriesStatus" class="form-control auto-save-field" required data-field="status">
                         <option value="watching">Currently Watching</option>
                         <option value="want">Want to Watch</option>
@@ -653,6 +682,17 @@
                 <div class="form-group">
                     <label for="seriesImdb">IMDB Rating</label>
                     <input type="text" id="seriesImdb" class="form-control auto-save-field" placeholder="e.g., 8.5" data-field="imdbRating">
+                </div>
+                <div class="form-group">
+                    <label for="seriesAge">Age Rating</label>
+                    <select id="seriesAge" class="form-control auto-save-field" data-field="age">
+                        <option value="">Not set</option>
+                        <option value="0">All ages (0+)</option>
+                        <option value="6">6+</option>
+                        <option value="12">12+</option>
+                        <option value="16">16+</option>
+                        <option value="18">18+</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="seriesLanguage">Language</label>
