@@ -6464,7 +6464,7 @@
       "description": "The epic saga continues as Luke Skywalker, in hopes of defeating the evil Galactic Empire, learns the ways of the Jedi from aging master Yoda. But Darth Vader is more determined than ever to capture Luke. Meanwhile, rebel leader Princess Leia, cocky Han Solo, Chewbacca, and droids C-3PO and R2-D2 are thrown into various stages of capture, betrayal and despair.",
       "cover": "https://image.tmdb.org/t/p/w400/nNAeTmF4CtdSgMDplXTDPOpYzsX.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/aJCtkxLLzkk1pECehVjKHA2lBgw.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/k9pshruhCpJAdH9RaGJO6jaWQ4X.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 124,
@@ -6472,16 +6472,10 @@
       "tmdb": 8.4,
       "providers": [
         "Disney Plus",
-        "AMC Plus Apple TV Channel ",
-        "AMC+ Amazon Channel",
-        "AMC+ Roku Premium Channel",
-        "AMC+",
-        "YouTube TV",
-        "AMC",
-        "Philo"
+        "YouTube TV"
       ],
-      "age": null,
-      "popularity": 12
+      "age": 7,
+      "popularity": 16
     },
     {
       "id": 237,
@@ -8490,16 +8484,10 @@
       "tmdb": 7.9,
       "providers": [
         "Disney Plus",
-        "AMC Plus Apple TV Channel ",
-        "AMC+ Amazon Channel",
-        "AMC+ Roku Premium Channel",
-        "AMC+",
-        "YouTube TV",
-        "AMC",
-        "Philo"
+        "YouTube TV"
       ],
-      "age": null,
-      "popularity": 8
+      "age": 7,
+      "popularity": 14
     },
     {
       "id": 304,
@@ -10557,7 +10545,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2008,
       "endYear": 2020,
@@ -11885,7 +11874,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2022,
       "endYear": 2025,
@@ -14571,7 +14561,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2017,
       "endYear": null,
@@ -27758,6 +27749,441 @@
       ],
       "age": 16,
       "popularity": 13
+    },
+    {
+      "id": 994,
+      "title": "Star Wars: Episode I - The Phantom Menace",
+      "originalTitle": "Star Wars: Episode I - The Phantom Menace",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1999,
+      "endYear": null,
+      "status": null,
+      "description": "Anakin Skywalker, a young slave strong with the Force, is discovered on Tatooine. Meanwhile, the evil Sith have returned, enacting their plot for revenge against the Jedi.",
+      "cover": "https://image.tmdb.org/t/p/w400/6wkfovpn7Eq8dYNKaG5PY3q2oq6.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/3TeGmKJfkik1D1rIoqGb1aR4k9c.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 136,
+      "imdb": null,
+      "tmdb": 6.6,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 15
+    },
+    {
+      "id": 995,
+      "title": "Star Wars: Episode II - Attack of the Clones",
+      "originalTitle": "Star Wars: Episode II - Attack of the Clones",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2002,
+      "endYear": null,
+      "status": null,
+      "description": "Following an assassination attempt on Senator Padmé Amidala, Jedi Knights Anakin Skywalker and Obi-Wan Kenobi investigate a mysterious plot into the heart of the Separatist movement and the beginning of the Clone Wars.",
+      "cover": "https://image.tmdb.org/t/p/w400/oZNPzxqM2s5DyVWab09NTQScDQt.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/abwxHfymXGAbbH3lo9PDEJEfvtW.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 142,
+      "imdb": null,
+      "tmdb": 6.6,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 13
+    },
+    {
+      "id": 996,
+      "title": "Star Wars: Episode III - Revenge of the Sith",
+      "originalTitle": "Star Wars: Episode III - Revenge of the Sith",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2005,
+      "endYear": null,
+      "status": null,
+      "description": "When the sinister Sith unveil a thousand-year-old plot to rule the galaxy, the Republic crumbles and from its ashes rises the evil Galactic Empire. Jedi hero Anakin Skywalker must choose a side.",
+      "cover": "https://image.tmdb.org/t/p/w400/xfSAoBEm9MNBjmlNcDYLvLSMlnq.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/jniabJVBSW3EqLlyhjxWCZjVkiE.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 140,
+      "imdb": null,
+      "tmdb": 7.5,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 13,
+      "popularity": 11
+    },
+    {
+      "id": 997,
+      "title": "Star Wars: The Force Awakens",
+      "originalTitle": "Star Wars: The Force Awakens",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2015,
+      "endYear": null,
+      "status": null,
+      "description": "Thirty years after defeating the Galactic Empire, Han Solo and his allies face a new threat from the evil Kylo Ren and his army of Stormtroopers.",
+      "cover": "https://image.tmdb.org/t/p/w400/wqnLdwVXoBjKibFRR5U3y0aDUhs.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/8BTsTfln4jlQrLXUBquXJ0ASQy9.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 136,
+      "imdb": null,
+      "tmdb": 7.2,
+      "providers": [
+        "Disney Plus",
+        "YouTube TV"
+      ],
+      "age": 13,
+      "popularity": 16
+    },
+    {
+      "id": 998,
+      "title": "Star Wars: The Rise of Skywalker",
+      "originalTitle": "Star Wars: The Rise of Skywalker",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2019,
+      "endYear": null,
+      "status": null,
+      "description": "The surviving Resistance faces the First Order once again as the journey of Rey, Finn and Poe Dameron continues. With the power and knowledge of generations behind them, the final battle begins.",
+      "cover": "https://image.tmdb.org/t/p/w400/db32LaOibwEliAmSL2jjDF6oDdj.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/jOzrELAzFxtMx2I4uDGHOotdfsS.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 142,
+      "imdb": null,
+      "tmdb": 6.3,
+      "providers": [
+        "Disney Plus",
+        "Hulu"
+      ],
+      "age": 13,
+      "popularity": 14
+    },
+    {
+      "id": 999,
+      "title": "Rogue One: A Star Wars Story",
+      "originalTitle": "Rogue One: A Star Wars Story",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2016,
+      "endYear": null,
+      "status": null,
+      "description": "A rogue band of resistance fighters unite for a mission to steal the Death Star plans and bring a new hope to the galaxy.",
+      "cover": "https://image.tmdb.org/t/p/w400/i0yw1mFbB7sNGHCs7EXZPzFkdA1.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/6t8ES1d12OzWyCGxBeDYLHoaDrT.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 133,
+      "imdb": null,
+      "tmdb": 7.5,
+      "providers": [
+        "Disney Plus",
+        "YouTube TV"
+      ],
+      "age": 13,
+      "popularity": 11
+    },
+    {
+      "id": 1000,
+      "title": "Solo: A Star Wars Story",
+      "originalTitle": "Solo: A Star Wars Story",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2018,
+      "endYear": null,
+      "status": null,
+      "description": "Through a series of daring escapades deep within a dark and dangerous criminal underworld, Han Solo meets his mighty future copilot Chewbacca and encounters the notorious gambler Lando Calrissian.",
+      "cover": "https://image.tmdb.org/t/p/w400/4oD6VEccFkorEBTEDXtpLAaz0Rl.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/7LZ0K4FsALrt7OeNIGOVLNuKQRU.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 135,
+      "imdb": null,
+      "tmdb": 6.6,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 13,
+      "popularity": 9
+    },
+    {
+      "id": 1001,
+      "title": "Star Wars Rebels",
+      "originalTitle": "Star Wars Rebels",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2014,
+      "endYear": 2018,
+      "status": "ended",
+      "description": "Set between the events of Star Wars: Episodes III and IV, the story unfolds during a dark time when the evil Galactic Empire is tightening its grip of power on the galaxy. Imperial forces have occupied a remote planet and are ruining the lives of its people. The motley but clever crew of the starship Ghost — cowboy Jedi Kanan, ace pilot Hera, street-smart teenager Ezra, the “muscle” Zeb, warrior firebrand Sabine, and cantankerous old astromech droid Chopper — is among a select few who are brave enough to stand against the Empire. Together, they will face threatening new villains, encounter colorful adversaries, embark on thrilling adventures, and become heroes with the power to ignite a rebellion.",
+      "cover": "https://image.tmdb.org/t/p/w400/eLrScs6Bs26JMcS8hiZhf7YRROr.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/8BNjxMJMFp0BgqMh4PyuwZMXxh1.jpg",
+      "seasons": 4,
+      "episodes": 69,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.7,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 24
+    },
+    {
+      "id": 1002,
+      "title": "Star Wars: The Bad Batch",
+      "originalTitle": "Star Wars: The Bad Batch",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2021,
+      "endYear": 2024,
+      "status": "ended",
+      "description": "The 'Bad Batch' of elite and experimental clones make their way through an ever-changing galaxy in the immediate aftermath of the Clone Wars.",
+      "cover": "https://image.tmdb.org/t/p/w400/5mHus672nuinyaE0FtqvD0AddcY.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/sjxtIUCWR74yPPcZFfTsToepfWm.jpg",
+      "seasons": 3,
+      "episodes": 47,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 17
+    },
+    {
+      "id": 1003,
+      "title": "The Book of Boba Fett",
+      "originalTitle": "The Book of Boba Fett",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2021,
+      "endYear": 2022,
+      "status": "ended",
+      "description": "Legendary bounty hunter Boba Fett and mercenary Fennec Shand must navigate the galaxy’s underworld when they return to the sands of Tatooine to stake their claim on the territory once ruled by Jabba the Hutt and his crime syndicate.",
+      "cover": "https://image.tmdb.org/t/p/w400/gNbdjDi1HamTCrfvM9JeA94bNi2.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/oMWnpUUCeIqvTdP3IYZ0JnPdrmU.jpg",
+      "seasons": 1,
+      "episodes": 7,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.5,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 14,
+      "popularity": 16
+    },
+    {
+      "id": 1004,
+      "title": "Obi-Wan Kenobi",
+      "originalTitle": "Obi-Wan Kenobi",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2022,
+      "endYear": 2022,
+      "status": "ended",
+      "description": "During the reign of the Galactic Empire, former Jedi Master, Obi-Wan Kenobi, embarks on a crucial mission to confront allies turned enemies and face the wrath of the Empire.",
+      "cover": "https://image.tmdb.org/t/p/w400/qJRB789ceLryrLvOKrZqLKr2CGf.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/p3Jmm6d1ShUrJEuU3DYD2K19c66.jpg",
+      "seasons": 1,
+      "episodes": 6,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 14,
+      "popularity": 13
+    },
+    {
+      "id": 1005,
+      "title": "Star Wars: Tales of the Jedi",
+      "originalTitle": "Star Wars: Tales of the Jedi",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2022,
+      "endYear": 2022,
+      "status": "ended",
+      "description": "Journey into the lives of two distinctly different Jedi from the prequel era – Ahsoka Tano and Count Dooku. Each will be put to the test as they make choices that will define their destinies.",
+      "cover": "https://image.tmdb.org/t/p/w400/k3nWQb0E8mLSR8acSkJP78VRVMv.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/vp52Er9JebGn49GG37jFTwx15Lw.jpg",
+      "seasons": 1,
+      "episodes": 6,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.9,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 7
+    },
+    {
+      "id": 1006,
+      "title": "Ahsoka",
+      "originalTitle": "Ahsoka",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2023,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Former Jedi Knight Ahsoka Tano investigates an emerging threat to a vulnerable galaxy.",
+      "cover": "https://image.tmdb.org/t/p/w400/eiJeWeCAEZAmRppnXHiTWDcCd3Q.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/loDy1LWCkPjECjVTRmyKtOoUpNN.jpg",
+      "seasons": 1,
+      "episodes": 8,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.4,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 14,
+      "popularity": 14
+    },
+    {
+      "id": 1007,
+      "title": "Star Wars: Tales of the Empire",
+      "originalTitle": "Star Wars: Tales of the Empire",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2024,
+      "endYear": 2024,
+      "status": "ended",
+      "description": "A journey into the fearsome Galactic Empire through the eyes of two warriors on divergent paths.",
+      "cover": "https://image.tmdb.org/t/p/w400/qA28nLteurVboSSzltuyYt1lvlC.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/sMxOqjwaHHXuBnHkvVyzqcOPMVF.jpg",
+      "seasons": 1,
+      "episodes": 6,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7.3,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 7
+    },
+    {
+      "id": 1008,
+      "title": "The Acolyte",
+      "originalTitle": "The Acolyte",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2024,
+      "endYear": 2024,
+      "status": "ended",
+      "description": "A hundred years before the rise of the Empire, the Jedi Order and the Galactic Republic have prospered for centuries without war. During this time, an investigation into a shocking crime spree pits a Jedi Master against a dangerous warrior from his past.",
+      "cover": "https://image.tmdb.org/t/p/w400/mztdt3y6GBsJR69zHtszFezTCLT.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/kwronSXO1ogMqHHFvY2eBxfFLdn.jpg",
+      "seasons": 1,
+      "episodes": 8,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 5.4,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 14,
+      "popularity": 13
+    },
+    {
+      "id": 1009,
+      "title": "Star Wars: Skeleton Crew",
+      "originalTitle": "Star Wars: Skeleton Crew",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2024,
+      "endYear": 2025,
+      "status": "ended",
+      "description": "Four ordinary kids search for their home planet after getting lost in the Star Wars galaxy.",
+      "cover": "https://image.tmdb.org/t/p/w400/srQbJhLRKoAwRrNN5ga7webPHbC.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/fciU7RVyfcdsTeksTnBXGPmkKg2.jpg",
+      "seasons": 1,
+      "episodes": 8,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 6.8,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 9
     }
   ],
   "collections": [
@@ -27770,7 +28196,29 @@
       "colorDark": "#e50914",
       "backdrop": null,
       "itemIds": [
-        304
+        994,
+        995,
+        996,
+        304,
+        236,
+        303,
+        997,
+        517,
+        998,
+        374,
+        999,
+        1000,
+        134,
+        1001,
+        1002,
+        1003,
+        1004,
+        421,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009
       ]
     },
     {
