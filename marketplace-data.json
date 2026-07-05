@@ -15154,7 +15154,8 @@
       "categories": [
         "Movies",
         "Action",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 2021,
       "endYear": null,
@@ -28193,7 +28194,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 1997,
       "endYear": null,
@@ -28222,7 +28224,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 1995,
       "endYear": null,
@@ -28247,7 +28250,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 2020,
       "endYear": null,
@@ -28276,7 +28280,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 2021,
       "endYear": null,
@@ -28305,7 +28310,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 2022,
       "endYear": null,
@@ -28334,7 +28340,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 2023,
       "endYear": null,
@@ -28363,7 +28370,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 1996,
       "endYear": 1996,
@@ -28388,7 +28396,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 1998,
       "endYear": 1999,
@@ -28417,7 +28426,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Star Wars"
+        "Star Wars",
+        "Mortal Kombat"
       ],
       "year": 2011,
       "endYear": 2013,
@@ -28450,17 +28460,29 @@
       "colorDark": "#e50914",
       "backdrop": null,
       "itemIds": [
-        109,
-        1010,
-        538,
-        1011,
-        1012,
-        1013,
-        1014,
-        1015,
-        1016,
-        1017,
-        1018
+        994,
+        995,
+        996,
+        304,
+        236,
+        303,
+        997,
+        517,
+        998,
+        374,
+        999,
+        1000,
+        134,
+        1001,
+        1002,
+        1003,
+        1004,
+        421,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009
       ]
     },
     {
@@ -28472,7 +28494,17 @@
       "colorDark": "#e50914",
       "backdrop": null,
       "itemIds": [
-        109
+        109,
+        1010,
+        538,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018
       ]
     }
   ]
