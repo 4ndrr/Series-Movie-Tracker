@@ -15153,7 +15153,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2021,
       "endYear": null,
@@ -28184,6 +28185,259 @@
       ],
       "age": 7,
       "popularity": 9
+    },
+    {
+      "id": 1010,
+      "title": "Mortal Kombat: Annihilation",
+      "originalTitle": "Mortal Kombat: Annihilation",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1997,
+      "endYear": null,
+      "status": null,
+      "description": "A group of heroic warriors has only six days to save the planet in \"Mortal Kombat Annihilation.\" To succeed they must survive the most spectacular series of challenges any human, or god, has ever encountered as they battle an evil warlord bent on taking control of Earth.",
+      "cover": "https://image.tmdb.org/t/p/w400/ttryglcY2osWZE3sRYBf3ewTZsW.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/19EpgKZDkLIwY1TI1pjBJtQ5qdr.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 95,
+      "imdb": null,
+      "tmdb": 4.6,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "age": 13,
+      "popularity": 5
+    },
+    {
+      "id": 1011,
+      "title": "Mortal Kombat: The Journey Begins",
+      "originalTitle": "Mortal Kombat: The Journey Begins",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 1995,
+      "endYear": null,
+      "status": null,
+      "description": "As the three chosen defenders of Earth travel to Shang Tsung's island, Rayden teaches them how to become the masters of their destinies, overcome their foes, and control their powers. Liu Kang, Sonya Blade and Johnny Cage must defeat Shang Tsung, Sub Zero, Scorpion and Goro in a tournament of Mortal Kombat if they are to survive and save the fate of the earth.",
+      "cover": "https://image.tmdb.org/t/p/w400/11IzPcxoq22dqrftKgt5CZPHjhM.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/tKjJMTwS14CN31queadA9rqXOYf.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 39,
+      "imdb": null,
+      "tmdb": 3.9,
+      "providers": [],
+      "age": 7,
+      "popularity": 1
+    },
+    {
+      "id": 1012,
+      "title": "Mortal Kombat Legends: Scorpion's Revenge",
+      "originalTitle": "Mortal Kombat Legends: Scorpion's Revenge",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2020,
+      "endYear": null,
+      "status": null,
+      "description": "After the vicious slaughter of his family by stone-cold mercenary Sub-Zero, Hanzo Hasashi is exiled to the torturous Netherrealm. There, in exchange for his servitude to the sinister Quan Chi, he’s given a chance to avenge his family – and is resurrected as Scorpion, a lost soul bent on revenge. Back on Earthrealm, Lord Raiden gathers a team of elite warriors – Shaolin monk Liu Kang, Special Forces officer Sonya Blade, and action star Johnny Cage – an unlikely band of heroes with one chance to save humanity. To do this, they must defeat Shang Tsung's horde of Outworld gladiators and reign over the Mortal Kombat tournament.",
+      "cover": "https://image.tmdb.org/t/p/w400/iBvo3qOPcmhlqAaJcXcQHtx2qLk.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/vw3zNfzvnVNF7nIjpiEgcdznfeC.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 80,
+      "imdb": null,
+      "tmdb": 8.1,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "age": 16,
+      "popularity": 5
+    },
+    {
+      "id": 1013,
+      "title": "Mortal Kombat Legends: Battle of the Realms",
+      "originalTitle": "Mortal Kombat Legends: Battle of the Realms",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2021,
+      "endYear": null,
+      "status": null,
+      "description": "When Shao Kahn's Outworld barbarians terrorize Earthrealm, Lord Raiden is determined to put an end to the carnage once and for all. This leaves one option: a final Mortal Kombat tournament for the future of Earthrealm – win it or lose everything. Raiden's elite fighters Liu Kang, Johnny Cage, Sonya Blade, and a few new faces kick the action into overdrive as they go head-to-head with Outworld's most bloodthirsty warriors. But deep in the Netherrealm, an unspeakable scheme by the malevolent Shinnok unfolds, threatening to obliterate existence.",
+      "cover": "https://image.tmdb.org/t/p/w400/ablrE8IbWcIrAxMmm4gnPn75AMS.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/dssCw0mUmD4EriUmkwB3PnsGu4q.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 80,
+      "imdb": null,
+      "tmdb": 7.6,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "age": 16,
+      "popularity": 4
+    },
+    {
+      "id": 1014,
+      "title": "Mortal Kombat Legends: Snow Blind",
+      "originalTitle": "Mortal Kombat Legends: Snow Blind",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2022,
+      "endYear": null,
+      "status": null,
+      "description": "The vicious, power-mad Kano is determined to take over Earthrealm, one soul at a time. Assisted by a trio of cold Black Dragon mercenaries, he embarks on a brutal assault from town to defenseless town. The choice is simple: kneel or be annihilated. Kenshi, a rebel warrior, calls on Kuai Liang, the only one powerful enough to challenge the malevolent Kano. But Kuai Liang has given up the ways of the warrior, and Kenshi is too undisciplined to defeat Kano himself. If Kuai Liang cannot break through the glacier of doubt that holds him back, Earthrealm will fall.",
+      "cover": "https://image.tmdb.org/t/p/w400/8wyOdQRVrpoUb2wMdGHykaD17GM.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/endVnEgUGjibpLaF0yjUX2CWhh4.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 82,
+      "imdb": null,
+      "tmdb": 7.7,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "age": 16,
+      "popularity": 3
+    },
+    {
+      "id": 1015,
+      "title": "Mortal Kombat Legends: Cage Match",
+      "originalTitle": "Mortal Kombat Legends: Cage Match",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2023,
+      "endYear": null,
+      "status": null,
+      "description": "In 1980s Hollywood, action star Johnny Cage is looking to become an A-list actor. But when his costar, Jennifer, goes missing from set, Johnny finds himself thrust into a world filled with shadows, danger, and deceit. As he embarks on a bloody journey, Johnny quickly discovers the City of Angels has more than a few devils in its midst. He faces off against a sinister secret society plotting a nefarious scheme, but the brutal fight against the bloodthirsty warriors of the Netherrealm is just beginning.",
+      "cover": "https://image.tmdb.org/t/p/w400/1eKWqTHp4OgKdx1QX1O9LxKHr1M.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/p0IejE15lzXBGhRTpKoHPsSrHf7.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 80,
+      "imdb": null,
+      "tmdb": 6.8,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "age": 16,
+      "popularity": 3
+    },
+    {
+      "id": 1016,
+      "title": "Mortal Kombat: Defenders of the Realm",
+      "originalTitle": "Mortal Kombat: Defenders of the Realm",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 1996,
+      "endYear": 1996,
+      "status": "ended",
+      "description": "A group of warriors come together to defend Earthrealm from invaders who entered through portals from various other dimensions.",
+      "cover": "https://image.tmdb.org/t/p/w400/2mCOYi9wUyve3xbeEpYzvw9CF0N.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/lqxChPsUbvxw2lBwUTOkq63Hb4d.jpg",
+      "seasons": 1,
+      "episodes": 13,
+      "runtime": 30,
+      "imdb": null,
+      "tmdb": 7.1,
+      "providers": [],
+      "age": 7,
+      "popularity": 6
+    },
+    {
+      "id": 1017,
+      "title": "Mortal Kombat: Conquest",
+      "originalTitle": "Mortal Kombat: Conquest",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 1998,
+      "endYear": 1999,
+      "status": "ended",
+      "description": "Kung Lao has triumphed in the Mortal Kombat tournament, defeating Shang Tsung and saving Earth Realm. Now, he must train a new generation of warriors for the next tournament. Meanwhile, an exiled Shang Tsung attempts to thwart Lao's efforts with the aid of supernatural warriors such as Scorpion and Sub-Zero.",
+      "cover": "https://image.tmdb.org/t/p/w400/4NvMgESPMT1Tl1qLP2TnNP4pcvX.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/w6mvtiWPuzfV5lPJAXA2sQ8xqBL.jpg",
+      "seasons": 1,
+      "episodes": 22,
+      "runtime": 44,
+      "imdb": null,
+      "tmdb": 7.1,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "age": 7,
+      "popularity": 7
+    },
+    {
+      "id": 1018,
+      "title": "Mortal Kombat: Legacy",
+      "originalTitle": "Mortal Kombat: Legacy",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2011,
+      "endYear": 2013,
+      "status": "ended",
+      "description": "The first season of Mortal Kombat Legacy is a prequel to the original game, explaining the background stories of several characters from the series and demonstrating their reasons for participating in the upcoming tenth Mortal Kombat tournament on which the first game was based.",
+      "cover": "https://image.tmdb.org/t/p/w400/1qeEg8XOPWp5V4v1zlcdbnFNl7n.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/ywI0yjDFKzY1bKahh0Z316a02Wt.jpg",
+      "seasons": 2,
+      "episodes": 19,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 7,
+      "providers": [
+        "HBO Max Amazon Channel",
+        "YouTube TV",
+        "HBO Max"
+      ],
+      "age": 18,
+      "popularity": 8
     }
   ],
   "collections": [
@@ -28196,29 +28450,17 @@
       "colorDark": "#e50914",
       "backdrop": null,
       "itemIds": [
-        994,
-        995,
-        996,
-        304,
-        236,
-        303,
-        997,
-        517,
-        998,
-        374,
-        999,
-        1000,
-        134,
-        1001,
-        1002,
-        1003,
-        1004,
-        421,
-        1005,
-        1006,
-        1007,
-        1008,
-        1009
+        109,
+        1010,
+        538,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018
       ]
     },
     {
