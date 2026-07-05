@@ -10,7 +10,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": 2026,
@@ -104,7 +105,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -133,7 +135,8 @@
       "categories": [
         "Anime",
         "Action",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2016,
       "endYear": null,
@@ -161,7 +164,8 @@
       "originalTitle": "ワンピース",
       "type": "anime",
       "categories": [
-        "Anime"
+        "Anime",
+        "Star Wars"
       ],
       "year": 1999,
       "endYear": null,
@@ -171,7 +175,7 @@
       "altCovers": [],
       "backdrop": "https://image.tmdb.org/t/p/w780/2rmK7mnchw9Xr3XdiTFSxTTLXqv.jpg",
       "seasons": 23,
-      "episodes": 1181,
+      "episodes": 1169,
       "runtime": 24,
       "imdb": null,
       "tmdb": 8.7,
@@ -182,8 +186,8 @@
         "Crunchyroll Amazon Channel",
         "Netflix Standard with Ads"
       ],
-      "age": null,
-      "popularity": 42
+      "age": 14,
+      "popularity": 44
     },
     {
       "id": 7,
@@ -252,7 +256,8 @@
         "Series",
         "Sci-Fi",
         "Action",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2022,
       "endYear": null,
@@ -345,7 +350,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -1594,7 +1600,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2022,
       "endYear": 2026,
@@ -1852,7 +1859,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2023,
       "endYear": null,
@@ -1930,7 +1938,8 @@
       "type": "anime",
       "categories": [
         "Anime",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2018,
       "endYear": null,
@@ -2856,23 +2865,24 @@
       "originalTitle": "Toy Story 5",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
       "description": "When Bonnie receives a Lilypad tablet as a gift and becomes obsessed, Buzz, Woody, Jessie and the rest of the gang's jobs become exponentially harder when they have to go head to head with the all-new threat to playtime.",
-      "cover": "https://image.tmdb.org/t/p/w400/pxG26JdyuiDvJbSoucknaFiLeZD.jpg",
+      "cover": "https://image.tmdb.org/t/p/w400/sfQtVlIHljToOwYjhe21KPGzZWK.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/kwq3lxPrBfyyVRRSDSlojwCPzwH.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/4D1pdB27uph7J8HQzNf8QvvH9bn.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 102,
       "imdb": null,
-      "tmdb": 7.2,
+      "tmdb": 7.4,
       "providers": [],
-      "age": null,
-      "popularity": 160
+      "age": 7,
+      "popularity": 511
     },
     {
       "id": 102,
@@ -2881,7 +2891,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Mortal Kombat"
+        "Mortal Kombat",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2889,15 +2900,15 @@
       "description": "After breaking the mysterious \"One Wish Willow\" to win his crush's heart, a hopeless romantic finds himself getting exactly what he asked for but soon discovers that some desires come at a dark, sinister price.",
       "cover": "https://image.tmdb.org/t/p/w400/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/5lTZyuBTNOfawsfPT8Q0cIg6qAF.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/diOZbaDnB2CIilwd0527AB1qMvW.jpg",
       "seasons": null,
       "episodes": null,
-      "runtime": 108,
+      "runtime": 109,
       "imdb": null,
-      "tmdb": 7.9,
+      "tmdb": 8.2,
       "providers": [],
       "age": 16,
-      "popularity": 572
+      "popularity": 738
     },
     {
       "id": 103,
@@ -2905,23 +2916,24 @@
       "originalTitle": "Disclosure Day",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
-      "description": "If you found out we weren’t alone, if someone showed you, proved it to you, would that frighten you?",
-      "cover": "https://image.tmdb.org/t/p/w400/3o5YPjDGDTcTDL5ftDA9NwN9dLd.jpg",
+      "description": "A cybersecurity expert becomes a whistleblower after uncovering secrets about aliens, putting him on the run from a corporation. Meanwhile, a meteorologist experiencing strange phenomena joins forces with him to prove there's life beyond our understanding.",
+      "cover": "https://image.tmdb.org/t/p/w400/7RYO0KTXIJ0rS0LqnCQLxeNR3P3.jpg",
       "altCovers": [],
       "backdrop": "https://image.tmdb.org/t/p/w780/s6ly8laenkHWlIBRkLSfIuEMLC6.jpg",
       "seasons": null,
       "episodes": null,
-      "runtime": 145,
+      "runtime": 146,
       "imdb": null,
-      "tmdb": 6.8,
+      "tmdb": 6.7,
       "providers": [],
-      "age": null,
-      "popularity": 326
+      "age": 13,
+      "popularity": 654
     },
     {
       "id": 104,
@@ -2929,7 +2941,8 @@
       "originalTitle": "Backrooms",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2942,10 +2955,10 @@
       "episodes": null,
       "runtime": 111,
       "imdb": null,
-      "tmdb": 6.9,
+      "tmdb": 6.8,
       "providers": [],
-      "age": null,
-      "popularity": 115
+      "age": 16,
+      "popularity": 550
     },
     {
       "id": 105,
@@ -2954,7 +2967,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -2983,7 +2997,8 @@
       "categories": [
         "Movies",
         "Mortal Kombat",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3007,7 +3022,8 @@
       "originalTitle": "Pressure",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3020,10 +3036,10 @@
       "episodes": null,
       "runtime": 101,
       "imdb": null,
-      "tmdb": 7.8,
+      "tmdb": 7.6,
       "providers": [],
-      "age": null,
-      "popularity": 89
+      "age": 13,
+      "popularity": 32
     },
     {
       "id": 108,
@@ -3032,7 +3048,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3058,7 +3075,8 @@
       "categories": [
         "Movies",
         "Mortal Kombat",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3082,23 +3100,24 @@
       "originalTitle": "Scary Movie",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
       "description": "Twenty-six years after outrunning a suspiciously familiar masked killer, the Core Four are back in the killer's crosshairs and no horror movie IP is safe.",
-      "cover": "https://image.tmdb.org/t/p/w400/reZ8NInXjMkkaOpUHcI3Pn7iaRN.jpg",
+      "cover": "https://image.tmdb.org/t/p/w400/1KlYdWoOrbL5ux357rW9LC155qw.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/lj6AaDqDUbzm2XJltFNHeAm2uXN.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/xWBiXclrRmTggQHMRsIn84YHavs.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 96,
       "imdb": null,
-      "tmdb": 5.5,
+      "tmdb": 5.4,
       "providers": [],
-      "age": null,
-      "popularity": 77
+      "age": 16,
+      "popularity": 563
     },
     {
       "id": 111,
@@ -3107,7 +3126,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3131,7 +3151,8 @@
       "originalTitle": "Project Hail Mary",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3145,9 +3166,17 @@
       "runtime": 157,
       "imdb": null,
       "tmdb": 8.7,
-      "providers": [],
-      "age": null,
-      "popularity": 145
+      "providers": [
+        "Amazon Prime Video",
+        "fuboTV",
+        "MGM+ Amazon Channel",
+        "MGM Plus Roku Premium Channel",
+        "MGM Plus",
+        "Philo",
+        "Amazon Prime Video with Ads"
+      ],
+      "age": 13,
+      "popularity": 158
     },
     {
       "id": 113,
@@ -3180,7 +3209,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3229,7 +3259,8 @@
       "originalTitle": "The Super Mario Galaxy Movie",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3237,15 +3268,15 @@
       "description": "Having thwarted Bowser's previous plot to marry Princess Peach, Mario and Luigi now face a fresh threat in Bowser Jr., who is determined to liberate his father from captivity and restore the family legacy. Alongside companions new and old, the brothers travel across the stars to stop the young heir's crusade.",
       "cover": "https://image.tmdb.org/t/p/w400/eJGWx219ZcEMVQJhAgMiqo8tYY.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/9Z2uDYXqJrlmePznQQJhL6d92Rq.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/kxQiIJ4gVcD3K6o14MJ72p5yRcE.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 98,
       "imdb": null,
-      "tmdb": 8.2,
+      "tmdb": 8.3,
       "providers": [],
-      "age": null,
-      "popularity": 244
+      "age": 7,
+      "popularity": 126
     },
     {
       "id": 117,
@@ -3254,7 +3285,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3354,11 +3386,12 @@
       "originalTitle": "Moana",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
-      "status": null,
+      "status": "unreleased",
       "description": "Moana answers the Ocean's call and, for the first time, voyages beyond the reef of her island of Motunui with the infamous demigod Maui on an unforgettable journey to restore prosperity to her people.",
       "cover": "https://image.tmdb.org/t/p/w400/zKVgiv5qHCvCLT4A2ymJi5QeXDH.jpg",
       "altCovers": [],
@@ -3367,10 +3400,10 @@
       "episodes": null,
       "runtime": 115,
       "imdb": null,
-      "tmdb": 0,
+      "tmdb": 7.9,
       "providers": [],
-      "age": null,
-      "popularity": 19
+      "age": 7,
+      "popularity": 48
     },
     {
       "id": 122,
@@ -3378,7 +3411,8 @@
       "originalTitle": "Minions & Monsters",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3386,15 +3420,15 @@
       "description": "This is the rambunctious, ridiculous and totally true story of how the Minions conquered Hollywood, became movie stars, lost everything, unleashed monsters onto the world and then banded together to try and save the planet from the mayhem they had just created.",
       "cover": "https://image.tmdb.org/t/p/w400/nz7i42yhLIJ4ve9JKgM6NthoLHO.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/pclNFoWcWDeoaQ2pwrXPPw1mjs7.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/xMoXsOgF0hBP7iVj7ZPIrFtTeL3.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 90,
       "imdb": null,
-      "tmdb": 0,
+      "tmdb": 6.7,
       "providers": [],
-      "age": null,
-      "popularity": 22
+      "age": 7,
+      "popularity": 201
     },
     {
       "id": 123,
@@ -3403,7 +3437,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3453,7 +3488,8 @@
       "originalTitle": "Love, Ngo",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3461,14 +3497,14 @@
       "description": "“Love, Ngo” follows Ngongo, a hardworking young man who volunteers at a cleft lip and palate foundation while helping at his mother’s burger stand. The film explores his struggles with love, family and self-acceptance after falling for a woman whose family disapproves of his condition and social status.",
       "cover": "https://image.tmdb.org/t/p/w400/qA7FX4vp2qWfkMd2R3JrbGP6vbu.jpg",
       "altCovers": [],
-      "backdrop": "",
+      "backdrop": "https://image.tmdb.org/t/p/w780/zuf6SE4UwxFwNquCCogGBsBFAcV.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 83,
       "imdb": null,
       "tmdb": 9,
       "providers": [],
-      "age": null,
+      "age": 13,
       "popularity": 5
     },
     {
@@ -3477,7 +3513,8 @@
       "originalTitle": "Avatar: Fire and Ash",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2025,
       "endYear": null,
@@ -3491,9 +3528,11 @@
       "runtime": 198,
       "imdb": null,
       "tmdb": 7.6,
-      "providers": [],
-      "age": null,
-      "popularity": 109
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 13,
+      "popularity": 126
     },
     {
       "id": 127,
@@ -3528,7 +3567,8 @@
       "originalTitle": "Hokum",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3536,15 +3576,15 @@
       "description": "When novelist Ohm Bauman retreats to a remote inn to scatter his parents' ashes, he is consumed by tales of a witch haunting the honeymoon suite. Disturbing visions and a shocking disappearance forces him to confront dark corners of his past.",
       "cover": "https://image.tmdb.org/t/p/w400/jKPWwsbAM6HKURPYQ1eG8DmKMKn.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/woZX9wZaiX70LbW7bOeNccNTIhp.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/qY7zVZ7liULhfRoXg4c9Xl83LcR.jpg",
       "seasons": null,
       "episodes": null,
-      "runtime": 107,
+      "runtime": 108,
       "imdb": null,
-      "tmdb": 6.7,
+      "tmdb": 6.9,
       "providers": [],
-      "age": null,
-      "popularity": 86
+      "age": 16,
+      "popularity": 50
     },
     {
       "id": 129,
@@ -3579,7 +3619,8 @@
       "originalTitle": "Leviticus",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3587,15 +3628,15 @@
       "description": "Two teenage boys must escape a violent entity that takes the form of the person they desire most — each other.",
       "cover": "https://image.tmdb.org/t/p/w400/cu0XnXLzJGPeI0msCoJKgnEecKz.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/ekFr4AyEpwyIHK1R3VOYDXN2PqL.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/7y8zWGEjs7tresw4Hzkkf4TdkcL.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 88,
       "imdb": null,
-      "tmdb": 10,
+      "tmdb": 7.1,
       "providers": [],
-      "age": null,
-      "popularity": 9
+      "age": 16,
+      "popularity": 17
     },
     {
       "id": 131,
@@ -3659,7 +3700,8 @@
       "originalTitle": "Scream 7",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3679,8 +3721,8 @@
         "Paramount+ Amazon Channel",
         "Paramount+ Roku Premium Channel"
       ],
-      "age": null,
-      "popularity": 55
+      "age": 16,
+      "popularity": 33
     },
     {
       "id": 134,
@@ -3689,7 +3731,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3742,7 +3785,8 @@
       "categories": [
         "Movies",
         "Action",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3767,7 +3811,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -3815,23 +3860,26 @@
       "originalTitle": "Ready or Not: Here I Come",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
       "description": "Moments after surviving an all-out attack from the Le Domas family, Grace discovers she’s reached the next level of the nightmarish game — and this time with her estranged sister Faith at her side. Grace has one chance to survive, keep her sister alive, and claim the High Seat of the Council that controls the world. Four rival families are hunting her for the throne, and whoever wins rules it all.",
-      "cover": "https://image.tmdb.org/t/p/w400/13ZcJzSGEqVgDSqsS9U5EkQwPkV.jpg",
+      "cover": "https://image.tmdb.org/t/p/w400/jRf89HVEtBZiSnOXXWDhZOfuTwW.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/2okNnNRrFPZHwCqZg21kVn3uIsC.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/2wbXwwEseGuVAfnmYvVopkBPbAl.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 108,
       "imdb": null,
-      "tmdb": 7.7,
-      "providers": [],
-      "age": null,
-      "popularity": 39
+      "tmdb": 7.6,
+      "providers": [
+        "Hulu"
+      ],
+      "age": 16,
+      "popularity": 41
     },
     {
       "id": 140,
@@ -3890,23 +3938,24 @@
       "originalTitle": "Evil Dead Burn",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
-      "status": null,
-      "description": "After the loss of her husband, a woman seeks solace with her in-laws in their secluded family home. As one by one they are transformed into Deadites—turning the gathering into a family reunion from hell—she comes to discover that the vows she took in life... live on even in death.",
+      "status": "unreleased",
+      "description": "After the loss of her husband, a woman seeks solace with her in-laws. As one by one they transform into deadites, she comes to discover that the vows she took in life - survive even in death.",
       "cover": "https://image.tmdb.org/t/p/w400/ztadKzIIR0ERYqpHteaPFtk7inP.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/dUz448LyDSuZWaR4hICLLxAzOQE.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/A5Tz6ogGt4VV8NESG9oWVct5bo1.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 110,
       "imdb": null,
-      "tmdb": 0,
+      "tmdb": 8,
       "providers": [],
-      "age": null,
-      "popularity": 13
+      "age": 16,
+      "popularity": 29
     },
     {
       "id": 143,
@@ -4098,7 +4147,8 @@
       "originalTitle": "Lee Cronin's The Mummy",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -4106,15 +4156,17 @@
       "description": "The young daughter of a journalist disappears into the desert without a trace—eight years later, the broken family is shocked when she is returned to them, as what should be a joyful reunion turns into a living nightmare.",
       "cover": "https://image.tmdb.org/t/p/w400/1q308iixueCU4pFtSYugNOevtNx.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/xugEpZk9YQ0DIz1aFvH5HGkqpZK.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/s3tHm62ohyb0I5vSnPrpczCBtSX.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 133,
       "imdb": null,
       "tmdb": 8,
-      "providers": [],
-      "age": null,
-      "popularity": 168
+      "providers": [
+        "HBO Max"
+      ],
+      "age": 16,
+      "popularity": 116
     },
     {
       "id": 151,
@@ -4155,7 +4207,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -4334,7 +4387,8 @@
       "originalTitle": "How to Make a Killing",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -4348,9 +4402,11 @@
       "runtime": 105,
       "imdb": null,
       "tmdb": 7,
-      "providers": [],
-      "age": null,
-      "popularity": 16
+      "providers": [
+        "HBO Max"
+      ],
+      "age": 16,
+      "popularity": 18
     },
     {
       "id": 160,
@@ -4710,7 +4766,8 @@
       "originalTitle": "Passenger",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -4723,10 +4780,10 @@
       "episodes": null,
       "runtime": 94,
       "imdb": null,
-      "tmdb": 6.3,
+      "tmdb": 6.2,
       "providers": [],
-      "age": null,
-      "popularity": 16
+      "age": 16,
+      "popularity": 12
     },
     {
       "id": 175,
@@ -4951,7 +5008,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -5026,23 +5084,24 @@
       "originalTitle": "Power Ballad",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
       "description": "When Rick, a past-his-prime wedding singer, meets fading boy-band star Danny during a gig, the two bond over music and a late-night jam session. But when Danny turns one of Rick’s songs into the hit that reignites his career, Rick sets out to reclaim the recognition he believes he deserves - even if it means risking everything he cares about.",
-      "cover": "https://image.tmdb.org/t/p/w400/lsDLLagSIyTu0Gi06QjVKDp2LI2.jpg",
+      "cover": "https://image.tmdb.org/t/p/w400/sGgX2K0SJqw90Ju8TONdhDVwlzT.jpg",
       "altCovers": [],
-      "backdrop": "https://image.tmdb.org/t/p/w780/u1c2DAXhpyAwFK8zljcMc4FFEc3.jpg",
+      "backdrop": "https://image.tmdb.org/t/p/w780/euUEDjof7fVX2t3nYFvLLN9ADK2.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 99,
       "imdb": null,
-      "tmdb": 6.8,
+      "tmdb": 7.1,
       "providers": [],
-      "age": null,
-      "popularity": 8
+      "age": 16,
+      "popularity": 10
     },
     {
       "id": 187,
@@ -5152,7 +5211,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -5231,23 +5291,27 @@
       "originalTitle": "Voicemails for Isabelle",
       "type": "movie",
       "categories": [
-        "Movies"
+        "Movies",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
       "status": null,
       "description": "A young woman's hilariously confessional voicemails to her late sister are unknowingly redirected to a stranger, who begins to fall in love from afar.",
-      "cover": "https://image.tmdb.org/t/p/w400/nmGIRyuMH72WHJengMo8LQjnZQn.jpg",
+      "cover": "https://image.tmdb.org/t/p/w400/canZTWSxACSnAluir3dCtMxKpA1.jpg",
       "altCovers": [],
       "backdrop": "https://image.tmdb.org/t/p/w780/2WU6Y6aonzD6uAaCmNnEFlesxxJ.jpg",
       "seasons": null,
       "episodes": null,
       "runtime": 119,
       "imdb": null,
-      "tmdb": 6,
-      "providers": [],
-      "age": null,
-      "popularity": 5
+      "tmdb": 8.4,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "age": 13,
+      "popularity": 98
     },
     {
       "id": 195,
@@ -8501,7 +8565,8 @@
       "categories": [
         "Series",
         "Action",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2024,
       "endYear": null,
@@ -8530,7 +8595,8 @@
       "categories": [
         "Series",
         "Action",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -8558,7 +8624,8 @@
       "type": "anime",
       "categories": [
         "Anime",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2021,
       "endYear": null,
@@ -9059,7 +9126,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2024,
       "endYear": null,
@@ -12006,7 +12074,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -12056,7 +12125,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -12081,7 +12151,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -12134,7 +12205,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -13297,7 +13369,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Action"
+        "Action",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -15344,7 +15417,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -16261,7 +16335,7 @@
       "episodes": 100,
       "runtime": null,
       "imdb": null,
-      "tmdb": 8.4,
+      "tmdb": 8.5,
       "providers": [
         "Netflix",
         "Amazon Prime Video",
@@ -16561,7 +16635,8 @@
       "type": "series",
       "categories": [
         "Series",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -23304,7 +23379,8 @@
       "type": "movie",
       "categories": [
         "Movies",
-        "Drama"
+        "Drama",
+        "Star Wars"
       ],
       "year": 2026,
       "endYear": null,
@@ -27244,6 +27320,444 @@
       "providers": [],
       "age": null,
       "popularity": 14
+    },
+    {
+      "id": 978,
+      "title": "Holby City",
+      "originalTitle": "Holby City",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Drama"
+      ],
+      "year": 1999,
+      "endYear": 2022,
+      "status": "ended",
+      "description": "Drama series about life on the wards of Holby City Hospital, following the highs and lows of the staff and patients.",
+      "cover": "https://image.tmdb.org/t/p/w400/rDlIwW4NEUDNyrlaxrJeO63VrRO.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/6VR8b4e2XsPeIz4HWCLafi8PNAW.jpg",
+      "seasons": 23,
+      "episodes": 1102,
+      "runtime": 60,
+      "imdb": null,
+      "tmdb": 5.8,
+      "providers": [],
+      "age": null,
+      "popularity": 44
+    },
+    {
+      "id": 979,
+      "title": "Murdoch Mysteries",
+      "originalTitle": "Murdoch Mysteries",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Drama"
+      ],
+      "year": 2008,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "A Victorian-era Toronto detective uses then-cutting edge forensic techniques to solve crimes, with the assistance of a female coroner who is also struggling for recognition in the face of tradition, based on the books by Maureen Jennings.",
+      "cover": "https://image.tmdb.org/t/p/w400/1S8gnT06MDkAmHmzDLSVughE0t0.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/hYmHyUlJMQgeazELoHnORrEQ0vE.jpg",
+      "seasons": 20,
+      "episodes": 330,
+      "runtime": 60,
+      "imdb": null,
+      "tmdb": 7.7,
+      "providers": [
+        "Hulu",
+        "fuboTV",
+        "YouTube TV",
+        "Philo",
+        "Acorn TV",
+        "Hallmark+ Amazon Channel",
+        "AcornTV Amazon Channel",
+        "Spectrum On Demand",
+        "Acorn TV Apple TV",
+        "Hallmark+ Apple TV Channel",
+        "Hallmark TV Amazon Channel"
+      ],
+      "age": 7,
+      "popularity": 46
+    },
+    {
+      "id": 980,
+      "title": "Human Vapor",
+      "originalTitle": "ガス人間",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": 2026,
+      "status": "ended",
+      "description": "A death on live TV. A culprit who turns to gas. Behind it, a secret project that used and discarded the vulnerable. One detective pursues the dark truth.",
+      "cover": "https://image.tmdb.org/t/p/w400/gSYPd4icODc7QdRA7BK0VqBxBYp.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/qIMNDToguvTIaVReD8GgeDgfXVr.jpg",
+      "seasons": 1,
+      "episodes": 8,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 8,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "age": 18,
+      "popularity": 88
+    },
+    {
+      "id": 981,
+      "title": "You and I Are Polar Opposites",
+      "originalTitle": "正反対な君と僕",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Suzuki's a high school girl in love, but the guy she's fallen for is nothing like her! While she's cheerful, outgoing, and always trying to fit in, her classmate Yusuke Tani is stoic, quiet, and doesn't seem to care what people think of him. Will Suzuki be able to overcome her anxieties and ask him out, or will she discover that opposites really don't attract?",
+      "cover": "https://image.tmdb.org/t/p/w400/9hRuMU33DBz4z1vaYBRqLLuFFbQ.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/5p423VlhPXf7681XyZCL4khIJLl.jpg",
+      "seasons": 1,
+      "episodes": 14,
+      "runtime": 24,
+      "imdb": null,
+      "tmdb": 8.4,
+      "providers": [
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel"
+      ],
+      "age": 13,
+      "popularity": 19
+    },
+    {
+      "id": 982,
+      "title": "Jade Dynasty",
+      "originalTitle": "诛仙",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2022,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Zhang Xiaofan, who turned into an orphan overnight, becomes a disciple of the Qingyun Sect. After five years of training, he performs well in the Seven Peak Martial Arts Competition. He's sent to the Kongsang Mountain to defeat the evil. During the journey, he and his senior, Lu Xueqi, met with an accident, and got to know and save the lady of the cult, Bi Yao. At the same time, new danger is ahead of him.",
+      "cover": "https://image.tmdb.org/t/p/w400/oOy0PskfCQyWwsQVdHyM2PoN9H4.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/5fq2lbecTwvpitm7WHfQGa0VGXh.jpg",
+      "seasons": 4,
+      "episodes": 79,
+      "runtime": 18,
+      "imdb": null,
+      "tmdb": 8.1,
+      "providers": [
+        "Rakuten Viki"
+      ],
+      "age": 15,
+      "popularity": 33
+    },
+    {
+      "id": 983,
+      "title": "Chainsmoker Cat",
+      "originalTitle": "ヤニねこ",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Catgirl Yani struggles to pay her rent and keep a job while feeding her smoking habit. As her loved ones' concerns grow, she must rethink her future.",
+      "cover": "https://image.tmdb.org/t/p/w400/kqeKlSd7o9BCbTraZsDnksRSfxm.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/4ei68OmZr0XHnN82OjiV8GBqfyN.jpg",
+      "seasons": 1,
+      "episodes": 12,
+      "runtime": 24,
+      "imdb": null,
+      "tmdb": 7,
+      "providers": [],
+      "age": 16,
+      "popularity": 164
+    },
+    {
+      "id": 984,
+      "title": "Road to Success",
+      "originalTitle": "灿如繁星",
+      "type": "series",
+      "categories": [
+        "Series",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "When Lin Wanxing returns to her hometown and takes a job at a local high school, she’s unexpectedly tasked with reviving its long-disbanded soccer team. With help from her mysterious tenant, former coach Wang Fa, they work to rebuild the team, guide the students toward their dreams, and face the shadows of their own pasts along the way.",
+      "cover": "https://image.tmdb.org/t/p/w400/b5nQBfeAQA9lEINrYFWXBh8PENr.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/vb7Cr6zQkCFji2pAgsoBFRzcaLA.jpg",
+      "seasons": 1,
+      "episodes": 32,
+      "runtime": null,
+      "imdb": null,
+      "tmdb": 0,
+      "providers": [],
+      "age": null,
+      "popularity": 6
+    },
+    {
+      "id": 985,
+      "title": "Daemons of the Shadow Realm",
+      "originalTitle": "黄泉のツガイ",
+      "type": "anime",
+      "categories": [
+        "Anime",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": "ongoing",
+      "description": "Yuru, a young hunter, lives in a small village deep in the mountains, hunting wild game and leading a humble life with Asa, his younger twin sister. Their peaceful lives are torn apart when a dragon’s roar echoes across the sky. What secrets lurk within their village? What fate awaits them?",
+      "cover": "https://image.tmdb.org/t/p/w400/vIE1llfr1lcmzlsV4xn8vhgtlQN.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/qc30hdrxHQgN5wiopU4bkRZow5L.jpg",
+      "seasons": 1,
+      "episodes": 24,
+      "runtime": 24,
+      "imdb": null,
+      "tmdb": 8.7,
+      "providers": [
+        "Crunchyroll",
+        "Crunchyroll Amazon Channel",
+        "YouTube TV"
+      ],
+      "age": 14,
+      "popularity": 29
+    },
+    {
+      "id": 986,
+      "title": "The Sheep Detectives",
+      "originalTitle": "The Sheep Detectives",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "George Hardy is a shepherd who reads detective novels to his beloved sheep every night, assuming they can't possibly understand. But when a mysterious incident disrupts life on the farm, the sheep realize they must become the detectives. As they follow the clues and investigate human suspects, they prove that even sheep can be brilliant crime-solvers.",
+      "cover": "https://image.tmdb.org/t/p/w400/6QtL9rl3Zb4d8qW6EJ4qO5hSSfU.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/t6O6XWelu27BD0OmIDCCufZZT6d.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 109,
+      "imdb": null,
+      "tmdb": 7.8,
+      "providers": [
+        "Amazon Prime Video",
+        "Amazon Prime Video with Ads"
+      ],
+      "age": 7,
+      "popularity": 178
+    },
+    {
+      "id": 987,
+      "title": "Little Brother",
+      "originalTitle": "Little Brother",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "A tightly wound realtor's picture-perfect life gets an extreme makeover when his lovably chaotic \"little brother\" suddenly reappears.",
+      "cover": "https://image.tmdb.org/t/p/w400/hIJpXb7Xaje2mebN9ylsS7blQzP.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/bdwv8Hsu4Bnz8aRbH5MQ9clQ0DG.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 101,
+      "imdb": null,
+      "tmdb": 6.4,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "age": 16,
+      "popularity": 115
+    },
+    {
+      "id": 988,
+      "title": "Man of War",
+      "originalTitle": "Man of War",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "When an aid worker vanishes in the first hours of war in Ukraine, a former Navy SEAL and CIA operative crosses into the shattered country to bring her home-facing mercenaries, shifting battle lines, and ghosts he thought he left behind.",
+      "cover": "https://image.tmdb.org/t/p/w400/vt0RqHlqfUzeiBEVQvp43yY2076.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/kMrkqfjuPR4FlfaScrNNYuOEGHa.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 111,
+      "imdb": null,
+      "tmdb": 7.4,
+      "providers": [],
+      "age": null,
+      "popularity": 10
+    },
+    {
+      "id": 989,
+      "title": "Hoppers",
+      "originalTitle": "Hoppers",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "Scientists have discovered how to 'hop' human consciousness into lifelike robotic animals, allowing people to communicate with animals as animals. Animal lover Mabel seizes an opportunity to use the technology, uncovering mysteries within the animal world beyond anything she could have imagined.",
+      "cover": "https://image.tmdb.org/t/p/w400/xjtWQ2CL1mpmMNwuU5HeS4Iuwuu.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/u53UYu5XG2hNgWGvs3xGhAVzypl.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 104,
+      "imdb": null,
+      "tmdb": 8.2,
+      "providers": [
+        "Disney Plus"
+      ],
+      "age": 7,
+      "popularity": 94
+    },
+    {
+      "id": 990,
+      "title": "Hungry",
+      "originalTitle": "Hungry",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "A group of holidaymakers must fight for their lives against a rampaging hippo on the loose after becoming lost in the Louisiana swamplands.",
+      "cover": "https://image.tmdb.org/t/p/w400/kHbUXJhXYV7UGiStIgCyplWsYKd.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/ikyzq678qnHtRY8ZiQJzK4hiOyW.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 93,
+      "imdb": null,
+      "tmdb": 7,
+      "providers": [],
+      "age": null,
+      "popularity": 12
+    },
+    {
+      "id": 991,
+      "title": "Strung",
+      "originalTitle": "Strung",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "A talented violinist's prestigious new role as a music tutor for an enigmatic, elite family spirals into a psychological battle for her safety and sanity.",
+      "cover": "https://image.tmdb.org/t/p/w400/lWdpUOhnJ8uWWO1G1vbyUsCliov.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/3yQV8aUxMYeSCVF6R5Q6xcaMZsl.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 119,
+      "imdb": null,
+      "tmdb": 7.6,
+      "providers": [
+        "Peacock Premium",
+        "Peacock Premium Plus"
+      ],
+      "age": 13,
+      "popularity": 17
+    },
+    {
+      "id": 992,
+      "title": "Ip Man: Kung Fu Legend",
+      "originalTitle": "宗师叶问2",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": "unreleased",
+      "description": "In 1950s Hong Kong, British merchants and Chinese triads have joined forces to expand their territory, forcibly demolishing factories without regard for public welfare. This move draws fierce opposition from Ip Man, standing up for the workers, he faces pressure from all sides. Framed for murder, he is sent to prison. Within the prison walls, the triads set multiple deadly traps. Can Ip Man overcome these trials, escape the danger, and clear his name?",
+      "cover": "https://image.tmdb.org/t/p/w400/m3Low6jJrKXHSYFpXNkmYsG1Q6I.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/6HBbzW5D7StUBRi0yO6ZEq9rNB5.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 98,
+      "imdb": null,
+      "tmdb": 0,
+      "providers": [],
+      "age": null,
+      "popularity": 16
+    },
+    {
+      "id": 993,
+      "title": "In the Hand of Dante",
+      "originalTitle": "In the Hand of Dante",
+      "type": "movie",
+      "categories": [
+        "Movies",
+        "Star Wars"
+      ],
+      "year": 2026,
+      "endYear": null,
+      "status": null,
+      "description": "A Vatican priest discovers Dante's original Divine Comedy manuscript. When asked to authenticate it, writer Nick Tosches steals it, while a parallel story follows Dante's quest to create his masterpiece.",
+      "cover": "https://image.tmdb.org/t/p/w400/nPPIufTBnzEg0d7NoR5RLL1oPra.jpg",
+      "altCovers": [],
+      "backdrop": "https://image.tmdb.org/t/p/w780/tJJ737CJujLXw1GlUYd7K4AH3eB.jpg",
+      "seasons": null,
+      "episodes": null,
+      "runtime": 153,
+      "imdb": null,
+      "tmdb": 5.5,
+      "providers": [
+        "Netflix",
+        "Netflix Standard with Ads"
+      ],
+      "age": 16,
+      "popularity": 13
     }
   ],
   "collections": [
