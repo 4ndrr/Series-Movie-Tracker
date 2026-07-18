@@ -3889,7 +3889,7 @@
 
             function loadMpCatalogue() {
                 if (mpCataloguePromise) return mpCataloguePromise;
-                mpCataloguePromise = fetch('marketplace-data.json', { cache: 'force-cache' })
+                mpCataloguePromise = fetch('marketplace-data.json', { cache: 'no-cache' })
                     .then(r => r.ok ? r.json() : null)
                     .then(d => { mpCatalogue = (d && Array.isArray(d.catalogue)) ? d.catalogue : []; return mpCatalogue; })
                     .catch(() => { mpCatalogue = []; return mpCatalogue; });
