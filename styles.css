@@ -4067,3 +4067,182 @@
             margin-left: 10px;
         }
         body.light-theme .yr-row-count { color: #555; }
+
+        /* ═══════════════════════════════════════════════════════════
+           Visual refresh — depth, hierarchy and breathing room
+           (overrides for the flat same-grey-everywhere look)
+           ═══════════════════════════════════════════════════════════ */
+
+        /* Header: smaller logo, tighter rhythm */
+        header {
+            padding: 12px 0;
+            margin-bottom: 18px;
+        }
+        header img {
+            height: 92px !important;
+            filter: drop-shadow(0 4px 14px rgba(229, 9, 20, 0.25));
+        }
+        header h1 {
+            letter-spacing: 0.01em;
+        }
+
+        /* Sections: cards with borders, gradients and depth */
+        .statistics-dashboard,
+        .priority-section {
+            background: linear-gradient(180deg, #1c1c1e 0%, #171719 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        }
+        body.light-theme .statistics-dashboard,
+        body.light-theme .priority-section {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Section headings get a small accent underline */
+        .statistics-dashboard h2,
+        .priority-section h2 {
+            position: relative;
+            padding-bottom: 2px;
+        }
+        .statistics-dashboard #statsHeader h2::after,
+        .priority-section .watchlist-head h2::after {
+            content: '';
+            display: block;
+            width: 34px;
+            height: 3px;
+            border-radius: 3px;
+            margin-top: 6px;
+            background: var(--secondary-color, #e50914);
+        }
+
+        /* Stat cards: tiles with hover lift */
+        .stat-card {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            padding: 18px 14px;
+            transition: transform .18s ease, border-color .18s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            border-color: color-mix(in srgb, var(--secondary-color, #e50914) 45%, transparent);
+        }
+        .stat-card-label {
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+        body.light-theme .stat-card {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.045) 0%, rgba(0, 0, 0, 0.02) 100%);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* Series cards: depth, rounded, status colour on the left edge */
+        .series-item {
+            background: linear-gradient(180deg, #1d1d1f 0%, #18181a 100%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-left: 4px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+            transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+        }
+        .series-item:hover {
+            background: linear-gradient(180deg, #202023 0%, #1a1a1d 100%);
+            transform: translateY(-2px) scale(1.004);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.38);
+        }
+        .series-item.status-watching-item { border-left-color: var(--watching-color, #e50914); }
+        .series-item.status-want-item { border-left-color: var(--want-color, #0062ff); }
+        .series-item.status-completed-item { border-left-color: var(--completed-color, #27ae60); }
+        body.light-theme .series-item {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.09);
+            border-left-width: 4px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.07);
+        }
+        body.light-theme .series-item.status-watching-item { border-left-color: var(--watching-color, #e50914); }
+        body.light-theme .series-item.status-want-item { border-left-color: var(--want-color, #0062ff); }
+        body.light-theme .series-item.status-completed-item { border-left-color: var(--completed-color, #27ae60); }
+
+        .series-thumbnail {
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        /* The row of small stats reads as chips instead of loose text */
+        .series-stats {
+            gap: 10px;
+        }
+        .series-stats .stat-item {
+            background: rgba(255, 255, 255, 0.045);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            padding: 8px 12px;
+        }
+        body.light-theme .series-stats .stat-item {
+            background: rgba(0, 0, 0, 0.035);
+            border-color: rgba(0, 0, 0, 0.07);
+        }
+        .series-stats .stat-label {
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 2px;
+        }
+        .series-stats .stat-value {
+            font-size: 1rem;
+        }
+
+        /* Pills: badges, filters, search */
+        .status-badge {
+            border-radius: 999px;
+            padding: 4px 14px;
+        }
+        .filter-btn {
+            border-radius: 999px;
+        }
+        .filter-btn.active {
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--secondary-color, #e50914) 45%, transparent);
+        }
+        .search-input {
+            border-radius: 999px;
+            background-color: rgba(255, 255, 255, 0.07);
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--secondary-color, #e50914) 25%, transparent);
+        }
+        .filter-menu-btn {
+            border-radius: 999px;
+        }
+
+        /* Progress bars: subtle gradient */
+        .progress-bar {
+            height: 7px;
+            border-radius: 999px;
+        }
+        .progress-bar-fill {
+            border-radius: 999px;
+            background: linear-gradient(90deg,
+                color-mix(in srgb, var(--secondary-color, #e50914) 70%, #000) 0%,
+                var(--secondary-color, #e50914) 100%);
+        }
+
+        /* Watchlist rows */
+        .priority-item {
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.045);
+        }
+        body.light-theme .priority-item {
+            background-color: rgba(0, 0, 0, 0.035);
+            border-color: rgba(0, 0, 0, 0.07);
+        }
+
+        /* A touch more room between the big page blocks */
+        .statistics-dashboard { margin-bottom: 34px; }
+        .series-list { margin-bottom: 40px; }
+        .series-item { margin-bottom: 18px; }
