@@ -3157,6 +3157,14 @@
                 openOverlay('contentTypeDialog');
             });
 
+            // Home page floating add button
+            const homeAddFab = document.getElementById('homeAddFab');
+            if (homeAddFab) {
+                homeAddFab.addEventListener('click', () => {
+                    openOverlay('contentTypeDialog');
+                });
+            }
+
             // Notification calendar button
             const openNotificationCalendarBtn = document.getElementById('openNotificationCalendarBtn');
             const notificationCalendarModal = document.getElementById('notificationCalendarModal');
@@ -3867,9 +3875,190 @@
                     seriesModal.style.display = 'flex';
                     const modalBody = seriesModal.querySelector('.modal');
                     if (modalBody) modalBody.scrollTop = 0;
+                    hideTitleSuggestions();
                 });
             });
-            
+
+            // ── Title autocomplete: guess & auto-fill from marketplace catalogue ──
+            let mpCatalogue = null;
+            let mpCataloguePromise = null;
+            let titleSuggestionItems = [];
+            let activeTitleSuggestion = -1;
+            const titleAutoInput = document.getElementById('seriesTitle');
+            const titleSuggestionsBox = document.getElementById('titleSuggestions');
+
+            function loadMpCatalogue() {
+                if (mpCataloguePromise) return mpCataloguePromise;
+                mpCataloguePromise = fetch('marketplace-data.json', { cache: 'force-cache' })
+                    .then(r => r.ok ? r.json() : null)
+                    .then(d => { mpCatalogue = (d && Array.isArray(d.catalogue)) ? d.catalogue : []; return mpCatalogue; })
+                    .catch(() => { mpCatalogue = []; return mpCatalogue; });
+                return mpCataloguePromise;
+            }
+
+            function searchMpCatalogue(query) {
+                if (!mpCatalogue) return [];
+                const q = query.toLowerCase().trim();
+                if (q.length < 2) return [];
+                const starts = [];
+                const contains = [];
+                for (const item of mpCatalogue) {
+                    const t = (item.title || '').toLowerCase();
+                    if (t.startsWith(q)) starts.push(item);
+                    else if (t.includes(q)) contains.push(item);
+                }
+                const byPopularity = (a, b) => (b.popularity || 0) - (a.popularity || 0);
+                starts.sort(byPopularity);
+                contains.sort(byPopularity);
+                return starts.concat(contains).slice(0, 6);
+            }
+
+            function matchProviderChips(providers) {
+                const rules = [
+                    ['netflix', 'netflix'], ['disney', 'disney'], ['hbo', 'hbo'],
+                    ['amazon', 'amazon'], ['prime video', 'amazon'], ['hulu', 'hulu'],
+                    ['apple tv', 'apple'], ['paramount', 'paramount'],
+                    ['peacock', 'peacock'], ['crunchyroll', 'crunchyroll']
+                ];
+                const services = [];
+                (providers || []).forEach(p => {
+                    const lp = String(p).toLowerCase();
+                    for (const [needle, service] of rules) {
+                        if (lp.includes(needle) && !services.includes(service)) {
+                            services.push(service);
+                            break;
+                        }
+                    }
+                });
+                return services.slice(0, MAX_PROVIDERS);
+            }
+
+            function applyCatalogueItem(item) {
+                const type = item.type === 'movie' ? 'movie' : 'series';
+                if (!seriesForm.getAttribute('data-editing')) {
+                    modalTitle.textContent = type === 'movie' ? 'Add New Movie' : 'Add New Series';
+                }
+                titleAutoInput.value = item.title || '';
+                document.getElementById('seriesImage').value = item.cover || '';
+                // Prefer real genres (enriched from Wikidata/TVMaze); fall back to
+                // catalogue categories minus collection labels that aren't genres
+                let genres = Array.isArray(item.genres) ? item.genres : [];
+                if (!genres.length) {
+                    const skipCats = ['series', 'movies', 'popular', 'trending', 'new releases', 'star wars', 'mortal kombat'];
+                    genres = (item.categories || []).filter(c => !skipCats.includes(String(c).toLowerCase()));
+                }
+                document.getElementById('seriesGenre').value = genres.join(', ');
+                document.getElementById('seriesContentType').value = type;
+                if (type === 'series') {
+                    const seasonCount = item.seasons || 1;
+                    const fullEpisodes = item.episodes || 0;
+                    const perSeason = seasonCount > 0 ? (Math.round(fullEpisodes / seasonCount) || fullEpisodes) : fullEpisodes;
+                    document.getElementById('seriesTotalSeasons').value = seasonCount;
+                    if (perSeason > 0) document.getElementById('seriesTotalEpisodes').value = perSeason;
+                }
+                document.getElementById('seriesRuntime').value = item.runtime || 0;
+                if (type === 'movie' && item.runtime) {
+                    document.getElementById('seriesMaxTime').value = item.runtime;
+                }
+                const rating = item.imdb != null ? item.imdb : item.tmdb;
+                document.getElementById('seriesImdb').value = rating != null ? String(rating) : '';
+                if (item.age != null && !isNaN(item.age)) {
+                    const a = Number(item.age);
+                    document.getElementById('seriesAge').value = a >= 18 ? '18' : a >= 16 ? '16' : a >= 12 ? '12' : a >= 6 ? '6' : '0';
+                }
+                if (item.description) document.getElementById('seriesNotes').value = item.description;
+                const services = matchProviderChips(item.providers);
+                document.querySelectorAll('#streamingMultiSelect .streaming-chip').forEach(c => {
+                    c.classList.toggle('selected', services.includes(c.getAttribute('data-service')));
+                });
+                document.getElementById('seriesStreamingService').value = services.join(',');
+                toggleEpisodeFields(type);
+                handleStatusChange(document.getElementById('seriesStatus').value);
+                hideTitleSuggestions();
+            }
+
+            function hideTitleSuggestions() {
+                if (!titleSuggestionsBox) return;
+                titleSuggestionsBox.style.display = 'none';
+                titleSuggestionsBox.innerHTML = '';
+                titleSuggestionItems = [];
+                activeTitleSuggestion = -1;
+            }
+
+            function setActiveTitleSuggestion(i) {
+                const els = titleSuggestionsBox.querySelectorAll('.title-suggestion');
+                if (!els.length) return;
+                activeTitleSuggestion = ((i % els.length) + els.length) % els.length;
+                els.forEach((el, idx) => el.classList.toggle('active', idx === activeTitleSuggestion));
+                els[activeTitleSuggestion].scrollIntoView({ block: 'nearest' });
+            }
+
+            function renderTitleSuggestions(items) {
+                if (!items.length) { hideTitleSuggestions(); return; }
+                titleSuggestionItems = items;
+                activeTitleSuggestion = -1;
+                titleSuggestionsBox.innerHTML = '';
+                items.forEach(item => {
+                    const row = document.createElement('div');
+                    row.className = 'title-suggestion';
+                    const img = document.createElement('img');
+                    img.loading = 'lazy';
+                    img.src = item.cover || '';
+                    img.onerror = function() { this.style.visibility = 'hidden'; };
+                    const info = document.createElement('div');
+                    info.className = 'title-suggestion-info';
+                    const t = document.createElement('div');
+                    t.className = 'title-suggestion-title';
+                    t.textContent = item.title || '';
+                    const m = document.createElement('div');
+                    m.className = 'title-suggestion-meta';
+                    m.textContent = [item.year, item.type === 'movie' ? 'Movie' : item.type === 'anime' ? 'Anime' : 'Series'].filter(Boolean).join(' · ');
+                    info.appendChild(t);
+                    info.appendChild(m);
+                    const fill = document.createElement('span');
+                    fill.className = 'title-suggestion-fill';
+                    fill.textContent = 'Auto-fill';
+                    row.appendChild(img);
+                    row.appendChild(info);
+                    row.appendChild(fill);
+                    row.addEventListener('mousedown', e => {
+                        e.preventDefault();
+                        applyCatalogueItem(item);
+                    });
+                    titleSuggestionsBox.appendChild(row);
+                });
+                titleSuggestionsBox.style.display = 'block';
+            }
+
+            if (titleAutoInput && titleSuggestionsBox) {
+                titleAutoInput.addEventListener('focus', () => { loadMpCatalogue(); });
+                titleAutoInput.addEventListener('input', () => {
+                    // Only suggest while adding new content, not while editing existing
+                    if (seriesForm.getAttribute('data-editing')) { hideTitleSuggestions(); return; }
+                    if (titleAutoInput.value.trim().length < 2) { hideTitleSuggestions(); return; }
+                    loadMpCatalogue().then(() => {
+                        if (document.activeElement !== titleAutoInput) return;
+                        renderTitleSuggestions(searchMpCatalogue(titleAutoInput.value));
+                    });
+                });
+                titleAutoInput.addEventListener('keydown', e => {
+                    if (titleSuggestionsBox.style.display === 'none' || !titleSuggestionItems.length) return;
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        setActiveTitleSuggestion(activeTitleSuggestion + 1);
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        setActiveTitleSuggestion(activeTitleSuggestion - 1);
+                    } else if (e.key === 'Enter') {
+                        e.preventDefault();
+                        applyCatalogueItem(titleSuggestionItems[activeTitleSuggestion >= 0 ? activeTitleSuggestion : 0]);
+                    } else if (e.key === 'Escape') {
+                        hideTitleSuggestions();
+                    }
+                });
+                titleAutoInput.addEventListener('blur', () => { setTimeout(hideTitleSuggestions, 150); });
+            }
+
             // Auto-save functionality for all fields
             let autoSaveTimeouts = {};
             let currentEditingSeriesId = null;
