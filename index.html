@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#141414">
+    <link rel="apple-touch-icon" href="icon-192.png">
     <title>Series & Movie Tracker</title>
     <link rel="stylesheet" href="styles.css">
 
@@ -343,6 +346,21 @@
                     </div>
                     <div class="watch-timeline-details" id="watchTimelineDetails">Hover a point to inspect — click to pin.</div>
                 </div>
+                <button class="btn btn-small" id="yearReviewBtn" style="margin-top: 14px;"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>Year in Review</button>
+            </div>
+        </div>
+
+        <!-- Year in Review modal -->
+        <div class="overlay" id="yearReviewModal">
+            <div class="modal" style="max-width: 560px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom: 6px;">
+                    <h2 style="margin:0;">Your Year in Review</h2>
+                    <select id="yearReviewYear" class="form-control" style="width:auto; padding:6px 10px;"></select>
+                </div>
+                <div id="yearReviewBody"></div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="yearReviewCloseBtn">Close</button>
+                </div>
             </div>
         </div>
 
@@ -367,7 +385,10 @@
         <div class="priority-section">
             <div class="watchlist-head">
                 <h2>Watchlist <span class="watchlist-count" id="watchlistCount"></span></h2>
-                <button class="btn btn-small btn-secondary" id="clearWatchlistBtn" style="display:none;">Clear all</button>
+                <div style="display:flex; gap:8px; align-items:center;">
+                    <button class="btn btn-small" id="tonightPickerBtn"><svg style="width:14px;height:14px;vertical-align:-2px;margin-right:5px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/></svg>What tonight?</button>
+                    <button class="btn btn-small btn-secondary" id="clearWatchlistBtn" style="display:none;">Clear all</button>
+                </div>
             </div>
             <div id="priorityList"></div>
         </div>
@@ -455,6 +476,41 @@
                 <div style="text-align: center; margin-top: 10px;">
                     <button type="button" class="btn btn-secondary" onclick="closeImportOptionsModal()">Cancel</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- "What to watch tonight?" random picker -->
+    <div class="overlay" id="tonightPickerModal">
+        <div class="modal" style="max-width: 460px;">
+            <h2 style="display:flex;align-items:center;gap:8px;"><svg style="width:22px;height:22px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/></svg>What to watch tonight?</h2>
+            <div class="form-group">
+                <label for="tonightSource">Pick from</label>
+                <select id="tonightSource" class="form-control">
+                    <option value="want">Want to Watch</option>
+                    <option value="unfinished">Anything unfinished</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tonightGenre">Genre</label>
+                <select id="tonightGenre" class="form-control">
+                    <option value="">Any genre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="tonightMaxTime">Time for…</label>
+                <select id="tonightMaxTime" class="form-control">
+                    <option value="">Anything</option>
+                    <option value="30">A quick one (≤ 30 min)</option>
+                    <option value="60">About an hour (≤ 60 min)</option>
+                    <option value="120">A movie night (≤ 2 h)</option>
+                    <option value="180">An epic (≤ 3 h)</option>
+                </select>
+            </div>
+            <div id="tonightResult" style="display:none;"></div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="tonightCloseBtn">Close</button>
+                <button type="button" class="btn" id="tonightSpinBtn">Surprise me</button>
             </div>
         </div>
     </div>
@@ -838,6 +894,13 @@
     </div>
 
     <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(() => {});
+            });
+        }
+    </script>
 </body>
 
 </html>

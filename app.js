@@ -2146,7 +2146,10 @@
                                     ${ratingDisplay}
                                     ${tagsDisplay}
                                 </div>
-                                <span class="expand-icon ${isExpanded ? 'expanded' : ''}">▼</span>
+                                <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+                                    ${serie.status === 'watching' ? `<button class="mark-ep-btn quick-ep-btn" data-id="${serie.id}" title="${isSeries ? 'Episode watched — advance to next' : 'Mark movie as watched'}">${isSeries ? '+1' : '✓'}</button>` : ''}
+                                    <span class="expand-icon ${isExpanded ? 'expanded' : ''}">▼</span>
+                                </div>
                             </div>
                             ${progressPercent > 0 ? `
                             <div class="progress-bar-container">
@@ -3165,6 +3168,276 @@
                 });
             }
 
+            // ── "What to watch tonight?" random picker ──────────────
+            const tonightPickerBtn = document.getElementById('tonightPickerBtn');
+            const tonightModal = document.getElementById('tonightPickerModal');
+            if (tonightPickerBtn && tonightModal) {
+                const tonightSourceSel = document.getElementById('tonightSource');
+                const tonightGenreSel = document.getElementById('tonightGenre');
+                const tonightTimeSel = document.getElementById('tonightMaxTime');
+                const tonightResult = document.getElementById('tonightResult');
+                let tonightLastPick = null;
+
+                function tonightCandidates() {
+                    return series.filter(s => tonightSourceSel.value === 'want'
+                        ? s.status === 'want'
+                        : s.status !== 'completed');
+                }
+
+                function tonightSessionMinutes(s) {
+                    // minutes for one sitting: the whole movie, or one episode
+                    if ((s.contentType || 'series') === 'movie') return s.runtime || s.maxTime || 0;
+                    return s.runtime || 0;
+                }
+
+                function populateTonightGenres() {
+                    const genres = new Set();
+                    tonightCandidates().forEach(s =>
+                        (s.genre || '').split(',').map(g => g.trim()).filter(Boolean).forEach(g => genres.add(g)));
+                    const current = tonightGenreSel.value;
+                    tonightGenreSel.innerHTML = '<option value="">Any genre</option>';
+                    [...genres].sort().forEach(g => {
+                        const opt = document.createElement('option');
+                        opt.textContent = g;
+                        tonightGenreSel.appendChild(opt);
+                    });
+                    tonightGenreSel.value = current;
+                    if (tonightGenreSel.selectedIndex === -1) tonightGenreSel.selectedIndex = 0;
+                }
+
+                function spinTonight() {
+                    const genre = tonightGenreSel.value.toLowerCase();
+                    const maxT = parseInt(tonightTimeSel.value) || 0;
+                    let pool = tonightCandidates().filter(s => {
+                        if (genre && !(s.genre || '').toLowerCase().includes(genre)) return false;
+                        if (maxT) {
+                            const m = tonightSessionMinutes(s);
+                            if (!m || m > maxT) return false;
+                        }
+                        return true;
+                    });
+                    if (pool.length > 1 && tonightLastPick != null) {
+                        pool = pool.filter(s => s.id !== tonightLastPick);
+                    }
+                    tonightResult.style.display = 'block';
+                    tonightResult.innerHTML = '';
+                    if (!pool.length) {
+                        const p = document.createElement('p');
+                        p.style.cssText = 'color:#999;text-align:center;padding:14px 0;';
+                        p.textContent = 'Nothing matches those filters — loosen them up or add more titles.';
+                        tonightResult.appendChild(p);
+                        return;
+                    }
+                    const pick = pool[Math.floor(Math.random() * pool.length)];
+                    tonightLastPick = pick.id;
+                    const isMovie = (pick.contentType || 'series') === 'movie';
+                    const card = document.createElement('div');
+                    card.className = 'tonight-pick-card';
+                    const img = document.createElement('img');
+                    img.src = pick.image || '';
+                    img.onerror = function() { this.onerror = null; this.src = 'https://via.placeholder.com/150/333/fff?text=No+Image'; };
+                    const info = document.createElement('div');
+                    info.className = 'tonight-pick-info';
+                    const t = document.createElement('div');
+                    t.className = 'tonight-pick-title';
+                    t.textContent = pick.title;
+                    const meta = document.createElement('div');
+                    meta.className = 'tonight-pick-meta';
+                    const mins = tonightSessionMinutes(pick);
+                    meta.textContent = [
+                        isMovie ? 'Movie' : `Series · S${pick.season || 1} E${pick.episode || 1} up next`,
+                        pick.genre || null,
+                        mins ? `${mins} min${isMovie ? '' : ' / ep'}` : null
+                    ].filter(Boolean).join(' · ');
+                    info.appendChild(t);
+                    info.appendChild(meta);
+                    if (pick.status !== 'watching') {
+                        const startBtn = document.createElement('button');
+                        startBtn.className = 'btn btn-small';
+                        startBtn.style.marginTop = '10px';
+                        startBtn.textContent = 'Start watching';
+                        startBtn.addEventListener('click', () => {
+                            pick.status = 'watching';
+                            if (!pick.startedDate) pick.startedDate = getLocalDateString();
+                            saveData();
+                            renderSeries();
+                            renderStatistics();
+                            closeOverlay('tonightPickerModal');
+                            showTrackingToast(`${pick.title} — enjoy tonight!`);
+                        });
+                        info.appendChild(startBtn);
+                    }
+                    card.appendChild(img);
+                    card.appendChild(info);
+                    tonightResult.appendChild(card);
+                }
+
+                tonightPickerBtn.addEventListener('click', () => {
+                    populateTonightGenres();
+                    tonightResult.style.display = 'none';
+                    tonightLastPick = null;
+                    openOverlay('tonightPickerModal');
+                });
+                document.getElementById('tonightSpinBtn').addEventListener('click', spinTonight);
+                document.getElementById('tonightCloseBtn').addEventListener('click', () => closeOverlay('tonightPickerModal'));
+                tonightSourceSel.addEventListener('change', populateTonightGenres);
+                tonightModal.addEventListener('click', e => {
+                    if (e.target === tonightModal) closeOverlay('tonightPickerModal');
+                });
+            }
+
+            // ── Year in Review ──────────────────────────────────────
+            const yearReviewBtn = document.getElementById('yearReviewBtn');
+            const yearReviewModal = document.getElementById('yearReviewModal');
+            if (yearReviewBtn && yearReviewModal) {
+                const yearSel = document.getElementById('yearReviewYear');
+                const yearBody = document.getElementById('yearReviewBody');
+                const MONTH_NAMES = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+                function yearReviewEntries(year) {
+                    const entries = [];
+                    series.forEach(s => {
+                        (Array.isArray(s.watchHistory) ? s.watchHistory : []).forEach(e => {
+                            if (e.date && e.date.startsWith(year)) entries.push({ entry: e, serie: s });
+                        });
+                    });
+                    return entries;
+                }
+
+                function entryMinutes(x) {
+                    const s = x.serie;
+                    if ((x.entry.contentType || s.contentType || 'series') === 'movie') {
+                        return s.runtime || s.maxTime || 0;
+                    }
+                    return s.runtime || 0;
+                }
+
+                function el(tag, cls, text) {
+                    const n = document.createElement(tag);
+                    if (cls) n.className = cls;
+                    if (text != null) n.textContent = text;
+                    return n;
+                }
+
+                function statTile(value, label) {
+                    const tile = el('div', 'yr-tile');
+                    tile.appendChild(el('div', 'yr-tile-value', value));
+                    tile.appendChild(el('div', 'yr-tile-label', label));
+                    return tile;
+                }
+
+                function topList(title, counts, max) {
+                    const wrap = el('div', 'yr-block');
+                    wrap.appendChild(el('h3', null, title));
+                    counts.slice(0, 5).forEach(([name, count]) => {
+                        const row = el('div', 'yr-row');
+                        const fill = el('div', 'yr-row-fill');
+                        fill.style.width = Math.max(6, Math.round(count / max * 100)) + '%';
+                        row.appendChild(fill);
+                        row.appendChild(el('span', 'yr-row-name', name));
+                        row.appendChild(el('span', 'yr-row-count', String(count)));
+                        wrap.appendChild(row);
+                    });
+                    return wrap;
+                }
+
+                function renderYearReview() {
+                    const year = yearSel.value;
+                    yearBody.innerHTML = '';
+                    const entries = yearReviewEntries(year);
+                    if (!entries.length) {
+                        const p = el('p', null, `No watch activity logged in ${year} yet. Use the +1 button on a card to start logging.`);
+                        p.style.cssText = 'color:#999;text-align:center;padding:20px 0;';
+                        yearBody.appendChild(p);
+                        return;
+                    }
+
+                    const episodes = entries.filter(x => (x.entry.contentType || 'series') === 'series').length;
+                    const movies = entries.filter(x => (x.entry.contentType || 'series') === 'movie').length;
+                    const minutes = entries.reduce((sum, x) => sum + entryMinutes(x), 0);
+                    const completedCount = series.filter(s => s.completedDate && String(s.completedDate).startsWith(year)).length;
+
+                    // Longest daily streak
+                    const days = [...new Set(entries.map(x => x.entry.date))].sort();
+                    let streak = 1, best = 1;
+                    for (let i = 1; i < days.length; i++) {
+                        const prev = new Date(days[i - 1] + 'T00:00:00');
+                        const cur = new Date(days[i] + 'T00:00:00');
+                        if ((cur - prev) === 86400000) { streak++; best = Math.max(best, streak); }
+                        else streak = 1;
+                    }
+
+                    const tiles = el('div', 'yr-grid');
+                    tiles.appendChild(statTile(String(episodes), 'Episodes'));
+                    tiles.appendChild(statTile(String(movies), 'Movies'));
+                    tiles.appendChild(statTile(minutes >= 60 ? `${Math.floor(minutes / 60)}h ${minutes % 60}m` : `${minutes}m`, 'Watch Time'));
+                    tiles.appendChild(statTile(String(completedCount), 'Completed'));
+                    tiles.appendChild(statTile(`${best} day${best === 1 ? '' : 's'}`, 'Longest Streak'));
+                    yearBody.appendChild(tiles);
+
+                    // Per-month bar chart
+                    const monthCounts = Array(12).fill(0);
+                    entries.forEach(x => { monthCounts[parseInt(x.entry.date.slice(5, 7), 10) - 1]++; });
+                    const maxMonth = Math.max(...monthCounts, 1);
+                    const chartBlock = el('div', 'yr-block');
+                    chartBlock.appendChild(el('h3', null, 'Activity per Month'));
+                    const chart = el('div', 'yr-months');
+                    monthCounts.forEach((count, i) => {
+                        const col = el('div', 'yr-month');
+                        const bar = el('div', 'yr-month-bar');
+                        bar.style.height = Math.max(3, Math.round(count / maxMonth * 70)) + 'px';
+                        bar.title = `${MONTH_NAMES[i]}: ${count}`;
+                        col.appendChild(bar);
+                        col.appendChild(el('div', 'yr-month-label', MONTH_NAMES[i]));
+                        chart.appendChild(col);
+                    });
+                    chartBlock.appendChild(chart);
+                    yearBody.appendChild(chartBlock);
+
+                    // Top genres
+                    const genreCounts = {};
+                    entries.forEach(x => (x.serie.genre || '').split(',').map(g => g.trim()).filter(Boolean)
+                        .forEach(g => { genreCounts[g] = (genreCounts[g] || 0) + 1; }));
+                    const sortedGenres = Object.entries(genreCounts).sort((a, b) => b[1] - a[1]);
+                    if (sortedGenres.length) {
+                        yearBody.appendChild(topList('Top Genres', sortedGenres, sortedGenres[0][1]));
+                    }
+
+                    // Most watched titles
+                    const titleCounts = {};
+                    entries.forEach(x => { titleCounts[x.serie.title] = (titleCounts[x.serie.title] || 0) + 1; });
+                    const sortedTitles = Object.entries(titleCounts).sort((a, b) => b[1] - a[1]);
+                    yearBody.appendChild(topList('Most Watched', sortedTitles, sortedTitles[0][1]));
+                }
+
+                yearReviewBtn.addEventListener('click', () => {
+                    const years = new Set();
+                    series.forEach(s => {
+                        (Array.isArray(s.watchHistory) ? s.watchHistory : []).forEach(e => {
+                            if (e.date) years.add(e.date.slice(0, 4));
+                        });
+                        if (s.completedDate) years.add(String(s.completedDate).slice(0, 4));
+                    });
+                    const currentYear = String(new Date().getFullYear());
+                    years.add(currentYear);
+                    yearSel.innerHTML = '';
+                    [...years].sort().reverse().forEach(y => {
+                        const opt = document.createElement('option');
+                        opt.value = y;
+                        opt.textContent = y;
+                        yearSel.appendChild(opt);
+                    });
+                    yearSel.value = currentYear;
+                    renderYearReview();
+                    openOverlay('yearReviewModal');
+                });
+                yearSel.addEventListener('change', renderYearReview);
+                document.getElementById('yearReviewCloseBtn').addEventListener('click', () => closeOverlay('yearReviewModal'));
+                yearReviewModal.addEventListener('click', e => {
+                    if (e.target === yearReviewModal) closeOverlay('yearReviewModal');
+                });
+            }
+
             // Notification calendar button
             const openNotificationCalendarBtn = document.getElementById('openNotificationCalendarBtn');
             const notificationCalendarModal = document.getElementById('notificationCalendarModal');
@@ -3933,6 +4206,62 @@
                 return services.slice(0, MAX_PROVIDERS);
             }
 
+            // Live TVMaze lookup used when the local catalogue has no match
+            const tvmazeCache = {};
+            let tvmazeSearchTimer = null;
+
+            function stripHtml(html) {
+                const tmp = document.createElement('div');
+                tmp.innerHTML = html || '';
+                return tmp.textContent || '';
+            }
+
+            function searchTvmaze(query) {
+                const q = query.toLowerCase().trim();
+                if (tvmazeCache[q]) return Promise.resolve(tvmazeCache[q]);
+                return fetch('https://api.tvmaze.com/search/shows?q=' + encodeURIComponent(q))
+                    .then(r => r.ok ? r.json() : [])
+                    .then(list => {
+                        const items = (list || []).slice(0, 6).map(entry => {
+                            const s = entry.show || {};
+                            return {
+                                tvmazeId: s.id,
+                                title: s.name || '',
+                                type: 'series',
+                                year: s.premiered ? parseInt(s.premiered.slice(0, 4)) : null,
+                                cover: (s.image && (s.image.original || s.image.medium)) || '',
+                                genres: (s.genres || []).slice(0, 4),
+                                runtime: s.averageRuntime || s.runtime || 0,
+                                tmdb: (s.rating && s.rating.average) || null,
+                                description: stripHtml(s.summary).trim(),
+                                providers: [],
+                                categories: []
+                            };
+                        }).filter(x => x.title);
+                        tvmazeCache[q] = items;
+                        return items;
+                    })
+                    .catch(() => []);
+            }
+
+            function fillTvmazeEpisodeCounts(item) {
+                if (!item.tvmazeId) return;
+                const expectTitle = item.title || '';
+                fetch('https://api.tvmaze.com/shows/' + item.tvmazeId + '/episodes')
+                    .then(r => r.ok ? r.json() : [])
+                    .then(eps => {
+                        if (!Array.isArray(eps) || !eps.length) return;
+                        // Bail out if the user switched to another title meanwhile
+                        if (titleAutoInput.value !== expectTitle) return;
+                        const regular = eps.filter(e => e.type !== 'insignificant_special');
+                        const seasons = Math.max(...regular.map(e => e.season || 1));
+                        const perSeason = Math.round(regular.length / seasons) || regular.length;
+                        document.getElementById('seriesTotalSeasons').value = seasons;
+                        document.getElementById('seriesTotalEpisodes').value = perSeason;
+                    })
+                    .catch(() => {});
+            }
+
             function applyCatalogueItem(item) {
                 const type = item.type === 'movie' ? 'movie' : 'series';
                 if (!seriesForm.getAttribute('data-editing')) {
@@ -3975,6 +4304,7 @@
                 toggleEpisodeFields(type);
                 handleStatusChange(document.getElementById('seriesStatus').value);
                 hideTitleSuggestions();
+                fillTvmazeEpisodeCounts(item);
             }
 
             function hideTitleSuggestions() {
@@ -4012,7 +4342,7 @@
                     t.textContent = item.title || '';
                     const m = document.createElement('div');
                     m.className = 'title-suggestion-meta';
-                    m.textContent = [item.year, item.type === 'movie' ? 'Movie' : item.type === 'anime' ? 'Anime' : 'Series'].filter(Boolean).join(' · ');
+                    m.textContent = [item.year, item.type === 'movie' ? 'Movie' : item.type === 'anime' ? 'Anime' : 'Series', item.tvmazeId ? 'TVMaze' : null].filter(Boolean).join(' · ');
                     info.appendChild(t);
                     info.appendChild(m);
                     const fill = document.createElement('span');
@@ -4035,10 +4365,22 @@
                 titleAutoInput.addEventListener('input', () => {
                     // Only suggest while adding new content, not while editing existing
                     if (seriesForm.getAttribute('data-editing')) { hideTitleSuggestions(); return; }
+                    if (tvmazeSearchTimer) { clearTimeout(tvmazeSearchTimer); tvmazeSearchTimer = null; }
                     if (titleAutoInput.value.trim().length < 2) { hideTitleSuggestions(); return; }
                     loadMpCatalogue().then(() => {
                         if (document.activeElement !== titleAutoInput) return;
-                        renderTitleSuggestions(searchMpCatalogue(titleAutoInput.value));
+                        const query = titleAutoInput.value;
+                        const local = searchMpCatalogue(query);
+                        renderTitleSuggestions(local);
+                        if (local.length) return;
+                        // Nothing in the local catalogue — ask TVMaze after a short pause
+                        tvmazeSearchTimer = setTimeout(() => {
+                            searchTvmaze(query).then(items => {
+                                if (document.activeElement !== titleAutoInput) return;
+                                if (titleAutoInput.value !== query) return;
+                                renderTitleSuggestions(items);
+                            });
+                        }, 350);
                     });
                 });
                 titleAutoInput.addEventListener('keydown', e => {
