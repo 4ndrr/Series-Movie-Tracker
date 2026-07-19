@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script>
+        // First-time visitors land on the landing page; the "Open the app"
+        // button there sets the flag so the app opens directly afterwards.
+        try {
+            if (!localStorage.getItem('seriesTrackerLandingSeen')) {
+                window.location.replace('landing.html');
+            }
+        } catch (e) {}
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
@@ -108,10 +117,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="gradient-text-controls" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">
-                    <label class="toggle-row" style="display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:10px;">
-                        <span style="display:flex;align-items:center;gap:6px;"><svg style="width:15px;height:15px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg> Gradient text</span>
-                        <input type="checkbox" id="gradientTextToggle">
+                <div class="gradient-text-controls" style="margin-top:12px;">
+                    <label class="sidebar-menu-item" style="justify-content: space-between;">
+                        <span><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg> Gradient text</span>
+                        <input type="checkbox" id="gradientTextToggle" style="cursor: pointer; flex-shrink:0; width:18px; height:18px; accent-color: var(--secondary-color, #e50914);">
                     </label>
                     <div class="gradient-color-controls" id="gradientColorControls" style="display:none;margin-top:10px;">
                         <div class="color-picker-wrapper">
@@ -150,12 +159,15 @@
                     <span><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Notifications</span>
                     <input type="checkbox" id="settingShowNotifications" style="cursor: pointer; flex-shrink:0; width:18px; height:18px; accent-color: var(--secondary-color, #e50914);">
                 </label>
+                <label class="sidebar-menu-item" style="justify-content: space-between;">
+                    <span><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="18.5" r="2.5"/></svg> Colored Filters</span>
+                    <input type="checkbox" id="settingColoredFilters" style="cursor: pointer; flex-shrink:0; width:18px; height:18px; accent-color: var(--secondary-color, #e50914);">
+                </label>
                 <button class="sidebar-menu-item" id="openNotificationCalendarBtn" style="border:none; background:rgba(255,255,255,0.05); color:inherit; width:100%;"><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Notification Calendar</button>
-                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
+                <div id="autoExportIntervalWrap" style="display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
                     <div style="font-size: 0.82rem; color: #aaa; margin-bottom: 6px; font-weight: 600;" class="auto-save-label">Auto Export Interval</div>
                     <div style="font-size: 0.75rem; color: #666; margin-bottom: 8px; font-style: italic;" class="auto-save-info">Only works when on site</div>
                     <select id="settingAutoSaveInterval" class="sidebar-menu-item" style="padding: 0 12px; height: 44px; background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; color: inherit; cursor: pointer; margin-top: 0; font-size: 0.9rem; appearance: auto;">
-                        <option value="off">Off</option>
                         <option value="1min">Every 1 minute</option>
                         <option value="10min">Every 10 minutes</option>
                         <option value="1h">Every 1 hour</option>
@@ -176,7 +188,6 @@
                 <div class="sidebar-section-title"><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>Help</div>
                 <a href="SeriesTracker_Guide.html" class="sidebar-menu-item"><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Guide &amp; Tutorials</a>
                 <a href="ChangelogSerien.html" class="sidebar-menu-item"><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg> Changelog</a>
-                <a href="Application_Summary.html" class="sidebar-menu-item"><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg> Application Summary</a>
                 <a href="Legal.html" class="sidebar-menu-item"><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 7l9-4 9 4M5 7v6a7 7 0 0 0 14 0V7M2 13h6M16 13h6"/></svg> Legal &amp; Attribution</a>
             </div>
             <!-- ATTRIBUTION (required by TMDB terms of use) -->
@@ -515,6 +526,18 @@
         </div>
     </div>
 
+    <!-- Generic styled confirm/alert dialog -->
+    <div class="overlay" id="appConfirmModal" style="z-index: 2002;">
+        <div class="modal" style="max-width: 430px;">
+            <h2 id="appConfirmTitle" style="margin-bottom: 12px;"></h2>
+            <p id="appConfirmMessage" style="color: #bbb; line-height: 1.6; white-space: pre-line; margin-bottom: 6px;"></p>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-secondary" id="appConfirmCancelBtn">Cancel</button>
+                <button type="button" class="btn" id="appConfirmOkBtn">OK</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Cookie Warning Notification -->
     <div class="overlay" id="cookieWarningModal" style="z-index: 2001;">
         <div class="modal" style="max-width: 500px;">
@@ -698,14 +721,14 @@
                 <div class="form-group">
                     <label>Streaming Service(s)</label>
                     <div class="streaming-multi-select" id="streamingMultiSelect">
-                        <div class="streaming-chip" data-service="netflix"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/200px-Netflix_2015_logo.svg.png" onerror="this.style.display='none'">Netflix</div>
-                        <div class="streaming-chip" data-service="disney"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/200px-Disney%2B_logo.svg.png" onerror="this.style.display='none'">Disney+</div>
-                        <div class="streaming-chip" data-service="hbo"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/HBO_Max_Logo_%28October_2019%29.svg" onerror="this.style.display='none'">HBO Max</div>
-                        <div class="streaming-chip" data-service="amazon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Amazon_Prime_Video_logo.svg/200px-Amazon_Prime_Video_logo.svg.png" onerror="this.style.display='none'">Amazon</div>
-                        <div class="streaming-chip" data-service="hulu"><img src="https://upload.wikimedia.org/wikipedia/de/thumb/0/0e/Hulu-Logo.svg/500px-Hulu-Logo.svg.png?_=20090719001746" onerror="this.style.display='none'">Hulu</div>
-                        <div class="streaming-chip" data-service="apple"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/AppleTVLogo.svg/2048px-AppleTVLogo.svg.png" onerror="this.style.display='none'">Apple TV+</div>
-                        <div class="streaming-chip" data-service="paramount"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Paramount_Plus.svg/200px-Paramount_Plus.svg.png" onerror="this.style.display='none'">Paramount+</div>
-                        <div class="streaming-chip" data-service="peacock"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/NBC_Peacock_%282022%29.svg/960px-NBC_Peacock_%282022%29.svg.png" onerror="this.style.display='none'">Peacock</div>
+                        <div class="streaming-chip" data-service="netflix"><img src="https://www.google.com/s2/favicons?domain=netflix.com&sz=128" onerror="this.style.display='none'">Netflix</div>
+                        <div class="streaming-chip" data-service="disney"><img src="https://www.google.com/s2/favicons?domain=disneyplus.com&sz=128" onerror="this.style.display='none'">Disney+</div>
+                        <div class="streaming-chip" data-service="hbo"><img src="https://www.google.com/s2/favicons?domain=max.com&sz=128" onerror="this.style.display='none'">HBO Max</div>
+                        <div class="streaming-chip" data-service="amazon"><img src="https://www.google.com/s2/favicons?domain=primevideo.com&sz=128" onerror="this.style.display='none'">Amazon</div>
+                        <div class="streaming-chip" data-service="hulu"><img src="https://www.google.com/s2/favicons?domain=hulu.com&sz=128" onerror="this.style.display='none'">Hulu</div>
+                        <div class="streaming-chip" data-service="apple"><img src="https://www.google.com/s2/favicons?domain=tv.apple.com&sz=128" onerror="this.style.display='none'">Apple TV+</div>
+                        <div class="streaming-chip" data-service="paramount"><img src="https://www.google.com/s2/favicons?domain=paramountplus.com&sz=128" onerror="this.style.display='none'">Paramount+</div>
+                        <div class="streaming-chip" data-service="peacock"><img src="https://www.google.com/s2/favicons?domain=peacocktv.com&sz=128" onerror="this.style.display='none'">Peacock</div>
                         <div class="streaming-chip" data-service="crunchyroll"><img src="https://www.google.com/s2/favicons?domain=crunchyroll.com&sz=128" onerror="this.onerror=null; this.src='https://logo.clearbit.com/crunchyroll.com';">Crunchyroll</div>
                         <div class="streaming-chip" data-service="other">Other</div>
                     </div>
@@ -881,7 +904,7 @@
             </form>
         </div>
     </div>
-   <center> Made with love by Twilight</center>
+   <center> Made with love by twillightmay &amp; x4ndrrr</center>
     <div class="welcome-toast" id="welcomeToast"></div>
     <div class="overlay" id="exportMessageModal">
         <div class="modal" style="max-width:520px;">

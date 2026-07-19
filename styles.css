@@ -191,8 +191,6 @@
         .sticky-top-bar.scrolled {
             background-color: var(--primary-color, #141414);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
-            padding-top: 6px;
-            padding-bottom: 2px;
         }
 
         body.light-theme .sticky-top-bar.scrolled {
@@ -201,41 +199,20 @@
         }
 
         .sticky-top-bar header {
-            padding: 20px 0;
-            margin-bottom: 24px;
-            transition: padding 0.25s ease, margin-bottom 0.25s ease;
+            padding: 12px 0;
+            margin-bottom: 18px;
         }
 
         .sticky-top-bar header img {
-            height: 150px;
-            transition: height 0.25s ease;
-        }
-
-        .sticky-top-bar.scrolled header {
-            padding: 8px 0;
-            margin-bottom: 10px;
-        }
-
-        .sticky-top-bar.scrolled header img {
-            height: 56px;
+            height: 92px;
         }
 
         .sticky-top-bar .filter-controls {
             margin-bottom: 24px;
-            transition: margin-bottom 0.25s ease;
         }
 
         .sticky-top-bar .search-filter-bar {
             margin-bottom: 18px;
-            transition: margin-bottom 0.25s ease;
-        }
-
-        .sticky-top-bar.scrolled .filter-controls {
-            margin-bottom: 10px;
-        }
-
-        .sticky-top-bar.scrolled .search-filter-bar {
-            margin-bottom: 10px;
         }
 
         /* Collapse toggle — only usable while at top (inline) */
@@ -942,7 +919,7 @@
             margin: 24px 0 6px 0;
             border-radius: 12px;
             padding: 20px 20px 14px;
-            background: var(--primary-color, #141414);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.03) 100%);
             border: 1px solid rgba(255,255,255,0.07);
             position: relative;
             overflow: hidden;
@@ -1451,10 +1428,24 @@
         }
 
         .drag-handle {
-            color: #666;
-            font-size: 1.5rem;
+            color: #888;
+            font-size: 1.3rem;
             cursor: grab;
             user-select: none;
+            touch-action: none;
+            display: grid;
+            place-items: center;
+            width: 40px;
+            height: 40px;
+            margin: -8px 0 -8px -8px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            transition: background-color .15s ease, color .15s ease;
+        }
+
+        .drag-handle:hover {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #fff;
         }
 
         .drag-handle:active {
@@ -1462,7 +1453,13 @@
         }
 
         .priority-item.dragging {
-            opacity: 0.5;
+            opacity: 0.95;
+            transform: scale(1.02);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+            border-color: color-mix(in srgb, var(--secondary-color, #e50914) 60%, transparent);
+            cursor: grabbing;
+            z-index: 10;
+            position: relative;
         }
 
         .empty-state {
@@ -3805,6 +3802,19 @@
             color: transparent;
         }
 
+        /* Inline icons inside gradient-clipped text inherit `color:
+           transparent` via currentColor and vanish — give them a solid
+           colour again (matches the gradient start) on every theme */
+        body.gradient-text h1 svg,
+        body.gradient-text h2 svg,
+        body.gradient-text .series-title svg,
+        body.gradient-text .stat-card-value svg,
+        body.gradient-text .sidebar-section-title svg,
+        body.gradient-text .app-title svg,
+        body.gradient-text .page-title svg {
+            color: var(--grad-start, #e50914);
+        }
+
         /* ── Watchlist header & rank ──────────────────────────────── */
         .watchlist-head {
             display: flex; align-items: center; justify-content: space-between;
@@ -3919,25 +3929,6 @@
             white-space: nowrap;
         }
 
-        /* ── Quick "+1 episode" button on cards ───────────────────── */
-        .quick-ep-btn {
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            border: none;
-            background: var(--watching-color, var(--secondary-color, #e50914));
-            color: #fff;
-            font-size: 0.85rem;
-            font-weight: 800;
-            cursor: pointer;
-            display: grid;
-            place-items: center;
-            flex-shrink: 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
-            transition: transform .15s ease, filter .15s ease;
-        }
-        .quick-ep-btn:hover { transform: scale(1.12); filter: brightness(1.15); }
-        .quick-ep-btn:active { transform: scale(0.92); }
 
         /* ── Tonight picker result card ───────────────────────────── */
         .tonight-pick-card {
@@ -4246,3 +4237,193 @@
         .statistics-dashboard { margin-bottom: 34px; }
         .series-list { margin-bottom: 40px; }
         .series-item { margin-bottom: 18px; }
+
+        /* ── Hover action bar on cards ────────────────────────────── */
+        .series-actionbar {
+            position: absolute;
+            top: 14px;
+            right: 54px;
+            display: flex;
+            gap: 8px;
+            padding: 8px;
+            border-radius: 12px;
+            background: rgba(20, 20, 22, 0.92);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            z-index: 6;
+            opacity: 0;
+            transform: translateY(-6px);
+            pointer-events: none;
+            transition: opacity .18s ease, transform .18s ease;
+        }
+        .series-item.actionbar-visible .series-actionbar {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        body.light-theme .series-actionbar {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: rgba(0, 0, 0, 0.12);
+            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
+        }
+        @media (hover: none) {
+            /* Touch devices have no hover — keep the bar reachable via expand */
+            .series-actionbar { display: none; }
+        }
+
+        /* ── Colored status filter buttons (sidebar toggle) ───────── */
+        body.colored-filters .filter-btn[data-filter="watching"] {
+            border-color: color-mix(in srgb, var(--watching-color, #e50914) 65%, transparent);
+            color: var(--watching-color, #e50914);
+            background-color: color-mix(in srgb, var(--watching-color, #e50914) 14%, transparent);
+        }
+        body.colored-filters .filter-btn[data-filter="want"] {
+            border-color: color-mix(in srgb, var(--want-color, #0062ff) 65%, transparent);
+            color: var(--want-color, #0062ff);
+            background-color: color-mix(in srgb, var(--want-color, #0062ff) 14%, transparent);
+        }
+        body.colored-filters .filter-btn[data-filter="completed"] {
+            border-color: color-mix(in srgb, var(--completed-color, #27ae60) 65%, transparent);
+            color: var(--completed-color, #27ae60);
+            background-color: color-mix(in srgb, var(--completed-color, #27ae60) 14%, transparent);
+        }
+        body.colored-filters .filter-btn.active[data-filter="watching"] {
+            background-color: var(--watching-color, #e50914);
+            border-color: var(--watching-color, #e50914);
+            color: #fff;
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--watching-color, #e50914) 45%, transparent);
+        }
+        body.colored-filters .filter-btn.active[data-filter="want"] {
+            background-color: var(--want-color, #0062ff);
+            border-color: var(--want-color, #0062ff);
+            color: #fff;
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--want-color, #0062ff) 45%, transparent);
+        }
+        body.colored-filters .filter-btn.active[data-filter="completed"] {
+            background-color: var(--completed-color, #27ae60);
+            border-color: var(--completed-color, #27ae60);
+            color: #fff;
+            box-shadow: 0 4px 14px color-mix(in srgb, var(--completed-color, #27ae60) 45%, transparent);
+        }
+
+        /* ── Enhanced color picker (swatches + hex input) ─────────── */
+        .cp-extras {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 6px 0 12px 4px;
+            flex-wrap: wrap;
+        }
+        .cp-swatches {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        .cp-swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            cursor: pointer;
+            padding: 0;
+            transition: transform .12s ease;
+        }
+        .cp-swatch:hover { transform: scale(1.25); }
+        body.light-theme .cp-swatch { border-color: rgba(0, 0, 0, 0.2); }
+        .cp-hex {
+            width: 86px;
+            padding: 4px 8px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            color: inherit;
+            font-size: 0.78rem;
+            font-family: monospace;
+        }
+        .cp-hex:focus {
+            outline: none;
+            border-color: var(--secondary-color, #e50914);
+        }
+        body.light-theme .cp-hex {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.2);
+        }
+
+        /* ── Popup/modal redesign to match the new card style ─────── */
+        .overlay .modal,
+        .overlay .ct-card {
+            background: linear-gradient(180deg, #1e1e20 0%, #171719 100%);
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 16px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+        }
+        body.light-theme .overlay .modal,
+        body.light-theme .overlay .ct-card {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.1);
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+        }
+        .modal-actions .btn,
+        .modal .btn {
+            border-radius: 999px;
+        }
+
+        /* ── First-run onboarding tour ────────────────────────────── */
+        .tour-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.62);
+            z-index: 3000;
+        }
+        .tour-target {
+            position: relative;
+            z-index: 3001 !important;
+            box-shadow: 0 0 0 4px var(--secondary-color, #e50914), 0 10px 40px rgba(0, 0, 0, 0.6) !important;
+            border-radius: 12px;
+        }
+        .tour-tooltip {
+            position: fixed;
+            z-index: 3002;
+            width: min(360px, calc(100vw - 24px));
+            background: linear-gradient(180deg, #1e1e20 0%, #171719 100%);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6);
+            animation: tonightPop .25s ease;
+        }
+        body.light-theme .tour-tooltip {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.12);
+        }
+        .tour-tooltip h3 {
+            margin: 0 0 8px;
+            font-size: 1.05rem;
+        }
+        .tour-tooltip p {
+            color: #aaa;
+            font-size: 0.9rem;
+            line-height: 1.55;
+            margin: 0 0 14px;
+        }
+        body.light-theme .tour-tooltip p { color: #555; }
+        .tour-dots {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 14px;
+        }
+        .tour-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+        body.light-theme .tour-dot { background: rgba(0, 0, 0, 0.15); }
+        .tour-dot.active { background: var(--secondary-color, #e50914); }
+        .tour-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+        .tour-actions .btn:first-child { margin-right: auto; }

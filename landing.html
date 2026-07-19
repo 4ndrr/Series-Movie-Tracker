@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="192x192" href="favicon.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#141414">
+    <title>Series & Movie Tracker — Track everything you watch</title>
+    <meta name="description" content="A free, private tracker for your series and movies. Progress, watchlist, stats and more — stored on your own device.">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Helvetica Neue', Arial, sans-serif; }
+        body { background-color:#141414; color:#fff; line-height:1.6; }
+        a { color:inherit; }
+
+        .container { max-width:1100px; margin:0 auto; padding:20px 40px 60px; }
+
+        /* Hero */
+        .hero { text-align:center; padding:60px 0 40px; }
+        .hero img.logo { height:120px; filter:drop-shadow(0 6px 24px rgba(229,9,20,0.35)); }
+        .hero h1 { font-size:clamp(2rem, 5vw, 3.2rem); font-weight:800; letter-spacing:-1px; margin:18px 0 6px; }
+        .hero h1 .accent { color:#e50914; }
+        .hero .tagline { font-size:1.15rem; color:#b3b3b3; max-width:640px; margin:0 auto 30px; }
+        .cta {
+            display:inline-block; background:#e50914; color:#fff; font-weight:700; font-size:1.05rem;
+            padding:15px 42px; border-radius:999px; text-decoration:none; border:none; cursor:pointer;
+            box-shadow:0 8px 30px rgba(229,9,20,0.4); transition:transform .18s ease, filter .18s ease;
+        }
+        .cta:hover { transform:translateY(-2px) scale(1.03); filter:brightness(1.1); }
+        .cta-sub { display:block; margin-top:14px; color:#777; font-size:0.85rem; }
+
+        /* Feature grid */
+        .section-title {
+            font-size:1.5rem; margin:56px 0 22px; padding-bottom:10px; text-align:center;
+            border-bottom:2px solid rgba(229,9,20,0.3);
+        }
+        .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; }
+        .card {
+            background:linear-gradient(180deg,#1d1d1f,#18181a); border:1px solid rgba(255,255,255,0.07);
+            border-radius:14px; padding:24px 26px; transition:transform .2s, border-color .2s;
+        }
+        .card:hover { transform:translateY(-3px); border-color:rgba(229,9,20,0.4); }
+        .card .ico { width:40px; height:40px; border-radius:10px; background:rgba(229,9,20,0.12); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+        .card .ico svg { width:21px; height:21px; stroke:#e50914; }
+        .card h3 { font-size:1.1rem; margin-bottom:8px; }
+        .card p { color:#bfbfbf; font-size:0.92rem; }
+
+        /* Steps */
+        .steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px; counter-reset:step; }
+        .step { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:22px; }
+        .step .num {
+            width:34px; height:34px; border-radius:50%; background:#e50914; color:#fff; font-weight:800;
+            display:grid; place-items:center; margin-bottom:12px;
+        }
+        .step h3 { font-size:1rem; margin-bottom:6px; }
+        .step p { color:#bfbfbf; font-size:0.9rem; }
+
+        /* Privacy note */
+        .privacy {
+            margin-top:56px; background:rgba(229,9,20,0.07); border:1px solid rgba(229,9,20,0.25);
+            border-radius:14px; padding:22px 26px; text-align:center; color:#ccc; font-size:0.95rem;
+        }
+        .privacy strong { color:#fff; }
+
+        footer { margin-top:60px; padding-top:24px; border-top:1px solid rgba(255,255,255,0.08); text-align:center; color:#777; font-size:0.88rem; }
+        footer .links { margin-bottom:10px; display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+        footer a { color:#aaa; text-decoration:none; }
+        footer a:hover { color:#fff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <img class="logo" src="https://i.imgur.com/zopUQf6.png" alt="Series & Movie Tracker logo" onerror="this.style.display='none';">
+            <h1>Track everything <span class="accent">you watch</span></h1>
+            <p class="tagline">Series & Movie Tracker is a free, private tracker for your series and films.
+               Log your progress episode by episode, plan what to watch next, and see your viewing stats —
+               all stored on your own device, no account needed.</p>
+            <button class="cta" id="openAppBtn">Open the app</button>
+            <span class="cta-sub">Free · No sign-up · Works offline as an app</span>
+        </div>
+
+        <h2 class="section-title">What it does</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+                <h3>Progress tracking</h3>
+                <p>Keep your exact season and episode per series. One click on “Episode Watched” logs it and moves you to the next one — season rollovers included.</p>
+            </div>
+            <div class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+                <h3>Smart adding</h3>
+                <p>Type two letters and the tracker guesses the title, then fills in the cover, genre, seasons, rating and streaming service for you. Or browse the built-in Marketplace catalogue.</p>
+            </div>
+            <div class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
+                <h3>Watchlist & queue</h3>
+                <p>Plan what's next with a drag-to-reorder watchlist, and let “What tonight?” pick something random that fits your mood and the time you have.</p>
+            </div>
+            <div class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+                <h3>Stats & Year in Review</h3>
+                <p>Watch time, genre breakdown, an activity timeline and a yearly “Wrapped”-style recap of everything you watched.</p>
+            </div>
+            <div class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                <h3>Profiles</h3>
+                <p>Separate profiles for everyone in your household — each with their own list, watchlist and statistics.</p>
+            </div>
+            <div class="card">
+                <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></div>
+                <h3>Your look</h3>
+                <p>Dark, light or fully custom themes with your own colors — plus notifications for new episodes and an installable app experience.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">How it works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="num">1</div>
+                <h3>Create your profile</h3>
+                <p>Open the app and set a name and picture. No e-mail, no password — it's all yours.</p>
+            </div>
+            <div class="step">
+                <div class="num">2</div>
+                <h3>Add what you watch</h3>
+                <p>Use the + button and let autofill do the work, or add popular titles from the Marketplace in one click.</p>
+            </div>
+            <div class="step">
+                <div class="num">3</div>
+                <h3>Track & enjoy</h3>
+                <p>Log episodes as you watch, keep your watchlist in order, and watch your stats grow.</p>
+            </div>
+        </div>
+
+        <div class="privacy">
+            <strong>Your data stays yours.</strong> Everything is stored locally in your browser — nothing is uploaded
+            anywhere. Use the export feature to make backups or move your list to another device.
+        </div>
+
+        <footer>
+            <div class="links">
+                <a href="SeriesTracker_Guide.html">Guide</a>
+                <a href="marketplace.html">Marketplace</a>
+                <a href="ChangelogSerien.html">Changelog</a>
+                <a href="Legal.html">Legal</a>
+            </div>
+            Made with love by twillightmay &amp; x4ndrrr
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('openAppBtn').addEventListener('click', function() {
+            try { localStorage.setItem('seriesTrackerLandingSeen', '1'); } catch (e) {}
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

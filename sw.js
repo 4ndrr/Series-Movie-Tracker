@@ -1,9 +1,10 @@
 // Service worker: precache the app shell, then serve same-origin requests
 // stale-while-revalidate so the app works offline but still picks up updates.
-const CACHE = 'smtracker-v1';
+const CACHE = 'smtracker-v2';
 const PRECACHE = [
     './',
     './index.html',
+    './landing.html',
     './styles.css',
     './app.js',
     './favicon.png',
