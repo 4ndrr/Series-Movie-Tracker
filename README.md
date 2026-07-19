@@ -1,5 +1,3 @@
-# [PRESS ON ME TO USE ](https://series-movie-tracker.vercel.app/)
-
 # 🎬 Series & Movie Tracker
 
 ![Status](https://img.shields.io/badge/status-active-success)
