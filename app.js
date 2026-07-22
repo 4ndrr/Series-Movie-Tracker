@@ -3056,14 +3056,6 @@
             setTimeout(() => { toast.classList.remove('show'); }, 2200);
         }
 
-        function showWelcomeToast(name) {
-            const toast = document.getElementById('welcomeToast');
-            if (!toast) return;
-            toast.textContent = 'Welcome, ' + name + '!';
-            toast.classList.add('show');
-            setTimeout(() => { toast.classList.remove('show'); }, 2200);
-        }
-
         function setupEventListeners() {
             // Hamburger menu toggle
             const hamburgerMenu = document.getElementById('hamburgerMenu');
@@ -3914,18 +3906,9 @@
                 if (warn) warn.style.display = users.length >= 5 ? 'block' : 'none';
             }
 
-            // Patch openUserSelectModal to also render avatars
-            const _origOpenUserSelectModal = openUserSelectModal;
-            function openUserSelectModal() {
-                _origOpenUserSelectModal();
-                umSelectedUserId = currentUserId; window.umSelectedUserId = currentUserId;
-                renderUserAvatars();
-                const strip = document.getElementById('umEditStrip');
-                if (strip) strip.style.display = 'flex';
-                document.getElementById('createUserForm').style.display = 'none';
-                document.getElementById('editUserForm').style.display = 'none';
-                document.getElementById('umMainActions').style.display = 'flex';
-            }
+            // (Removed a dead openUserSelectModal wrapper here: as a same-scope
+            //  function declaration it was always overridden by the fuller
+            //  definition below, which already renders avatars.)
 
             // confirmUserSelectBtn: handled by original listener (now uses window.umSelectedUserId)
 
