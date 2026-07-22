@@ -214,7 +214,7 @@
                 </div>
                 <h3>From the Marketplace</h3>
                 <ul>
-                    <li>Open the menu &rarr; <span class="highlight">Marketplace</span> to browse a catalogue of 1000+ popular titles.</li>
+                    <li>Open the menu &rarr; <span class="highlight">Marketplace</span> to browse a catalogue of <span id="catalogueCount">1000+</span> popular titles.</li>
                     <li>Filter by category, provider, status or age rating &mdash; your filters are remembered for your next visit.</li>
                     <li>Click any title for full details: description, seasons, ratings, where to stream, and a <span class="highlight">Watch trailer</span> link.</li>
                     <li>Press <span class="highlight">Add to library</span> and choose: Currently Watching, Want to Watch or Finished.</li>
@@ -283,7 +283,7 @@
                     <li><span class="highlight">Themes</span> &mdash; menu &rarr; Themes: Dark, Light, or Custom.</li>
                     <li><span class="highlight">Custom colors</span> &mdash; set the background, accent and the three status-badge colors. Use the preset swatches, type a hex code, or open the full color wheel.</li>
                     <li><span class="highlight">Gradient text</span> &mdash; give all headings a color gradient with your own start and end colors.</li>
-                    <li><span class="highlight">Colored Filters</span> &mdash; in Settings; tints the status filter buttons in their theme colors.</li>
+                    <li><span class="highlight">Colored Filters</span> &mdash; in menu &rarr; Themes; tints the status filter buttons in their theme colors.</li>
                 </ul>
             </section>
 
@@ -344,6 +344,18 @@ body.gradient-text .page-title, body.gradient-text .modal-title {
     document.body.style.setProperty('--grad-end', g.end||'#f5c518');
   }
 }catch(e){}})();
+
+// Keep the catalogue count exact and current (auto-updates with the data file)
+(function(){
+  fetch('marketplace-data.json',{cache:'no-store'})
+    .then(function(r){return r.ok?r.json():null;})
+    .then(function(d){
+      if(!d||!Array.isArray(d.catalogue))return;
+      var el=document.getElementById('catalogueCount');
+      if(el)el.textContent=d.catalogue.length.toLocaleString();
+    })
+    .catch(function(){});
+})();
 </script>
 </body>
 </html>
