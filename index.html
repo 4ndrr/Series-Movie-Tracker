@@ -143,6 +143,10 @@
                         </div>
                     </div>
                 </div>
+                <label class="sidebar-menu-item" style="justify-content: space-between; margin-top: 12px;">
+                    <span><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="18.5" r="2.5"/></svg> Colored Filters</span>
+                    <input type="checkbox" id="settingColoredFilters" style="cursor: pointer; flex-shrink:0; width:18px; height:18px; accent-color: var(--secondary-color, #e50914);">
+                </label>
             </div>
             <!-- SETTINGS -->
             <div class="sidebar-section">
@@ -159,15 +163,11 @@
                     <span><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg> Notifications</span>
                     <input type="checkbox" id="settingShowNotifications" style="cursor: pointer; flex-shrink:0; width:18px; height:18px; accent-color: var(--secondary-color, #e50914);">
                 </label>
-                <label class="sidebar-menu-item" style="justify-content: space-between;">
-                    <span><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10" cy="18.5" r="2.5"/></svg> Colored Filters</span>
-                    <input type="checkbox" id="settingColoredFilters" style="cursor: pointer; flex-shrink:0; width:18px; height:18px; accent-color: var(--secondary-color, #e50914);">
-                </label>
                 <button class="sidebar-menu-item" id="openNotificationCalendarBtn" style="border:none; background:rgba(255,255,255,0.05); color:inherit; width:100%;"><svg style="width:16px;height:16px;vertical-align:-3px;flex-shrink:0;margin-right:6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Notification Calendar</button>
                 <div id="autoExportIntervalWrap" style="display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255, 255, 255, 0.08);">
                     <div style="font-size: 0.82rem; color: #aaa; margin-bottom: 6px; font-weight: 600;" class="auto-save-label">Auto Export Interval</div>
                     <div style="font-size: 0.75rem; color: #666; margin-bottom: 8px; font-style: italic;" class="auto-save-info">Only works when on site</div>
-                    <select id="settingAutoSaveInterval" class="sidebar-menu-item" style="padding: 0 12px; height: 44px; background-color: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; color: inherit; cursor: pointer; margin-top: 0; font-size: 0.9rem; appearance: auto;">
+                    <select id="settingAutoSaveInterval" class="sidebar-menu-item" style="padding: 0 12px; height: 44px; border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 6px; cursor: pointer; margin-top: 0; font-size: 0.9rem; appearance: auto;">
                         <option value="1min">Every 1 minute</option>
                         <option value="10min">Every 10 minutes</option>
                         <option value="1h">Every 1 hour</option>
@@ -204,7 +204,7 @@
     <div class="container">
         <div class="sticky-top-bar" id="stickyTopBar">
         <header>
-            <img src="https://i.imgur.com/zopUQf6.png" style="height: 150px; cursor: pointer;" alt="Logo" title="Reload page" loading="eager" decoding="async" onerror="this.style.display='none';" onclick="location.reload();">
+            <img src="favicon.png" style="cursor: pointer;" alt="Logo" title="Reload page" loading="eager" decoding="async" onerror="this.style.display='none';" onclick="location.reload();">
             <h1>Series & Movie Tracker</h1>
             <div class="header-controls">
                 <div class="hamburger-menu" id="hamburgerMenu" role="button" tabindex="0" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar">

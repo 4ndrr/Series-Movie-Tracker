@@ -2486,13 +2486,6 @@
                             ${datesDisplay}
                         </div>
                     </div>
-                    <div class="series-actionbar" data-id="${serie.id}">
-                        ${serie.status === 'watching' ? `<button class="btn btn-small mark-ep-btn" data-id="${serie.id}" title="${isSeries ? 'Log current episode and advance to next' : 'Log this movie as watched'}">
-                            <svg style="width:12px;height:12px;vertical-align:-1px;margin-right:4px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>${isSeries ? 'Episode Watched' : 'Mark Watched'}</button>` : ''}
-                        <button class="btn btn-small edit-btn" data-id="${serie.id}">Edit</button>
-                        <button class="btn btn-small ab-more-btn" data-id="${serie.id}">More</button>
-                        <button class="btn btn-secondary btn-small delete-btn" data-id="${serie.id}">Delete</button>
-                    </div>
                     <div class="series-details ${isExpanded ? 'expanded' : ''}" id="details-${serie.id}">
                         <div class="series-details-content">
                             <div class="details-section">
@@ -2609,33 +2602,6 @@
                     e.stopPropagation();
                     const id = parseInt(btn.getAttribute('data-id'));
                     markEpisodeWatched(id);
-                });
-            });
-
-            // Hover action bar: pops up on hover and stays visible until it is
-            // clicked or the user hovers a different card
-            document.querySelectorAll('.series-item').forEach(itemEl => {
-                itemEl.addEventListener('mouseenter', () => {
-                    document.querySelectorAll('.series-item.actionbar-visible').forEach(other => {
-                        if (other !== itemEl) other.classList.remove('actionbar-visible');
-                    });
-                    itemEl.classList.add('actionbar-visible');
-                });
-            });
-            document.querySelectorAll('.series-actionbar').forEach(bar => {
-                bar.addEventListener('click', () => {
-                    const host = bar.closest('.series-item');
-                    if (host) host.classList.remove('actionbar-visible');
-                });
-            });
-            // "More" in the action bar expands the card and opens its info panel
-            document.querySelectorAll('.ab-more-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.getAttribute('data-id'));
-                    if (expandedSeriesId !== id) toggleSeriesDetails(id);
-                    const moreInfo = document.getElementById(`more-info-${id}`);
-                    if (moreInfo) moreInfo.style.display = 'block';
                 });
             });
 
@@ -5106,14 +5072,14 @@
                     e.currentTarget.classList.add('active');
                     e.currentTarget.querySelector('.filter-option-check').style.display = 'inline';
                     currentCategory = e.currentTarget.getAttribute('data-category');
-                    
-                    if (currentCategory !== 'all') {
-                        currentFilter = currentCategory;
-                        filterBtns.forEach(btn => {
-                            btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
-                        });
-                    }
-                    
+
+                    // Keep the top status-filter buttons in sync — including
+                    // when "All" is chosen (previously it stayed on the old one)
+                    currentFilter = currentCategory;
+                    filterBtns.forEach(btn => {
+                        btn.classList.toggle('active', btn.getAttribute('data-filter') === currentFilter);
+                    });
+
                     saveSettings();
                     renderSeries();
                     renderStatistics();

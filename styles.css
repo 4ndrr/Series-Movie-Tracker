@@ -4238,40 +4238,6 @@
         .series-list { margin-bottom: 40px; }
         .series-item { margin-bottom: 18px; }
 
-        /* ── Hover action bar on cards ────────────────────────────── */
-        .series-actionbar {
-            position: absolute;
-            top: 14px;
-            right: 54px;
-            display: flex;
-            gap: 8px;
-            padding: 8px;
-            border-radius: 12px;
-            background: rgba(20, 20, 22, 0.92);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.45);
-            backdrop-filter: blur(6px);
-            z-index: 6;
-            opacity: 0;
-            transform: translateY(-6px);
-            pointer-events: none;
-            transition: opacity .18s ease, transform .18s ease;
-        }
-        .series-item.actionbar-visible .series-actionbar {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-        body.light-theme .series-actionbar {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: rgba(0, 0, 0, 0.12);
-            box-shadow: 0 10px 26px rgba(0, 0, 0, 0.15);
-        }
-        @media (hover: none) {
-            /* Touch devices have no hover — keep the bar reachable via expand */
-            .series-actionbar { display: none; }
-        }
-
         /* ── Colored status filter buttons (sidebar toggle) ───────── */
         body.colored-filters .filter-btn[data-filter="watching"] {
             border-color: color-mix(in srgb, var(--watching-color, #e50914) 65%, transparent);
@@ -4288,21 +4254,24 @@
             color: var(--completed-color, #27ae60);
             background-color: color-mix(in srgb, var(--completed-color, #27ae60) 14%, transparent);
         }
+        /* !important so these beat the custom-theme `.filter-btn.active`
+           override that otherwise forces the accent (red) on the selected
+           status button under the Custom theme */
         body.colored-filters .filter-btn.active[data-filter="watching"] {
-            background-color: var(--watching-color, #e50914);
-            border-color: var(--watching-color, #e50914);
+            background-color: var(--watching-color, #e50914) !important;
+            border-color: var(--watching-color, #e50914) !important;
             color: #fff;
             box-shadow: 0 4px 14px color-mix(in srgb, var(--watching-color, #e50914) 45%, transparent);
         }
         body.colored-filters .filter-btn.active[data-filter="want"] {
-            background-color: var(--want-color, #0062ff);
-            border-color: var(--want-color, #0062ff);
+            background-color: var(--want-color, #0062ff) !important;
+            border-color: var(--want-color, #0062ff) !important;
             color: #fff;
             box-shadow: 0 4px 14px color-mix(in srgb, var(--want-color, #0062ff) 45%, transparent);
         }
         body.colored-filters .filter-btn.active[data-filter="completed"] {
-            background-color: var(--completed-color, #27ae60);
-            border-color: var(--completed-color, #27ae60);
+            background-color: var(--completed-color, #27ae60) !important;
+            border-color: var(--completed-color, #27ae60) !important;
             color: #fff;
             box-shadow: 0 4px 14px color-mix(in srgb, var(--completed-color, #27ae60) 45%, transparent);
         }
@@ -4427,3 +4396,37 @@
             gap: 8px;
         }
         .tour-actions .btn:first-child { margin-right: auto; }
+
+        /* ── Auto-export interval select readability ──────────────── */
+        #settingAutoSaveInterval,
+        #settingAutoSaveInterval option {
+            color: #ffffff;
+            background-color: #2a2a2a;
+        }
+        body.light-theme #settingAutoSaveInterval,
+        body.light-theme #settingAutoSaveInterval option {
+            color: #111111;
+            background-color: #ffffff;
+        }
+
+        /* ── Hide unwanted scrollbars (kept scrollable) ───────────── */
+        /* Sidebar grows when gradient/custom theme controls expand — the
+           scrollbar flicker in/out is distracting; hide it but keep scroll */
+        .sidebar {
+            scrollbar-width: none;         /* Firefox */
+            -ms-overflow-style: none;      /* old Edge */
+        }
+        .sidebar::-webkit-scrollbar { width: 0; height: 0; }
+
+        /* Year in Review modal + watch timeline area */
+        #yearReviewModal .modal,
+        #yearReviewBody,
+        .watch-timeline,
+        .watch-timeline-details {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        #yearReviewModal .modal::-webkit-scrollbar,
+        #yearReviewBody::-webkit-scrollbar,
+        .watch-timeline::-webkit-scrollbar,
+        .watch-timeline-details::-webkit-scrollbar { width: 0; height: 0; }
