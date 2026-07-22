@@ -305,6 +305,52 @@
         </div>
         
           <div class="changelog-content">
+            <!-- Version 1.16 -->
+<div class="version-card">
+    <div class="version-header">
+        <span class="version-number">Version 1.16</span>
+        <span class="version-date">July 22 2026</span>
+    </div>
+
+    <div style="background:rgba(229,9,20,0.1);border:1px solid rgba(229,9,20,0.35);border-radius:12px;padding:16px 18px;margin-bottom:20px;">
+        <strong style="color:#e50914;">📣 New developer on the team:</strong>
+        <strong>x4ndrrr</strong> has joined the Dev team. He'll actively update, improve and debug
+        the page to keep it usable and continuously improving &mdash; to the point where everyone
+        has what they need.
+    </div>
+
+    <h3 class="section-title">Landing Page</h3>
+    <ul class="feature-list">
+        <li><strong>Rotating headline:</strong> The hero now reads &ldquo;Track everything &hellip;&rdquo; with the last part cycling through a dozen phrases (you watch, you love, that's popular&hellip;) with a smooth animated flip.</li>
+        <li><strong>3D poster stage:</strong> A layered, tilt-reactive fan of real posters was added to the hero, inspired by the concept design &mdash; self-contained, with no external libraries.</li>
+        <li><strong>Bigger, local logo:</strong> The logo is larger and now loads from the bundled asset instead of an external image host.</li>
+        <li><strong>Firefox fix:</strong> The &ldquo;Open the app&rdquo; button now reliably opens the tracker in Firefox instead of appearing to reload the landing page.</li>
+    </ul>
+
+    <h3 class="section-title">Tracker (index)</h3>
+    <ul class="feature-list">
+        <li><strong>Action menu reverted:</strong> The top-right hover bar was replaced again by the click-to-expand action menu (Episode Watched / Edit / More / Delete) on each card.</li>
+        <li><strong>Category &ldquo;All&rdquo; fixed:</strong> Choosing Filter by Category &rarr; All now actually returns to showing everything instead of staying on the previous category.</li>
+        <li><strong>Colored Filters moved:</strong> The toggle now lives in the Themes section, and under the Custom theme the selected status button shows your chosen colour instead of always red.</li>
+        <li><strong>Readable interval:</strong> The Auto-Export interval dropdown is no longer white-on-white.</li>
+        <li><strong>Cleaner scrolling:</strong> Distracting scrollbars in the sidebar, the Year in Review and the timeline are hidden while staying scrollable; the top bar and logo keep a steady size.</li>
+    </ul>
+
+    <h3 class="section-title">Marketplace</h3>
+    <ul class="feature-list">
+        <li><strong>Logo fixed:</strong> The top-bar mark showed as a plain red square &mdash; it now displays a clean &ldquo;S+M&rdquo; wordmark in the red box.</li>
+        <li><strong>Real provider filter:</strong> The Provider dropdown now offers clean services (Netflix, Disney+, HBO Max, Prime Video, Hulu, Apple TV+, Paramount+, Peacock, Crunchyroll) and filters reliably by them.</li>
+        <li><strong>Fullscreen collections:</strong> Opening a collection now fills the screen, with a close button that stays put while you scroll.</li>
+    </ul>
+
+    <h3 class="section-title">Under the Hood</h3>
+    <ul class="feature-list">
+        <li><strong>Update prompt:</strong> When a new version ships, the app no longer swaps itself out silently mid-session &mdash; it shows an &ldquo;A new version is available &mdash; Reload&rdquo; prompt.</li>
+        <li><strong>Code cleanup:</strong> Removed duplicate function declarations that could silently shadow one another.</li>
+        <li><strong>Docs refreshed:</strong> The README was rewritten to match the real project, the unused <em>database</em> folder was removed, and the Guide's catalogue count is now fetched live so it's always exact.</li>
+    </ul>
+</div>
+
             <!-- Version 1.15 -->
 <div class="version-card">
     <div class="version-header">
