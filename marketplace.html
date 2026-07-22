@@ -88,8 +88,9 @@ img{display:block}
   font-weight:800;letter-spacing:-0.3px;color:var(--text);white-space:nowrap;
 }
 .brand-mark{
-  width:auto;min-width:30px;height:30px;padding:0 5px;border-radius:8px;flex-shrink:0;
+  width:auto;min-width:30px;height:30px;padding:0 8px;border-radius:8px;flex-shrink:0;
   background:var(--accent);display:grid;place-items:center;color:#fff;
+  font-weight:900;font-size:0.9rem;letter-spacing:0.5px;
 }
 .brand-name{font-size:1.02rem}
 .brand-tag{
@@ -345,6 +346,10 @@ body,.card,.coll,.toolbar,.nav,.modal,.control,.cat{transition:background-color 
   background:rgba(0,0,0,.55);border:none;color:#fff;cursor:pointer;display:grid;place-items:center;
 }
 .modal-close:hover{background:rgba(0,0,0,.8)}
+/* Collections open fullscreen with a close button that stays put on scroll */
+.modal-overlay.coll-full{padding:0;align-items:stretch}
+.modal-overlay.coll-full .modal{max-width:none;width:100%;min-height:100vh;border-radius:0;border:0;animation:none}
+.modal-overlay.coll-full .modal-close{position:fixed;top:16px;right:18px}
 .modal-body{padding:0 clamp(20px,4vw,32px) clamp(22px,4vw,30px);margin-top:-60px;position:relative;z-index:2}
 .modal-top{display:flex;gap:18px;align-items:flex-end}
 .modal-poster{width:118px;flex-shrink:0;aspect-ratio:2/3;border-radius:10px;object-fit:cover;border:2px solid var(--surface);box-shadow:0 8px 24px rgba(0,0,0,.5)}
@@ -418,9 +423,7 @@ body,.card,.coll,.toolbar,.nav,.modal,.control,.cat{transition:background-color 
   <nav class="nav" aria-label="Primary">
     <div class="nav-inner">
       <a class="brand" href="index.html" aria-label="Series and Movie Tracker home">
-        <span class="brand-mark" aria-hidden="true">
-          <img src="https://i.imgur.com/zopUQf6.png" alt="" style="display:block;height:22px;width:auto" onerror="this.onerror=null;this.src='favicon.png';this.style.height='20px';this.style.borderRadius='5px';">
-        </span>
+        <span class="brand-mark" aria-hidden="true">S+M</span>
         <span class="brand-name">Tracker</span>
         <span class="brand-tag">Marketplace</span>
       </a>
@@ -671,17 +674,42 @@ function removeFromTracker(title){var l=(title||'').toLowerCase();saveTracker(lo
 function persistAdded(){localStorage.setItem('mp_added',JSON.stringify([].slice.call(addedIds)));}
 
 // ── Derive categories + providers from data (future-friendly) ───
+// Map the many raw TMDB provider strings (e.g. "AMC+ Amazon Channel",
+// "Netflix Standard with Ads") down to a short list of clean, canonical
+// services so the dropdown and filtering are actually usable.
+var PROVIDER_RULES=[
+  ['netflix','Netflix'],['disney','Disney+'],['hbo','HBO Max'],['max','HBO Max'],
+  ['prime video','Prime Video'],['amazon','Prime Video'],['hulu','Hulu'],
+  ['apple','Apple TV+'],['paramount','Paramount+'],['peacock','Peacock'],
+  ['crunchyroll','Crunchyroll']
+];
+var PROVIDER_ORDER=['Netflix','Disney+','HBO Max','Prime Video','Hulu','Apple TV+','Paramount+','Peacock','Crunchyroll'];
+function canonicalProviders(item){
+  var out=[];
+  (item.providers||[]).forEach(function(p){
+    var lp=String(p).toLowerCase();
+    for(var i=0;i<PROVIDER_RULES.length;i++){
+      if(lp.indexOf(PROVIDER_RULES[i][0])>=0){
+        if(out.indexOf(PROVIDER_RULES[i][1])<0)out.push(PROVIDER_RULES[i][1]);
+        break;
+      }
+    }
+  });
+  return out;
+}
+
 function deriveFilters(){
   var cats=new Set(['All']); var provs=new Set();
   CATALOGUE.forEach(function(x){
     (x.categories||[]).forEach(function(c){cats.add(c);});
-    (x.providers||[]).forEach(function(p){provs.add(p);});
+    canonicalProviders(x).forEach(function(p){provs.add(p);});
   });
   // Prefer a sensible lead order, then any extras alphabetically
   var lead=['All','Trending','Popular','Movies','Series','Anime'];
   var ordered=lead.filter(function(c){return cats.has(c);})
     .concat([].slice.call(cats).filter(function(c){return lead.indexOf(c)<0;}).sort());
-  return {categories:ordered,providers:[].slice.call(provs).sort()};
+  var providers=PROVIDER_ORDER.filter(function(p){return provs.has(p);});
+  return {categories:ordered,providers:providers};
 }
 
 // ── Filtering / sorting ─────────────────────────────────────────
@@ -696,7 +724,7 @@ function getFiltered(){
     return x.title.toLowerCase().indexOf(q)>=0 || (x.originalTitle&&x.originalTitle.toLowerCase().indexOf(q)>=0);
   });}
   if(state.status)items=items.filter(function(x){return x.status===state.status;});
-  if(state.provider)items=items.filter(function(x){return (x.providers||[]).indexOf(state.provider)>=0;});
+  if(state.provider)items=items.filter(function(x){return canonicalProviders(x).indexOf(state.provider)>=0;});
   if(state.age){
     items=items.filter(function(x){var a=ageOf(x);
       if(state.age==='kids')return a==null||a<=12;
@@ -1036,7 +1064,7 @@ function openModal(id){
 }
 function closeModal(){
   var ov=document.getElementById('modalOverlay');
-  ov.classList.remove('open'); ov.hidden=true; document.body.style.overflow='';
+  ov.classList.remove('open','coll-full'); ov.hidden=true; document.body.style.overflow='';
   modalOpenId=null;
   setSearchHidden(false);
   if(lastFocused&&lastFocused.focus)lastFocused.focus();
@@ -1077,7 +1105,7 @@ function openCollection(id){
   head.appendChild(listGrid);
   c.appendChild(head);
   var ov=document.getElementById('modalOverlay');
-  ov.hidden=false; ov.classList.add('open'); document.body.style.overflow='hidden';
+  ov.hidden=false; ov.classList.add('open','coll-full'); document.body.style.overflow='hidden';
   document.getElementById('modalClose').focus();
 }
 

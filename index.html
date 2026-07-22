@@ -925,7 +925,42 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').catch(() => {});
+                navigator.serviceWorker.register('sw.js').then(reg => {
+                    function promptUpdate(worker) {
+                        if (!worker) return;
+                        const bar = document.createElement('div');
+                        bar.setAttribute('role', 'status');
+                        bar.style.cssText = 'position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;display:flex;align-items:center;gap:14px;background:#1f1f22;color:#fff;border:1px solid rgba(255,255,255,0.14);border-radius:12px;padding:12px 16px;box-shadow:0 12px 34px rgba(0,0,0,0.5);font:600 0.9rem system-ui,sans-serif;max-width:92vw;';
+                        const msg = document.createElement('span');
+                        msg.textContent = 'A new version is available.';
+                        const btn = document.createElement('button');
+                        btn.textContent = 'Reload';
+                        btn.style.cssText = 'background:var(--secondary-color,#e50914);color:#fff;border:none;border-radius:999px;padding:8px 18px;font-weight:700;cursor:pointer;';
+                        btn.onclick = () => worker.postMessage({ type: 'SKIP_WAITING' });
+                        bar.appendChild(msg); bar.appendChild(btn);
+                        document.body.appendChild(bar);
+                    }
+                    // A worker already waiting (update downloaded before this load)
+                    if (reg.waiting && navigator.serviceWorker.controller) promptUpdate(reg.waiting);
+                    // A new worker starts installing while the page is open
+                    reg.addEventListener('updatefound', () => {
+                        const installing = reg.installing;
+                        if (!installing) return;
+                        installing.addEventListener('statechange', () => {
+                            if (installing.state === 'installed' && navigator.serviceWorker.controller) {
+                                promptUpdate(reg.waiting || installing);
+                            }
+                        });
+                    });
+                }).catch(() => {});
+
+                // When the new worker takes control, reload once to get fresh assets
+                let reloaded = false;
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    if (reloaded) return;
+                    reloaded = true;
+                    window.location.reload();
+                });
             });
         }
     </script>
